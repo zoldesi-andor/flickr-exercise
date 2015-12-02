@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project version="2">
+  <!-- Output SWF options -->
+  <output>
+    <movie outputType="Application" />
+    <movie input="" />
+    <movie path="bin\Main.js" />
+    <movie fps="30" />
+    <movie width="1280" />
+    <movie height="720" />
+    <movie version="0" />
+    <movie minorVersion="0" />
+    <movie platform="JavaScript" />
+    <movie background="#FFFFFF" />
+  </output>
+  <!-- Other classes to be compiled into your SWF -->
+  <classpaths>
+    <class path="src" />
+    <class path="hexcore\src" />
+    <class path="hexcore\test" />
+    <class path="hexunit\src" />
+    <class path="hexinject\src" />
+    <class path="hexinject\test" />
+    <class path="hexmvc\src" />
+    <class path="hexmvc\test" />
+    <class path="hexmachina\src" />
+    <class path="hexmachina\test" />
+    <class path="libs" />
+  </classpaths>
+  <!-- Build options -->
+  <build>
+    <option directives="" />
+    <option flashStrict="True" />
+    <option noInlineOnDebug="False" />
+    <option mainClass="Main" />
+    <option enabledebug="True" />
+    <option additional="" />
+  </build>
+  <!-- haxelib libraries -->
+  <haxelib>
+    <!-- example: <library name="..." /> -->
+  </haxelib>
+  <!-- Class files to compile (other referenced classes will automatically be included) -->
+  <compileTargets>
+    <compile path="hexmachina\example\Main.hx" />
+    <compile path="..\..\..\\TestMainTmp.hx" />
+    <compile path="ExMachina.hxproj\TestMainTmp.hx" />
+    <compile path="src\TestMainTmp.hx" />
+    <compile path="src\Main.hx" />
+  </compileTargets>
+  <!-- Paths to exclude from the Project Explorer tree -->
+  <hiddenPaths>
+    <hidden path="obj" />
+  </hiddenPaths>
+  <!-- Executed before build -->
+  <preBuildCommand />
+  <!-- Executed after build -->
+  <postBuildCommand alwaysRun="False" />
+  <!-- Other project options -->
+  <options>
+    <option showHiddenPaths="False" />
+    <option testMovie="Webserver" />
+    <option testMovieCommand="bin/index.html" />
+  </options>
+  <!-- Plugin storage -->
+  <storage />
+</project>

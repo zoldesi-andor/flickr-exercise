@@ -20,9 +20,7 @@ class TestMain
 			emu.addListener( new hex.unittest.notifier.FlashUnitTestNotifier(flash.Lib.current) );
 		#end
 		
-		emu.addTest( HexMVCSuite );
-        emu.addTest( HexCoreSuite );
-        emu.addTest( HexInjectSuite );
+		emu.addTest( HexFullSuite );
         emu.run();
 		
 		

@@ -1,19 +1,24 @@
 package;
 
-import modules.stream.player.hlsplayer.HlsPlayerModule;
-import modules.stream.player.hlsplayer.view.IButtonView;
-import modules.stream.player.hlsplayer.view.IVideoView;
-import modules.stream.player.hlsplayer.vo.INetStreamVO;
+import hex.config.stateful.ServiceLocator;
+import hex.service.ServiceEvent;
+import module.stream.player.hlsplayer.HlsPlayerModule;
+import module.stream.player.hlsplayer.IHlsPlayerModule;
+import service.stream.hls.HlsService;
+import service.stream.hls.IHlsService;
+import service.stream.hlsjs.HlsJsService;
+//import modules.stream.player.hlsplayer.view.IButtonView;
+import module.stream.player.hlsplayer.view.IVideoView;
 
 
 #if js
-import modules.stream.player.hlsplayer.view.VideoViewJS;
-import modules.stream.player.hlsplayer.vo.NetStreamVOJS;
-import modules.stream.player.hlsplayer.view.ButtonViewJS;
+import module.stream.player.hlsplayer.view.VideoViewJS;
+import module.stream.player.hlsplayer.vo.HlsVO;
+//import modules.stream.player.hlsplayer.view.ButtonViewJS;
 import js.html.VideoElement;
 #elseif flash
-import modules.stream.player.hlsplayer.view.VideoViewFlash;
-import modules.stream.player.hlsplayer.vo.NetStreamVOFlash;
+import module.stream.player.hlsplayer.view.VideoViewFlash;
+import module.stream.player.hlsplayer.vo.HlsVOFlash;
 import modules.stream.player.hlsplayer.view.ButtonViewFlash;
 import flash.media.Video;
 import flash.net.NetConnection;
@@ -30,26 +35,41 @@ import flash.text.TextFieldAutoSize;
  */
 class Main
 {
-	#if flash
+	/*#if flash
 	private static var nc:NetConnection;
-	#end
-	private static var module:HlsPlayerModule;
+	#end*/
+	private static var module:Dynamic;
 
 	static public function main() : Void
 	{
 		
 		
 		var videoView:IVideoView;
-		var buttonView:IButtonView;
-		#if js
+		//var buttonView:IButtonView;
+		//#if js
 			
 			videoView = new VideoViewJS(cast js.Browser.document.getElementById("video"));
-			var netStream:NetStreamVOJS = new NetStreamVOJS();
-			netStream.streamUrl = "http://localhost:1935/dashtest/myStream/playlist.m3u8";
 			
-			buttonView = new ButtonViewJS( cast js.Browser.document.getElementById("stopButton") );
 			
-		#elseif flash
+			//buttonView = new ButtonViewJS( cast js.Browser.document.getElementById("stopButton") );
+			
+			//var hlsService:HlsService<ServiceEvent> = new HlsService();
+			var hlsService:HlsJsService<ServiceEvent> = new HlsJsService();
+			hlsService.video =  cast js.Browser.document.getElementById("video");
+			
+			var serviceLocator:ServiceLocator = new ServiceLocator();
+			serviceLocator.addService(IHlsService, hlsService);
+			var hlsPlayer:IHlsPlayerModule = new HlsPlayerModule(videoView, serviceLocator);
+			
+			var streamVO:HlsVO = new HlsVO();
+			streamVO.streamUrl = "http://192.168.206.47:1935/dashtest/myStream/playlist.m3u8";
+			hlsPlayer.setStream( streamVO );
+			
+			hlsPlayer.play( );
+			
+			Main.module = hlsPlayer;
+			
+		/*#elseif flash
 			var video:Video = new Video();
 			flash.Lib.current.stage.addChild(video);
 			
@@ -76,33 +96,32 @@ class Main
 			
 			videoView = new VideoViewFlash(video);
 			
-			buttonView = new ButtonViewFlash(text);
-		#end
+			//buttonView = new ButtonViewFlash(text);
+		#end*/
 		
-		Main.module = new HlsPlayerModule(videoView, buttonView);
 		
-		#if js
-			Main.setNetStream(netStream);
-		#end
+		
+		
+		
 	}
 	
-	#if flash
+	/*#if flash
 	static private function onConnected(e:Event):Void 
 	{
 		
-		var netStream:NetStreamVOFlash = new NetStreamVOFlash();
+		var netStream:HlsVOFlash = new HlsVOFlash();
 		netStream.netStream = new NetStream(nc);
 		netStream.netStream.play("myStream");
 		netStream.netStream.client = { };
-		setNetStream( netStream );
+		setStream( netStream );
 		
 	}
-	#end
+	#end*/
 	
-	static private function setNetStream( netStream:INetStreamVO ):Void
+	static private function setStream( netStream:HlsVO ):Void
 	{
 		
-		Main.module.setNetStream(netStream);
+		Main.module.setStream(netStream);
 	}
 	
 }

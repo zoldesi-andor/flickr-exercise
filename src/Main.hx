@@ -4,6 +4,10 @@ import hex.config.stateful.ServiceLocator;
 import hex.service.ServiceEvent;
 import module.stream.player.hlsplayer.HlsPlayerModule;
 import module.stream.player.hlsplayer.IHlsPlayerModule;
+import service.net.chatwebsocket.ChatWebSocketService;
+import service.net.chatwebsocket.ChatWebSocketServiceConfiguration;
+import service.net.websocket.WebSocketServiceConfiguration;
+import service.net.websocket.WebSocketServiceJS;
 import service.stream.hls.HlsService;
 import service.stream.hls.IHlsService;
 import service.stream.hlsjs.HlsJsService;
@@ -16,6 +20,7 @@ import module.stream.player.hlsplayer.view.VideoViewJS;
 import module.stream.player.hlsplayer.vo.HlsVO;
 //import modules.stream.player.hlsplayer.view.ButtonViewJS;
 import js.html.VideoElement;
+import js.html.Event;
 #elseif flash
 import module.stream.player.hlsplayer.view.VideoViewFlash;
 import module.stream.player.hlsplayer.vo.HlsVOFlash;
@@ -38,12 +43,18 @@ class Main
 	/*#if flash
 	private static var nc:NetConnection;
 	#end*/
-	private static var module:Dynamic;
+	private var module:Dynamic;
+	private var hlsService:HlsService;
+	
+	private static var self:Main;
 
 	static public function main() : Void
 	{
-		
-		
+		self = new Main();
+	}
+	
+	public function new()
+	{
 		var videoView:IVideoView;
 		//var buttonView:IButtonView;
 		//#if js
@@ -53,9 +64,17 @@ class Main
 			
 			//buttonView = new ButtonViewJS( cast js.Browser.document.getElementById("stopButton") );
 			
-			//var hlsService:HlsService<ServiceEvent> = new HlsService();
-			var hlsService:HlsJsService<ServiceEvent> = new HlsJsService();
+			if ( cast(js.Browser.document.getElementById("video"),VideoElement).canPlayType("application/vnd.apple.mpegurl") != "" )
+			{
+				hlsService = new HlsService();
+			}
+			else
+			{
+				hlsService = new HlsJsService();
+			}
+			
 			hlsService.video =  cast js.Browser.document.getElementById("video");
+			
 			
 			var serviceLocator:ServiceLocator = new ServiceLocator();
 			serviceLocator.addService(IHlsService, hlsService);
@@ -65,9 +84,14 @@ class Main
 			streamVO.streamUrl = "http://192.168.206.47:1935/dashtest/myStream/playlist.m3u8";
 			hlsPlayer.setStream( streamVO );
 			
-			hlsPlayer.play( );
+			js.Browser.document.addEventListener("click", this.onClick);
 			
-			Main.module = hlsPlayer;
+			this.module = hlsPlayer;
+			
+			
+			var webSocketService:ChatWebSocketService = new ChatWebSocketService();
+			webSocketService.setConfiguration( new ChatWebSocketServiceConfiguration("jasmin.com", "js-client", "192.168.0.79", 5280, "docler-ws") );
+			webSocketService.connect();
 			
 		/*#elseif flash
 			var video:Video = new Video();
@@ -98,11 +122,13 @@ class Main
 			
 			//buttonView = new ButtonViewFlash(text);
 		#end*/
-		
-		
-		
-		
-		
+	}
+	
+	private function onClick(e:Event):Void 
+	{
+		js.Browser.document.removeEventListener("click", this.onClick);
+		trace("click");
+		this.module.play( );
 	}
 	
 	/*#if flash
@@ -118,10 +144,10 @@ class Main
 	}
 	#end*/
 	
-	static private function setStream( netStream:HlsVO ):Void
+	private function setStream( netStream:HlsVO ):Void
 	{
 		
-		Main.module.setStream(netStream);
+		this.module.setStream(netStream);
 	}
 	
 }

@@ -26,6 +26,10 @@
     <class path="hexmachina\src" />
     <class path="hexmachina\test" />
     <class path="libs" />
+    <class path="doclerModules\src" />
+    <class path="doclerModules\test" />
+    <class path="doclerServices\src" />
+    <class path="doclerServices\test" />
   </classpaths>
   <!-- Build options -->
   <build>
@@ -45,7 +49,7 @@
     <compile path="hexmachina\example\Main.hx" />
     <compile path="..\..\..\\TestMainTmp.hx" />
     <compile path="ExMachina.hxproj\TestMainTmp.hx" />
-    <compile path="src\TestMainTmp.hx" />
+    <compile path="src/TestMainTmp.hx" />
     <compile path="src\Main.hx" />
   </compileTargets>
   <!-- Paths to exclude from the Project Explorer tree -->

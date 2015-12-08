@@ -2,27 +2,27 @@ package;
 
 import hex.config.stateful.ServiceLocator;
 import hex.service.ServiceEvent;
-import module.stream.player.hlsplayer.HlsPlayerModule;
-import module.stream.player.hlsplayer.IHlsPlayerModule;
-import service.net.chatwebsocket.ChatWebSocketService;
-import service.net.chatwebsocket.ChatWebSocketServiceConfiguration;
-import service.net.websocket.WebSocketServiceConfiguration;
-import service.net.websocket.WebSocketServiceJS;
-import service.stream.hls.HlsService;
-import service.stream.hls.IHlsService;
-import service.stream.hlsjs.HlsJsService;
+import com.module.stream.player.hlsplayer.HlsPlayerModule;
+import com.module.stream.player.hlsplayer.IHlsPlayerModule;
+import com.service.net.chatwebsocket.ChatWebSocketService;
+import com.service.net.chatwebsocket.ChatWebSocketServiceConfiguration;
+import com.service.net.websocket.WebSocketServiceConfiguration;
+import com.service.net.websocket.WebSocketServiceJS;
+import com.service.stream.hls.HlsService;
+import com.service.stream.hls.IHlsService;
+import com.service.stream.hlsjs.HlsJsService;
 //import modules.stream.player.hlsplayer.view.IButtonView;
-import module.stream.player.hlsplayer.view.IVideoView;
+import com.module.stream.player.hlsplayer.view.IVideoView;
 
 
 #if js
-import module.stream.player.hlsplayer.view.VideoViewJS;
-import module.stream.player.hlsplayer.vo.HlsVO;
+import com.module.stream.player.hlsplayer.view.VideoViewJS;
+import com.module.stream.player.hlsplayer.vo.HlsVO;
 //import modules.stream.player.hlsplayer.view.ButtonViewJS;
 import js.html.VideoElement;
 import js.html.Event;
 #elseif flash
-import module.stream.player.hlsplayer.view.VideoViewFlash;
+import com.module.stream.player.hlsplayer.view.VideoViewFlash;
 import module.stream.player.hlsplayer.vo.HlsVOFlash;
 import modules.stream.player.hlsplayer.view.ButtonViewFlash;
 import flash.media.Video;

@@ -36,7 +36,7 @@
     <option directives="" />
     <option flashStrict="True" />
     <option noInlineOnDebug="False" />
-    <option mainClass="Main" />
+    <option mainClass="TestMain" />
     <option enabledebug="True" />
     <option additional="" />
   </build>
@@ -50,7 +50,7 @@
     <compile path="..\..\..\\TestMainTmp.hx" />
     <compile path="ExMachina.hxproj\TestMainTmp.hx" />
     <compile path="src/TestMainTmp.hx" />
-    <compile path="src\Main.hx" />
+    <compile path="src\TestMain.hx" />
   </compileTargets>
   <!-- Paths to exclude from the Project Explorer tree -->
   <hiddenPaths>

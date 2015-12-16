@@ -5,6 +5,7 @@ import js.html.VideoElement;
  * ...
  * @author duke
  */
+@:native("Hls")
 extern class Hls
 {
 	static var Events:HlsEvents;

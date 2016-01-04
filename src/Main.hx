@@ -73,7 +73,7 @@ class Main
 
 	static public function main() : Void
 	{
-		self = new Main();
+		self = new Main(); 
 	}
 	
 	public function new()

@@ -30,15 +30,17 @@
     <class path="doclerModules\test" />
     <class path="doclerServices\src" />
     <class path="doclerServices\test" />
+    <class path="hexMachina\src" />
+    <class path="hexMachina\test" />
   </classpaths>
   <!-- Build options -->
   <build>
     <option directives="" />
     <option flashStrict="True" />
     <option noInlineOnDebug="False" />
-    <option mainClass="TestMain" />
+    <option mainClass="Main" />
     <option enabledebug="True" />
-    <option additional="" />
+    <option additional="-resource src/awepopunder/configuration/ModuleConfiguration.xml@moduleConfig&#xA;-resource src/awepopunder/configuration/ServiceConfiguration.xml@serviceConfig&#xA;-resource src/awepopunder/configuration/ViewConfiguration.xml@viewConfig&#xA;-resource src/awepopunder/configuration/OrderConfiguration.xml@orderConfig" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>
@@ -49,8 +51,8 @@
     <compile path="hexmachina\example\Main.hx" />
     <compile path="..\..\..\\TestMainTmp.hx" />
     <compile path="ExMachina.hxproj\TestMainTmp.hx" />
-    <compile path="src/TestMainTmp.hx" />
-    <compile path="src\TestMain.hx" />
+    <compile path="src\TestMainTmp.hx" />
+    <compile path="src\Main.hx" />
   </compileTargets>
   <!-- Paths to exclude from the Project Explorer tree -->
   <hiddenPaths>

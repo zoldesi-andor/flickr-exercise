@@ -1,0 +1,14 @@
+package awepopunder.module.layout.model;
+import hex.model.ModelDispatcher;
+
+/**
+ * ...
+ * @author duke
+ */
+class LayoutModelDispatcher extends ModelDispatcher<ILayoutModelListener> implements ILayoutModelListener
+{
+
+	public function onOnline( ) : Void { for (i in 0...this._listeners.length) { this._listeners[i].onOnline( ); }; }
+	public function onOffline( ) : Void { for (i in 0...this._listeners.length) { this._listeners[i].onOffline( ); }; }
+	
+}

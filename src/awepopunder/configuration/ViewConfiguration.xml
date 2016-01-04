@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<!-- VIEW -->
+	<view id="videoView" type="com.module.stream.player.hlsplayer.view.VideoViewJS">
+		<argument ref="dom.video" />
+	</view>
+	
+	<view id="loadingView" type="com.module.stream.player.hlsplayer.view.LoadingViewJS">
+		<argument ref="dom.loading" />
+	</view>
+	
+	<view id="chatBoxView" type="com.module.chat.chatbox.view.ChatBoxViewJS">
+		<argument ref="dom.chatBox" />
+	</view>
+	
+	<view id="layoutView" type="awepopunder.module.layout.view.LayoutViewJS">
+		<argument ref="dom.layout" />
+	</view>
+</root>

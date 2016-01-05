@@ -8,20 +8,24 @@ import js.html.Element;
 class LayoutViewJS implements ILayoutView
 {
 	private var _layout:Element;
+	
+	private var chatContainer:Element;
 
 	public function new( layout:Element ) 
 	{
 		this._layout = layout;
+		
+		this.chatContainer = this._layout.getElementsByClassName("embed-chat")[0];
 	}
 	
 	public function showChat( ):Void
 	{
-		this._layout.classList.add("chat-open");
+		this.chatContainer.classList.add("chat-open");
 	}
 	
 	public function hideChat( ):Void
 	{
-		this._layout.classList.remove("chat-open");
+		this.chatContainer.classList.remove("chat-open");
 	}
 	
 	@:isVar public var visible(get, set):Bool;

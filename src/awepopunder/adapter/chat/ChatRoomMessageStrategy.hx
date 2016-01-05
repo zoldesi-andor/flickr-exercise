@@ -8,6 +8,7 @@ import hex.event.AdapterStrategy;
  * ...
  * @author 
  */
+@:rtti
 class ChatRoomMessageStrategy extends AdapterStrategy
 {
 
@@ -17,12 +18,13 @@ class ChatRoomMessageStrategy extends AdapterStrategy
 		
 	}
 	
-	private function onAdapt( event:ReceivedRoomMessageEvent ):ChatMessageVO
+	private function onAdapt( args : Array<Dynamic> ):ChatMessageVO
 	{
+		//TODO: really do i have to accept an array instead of concrete params?
+		var event:ReceivedRoomMessageEvent = args[0];
 		var chatMessageVO:ChatMessageVO = new ChatMessageVO();
 		chatMessageVO.message = event.message;
 		chatMessageVO.userNick = event.sender;
-		
 		return chatMessageVO;
 	}
 	

@@ -12,7 +12,7 @@ import hex.event.IEvent;
 @:rtti
 class InitHlsStreamCommand extends BasicCommand
 {
-	@inject
+	@inject("name=hlsPlayerModule")
 	public var hlsPlayer:IHlsPlayerModule;
 
 	override public function execute(?e:IEvent):Void 

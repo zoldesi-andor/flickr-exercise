@@ -6,7 +6,7 @@
 		<property name="video" ref="dom.video" />
 	</service>
 	
-	<service id="chatWebSocketService" type="com.service.net.chatwebsocket.ChatWebSocketService"/>
+	<service id="chatWebSocketService" type="com.service.net.chatwebsocket.ChatWebSocketService" map-type="com.service.net.chatwebsocket.IChatWebSocketService"/>
 	
 	
 	<!-- SERVICE CONFIGURATIONS -->

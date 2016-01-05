@@ -28,6 +28,7 @@ import hex.ioc.assembler.ApplicationAssembler;
 import hex.ioc.assembler.ApplicationContext;
 import hex.ioc.parser.xml.XMLContextParser;
 import hex.ioc.parser.xml.XMLParserCollection;
+import hex.ioc.parser.xml.XMLParserUtil;
 import hex.service.ServiceEvent;
 import js.Browser;
 import js.html.Element;
@@ -79,89 +80,7 @@ class Main
 	public function new()
 	{
 		
-		var source:String = this.concatXmlList( this.getConfigList( ["moduleConfig", "serviceConfig", "orderConfig", "viewConfig"] ) );
-		
-		trace(source);
-		
-		var source2 : String = '
-		<root>
-			<!-- MODULES -->
-			
-			<module id="chatBoxModule" type="com.module.chat.chatbox.ChatBoxModule">
-				<argument ref="chatArtifactList" />
-				<argument ref="chatBoxView" />
-				
-				<listen ref="chatWebSocketService">
-					<event static-ref="com.service.net.chatwebsocket.event.ReceivedRoomMessageEvent.RECEIVED_ROOM_MESSAGE" strategy="awepopunder.adapter.chat.ChatRoomMessageStrategy"/>
-				</listen>
-			</module>
-			
-			<module id="hlsPlayerModule" type="com.module.chat.chatbox.ChatBoxModule">
-				<argument ref="videoView"/>
-				<argument ref="loadingView"/>
-				<argument ref="hlsPlayerServiceLocator"/>
-			</module>
-			
-			<module id="layoutModule" type="awepopunder.module.layout.LayoutModule">
-				<argument ref="layoutView"/>
-			</module>
-			
-			<module id="contextMockModule" type="awepopunder.module.contextmock.ContextMockModule"/>
-		
-		
-			<!-- SERVICES -->
-			
-			<service id="hlsService" type="com.service.stream.hlsjs.HlsJsService">
-				<property name="video" ref="dom.video" />
-			</service>
-			
-			<service id="chatWebSocketService" type="com.service.net.chatwebsocket.ChatWebSocketService"/>
-			
-			
-			<!-- SERVICE CONFIGURATIONS -->
-			
-			<servicelocator id="hlsPlayerServiceLocator" type="hex.config.stateful.ServiceLocator" >
-				<item> 
-					<key type="Class" value="com.service.stream.hls.IHlsService"/>
-					<value ref="hlsService"/>
-				</item>
-			</servicelocator>
-			
-			
-			<!-- VIEW -->
-			<view id="videoView" type="com.module.stream.player.hlsplayer.view.VideoViewJS">
-				<argument ref="dom.video" />
-			</view>
-			
-			<view id="loadingView" type="com.module.stream.player.hlsplayer.view.LoadingViewJS">
-				<argument ref="dom.loading" />
-			</view>
-			
-			<view id="chatBoxView" type="com.module.chat.chatbox.view.ChatBoxViewJS">
-				<argument ref="dom.chatBox" />
-			</view>
-			
-			<view id="layoutView" type="awepopunder.module.layout.view.LayoutViewJS">
-				<argument ref="dom.layout" />
-			</view>
-			
-			
-			<!-- ORDER -->
-			<order id="loginOrder" type="hex.event.EventProxy">
-				<argument type="null"/>
-				<argument type="null"/>
-				<argument type="Bool" value = "false"/>
-				<listen ref="contextMockModule">
-					<event static-ref="awepopunder.module.contextmock.event.ContextReadyEvent.READY" strategy="awepopunder.adapter.bootstrap.BootstrapMacro"/>
-				</listen>
-			</order>
-			
-			
-			
-			<!-- OTHER -->
-			<bean id="chatArtifactList" type="com.vo.chat.artifact.ChatArtifactVO" />
-			
-		</root>';
+		var source:String = XMLParserUtil.getConcatenatedConfig( ["moduleConfig", "serviceConfig", "orderConfig", "viewConfig"] );
 		
 		var xml : Xml = Xml.parse( source );
 		
@@ -270,48 +189,6 @@ class Main
 			
 			//buttonView = new ButtonViewFlash(text);
 		#end*/
-	}
-	
-	private function concatXmlList(configList:Array<String>) 
-	{
-		var result:String = '<?xml version="1.0" encoding="utf-8" ?><root>';
-		
-		var l:UInt = configList.length;
-		
-		var matcher = ~/<([^>?]+)>/;
-		
-		for ( i in 0...l )
-		{
-			
-			
-			matcher.match(configList[i]);
-			
-			
-			var pos = matcher.matchedPos();
-			
-			trace(pos.pos + pos.len + 1);
-			
-			result += configList[i].substring( pos.pos + pos.len + 1, configList[i].lastIndexOf("</" + matcher.matched(1) + ">") );
-		}
-		
-		result += "</root>";
-		
-		return result;
-		
-	}
-	
-	private function getConfigList(list:Array<String>):Array<String>
-	{
-		var result:Array<String> = new Array<String>();
-		
-		var l:UInt = list.length;
-		
-		for ( i in 0...l )
-		{
-			result.push( haxe.Resource.getString(list[i]) );
-		}
-		
-		return result;
 	}
 	
 	private function _build( xml : Xml, applicationContext : ApplicationContext = null ) : Void

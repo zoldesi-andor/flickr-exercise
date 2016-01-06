@@ -38,9 +38,9 @@
     <option directives="" />
     <option flashStrict="True" />
     <option noInlineOnDebug="False" />
-    <option mainClass="Main" />
+    <option mainClass="awepopunder.AwePopunder" />
     <option enabledebug="True" />
-    <option additional="-resource src/awepopunder/configuration/ModuleConfiguration.xml@moduleConfig&#xA;-resource src/awepopunder/configuration/ServiceConfiguration.xml@serviceConfig&#xA;-resource src/awepopunder/configuration/ViewConfiguration.xml@viewConfig&#xA;-resource src/awepopunder/configuration/OrderConfiguration.xml@orderConfig" />
+    <option additional="-resource src/awepopunder/configuration/ModuleConfiguration.xml@moduleConfig&#xA;-resource src/awepopunder/configuration/ServiceConfiguration.xml@serviceConfig&#xA;-resource src/awepopunder/configuration/ViewConfiguration.xml@viewConfig&#xA;-resource src/awepopunder/configuration/OrderConfiguration.xml@orderConfig&#xA;-resource src/awepopunder/configuration/Config.json@applicationConfig" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>
@@ -53,13 +53,14 @@
     <compile path="ExMachina.hxproj\TestMainTmp.hx" />
     <compile path="src\TestMainTmp.hx" />
     <compile path="src\Main.hx" />
+    <compile path="src\awepopunder\AwePopunder.hx" />
   </compileTargets>
   <!-- Paths to exclude from the Project Explorer tree -->
   <hiddenPaths>
     <hidden path="obj" />
   </hiddenPaths>
   <!-- Executed before build -->
-  <preBuildCommand />
+  <preBuildCommand>neko $(ProjectDir)\hex3rdPartyTools\utilities\xml\GenerateImports\bin\GenerateImports.n  -dir $(ProjectDir)\src\awepopunder\configuration -output $(ProjectDir)\src\Imports.hx</preBuildCommand>
   <!-- Executed after build -->
   <postBuildCommand alwaysRun="False" />
   <!-- Other project options -->

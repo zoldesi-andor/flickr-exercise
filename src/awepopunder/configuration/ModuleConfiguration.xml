@@ -14,6 +14,7 @@
 	<module id="hlsPlayerModule" type="com.module.stream.player.hlsplayer.HlsPlayerModule" map-type="com.module.stream.player.hlsplayer.IHlsPlayerModule">
 		<argument ref="videoView"/>
 		<argument ref="loadingView"/>
+		<argument ref="playButtonView"/>
 		<argument ref="hlsPlayerServiceLocator"/>
 	</module>
 	

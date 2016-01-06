@@ -1,0 +1,24 @@
+{
+	layout: {
+		layoutMode: "inFrame", //outFrame
+		chatMode: "alwaysOn", //noChat
+		backgroundColor: "#000000",
+		width: 640,
+		height: 480
+	},
+	
+	chetWebSocket: {
+		host: "192.168.0.79",
+		port: 5280,
+		path: "docler-ws",
+		roomHost: "jasmin.com",
+		resource: "js-client"
+	}
+	
+	filter: {
+		category: "girl",
+		performerList: null,
+		uniquePerformer: null
+	}
+	
+}

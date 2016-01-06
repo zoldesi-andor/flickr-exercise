@@ -1,5 +1,6 @@
 package awepopunder.module.layout.model;
-import awepopunder.module.layout.model.OnlineState;
+import awepopunder.module.layout.constant.LayoutMode;
+import awepopunder.module.layout.constant.OnlineState;
 
 /**
  * ...
@@ -12,4 +13,6 @@ interface ILayoutModel extends ILayoutModelRO
 	function setOnline( ):Void;
 	
 	function setOffline( ):Void;
+	
+	function setLayoutMode( state:LayoutMode ):Void;
 }

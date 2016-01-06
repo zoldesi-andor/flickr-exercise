@@ -9,6 +9,10 @@
 		<argument ref="dom.loading" />
 	</view>
 	
+	<view id="playButtonView" type="com.module.stream.player.hlsplayer.view.PlayButtonViewJS">
+		<argument ref="dom.playButton" />
+	</view>
+	
 	<view id="chatBoxView" type="com.module.chat.chatbox.view.ChatBoxViewJS">
 		<argument ref="dom.chatBox" />
 	</view>

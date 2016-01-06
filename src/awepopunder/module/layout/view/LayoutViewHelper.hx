@@ -1,5 +1,6 @@
 package awepopunder.module.layout.view;
 
+import awepopunder.module.layout.constant.LayoutMode;
 import awepopunder.module.layout.model.ILayoutModelListener;
 import awepopunder.module.layout.model.ILayoutModelRO;
 import hex.view.IView;
@@ -30,14 +31,26 @@ class LayoutViewHelper extends ViewHelper implements ILayoutModelListener
 		this.layoutModel.addListener( this );
 	}
 	
+	public function onLayoutModeChange( layoutMode:LayoutMode ):Void
+	{
+		switch( layoutMode )
+		{
+			case InFrame: this._layoutView.setInFrameLayoutMode( );
+			case OutFrame: this._layoutView.setOutFrameLayoutMode( );
+		}
+		
+	}
+	
 	public function onOnline():Void 
 	{
 		this._layoutView.showChat( );
+		this._layoutView.showLive( );
 	}
 	
 	public function onOffline():Void 
 	{
 		this._layoutView.hideChat( );
+		this._layoutView.hideLive( );
 	}
 	
 	override public function release():Void

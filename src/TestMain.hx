@@ -25,11 +25,11 @@ class TestMain
 		
 		#if js
 			js.Browser.document.getElementById("console").style.display = "block";
-			//notifier = new WebSocketNotifier( "ws://localhost:6660" );
+			notifier = new WebSocketNotifier( "ws://localhost:6660" );
 			//notifier.addEventListener( WebSocketNotifierEvent.CONNECTED, _onConnected);
 			//emu.addListener( new hex.unittest.notifier.BrowserUnitTestNotifier("console") );
 			
-			notifier = new BrowserUnitTestNotifier("console");
+			//notifier = new BrowserUnitTestNotifier("console");
 			
 			emu.addListener( notifier );
 			emu.run();

@@ -1,7 +1,10 @@
 package awepopunder.module.layout;
 
+import awepopunder.module.layout.constant.LayoutMode;
+import awepopunder.module.layout.controller.SetLayoutModeCommand;
 import awepopunder.module.layout.controller.SetOfflineStateCommand;
 import awepopunder.module.layout.controller.SetOnlineStateCommand;
+import awepopunder.module.layout.event.LayoutModeEvent;
 import awepopunder.module.layout.event.LayoutModuleEventType;
 import awepopunder.module.layout.model.ILayoutModel;
 import awepopunder.module.layout.model.LayoutModel;
@@ -46,7 +49,12 @@ class LayoutModule extends Module implements ILayoutModule
 		this._dispatchInternalEvent( new BasicEvent(LayoutModuleEventType.OFFLINE, this) );
 	}
 	
-	private function setLayoutView( layoutView ):Void
+	public function setLayoutMode( mode:LayoutMode ):Void
+	{
+		this._dispatchInternalEvent( new LayoutModeEvent(LayoutModeEvent.LAYOUT_MODE_CHANGED, mode, this) );
+	}
+	
+	private function setLayoutView( layoutView:ILayoutView ):Void
 	{
 		this.buildViewHelper( LayoutViewHelper, layoutView );
 	}
@@ -59,6 +67,7 @@ private class LayoutCommandConfig extends StatelessCommandConfig
 	{
 		this.map( LayoutModuleEventType.ONLINE, SetOnlineStateCommand );
 		this.map( LayoutModuleEventType.OFFLINE, SetOfflineStateCommand );
+		this.map( LayoutModeEvent.LAYOUT_MODE_CHANGED, SetLayoutModeCommand );
 	}
 }
 

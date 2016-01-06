@@ -1,4 +1,5 @@
 package awepopunder.module.layout.model;
+import awepopunder.module.layout.constant.LayoutMode;
 import hex.model.ModelDispatcher;
 
 /**
@@ -10,5 +11,6 @@ class LayoutModelDispatcher extends ModelDispatcher<ILayoutModelListener> implem
 
 	public function onOnline( ) : Void { for (i in 0...this._listeners.length) { this._listeners[i].onOnline( ); }; }
 	public function onOffline( ) : Void { for (i in 0...this._listeners.length) { this._listeners[i].onOffline( ); }; }
+	public function onLayoutModeChange( state:LayoutMode ) : Void { for (i in 0...this._listeners.length) { this._listeners[i].onLayoutModeChange( state ); }; }
 	
 }

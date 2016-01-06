@@ -12,4 +12,11 @@ interface ILayoutView extends IView
 	
 	function hideChat():Void;
 	
+	function showLive():Void;
+	
+	function hideLive():Void;
+	
+	function setInFrameLayoutMode( ):Void;
+
+	function setOutFrameLayoutMode( ):Void;
 }

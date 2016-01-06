@@ -1,4 +1,4 @@
-package awepopunder.module.layout.model;
+package awepopunder.module.layout.constant;
 
 /**
  * ...

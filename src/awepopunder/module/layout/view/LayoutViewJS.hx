@@ -11,6 +11,7 @@ class LayoutViewJS implements ILayoutView
 	
 	private var _chatContainer:Element;
 	private var _liveLogo:Element;
+	private var _offlineLabel:Element;
 
 	public function new( layout:Element ) 
 	{
@@ -18,6 +19,7 @@ class LayoutViewJS implements ILayoutView
 		
 		this._chatContainer = this._layout.getElementsByClassName("embed-chat")[0];
 		this._liveLogo = this._layout.getElementsByClassName("embed-live-logo")[0];
+		this._offlineLabel = this._layout.getElementsByClassName("embed-status")[0];
 	}
 	
 	public function showChat( ):Void
@@ -38,6 +40,16 @@ class LayoutViewJS implements ILayoutView
 	public function hideLive( ):Void
 	{
 		this._liveLogo.classList.add("hidden");
+	}
+	
+	public function showOffline( ):Void
+	{
+		this._offlineLabel.classList.remove("hidden");
+	}
+	
+	public function hideOffline( ):Void
+	{
+		this._offlineLabel.classList.add("hidden");
 	}
 	
 	public function setInFrameLayoutMode():Void 

@@ -1,6 +1,7 @@
 package awepopunder.adapter.bootstrap;
 
 import awepopunder.adapter.bootstrap.controller.InitHlsStreamCommand;
+import awepopunder.adapter.bootstrap.controller.LoadApplicationSettingsCommand;
 import awepopunder.adapter.bootstrap.controller.SetOnlineCommand;
 import awepopunder.adapter.bootstrap.macro.InitChatWebSocketMacro;
 import hex.event.MacroAdapterStrategy;
@@ -21,6 +22,7 @@ class BootstrapMacro extends MacroAdapterStrategy
 	
 	override function _prepare():Void 
 	{
+		this.add(LoadApplicationSettingsCommand);
 		this.add(InitHlsStreamCommand);
 		this.add(InitChatWebSocketMacro);
 		this.add(SetOnlineCommand);

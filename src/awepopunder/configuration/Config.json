@@ -7,6 +7,10 @@
 		height: 480
 	},
 	
+	stream: {
+		muted: true
+	}
+	
 	chetWebSocket: {
 		host: "192.168.0.79",
 		port: 5280,
@@ -17,8 +21,25 @@
 	
 	filter: {
 		category: "girl",
-		performerList: null,
-		uniquePerformer: null
+		//performerList: null,
+		performerId: null,
+	},
+	
+	site: {
+		site: "jasmin",
+		cobrandid: "",
+		brandid: "jasmin",
+		subbrand: "livejasmin",
+		language: "en"
+	},
+	
+	promoInfo: {
+		psId: "awetest",
+		psTool: "202_1",
+		psProgram: "revs",
+		campaingId: "",
+		subAffId: "",
+		psRef: "",
 	}
 	
 }

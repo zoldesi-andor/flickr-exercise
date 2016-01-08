@@ -51,8 +51,8 @@
     <compile path="hexmachina\example\Main.hx" />
     <compile path="..\..\..\\TestMainTmp.hx" />
     <compile path="ExMachina.hxproj\TestMainTmp.hx" />
-    <compile path="src\TestMainTmp.hx" />
     <compile path="src\Main.hx" />
+    <compile path="src\TestMainTmp.hx" />
     <compile path="src\awepopunder\AwePopunder.hx" />
   </compileTargets>
   <!-- Paths to exclude from the Project Explorer tree -->

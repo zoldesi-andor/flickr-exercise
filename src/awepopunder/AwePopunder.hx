@@ -32,7 +32,7 @@ class AwePopunder
 		self = new AwePopunder(); 
 	}
 	
-	public function new( conifg )
+	public function new( )
 	{
 		
 		var source:String = XMLParserUtil.getConcatenatedConfig( ["moduleConfig", "serviceConfig", "orderConfig", "viewConfig"] );

@@ -45,12 +45,14 @@ class LayoutViewHelper extends ViewHelper implements ILayoutModelListener
 	{
 		this._layoutView.showChat( );
 		this._layoutView.showLive( );
+		this._layoutView.hideOffline( );
 	}
 	
 	public function onOffline():Void 
 	{
 		this._layoutView.hideChat( );
 		this._layoutView.hideLive( );
+		this._layoutView.showOffline( );
 	}
 	
 	override public function release():Void

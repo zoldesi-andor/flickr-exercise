@@ -18,6 +18,7 @@ class LayoutModel implements ILayoutModel
 	public function new() 
 	{
 		this.dispatcher = new LayoutModelDispatcher();
+		
 	}
 	
 	public function getOnlineState( ):OnlineState

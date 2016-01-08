@@ -1,12 +1,7 @@
 package;
 
 //import hex.config.stateful.ServiceLocator;
-import hex.control.async.AsyncCommandEventTest;
-import hex.HexCoreSuite;
-import hex.HexInjectSuite;
-import hex.HexMVCSuite;
 import hex.unittest.event.ITestRunnerListener;
-import hex.unittest.notifier.BrowserUnitTestNotifier;
 import hex.unittest.notifier.WebSocketNotifier;
 import hex.unittest.notifier.WebSocketNotifierEvent;
 import hex.unittest.runner.ExMachinaUnitCore;

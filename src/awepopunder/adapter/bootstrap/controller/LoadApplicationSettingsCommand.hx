@@ -3,6 +3,7 @@ package awepopunder.adapter.bootstrap.controller;
 import awepopunder.service.settings.application.ApplicationSettingsServiceParameters;
 import awepopunder.service.settings.application.IApplicationSettingsService;
 import awepopunder.vo.settings.application.ApplicationSettingsVO;
+import awepopunder.vo.settings.application.InitialApplicationSettingsVO;
 import com.service.net.chatwebsocket.ChatWebSocketServiceConfiguration;
 import com.service.net.chatwebsocket.IChatWebSocketService;
 import hex.control.async.AsyncCommand;
@@ -20,12 +21,15 @@ class LoadApplicationSettingsCommand extends AsyncCommand implements IHTTPServic
 {
 	@inject("name=applicationSettingsService")
 	public var applicationSettingsService:IApplicationSettingsService;
+	
+	@inject("name=initialApplicationSettings")
+	public var initialApplicationSettings:InitialApplicationSettingsVO;
 
 	override public function execute(?e:IEvent):Void 
 	{
 		//TODO: get connection params from config
 		var config:HTTPServiceConfiguration = new HTTPServiceConfiguration( "http://promo.awempire.com/live_feeds/get_settings_base.php" );
-		config.parameters = new ApplicationSettingsServiceParameters( "", "en", "jasmin", "popunder" );
+		config.parameters = new ApplicationSettingsServiceParameters( this.initialApplicationSettings.siteSettings.cobrandId, this.initialApplicationSettings.siteSettings.language, this.initialApplicationSettings.siteSettings.site );
 		
 		this.applicationSettingsService.setConfiguration( config );
 		

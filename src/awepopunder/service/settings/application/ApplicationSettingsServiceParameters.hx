@@ -13,7 +13,7 @@ class ApplicationSettingsServiceParameters extends HTTPServiceParameters
 	public var site:String;
 	public var type:String;
 
-	public function new( cobrandId:String = null, language:String = null, site:String = null, type:String = null) 
+	public function new( cobrandId:String = null, language:String = null, site:String = null, type:String = "popunder") 
 	{
 		super();
 		this.cobrandId = cobrandId;

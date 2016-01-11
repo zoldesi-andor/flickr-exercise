@@ -1,45 +1,39 @@
 {
-	layout: {
-		layoutMode: "inFrame", //outFrame
-		chatMode: "alwaysOn", //noChat
-		backgroundColor: "#000000",
-		width: 640,
-		height: 480
+	"layout": {
+		"rootElementId": "testApp",
+		"layoutMode": "inFrame",
+		"chatMode": "alwaysOn",
+		"backgroundColor": "#000000",
+		"width": 640,
+		"height": 480
 	},
 	
-	stream: {
-		muted: true
-	}
-	
-	chetWebSocket: {
-		host: "192.168.0.79",
-		port: 5280,
-		path: "docler-ws",
-		roomHost: "jasmin.com",
-		resource: "js-client"
-	}
-	
-	filter: {
-		category: "girl",
-		//performerList: null,
-		performerId: null,
+	"stream": {
+		"muted": true
 	},
 	
-	site: {
-		site: "jasmin",
-		cobrandid: "",
-		brandid: "jasmin",
-		subbrand: "livejasmin",
-		language: "en"
+	"filter": {
+		"category": "girl",
+		"tid": "kontx_w2_girl_teen",
+		"performerId": null
 	},
 	
-	promoInfo: {
-		psId: "awetest",
-		psTool: "202_1",
-		psProgram: "revs",
-		campaingId: "",
-		subAffId: "",
-		psRef: "",
+	"site": {
+		"site": "jasmin",
+		"cobrandid": "",
+		"brandid": "jasmin",
+		"subbrand": "livejasmin",
+		"language": "en",
+		"sessionid": "AWELiveFeedGuest"
+	},
+	
+	"promoInfo": {
+		"psId": "awetest",
+		"psTool": "202_1",
+		"psProgram": "revs",
+		"campaingId": "",
+		"subAffId": "",
+		"psRef": ""
 	}
 	
 }

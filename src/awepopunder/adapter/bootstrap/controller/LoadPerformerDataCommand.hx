@@ -1,8 +1,11 @@
 package awepopunder.adapter.bootstrap.controller;
 
+import awepopunder.service.performer.IPerformerDataService;
+import awepopunder.service.performer.PerformerDataServiceParameters;
 import awepopunder.service.settings.application.ApplicationSettingsServiceParameters;
 import awepopunder.service.settings.application.IApplicationSettingsService;
 import awepopunder.vo.settings.application.ApplicationSettingsVO;
+import awepopunder.vo.settings.application.InitialApplicationSettingsVO;
 import com.service.net.chatwebsocket.ChatWebSocketServiceConfiguration;
 import com.service.net.chatwebsocket.IChatWebSocketService;
 import hex.control.async.AsyncCommand;
@@ -16,29 +19,30 @@ import hex.service.stateless.http.IHTTPServiceListener;
  * @author duke
  */
 @:rtti
-class LoadApplicationSettingsCommand extends AsyncCommand implements IHTTPServiceListener<HTTPServiceEvent>
+class LoadPerformerDataCommand extends AsyncCommand implements IHTTPServiceListener<HTTPServiceEvent>
 {
-	@inject("name=applicationSettingsService")
-	public var applicationSettingsService:IApplicationSettingsService;
+	@inject("name=performerDataService")
+	public var performerDataService:IPerformerDataService;
+	
+	@inject("name=initialApplicationSettings")
+	public var initialApplicationSettings:InitialApplicationSettingsVO;
+
 
 	override public function execute(?e:IEvent):Void 
 	{
 		//TODO: get connection params from config
-		var config:HTTPServiceConfiguration = new HTTPServiceConfiguration( "http://promo.awempire.com/live_feeds/get_settings_base.php" );
-		config.parameters = new ApplicationSettingsServiceParameters( "", "en", "jasmin", "popunder" );
+		var config:HTTPServiceConfiguration = new HTTPServiceConfiguration( "http://promo.awempire.com/live_feeds/get_performer_base.php" );
+		config.parameters = new PerformerDataServiceParameters( this.initialApplicationSettings.filterSettings.category, this.initialApplicationSettings.filterSettings.tId, "", this.initialApplicationSettings.siteSettings.site );
 		
-		this.applicationSettingsService.setConfiguration( config );
+		this.performerDataService.setConfiguration( config );
 		
-		this.applicationSettingsService.addHTTPServiceListener( this );
-		this.applicationSettingsService.call();
+		this.performerDataService.addHTTPServiceListener( this );
+		this.performerDataService.call();
 	}
 	
 	public function onServiceComplete(e:HTTPServiceEvent):Void 
 	{
-		
-		
-		
-		if ( this.applicationSettingsService.getApplicationSettings().success )
+		if ( this.performerDataService.getPerformerData().success )
 		{
 			this._handleComplete();
 		}
@@ -50,7 +54,7 @@ class LoadApplicationSettingsCommand extends AsyncCommand implements IHTTPServic
 	
 	override public function getPayload():Array<Dynamic> 
 	{
-		return [this.applicationSettingsService.getApplicationSettings().data];
+		return [this.performerDataService.getPerformerData().data];
 	}
 	
 	//TODO: manage fail
@@ -72,7 +76,7 @@ class LoadApplicationSettingsCommand extends AsyncCommand implements IHTTPServic
 	
 	override function _release():Void 
 	{
-		this.applicationSettingsService.removeHTTPServiceListener(this);
+		this.performerDataService.removeHTTPServiceListener(this);
 		super._release();
 	}
 	

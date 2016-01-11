@@ -3,12 +3,14 @@
 	<!-- SERVICES -->
 			
 	<service id="hlsService" type="com.service.stream.hlsjs.HlsJsService">
-		<property name="video" ref="dom.video" />
+		<property name="video" ref="dom.embed-video" />
 	</service>
 	
 	<service id="chatWebSocketService" type="com.service.net.chatwebsocket.ChatWebSocketService" map-type="com.service.net.chatwebsocket.IChatWebSocketService"/>
 	
 	<service id="applicationSettingsService" type="awepopunder.service.settings.application.ApplicationSettingsService" map-type="awepopunder.service.settings.application.IApplicationSettingsService"/>
+	
+	<service id="performerDataService" type="awepopunder.service.performer.PerformerDataService" map-type="awepopunder.service.performer.IPerformerDataService"/>
 	
 	
 	<!-- SERVICE CONFIGURATIONS -->

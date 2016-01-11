@@ -16,6 +16,7 @@ class ApplicationSettingsVO
 	public var chatPath:String = "docler-ws";
 	public var chatResource:String = "js-client";
 	public var chatRoomHost:String = "jasmin.com";
+	//TODO: get these properties from config
 
 	public function new() 
 	{

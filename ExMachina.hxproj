@@ -40,7 +40,7 @@
     <option noInlineOnDebug="False" />
     <option mainClass="awepopunder.AwePopunder" />
     <option enabledebug="True" />
-    <option additional="-resource src/awepopunder/configuration/ModuleConfiguration.xml@moduleConfig&#xA;-resource src/awepopunder/configuration/ServiceConfiguration.xml@serviceConfig&#xA;-resource src/awepopunder/configuration/ViewConfiguration.xml@viewConfig&#xA;-resource src/awepopunder/configuration/OrderConfiguration.xml@orderConfig&#xA;-resource src/awepopunder/configuration/Config.json@applicationConfig" />
+    <option additional="-resource src/awepopunder/configuration/ModuleConfiguration.xml@moduleConfig&#xA;-resource src/awepopunder/configuration/ServiceConfiguration.xml@serviceConfig&#xA;-resource src/awepopunder/configuration/ViewConfiguration.xml@viewConfig&#xA;-resource src/awepopunder/configuration/OrderConfiguration.xml@orderConfig&#xA;-resource src/awepopunder/configuration/Config.json@initialConfig" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>

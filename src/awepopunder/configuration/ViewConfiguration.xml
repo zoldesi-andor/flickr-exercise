@@ -2,22 +2,22 @@
 <root>
 	<!-- VIEW -->
 	<view id="videoView" type="com.module.stream.player.hlsplayer.view.VideoViewJS">
-		<argument ref="dom.video" />
+		<argument ref="dom.embed-video" />
 	</view>
 	
 	<view id="loadingView" type="com.module.stream.player.hlsplayer.view.LoadingViewJS">
-		<argument ref="dom.loading" />
+		<argument ref="dom.embed-loading" />
 	</view>
 	
 	<view id="playButtonView" type="com.module.stream.player.hlsplayer.view.PlayButtonViewJS">
-		<argument ref="dom.playButton" />
+		<argument ref="dom.embed-video-play" />
 	</view>
 	
 	<view id="chatBoxView" type="com.module.chat.chatbox.view.ChatBoxViewJS">
-		<argument ref="dom.chatBox" />
+		<argument ref="dom.embed-chat-messages" />
 	</view>
 	
 	<view id="layoutView" type="awepopunder.module.layout.view.LayoutViewJS">
-		<argument ref="dom.layout" />
+		<argument ref="dom.embed" />
 	</view>
 </root>

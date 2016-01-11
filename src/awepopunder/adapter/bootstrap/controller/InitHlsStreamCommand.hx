@@ -1,5 +1,6 @@
 package awepopunder.adapter.bootstrap.controller;
 
+import awepopunder.vo.performer.PerformerDataVO;
 import com.module.stream.player.hlsplayer.IHlsPlayerModule;
 import com.module.stream.player.hlsplayer.vo.HlsVO;
 import hex.control.command.BasicCommand;
@@ -14,12 +15,15 @@ class InitHlsStreamCommand extends BasicCommand
 {
 	@inject("name=hlsPlayerModule")
 	public var hlsPlayer:IHlsPlayerModule;
+	
+	@inject
+	public var performerData:PerformerDataVO;
 
 	override public function execute(?e:IEvent):Void 
 	{
 		//TODO: read stream url from configuration
 		var streamVO:HlsVO = new HlsVO();
-		streamVO.streamUrl = "http://192.168.206.47:1935/dashtest/myStream/playlist.m3u8";
+		streamVO.streamUrl = this.performerData.streamUrl != null ? this.performerData.streamUrl : "http://192.168.206.47:1935/dashtest/myStream/playlist.m3u8";
 		this.hlsPlayer.setStream( streamVO );
 	}
 	

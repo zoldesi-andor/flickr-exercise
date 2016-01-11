@@ -1,6 +1,9 @@
 package awepopunder;
 
+import awepopunder.parser.settings.application.InitialApplicationSettingsParser;
+import awepopunder.vo.settings.application.InitialApplicationSettingsVO;
 import com.module.stream.player.hlsplayer.IHlsPlayerModule;
+import haxe.Json;
 import hex.di.IBasicInjector;
 import hex.ioc.assembler.ApplicationAssembler;
 import hex.ioc.assembler.ApplicationContext;
@@ -29,11 +32,15 @@ class AwePopunder
 
 	static public function main() : Void
 	{
-		self = new AwePopunder(); 
+		#if debug
+		self = new AwePopunder( Json.parse(haxe.Resource.getString("initialConfig")) ); 
+		#end
 	}
 	
-	public function new( )
+	public function new( config:Dynamic )
 	{
+		var initialApplicationSettingsParser:InitialApplicationSettingsParser = new InitialApplicationSettingsParser();
+		var initialApplicationSettings:InitialApplicationSettingsVO = initialApplicationSettingsParser.parseSettings( config );
 		
 		var source:String = XMLParserUtil.getConcatenatedConfig( ["moduleConfig", "serviceConfig", "orderConfig", "viewConfig"] );
 		
@@ -41,13 +48,17 @@ class AwePopunder
 		
 		this._applicationAssembler 	= new ApplicationAssembler();
 		this._applicationContext 	= this._applicationAssembler.getApplicationContext( "applicationContext" );
+		this._injector = this._applicationContext.getInjector();
+		
+		//TODO: inject by subparts instead of a big stuff or inject into commands by parts
+		this._injector.mapToValue( InitialApplicationSettingsVO, initialApplicationSettings, "initialApplicationSettings" );
 		
 		#if js
-		this._applicationAssembler.getBuilderFactory( this._applicationContext ).getCoreFactory().register( "dom", js.Browser.document );
+		this._applicationAssembler.getBuilderFactory( this._applicationContext ).getCoreFactory().register( "dom", js.Browser.document.getElementById(initialApplicationSettings.layoutSettings.rootElementId) );
 		#end
 		
 		this._build( xml );
-		this._injector = this._applicationContext.getInjector();
+		
 	}
 	
 	private function _build( xml : Xml, applicationContext : ApplicationContext = null ) : Void

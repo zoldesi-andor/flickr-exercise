@@ -1,13 +1,13 @@
 package awepopunder.service.settings.application;
 
+import awepopunder.parser.base.AweServiceParser;
 import awepopunder.vo.settings.application.ApplicationSettingsVO;
-import hex.parser.JsonResultParser;
 
 /**
  * ...
  * @author duke
  */
-class ApplicationSettingsParser extends JsonResultParser<ApplicationSettingsVO>
+class ApplicationSettingsParser extends AweServiceParser<ApplicationSettingsVO>
 {
 
 	public function new() 
@@ -15,7 +15,7 @@ class ApplicationSettingsParser extends JsonResultParser<ApplicationSettingsVO>
 		super();
 	}
 	
-	override function _parseData(data:Dynamic):Dynamic 
+	override private function _parseData(data:Dynamic):ApplicationSettingsVO 
 	{
 		var result:ApplicationSettingsVO = new ApplicationSettingsVO();
 		

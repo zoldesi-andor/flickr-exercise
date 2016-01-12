@@ -1,12 +1,11 @@
 package awepopunder.adapter.bootstrap.macro;
 
 import awepopunder.vo.performer.PerformerDataVO;
-import awepopunder.vo.settings.application.ApplicationSettingsVO;
 import awepopunder.vo.settings.application.InitialApplicationSettingsVO;
-import com.service.net.chatwebsocket.event.SubscribeRoomResultEvent;
 import com.service.net.chatwebsocket.IChatWebSocketService;
+import com.service.net.chatwebsocket.message.ChatWebSocketServiceMessage;
 import hex.control.async.AsyncCommand;
-import hex.event.IEvent;
+import hex.control.Request;
 
 /**
  * ...
@@ -24,19 +23,19 @@ class SubscribeChatRoomCommand extends AsyncCommand
 	@inject
 	public var performerData:PerformerDataVO;
 
-	override public function execute(?e:IEvent):Void 
+	override public function execute( ?request : Request ):Void 
 	{
-		this.webSocketService.addSubscribeRoomResultHandler(this.onSubscribeRoomResult);
+		this.webSocketService.addHandler( ChatWebSocketServiceMessage.SUBSCRIBE_ROOM_RESULT, this, this.onSubscribeRoomResult);
 		
 		//TODO: get the properties from configuration
 		this.webSocketService.subscribeRoom( this.performerData.performerId, this.initialApplicationSettings.siteSettings.sessionId);
 	}
 	
-	private function onSubscribeRoomResult(e:SubscribeRoomResultEvent):Void 
+	private function onSubscribeRoomResult( nick:String, success:Bool, errorMsg:UInt ):Void 
 	{
-		this.webSocketService.removeSubscribeRoomResultHandler(this.onSubscribeRoomResult);
+		this.webSocketService.removeHandler( ChatWebSocketServiceMessage.SUBSCRIBE_ROOM_RESULT, this, this.onSubscribeRoomResult);
 		
-		if ( e.success )
+		if ( success )
 		{
 			this._handleComplete( );
 		}

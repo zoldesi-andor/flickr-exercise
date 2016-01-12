@@ -1,9 +1,9 @@
 package awepopunder.module.layout.controller;
 
-import awepopunder.module.layout.event.LayoutModeEvent;
 import awepopunder.module.layout.model.ILayoutModel;
+import awepopunder.module.layout.request.LayoutModeRequest;
 import hex.control.command.BasicCommand;
-import hex.event.IEvent;
+import hex.control.Request;
 
 /**
  * ...
@@ -15,10 +15,10 @@ class SetLayoutModeCommand extends BasicCommand
 	@inject
 	public var model:ILayoutModel;
 	
-	override public function execute(?e:IEvent):Void 
+	override public function execute(?request:Request):Void 
 	{
 		
-		this.model.setLayoutMode( cast(e, LayoutModeEvent).mode );
+		this.model.setLayoutMode( cast(request, LayoutModeRequest).mode );
 	}
 	
 }

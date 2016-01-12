@@ -2,7 +2,7 @@ package awepopunder.module.layout.controller;
 
 import awepopunder.module.layout.model.ILayoutModel;
 import hex.control.command.BasicCommand;
-import hex.event.IEvent;
+import hex.control.Request;
 
 /**
  * ...
@@ -14,7 +14,7 @@ class SetOfflineStateCommand extends BasicCommand
 	@inject
 	public var model:ILayoutModel;
 
-	override public function execute(?e:IEvent):Void 
+	override public function execute(?request:Request):Void 
 	{
 		this.model.setOffline();
 	}

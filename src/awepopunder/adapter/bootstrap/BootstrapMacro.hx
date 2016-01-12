@@ -7,7 +7,8 @@ import awepopunder.adapter.bootstrap.controller.SetOnlineCommand;
 import awepopunder.adapter.bootstrap.macro.InitChatWebSocketMacro;
 import awepopunder.vo.performer.PerformerDataVO;
 import awepopunder.vo.settings.application.ApplicationSettingsVO;
-import hex.control.async.AsyncCommandEvent;
+import hex.control.async.AsyncCommand;
+import hex.control.async.AsyncHandler;
 import hex.control.payload.ExecutionPayload;
 import hex.event.MacroAdapterStrategy;
 
@@ -29,18 +30,18 @@ class BootstrapMacro extends MacroAdapterStrategy
 	
 	override function _prepare():Void 
 	{
-		this.add(LoadApplicationSettingsCommand).withCompleteHandlers([this.onApplicationSettingsLoaded]);
+		this.add(LoadApplicationSettingsCommand).withCompleteHandlers( new AsyncHandler(this, this.onApplicationSettingsLoaded ) );
 	}
 	
-	function onApplicationSettingsLoaded(e:AsyncCommandEvent):Void
+	function onApplicationSettingsLoaded( command:AsyncCommand ):Void
 	{
-		this._settings = e.getAsyncCommand().getPayload()[0];
-		this.add(LoadPerformerDataCommand).withCompleteHandlers([this.onPerformerDataLoaded]);
+		this._settings = command.getPayload()[0];
+		this.add(LoadPerformerDataCommand).withCompleteHandlers( new AsyncHandler( this, this.onPerformerDataLoaded ) );
 	}
 	
-	function onPerformerDataLoaded(e:AsyncCommandEvent):Void
+	function onPerformerDataLoaded( command:AsyncCommand ):Void
 	{
-		var performerData:PerformerDataVO = e.getAsyncCommand().getPayload()[0];
+		var performerData:PerformerDataVO = command.getPayload()[0];
 		var settingsPayload:ExecutionPayload = new ExecutionPayload(this._settings, ApplicationSettingsVO);
 		var performerDataPayload:ExecutionPayload = new ExecutionPayload(performerData, PerformerDataVO);
 		

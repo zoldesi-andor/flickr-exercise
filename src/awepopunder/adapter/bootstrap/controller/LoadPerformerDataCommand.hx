@@ -2,16 +2,11 @@ package awepopunder.adapter.bootstrap.controller;
 
 import awepopunder.service.performer.IPerformerDataService;
 import awepopunder.service.performer.PerformerDataServiceParameters;
-import awepopunder.service.settings.application.ApplicationSettingsServiceParameters;
-import awepopunder.service.settings.application.IApplicationSettingsService;
-import awepopunder.vo.settings.application.ApplicationSettingsVO;
 import awepopunder.vo.settings.application.InitialApplicationSettingsVO;
-import com.service.net.chatwebsocket.ChatWebSocketServiceConfiguration;
-import com.service.net.chatwebsocket.IChatWebSocketService;
 import hex.control.async.AsyncCommand;
-import hex.event.IEvent;
+import hex.control.Request;
 import hex.service.stateless.http.HTTPServiceConfiguration;
-import hex.service.stateless.http.HTTPServiceEvent;
+import hex.service.stateless.http.IHTTPService;
 import hex.service.stateless.http.IHTTPServiceListener;
 
 /**
@@ -19,7 +14,7 @@ import hex.service.stateless.http.IHTTPServiceListener;
  * @author duke
  */
 @:rtti
-class LoadPerformerDataCommand extends AsyncCommand implements IHTTPServiceListener<HTTPServiceEvent>
+class LoadPerformerDataCommand extends AsyncCommand implements IHTTPServiceListener
 {
 	@inject("name=performerDataService")
 	public var performerDataService:IPerformerDataService;
@@ -28,7 +23,7 @@ class LoadPerformerDataCommand extends AsyncCommand implements IHTTPServiceListe
 	public var initialApplicationSettings:InitialApplicationSettingsVO;
 
 
-	override public function execute(?e:IEvent):Void 
+	override public function execute( ?request : Request ):Void 
 	{
 		//TODO: get connection params from config
 		var config:HTTPServiceConfiguration = new HTTPServiceConfiguration( "http://promo.awempire.com/live_feeds/get_performer_base.php" );
@@ -40,7 +35,7 @@ class LoadPerformerDataCommand extends AsyncCommand implements IHTTPServiceListe
 		this.performerDataService.call();
 	}
 	
-	public function onServiceComplete(e:HTTPServiceEvent):Void 
+	public function onServiceComplete(e:IHTTPService):Void 
 	{
 		if ( this.performerDataService.getPerformerData().success )
 		{
@@ -58,18 +53,18 @@ class LoadPerformerDataCommand extends AsyncCommand implements IHTTPServiceListe
 	}
 	
 	//TODO: manage fail
-	public function onServiceFail(e:HTTPServiceEvent):Void 
+	public function onServiceFail(e:IHTTPService):Void 
 	{
 		this._handleFail();
 	}
 	
-	public function onServiceCancel(e:HTTPServiceEvent):Void 
+	public function onServiceCancel(e:IHTTPService):Void 
 	{
 		this._handleCancel( );
 	}
 	
 	//TODO: manage timeout
-	public function onServiceTimeout(e:HTTPServiceEvent):Void 
+	public function onServiceTimeout(e:IHTTPService):Void 
 	{
 		this._handleFail( );
 	}

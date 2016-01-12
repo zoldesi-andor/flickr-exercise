@@ -7,7 +7,7 @@
 		<argument ref="chatBoxView" />
 		
 		<listen ref="chatWebSocketService">
-			<event static-ref="com.service.net.chatwebsocket.event.ReceivedRoomMessageEvent.RECEIVED_ROOM_MESSAGE" method="addNewLine" strategy="awepopunder.adapter.chat.ChatRoomMessageStrategy"/>
+			<event static-ref="com.service.net.chatwebsocket.message.ChatWebSocketServiceMessage.RECEIVED_ROOM_MESSAGE" method="addNewLine" strategy="awepopunder.adapter.chat.ChatRoomMessageStrategy"/>
 		</listen>
 	</module>
 	

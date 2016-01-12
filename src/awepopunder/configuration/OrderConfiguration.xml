@@ -6,7 +6,7 @@
 		<argument type="null"/>
 		<argument type="Bool" value = "false"/>
 		<listen ref="contextMockModule">
-			<event static-ref="awepopunder.module.contextmock.event.ContextReadyEvent.READY" strategy="awepopunder.adapter.bootstrap.BootstrapMacro"/>
+			<event static-ref="awepopunder.module.contextmock.message.ContextModuleExternalMessage.READY" strategy="awepopunder.adapter.bootstrap.BootstrapMacro"/>
 		</listen>
 	</order>
 </root>

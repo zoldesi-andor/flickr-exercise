@@ -2,7 +2,7 @@ package awepopunder.adapter.bootstrap.controller;
 
 import awepopunder.module.layout.ILayoutModule;
 import hex.control.command.BasicCommand;
-import hex.event.IEvent;
+import hex.control.Request;
 
 /**
  * ...
@@ -14,7 +14,7 @@ class SetOnlineCommand extends BasicCommand
 	@inject("name=layoutModule")
 	public var layoutModule:ILayoutModule;
 
-	override public function execute(?e:IEvent):Void 
+	override public function execute(?request:Request):Void 
 	{
 		this.layoutModule.setOnline();
 	}

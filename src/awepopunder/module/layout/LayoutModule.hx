@@ -4,15 +4,14 @@ import awepopunder.module.layout.constant.LayoutMode;
 import awepopunder.module.layout.controller.SetLayoutModeCommand;
 import awepopunder.module.layout.controller.SetOfflineStateCommand;
 import awepopunder.module.layout.controller.SetOnlineStateCommand;
-import awepopunder.module.layout.event.LayoutModeEvent;
-import awepopunder.module.layout.event.LayoutModuleEventType;
+import awepopunder.module.layout.message.LayoutModuleMessage;
 import awepopunder.module.layout.model.ILayoutModel;
 import awepopunder.module.layout.model.LayoutModel;
+import awepopunder.module.layout.request.LayoutModeRequest;
 import awepopunder.module.layout.view.ILayoutView;
 import awepopunder.module.layout.view.LayoutViewHelper;
 import hex.config.stateless.StatelessCommandConfig;
 import hex.config.stateless.StatelessModelConfig;
-import hex.event.BasicEvent;
 import hex.module.dependency.IRuntimeDependencies;
 import hex.module.dependency.RuntimeDependencies;
 import hex.module.Module;
@@ -41,17 +40,17 @@ class LayoutModule extends Module implements ILayoutModule
 	
 	public function setOnline( ):Void
 	{
-		this._dispatchInternalEvent( new BasicEvent(LayoutModuleEventType.ONLINE, this) );
+		this._dispatchToInternal( LayoutModuleMessage.ONLINE, [] );
 	}
 	
 	public function setOffline( ):Void
 	{
-		this._dispatchInternalEvent( new BasicEvent(LayoutModuleEventType.OFFLINE, this) );
+		this._dispatchToInternal( LayoutModuleMessage.OFFLINE, [] );
 	}
 	
 	public function setLayoutMode( mode:LayoutMode ):Void
 	{
-		this._dispatchInternalEvent( new LayoutModeEvent(LayoutModeEvent.LAYOUT_MODE_CHANGED, mode, this) );
+		this._dispatchToInternal( LayoutModuleMessage.LAYOUT_MODE_CHANGED, [new LayoutModeRequest(mode)] );
 	}
 	
 	private function setLayoutView( layoutView:ILayoutView ):Void
@@ -65,9 +64,9 @@ private class LayoutCommandConfig extends StatelessCommandConfig
 {
 	override public function configure():Void
 	{
-		this.map( LayoutModuleEventType.ONLINE, SetOnlineStateCommand );
-		this.map( LayoutModuleEventType.OFFLINE, SetOfflineStateCommand );
-		this.map( LayoutModeEvent.LAYOUT_MODE_CHANGED, SetLayoutModeCommand );
+		this.map( LayoutModuleMessage.ONLINE, SetOnlineStateCommand );
+		this.map( LayoutModuleMessage.OFFLINE, SetOfflineStateCommand );
+		this.map( LayoutModuleMessage.LAYOUT_MODE_CHANGED, SetLayoutModeCommand );
 	}
 }
 

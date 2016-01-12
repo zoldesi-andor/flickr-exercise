@@ -4,13 +4,12 @@ import awepopunder.vo.settings.application.ApplicationSettingsVO;
 import hex.service.ServiceResultVO;
 import hex.service.stateless.http.HTTPService;
 import hex.service.stateless.http.HTTPServiceConfiguration;
-import hex.service.stateless.http.HTTPServiceEvent;
 
 /**
  * ...
  * @author duke
  */
-class ApplicationSettingsService extends HTTPService<HTTPServiceEvent, HTTPServiceConfiguration> implements IApplicationSettingsService
+class ApplicationSettingsService extends HTTPService implements IApplicationSettingsService
 {
 
 	public function new() 
@@ -23,7 +22,6 @@ class ApplicationSettingsService extends HTTPService<HTTPServiceEvent, HTTPServi
 	override public function createConfiguration() : Void
 	{
 		this.setConfiguration( new HTTPServiceConfiguration() );
-		this._serviceEventClass = HTTPServiceEvent;
 		
 		this.setParser( new ApplicationSettingsParser() );
 	}

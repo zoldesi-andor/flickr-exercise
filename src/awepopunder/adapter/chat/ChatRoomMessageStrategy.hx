@@ -1,6 +1,5 @@
 package awepopunder.adapter.chat;
 
-import com.service.net.chatwebsocket.event.ReceivedRoomMessageEvent;
 import com.vo.chat.ChatMessageVO;
 import hex.event.AdapterStrategy;
 
@@ -18,13 +17,13 @@ class ChatRoomMessageStrategy extends AdapterStrategy
 		
 	}
 	
-	private function onAdapt( args:Array<Dynamic> ):ChatMessageVO
+	private function onAdapt( roomName:String, sender:String, message:String ):ChatMessageVO
 	{
 		//TODO: really do i have to accept an array instead of concrete params?k
-		var event:ReceivedRoomMessageEvent = args[0];
+		
 		var chatMessageVO:ChatMessageVO = new ChatMessageVO();
-		chatMessageVO.message = event.message;
-		chatMessageVO.userNick = event.sender;
+		chatMessageVO.message = message;
+		chatMessageVO.userNick = sender;
 		return chatMessageVO;
 	}
 	

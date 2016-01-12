@@ -30,13 +30,12 @@ class BootstrapMacro extends MacroAdapterStrategy
 	override function _prepare():Void 
 	{
 		this.add(LoadApplicationSettingsCommand).withCompleteHandlers([this.onApplicationSettingsLoaded]);
-		this.add(LoadPerformerDataCommand).withCompleteHandlers([this.onPerformerDataLoaded]);
 	}
 	
 	function onApplicationSettingsLoaded(e:AsyncCommandEvent):Void
 	{
 		this._settings = e.getAsyncCommand().getPayload()[0];
-		
+		this.add(LoadPerformerDataCommand).withCompleteHandlers([this.onPerformerDataLoaded]);
 	}
 	
 	function onPerformerDataLoaded(e:AsyncCommandEvent):Void

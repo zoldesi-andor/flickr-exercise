@@ -14,6 +14,14 @@ class PerformerDataServiceParameters extends HTTPServiceParameters
 	public var tid:String;
 	public var category:String;
 
+	/**
+	 * 
+	 * @param	category Category
+	 * @param	tid TemplateId
+	 * @param	banList Filter out these performers
+	 * @param	site Site
+	 * @param	streamData We need the streamRatio and other stream information
+	 */
 	public function new( category:String = null, tid:String = null, banList:String = null, site:String = null, streamData:UInt = 1) 
 	{
 		super();

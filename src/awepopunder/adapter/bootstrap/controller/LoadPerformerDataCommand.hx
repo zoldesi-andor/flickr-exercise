@@ -32,7 +32,7 @@ class LoadPerformerDataCommand extends AsyncCommand implements IHTTPServiceListe
 	{
 		//TODO: get connection params from config
 		var config:HTTPServiceConfiguration = new HTTPServiceConfiguration( "http://promo.awempire.com/live_feeds/get_performer_base.php" );
-		config.parameters = new PerformerDataServiceParameters( this.initialApplicationSettings.filterSettings.category, this.initialApplicationSettings.filterSettings.tId, "", this.initialApplicationSettings.siteSettings.site );
+		config.parameters = new PerformerDataServiceParameters( this.initialApplicationSettings.filterSettings.category, this.initialApplicationSettings.filterSettings.templateId, "", this.initialApplicationSettings.siteSettings.site );
 		
 		this.performerDataService.setConfiguration( config );
 		

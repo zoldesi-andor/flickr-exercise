@@ -20,6 +20,8 @@ interface ILayoutView extends IView
 
 	function setOutFrameLayoutMode( ):Void;
 	
+	function setScaleLayoutMode( ):Void;
+	
 	function showOffline():Void;
 	
 	function hideOffline():Void;

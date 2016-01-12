@@ -37,6 +37,7 @@ class LayoutViewHelper extends ViewHelper implements ILayoutModelListener
 		{
 			case InFrame: this._layoutView.setInFrameLayoutMode( );
 			case OutFrame: this._layoutView.setOutFrameLayoutMode( );
+			case Scale: this._layoutView.setScaleLayoutMode( );
 		}
 		
 	}

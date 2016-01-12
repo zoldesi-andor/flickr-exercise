@@ -44,8 +44,8 @@ class InitialApplicationSettingsParser implements IParser
 		var result:FilterSettingsVO = new FilterSettingsVO( );
 		
 		result.category = data.category;
-		result.performerId = data.performerid;
-		result.tId = data.tid;
+		result.performerId = data.performerId;
+		result.templateId = data.templateId;
 		
 		return result;
 	}
@@ -54,12 +54,12 @@ class InitialApplicationSettingsParser implements IParser
 	{
 		var result:SiteSettingsVO = new SiteSettingsVO( );
 		
-		result.brandId = data.brandid;
-		result.cobrandId = data.cobrandid;
+		result.brandId = data.brandId;
+		result.cobrandId = data.cobrandId;
 		result.language = data.language;
 		result.site = data.site;
 		result.subbrand = data.subbrand;
-		result.sessionId = data.sessionid;
+		result.sessionId = data.sessionId;
 		
 		return result;
 	}
@@ -84,6 +84,7 @@ class InitialApplicationSettingsParser implements IParser
 			{
 				case "inFrame": result.layoutMode = LayoutMode.InFrame;
 				case "outFrame": result.layoutMode = LayoutMode.OutFrame;
+				case "scale": result.layoutMode = LayoutMode.Scale;
 				default: result.layoutMode = LayoutMode.InFrame;
 			}
 			

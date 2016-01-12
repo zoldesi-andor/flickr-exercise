@@ -52,6 +52,7 @@ class LayoutViewJS implements ILayoutView
 		this._offlineLabel.classList.add("hidden");
 	}
 	
+	
 	public function setInFrameLayoutMode():Void 
 	{
 		this._layout.classList.remove('video-full-height');
@@ -60,6 +61,11 @@ class LayoutViewJS implements ILayoutView
 	public function setOutFrameLayoutMode():Void 
 	{
 		this._layout.classList.add('video-full-height');
+	}
+	
+	public function setScaleLayoutMode():Void 
+	{
+		//TODO: implement scale support
 	}
 	
 	@:isVar public var visible(get, set):Bool;

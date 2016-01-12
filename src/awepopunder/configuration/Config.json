@@ -14,17 +14,17 @@
 	
 	"filter": {
 		"category": "girl",
-		"tid": "kontx_w2_girl_teen",
+		"templateId": "kontx_w2_girl_teen",
 		"performerId": null
 	},
 	
 	"site": {
 		"site": "jasmin",
-		"cobrandid": "",
-		"brandid": "jasmin",
+		"cobrandId": "",
+		"brandId": "jasmin",
 		"subbrand": "livejasmin",
 		"language": "en",
-		"sessionid": "AWELiveFeedGuest"
+		"sessionId": "AWELiveFeedGuest"
 	},
 	
 	"promoInfo": {

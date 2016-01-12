@@ -14,6 +14,32 @@ import js.Browser;
 
 import Imports;
 
+/**
+ * TODO:
+ * kapcsolodasi url-ek servicetol
+
+http://promo.awempire.com/live_feeds/get_settings_base.php?rnd=0%2E9248302686028183&cobrandId=&language=en&site=jasmin&type=popunder
+max beagyazasi szam
+
+wowza elso kepkocka utana pending?
+
+maxJSReloadCount: hanyszor lehet next modelre nyomni manualisan mielott atiranyitana
+
+alkalmazas tudja ertesiteni bizonyos esemenyekrol a kornyezetet.
+
+http://promo.awempire.com/live_feeds/get_performer_base.php?rnd=0%2E15331116737797856&streamData=1&category=girl&tid=kontx_w2_girl_teen&banList=&proxy=1&site=jasmin
+
+nyelvesites
+
+ha stream nem megy (vagy leall) akkor next performer
+
+wait for focus egyelore nem kell
+
+
+random modellek next perffel, vagy egy fix modell es ha nincs online akkor offline status
+ * 
+ */
+
 
 /**
  * ...

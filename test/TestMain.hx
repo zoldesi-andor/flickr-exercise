@@ -1,7 +1,6 @@
 package;
 
 //import hex.config.stateful.ServiceLocator;
-import com.service.ServiceTestSuite;
 import hex.unittest.event.ITestRunnerListener;
 import hex.unittest.notifier.WebSocketNotifier;
 import hex.unittest.notifier.WebSocketNotifierEvent;
@@ -18,7 +17,7 @@ class TestMain
     {
 		emu = new ExMachinaUnitCore();
 		//emu.addTest( HexFullSuite );
-		emu.addTest( ServiceTestSuite );
+		emu.addTest( HexFullSuite );
 		
 		#if js
 			js.Browser.document.getElementById("console").style.display = "block";

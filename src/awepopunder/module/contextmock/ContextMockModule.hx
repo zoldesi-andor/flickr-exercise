@@ -1,6 +1,6 @@
 package awepopunder.module.contextmock;
 
-import awepopunder.module.contextmock.message.ContextModuleExternalMessage;
+import awepopunder.module.contextmock.message.ContextModulePublicMessage;
 import haxe.Timer;
 import hex.module.dependency.IRuntimeDependencies;
 import hex.module.dependency.RuntimeDependencies;
@@ -34,7 +34,7 @@ class ContextMockModule extends Module
 	
 	private function dispatchReady():Void
 	{
-		this._domainDispatcher.dispatch( ContextModuleExternalMessage.READY, [] );
+		this._domainDispatcher.dispatch( ContextModulePublicMessage.READY, [] );
 	}
 	
 }

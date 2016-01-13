@@ -10,8 +10,6 @@
 	
 	<service id="applicationSettingsService" type="awepopunder.service.settings.application.ApplicationSettingsService" map-type="awepopunder.service.settings.application.IApplicationSettingsService"/>
 	
-	<service id="performerDataService" type="awepopunder.service.performer.PerformerDataService" map-type="awepopunder.service.performer.IPerformerDataService"/>
-	
 	
 	<!-- SERVICE CONFIGURATIONS -->
 	
@@ -19,6 +17,13 @@
 		<item> 
 			<key type="Class" value="com.service.stream.hls.IHlsService"/>
 			<value ref="hlsService"/>
+		</item>
+	</servicelocator>
+	
+	<servicelocator id="performerProviderServiceLocator" type="hex.config.stateful.ServiceLocator" >
+		<item> 
+			<key type="Class" value="awepopunder.service.performer.IPerformerDataService"/>
+			<value type="Class" value="awepopunder.service.performer.PerformerDataService"/>
 		</item>
 	</servicelocator>
 </root>

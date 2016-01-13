@@ -1,4 +1,4 @@
-package awepopunder.adapter.bootstrap.macro;
+package awepopunder.adapter.switchperformer.controller;
 
 import awepopunder.vo.performer.PerformerDataVO;
 import awepopunder.vo.settings.application.InitialApplicationSettingsVO;

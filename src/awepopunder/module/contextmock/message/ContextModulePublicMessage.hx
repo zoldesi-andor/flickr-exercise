@@ -6,7 +6,7 @@ import hex.event.MessageType;
  * ...
  * @author 
  */
-class ContextModuleExternalMessage
+class ContextModulePublicMessage
 {
 	static public var READY:MessageType = new MessageType("ready");
 	

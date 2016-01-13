@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <root>
 	<!-- MODULES -->
-			
+	
+	<module id="performerProviderModule" type="awepopunder.module.performerprovider.PerformerProviderModule" map-type="awepopunder.module.performerprovider.IPerformerProviderModule">
+		<argument ref="performerProviderServiceLocator" />
+	</module>
+	
 	<module id="chatBoxModule" type="com.module.chat.chatbox.ChatBoxModule">
 		<argument ref="chatArtifactList" />
 		<argument ref="chatBoxView" />

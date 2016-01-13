@@ -40,17 +40,17 @@ class LayoutModule extends Module implements ILayoutModule
 	
 	public function setOnline( ):Void
 	{
-		this._dispatchToInternal( LayoutModuleMessage.ONLINE, [] );
+		this._dispatchPrivateMessage( LayoutModuleMessage.ONLINE, [] );
 	}
 	
 	public function setOffline( ):Void
 	{
-		this._dispatchToInternal( LayoutModuleMessage.OFFLINE, [] );
+		this._dispatchPrivateMessage( LayoutModuleMessage.OFFLINE, [] );
 	}
 	
 	public function setLayoutMode( mode:LayoutMode ):Void
 	{
-		this._dispatchToInternal( LayoutModuleMessage.LAYOUT_MODE_CHANGED, [new LayoutModeRequest(mode)] );
+		this._dispatchPrivateMessage( LayoutModuleMessage.LAYOUT_MODE_CHANGED, [new LayoutModeRequest(mode)] );
 	}
 	
 	private function setLayoutView( layoutView:ILayoutView ):Void

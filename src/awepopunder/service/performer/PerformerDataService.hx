@@ -10,6 +10,7 @@ import hex.service.stateless.http.HTTPServiceConfiguration;
  * ...
  * @author duke
  */
+@:rtti
 class PerformerDataService extends HTTPService implements IPerformerDataService
 {
 

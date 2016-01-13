@@ -6,7 +6,16 @@
 		<argument type="null"/>
 		<argument type="Bool" value = "false"/>
 		<listen ref="contextMockModule">
-			<event static-ref="awepopunder.module.contextmock.message.ContextModuleExternalMessage.READY" strategy="awepopunder.adapter.bootstrap.BootstrapMacro"/>
+			<event static-ref="awepopunder.module.contextmock.message.ContextModulePublicMessage.READY" strategy="awepopunder.adapter.bootstrap.BootstrapMacro"/>
+		</listen>
+	</order>
+	
+	<order id="switchPerformerOrder" type="hex.event.EventProxy">
+		<argument type="null"/>
+		<argument type="null"/>
+		<argument type="Bool" value = "false"/>
+		<listen ref="performerProviderModule">
+			<event static-ref="awepopunder.module.performerprovider.message.PerformerProviderModulePublicMessage.PERFORMER_DATA_UPDATED" strategy="awepopunder.adapter.switchperformer.SwitchPerformerMacro"/>
 		</listen>
 	</order>
 </root>

@@ -32,6 +32,7 @@
     <class path="doclerServices\test" />
     <class path="hexMachina\src" />
     <class path="hexMachina\test" />
+    <class path="test" />
   </classpaths>
   <!-- Build options -->
   <build>
@@ -52,7 +53,6 @@
     <compile path="..\..\..\\TestMainTmp.hx" />
     <compile path="AwePopunder.hxproj\TestMainTmp.hx" />
     <compile path="src\Main.hx" />
-    <compile path="src\TestMainTmp.hx" />
     <compile path="src\TestMainTmp.hx" />
     <compile path="src\awepopunder\AwePopunder.hx" />
   </compileTargets>

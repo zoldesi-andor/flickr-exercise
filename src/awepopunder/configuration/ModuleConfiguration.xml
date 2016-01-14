@@ -31,4 +31,6 @@
 	
 	<!-- OTHER -->
 	<bean id="chatArtifactList" type="com.vo.chat.artifact.ChatArtifactVO" />
+	
+	<bean id="internalApplicationSettings" type="awepopunder.vo.settings.application.InternalApplicationSettingsVO" map-type="awepopunder.vo.settings.application.InternalApplicationSettingsVO" />
 </root>

@@ -21,7 +21,6 @@ class InitPerformerProviderSettingsCommand extends BasicCommand
 	override public function execute(?request:Request):Void 
 	{
 		this.performerProviderModule.setFilterSettings(this.initialApplicationSettings.filterSettings, this.initialApplicationSettings.siteSettings.site);
-		this.performerProviderModule.loadNextPerformer();
 	}
 	
 }

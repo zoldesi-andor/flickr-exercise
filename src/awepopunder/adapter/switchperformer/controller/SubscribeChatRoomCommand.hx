@@ -27,7 +27,6 @@ class SubscribeChatRoomCommand extends AsyncCommand
 	{
 		this.webSocketService.addHandler( ChatWebSocketServiceMessage.SUBSCRIBE_ROOM_RESULT, this, this.onSubscribeRoomResult);
 		
-		//TODO: get the properties from configuration
 		this.webSocketService.subscribeRoom( this.performerData.performerId, this.initialApplicationSettings.siteSettings.sessionId);
 	}
 	

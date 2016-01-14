@@ -15,4 +15,6 @@ interface ILayoutModel extends ILayoutModelRO
 	function setOffline( ):Void;
 	
 	function setLayoutMode( state:LayoutMode ):Void;
+	
+	function setStreamRatio(ratio:Float):Void;
 }

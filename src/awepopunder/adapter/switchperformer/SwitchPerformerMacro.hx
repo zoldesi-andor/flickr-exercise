@@ -2,6 +2,7 @@ package awepopunder.adapter.switchperformer;
 
 import awepopunder.adapter.bootstrap.controller.InitHlsStreamCommand;
 import awepopunder.adapter.bootstrap.controller.SetOnlineCommand;
+import awepopunder.adapter.switchperformer.controller.SetStreamRatioCommand;
 import awepopunder.adapter.switchperformer.controller.SubscribeChatRoomCommand;
 import awepopunder.vo.performer.PerformerDataVO;
 import hex.control.payload.ExecutionPayload;
@@ -26,6 +27,7 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 	{
 		var performerDataPayload:ExecutionPayload = new ExecutionPayload(this._performerData, PerformerDataVO);
 		this.add(InitHlsStreamCommand).withPayloads([performerDataPayload]);
+		this.add(SetStreamRatioCommand).withPayloads([performerDataPayload]);
 		this.add(SubscribeChatRoomCommand).withPayloads([performerDataPayload]);
 		this.add(SetOnlineCommand);
 	}

@@ -1,4 +1,5 @@
 package awepopunder.module.layout.view;
+import awepopunder.module.layout.constant.LayoutMode;
 import hex.view.IView;
 
 /**
@@ -16,13 +17,11 @@ interface ILayoutView extends IView
 	
 	function hideLive():Void;
 	
-	function setInFrameLayoutMode( ):Void;
-
-	function setOutFrameLayoutMode( ):Void;
-	
-	function setScaleLayoutMode( ):Void;
+	function setLayoutMode( layoutMode:LayoutMode ):Void;
 	
 	function showOffline():Void;
 	
 	function hideOffline():Void;
+	
+	function setStreamRatio(ratio:Float):Void;
 }

@@ -84,7 +84,6 @@ class InitialApplicationSettingsParser implements IParser
 			{
 				case "inFrame": result.layoutMode = LayoutMode.InFrame;
 				case "outFrame": result.layoutMode = LayoutMode.OutFrame;
-				case "scale": result.layoutMode = LayoutMode.Scale;
 				default: result.layoutMode = LayoutMode.InFrame;
 			}
 			

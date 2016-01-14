@@ -15,4 +15,6 @@ interface ILayoutModule extends IModule
 	
 	function setLayoutMode(mode:LayoutMode):Void;
 	
+	function setStreamRatio(ratio:Float):Void;
+	
 }

@@ -23,6 +23,8 @@
     <class path="hexinject\test" />
     <class path="hexmvc\src" />
     <class path="hexmvc\test" />
+    <class path="hexState\src" />
+    <class path="hexState\test" />
     <class path="hexmachina\src" />
     <class path="hexmachina\test" />
     <class path="libs" />

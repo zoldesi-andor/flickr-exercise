@@ -3,7 +3,6 @@ package awepopunder.module.layout.view;
 import awepopunder.module.layout.constant.LayoutMode;
 import awepopunder.module.layout.model.ILayoutModelListener;
 import awepopunder.module.layout.model.ILayoutModelRO;
-import hex.view.IView;
 import hex.view.viewhelper.ViewHelper;
 
 /**
@@ -33,12 +32,7 @@ class LayoutViewHelper extends ViewHelper implements ILayoutModelListener
 	
 	public function onLayoutModeChange( layoutMode:LayoutMode ):Void
 	{
-		switch( layoutMode )
-		{
-			case InFrame: this._layoutView.setInFrameLayoutMode( );
-			case OutFrame: this._layoutView.setOutFrameLayoutMode( );
-			case Scale: this._layoutView.setScaleLayoutMode( );
-		}
+		this._layoutView.setLayoutMode( layoutMode );
 		
 	}
 	
@@ -60,6 +54,11 @@ class LayoutViewHelper extends ViewHelper implements ILayoutModelListener
 	{
 		this.layoutModel.removeListener( this );
 		super.release();
+	}
+	
+	public function onStreamRatioChange(ratio:Float):Void 
+	{
+		this._layoutView.setStreamRatio( ratio );
 	}
 	
 }

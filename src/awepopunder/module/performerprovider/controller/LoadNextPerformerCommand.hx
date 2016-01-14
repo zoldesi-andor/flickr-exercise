@@ -24,6 +24,7 @@ class LoadNextPerformerCommand extends AsyncCommand implements IHTTPServiceListe
 	
 	@inject
 	public var performerProviderModel:IPerformerProviderModel;
+	
 
 	override public function execute(?request:Request):Void 
 	{

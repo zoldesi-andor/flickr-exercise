@@ -2,6 +2,7 @@ package;
 
 //import hex.config.stateful.ServiceLocator;
 import hex.unittest.event.ITestRunnerListener;
+import hex.unittest.notifier.BrowserUnitTestNotifier;
 import hex.unittest.notifier.WebSocketNotifier;
 import hex.unittest.notifier.WebSocketNotifierEvent;
 import hex.unittest.runner.ExMachinaUnitCore;
@@ -25,7 +26,8 @@ class TestMain
 			//notifier.addEventListener( WebSocketNotifierEvent.CONNECTED, _onConnected);
 			//emu.addListener( new hex.unittest.notifier.BrowserUnitTestNotifier("console") );
 			
-			//notifier = new BrowserUnitTestNotifier("console");
+			emu.addListener( notifier );
+			notifier = new BrowserUnitTestNotifier("console");
 			
 			emu.addListener( notifier );
 			emu.run();

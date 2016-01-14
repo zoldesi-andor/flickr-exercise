@@ -1,5 +1,10 @@
 package awepopunder.module.layout.view;
+import awepopunder.module.layout.constant.LayoutMode;
+import js.Browser;
+import js.html.DivElement;
+import js.html.DOMRect;
 import js.html.Element;
+import js.html.Event;
 
 /**
  * ...
@@ -7,19 +12,79 @@ import js.html.Element;
  */
 class LayoutViewJS implements ILayoutView
 {
-	private var _layout:Element;
+	private var _layout:DivElement;
 	
 	private var _chatContainer:Element;
 	private var _liveLogo:Element;
 	private var _offlineLabel:Element;
+	private var _video:Element;
+	
+	private var _inverseFrameHandling:Bool = false;
+	private var _layoutMode:LayoutMode;
+	private var _ratio:Float;
 
-	public function new( layout:Element ) 
+	public function new( layout:DivElement ) 
 	{
 		this._layout = layout;
 		
 		this._chatContainer = this._layout.getElementsByClassName("embed-chat")[0];
 		this._liveLogo = this._layout.getElementsByClassName("embed-live-logo")[0];
 		this._offlineLabel = this._layout.getElementsByClassName("embed-status")[0];
+		this._video = this._layout.getElementsByClassName("embed-video")[0];
+		
+		Browser.window.addEventListener( "resize", this._onWindowResize );
+		
+		this._onWindowResize(null);
+	}
+	
+	private function _onWindowResize(e:Event):Void 
+	{
+		var rect:DOMRect = this._layout.getBoundingClientRect();
+		
+		var inverseFrameHandling:Bool;
+		
+		if ( rect.width / rect.height > this._ratio  )
+		{
+			inverseFrameHandling = true;
+		}
+		else
+		{
+			inverseFrameHandling = false;
+		}
+		
+		if ( this._inverseFrameHandling != inverseFrameHandling )
+		{
+			this._inverseFrameHandling = inverseFrameHandling;
+			this.setLayoutMode( this._layoutMode );
+		}
+	}
+	
+	public function setLayoutMode( layoutMode:LayoutMode ):Void 
+	{
+		this._layoutMode = InFrame;
+		
+		if ( layoutMode == InFrame )
+		{
+			if ( this._inverseFrameHandling )
+			{
+				this._layout.classList.add('video-full-height');
+			}
+			else
+			{
+				this._layout.classList.remove('video-full-height');
+			}
+		}
+		else
+		{
+			if ( this._inverseFrameHandling )
+			{
+				this._layout.classList.remove('video-full-height');
+			}
+			else
+			{
+				this._layout.classList.add('video-full-height');
+			}
+		}
 	}
 	
 	public function showChat( ):Void
@@ -53,19 +118,10 @@ class LayoutViewJS implements ILayoutView
 	}
 	
 	
-	public function setInFrameLayoutMode():Void 
+	public function setStreamRatio(ratio:Float):Void 
 	{
-		this._layout.classList.remove('video-full-height');
-	}
-	
-	public function setOutFrameLayoutMode():Void 
-	{
-		this._layout.classList.add('video-full-height');
-	}
-	
-	public function setScaleLayoutMode():Void 
-	{
-		//TODO: implement scale support
+		this._ratio = ratio;
+		this._onWindowResize(null);
 	}
 	
 	@:isVar public var visible(get, set):Bool;

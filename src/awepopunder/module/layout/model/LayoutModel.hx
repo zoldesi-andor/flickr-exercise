@@ -11,6 +11,7 @@ class LayoutModel implements ILayoutModel
 {
 	private var _onlineState:OnlineState = OnlineState.Loading;
 	private var _layoutMode:LayoutMode = LayoutMode.InFrame;
+	private var _streamRatio:Float;
 	
 	public var dispatcher:LayoutModelDispatcher;
 
@@ -53,6 +54,12 @@ class LayoutModel implements ILayoutModel
 	{
 		this._layoutMode = state;
 		this.dispatcher.onLayoutModeChange( state );
+	}
+	
+	public function setStreamRatio( ratio:Float ):Void
+	{
+		this._streamRatio = ratio;
+		this.dispatcher.onStreamRatioChange( ratio );
 	}
 	
 	public function addListener( listener : ILayoutModelListener ):Void

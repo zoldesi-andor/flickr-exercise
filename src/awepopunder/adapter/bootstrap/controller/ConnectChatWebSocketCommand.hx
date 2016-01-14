@@ -1,6 +1,7 @@
 package awepopunder.adapter.bootstrap.controller;
 
 import awepopunder.vo.settings.application.ApplicationSettingsVO;
+import awepopunder.vo.settings.application.InternalApplicationSettingsVO;
 import com.service.net.chatwebsocket.ChatWebSocketServiceConfiguration;
 import com.service.net.chatwebsocket.IChatWebSocketService;
 import com.service.net.websocket.message.WebSocketServiceMessage;
@@ -18,6 +19,9 @@ class ConnectChatWebSocketCommand extends AsyncCommand
 	@inject("name=chatWebSocketService")
 	public var chatWebSocketService:IChatWebSocketService;
 	
+	@inject("name=internalApplicationSettings")
+	public var internalApplicationSettings:InternalApplicationSettingsVO;
+	
 	@inject
 	public var settings:ApplicationSettingsVO;
 
@@ -28,11 +32,11 @@ class ConnectChatWebSocketCommand extends AsyncCommand
 		this.chatWebSocketService.addHandler( WebSocketServiceMessage.CLOSED, this, this._onWebSocketServiceFailed );
 		
 		var config:ChatWebSocketServiceConfiguration = cast this.chatWebSocketService.getConfiguration();
-		config.host = settings.chatHost;
-		config.port = settings.chatPort;
-		config.path = settings.chatPath;
-		config.resource = settings.chatResource;
-		config.roomHost = settings.chatRoomHost;
+		config.host = this.settings.chatHost;
+		config.port = this.settings.chatPort;
+		config.path = this.internalApplicationSettings.chatPath;
+		config.resource = this.internalApplicationSettings.chatResource;
+		config.roomHost = this.internalApplicationSettings.chatRoomHost;
 		
 		this.chatWebSocketService.connect();
 	}

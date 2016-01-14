@@ -4,10 +4,12 @@ import awepopunder.module.layout.constant.LayoutMode;
 import awepopunder.module.layout.controller.SetLayoutModeCommand;
 import awepopunder.module.layout.controller.SetOfflineStateCommand;
 import awepopunder.module.layout.controller.SetOnlineStateCommand;
+import awepopunder.module.layout.controller.SetStreamRatioCommand;
 import awepopunder.module.layout.message.LayoutModuleMessage;
 import awepopunder.module.layout.model.ILayoutModel;
 import awepopunder.module.layout.model.LayoutModel;
 import awepopunder.module.layout.request.LayoutModeRequest;
+import awepopunder.module.layout.request.SetStreamRatioRequest;
 import awepopunder.module.layout.view.ILayoutView;
 import awepopunder.module.layout.view.LayoutViewHelper;
 import hex.config.stateless.StatelessCommandConfig;
@@ -38,14 +40,19 @@ class LayoutModule extends Module implements ILayoutModule
 		return rd;
 	}
 	
+	public function setStreamRatio( ratio:Float ):Void
+	{
+		this._dispatchPrivateMessage( LayoutModuleMessage.STREAM_RATIO_CHANGED, [new SetStreamRatioRequest(ratio)] );
+	}
+	
 	public function setOnline( ):Void
 	{
-		this._dispatchPrivateMessage( LayoutModuleMessage.ONLINE, [] );
+		this._dispatchPrivateMessage( LayoutModuleMessage.ONLINE );
 	}
 	
 	public function setOffline( ):Void
 	{
-		this._dispatchPrivateMessage( LayoutModuleMessage.OFFLINE, [] );
+		this._dispatchPrivateMessage( LayoutModuleMessage.OFFLINE );
 	}
 	
 	public function setLayoutMode( mode:LayoutMode ):Void
@@ -67,6 +74,7 @@ private class LayoutCommandConfig extends StatelessCommandConfig
 		this.map( LayoutModuleMessage.ONLINE, SetOnlineStateCommand );
 		this.map( LayoutModuleMessage.OFFLINE, SetOfflineStateCommand );
 		this.map( LayoutModuleMessage.LAYOUT_MODE_CHANGED, SetLayoutModeCommand );
+		this.map( LayoutModuleMessage.STREAM_RATIO_CHANGED, SetStreamRatioCommand );
 	}
 }
 

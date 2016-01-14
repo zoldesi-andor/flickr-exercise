@@ -11,4 +11,5 @@ interface ILayoutModelListener extends IModelListener
 	function onOnline():Void;
 	function onOffline():Void;
 	function onLayoutModeChange( state:LayoutMode ):Void;
+	function onStreamRatioChange( ratio:Float ):Void;
 }

@@ -9,6 +9,7 @@ class LayoutModuleMessage
 {
 	static public var ONLINE:MessageType = new MessageType("online");
 	static public var OFFLINE:MessageType = new MessageType("offline");
-	public static var LAYOUT_MODE_CHANGED:MessageType = new MessageType("layoutModeChanged");
+	static public var LAYOUT_MODE_CHANGED:MessageType = new MessageType("layoutModeChanged");
+	static public var STREAM_RATIO_CHANGED:MessageType = new MessageType("streamRatioChanged");
 	
 }

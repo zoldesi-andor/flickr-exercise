@@ -8,5 +8,4 @@ enum LayoutMode
 {
 	InFrame;
 	OutFrame;
-	Scale;
 }

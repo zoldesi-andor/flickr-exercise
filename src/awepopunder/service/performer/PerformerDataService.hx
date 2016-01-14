@@ -17,7 +17,6 @@ class PerformerDataService extends HTTPService implements IPerformerDataService
 	public function new() 
 	{
 		super();
-		
 	}
 	
 	@postConstruct

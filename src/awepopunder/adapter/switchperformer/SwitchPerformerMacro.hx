@@ -31,8 +31,13 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 	}
 	
 	
-	public function onAdapt( performerData:PerformerDataVO ) : Void
+	/*public function onAdapt( performerData:PerformerDataVO ) : Void
 	{
 		this._performerData = performerData;
+	}*/
+	
+	public function onAdapt( rest:Array<Dynamic> ) : Void
+	{
+		this._performerData = rest[0];
 	}
 }

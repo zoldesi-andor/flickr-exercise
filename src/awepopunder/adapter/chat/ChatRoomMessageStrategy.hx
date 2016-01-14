@@ -17,13 +17,23 @@ class ChatRoomMessageStrategy extends AdapterStrategy
 		
 	}
 	
-	private function onAdapt( roomName:String, sender:String, message:String ):ChatMessageVO
+	/*private function onAdapt( roomName:String, sender:String, message:String ):ChatMessageVO
 	{
 		//TODO: really do i have to accept an array instead of concrete params?k
 		
 		var chatMessageVO:ChatMessageVO = new ChatMessageVO();
 		chatMessageVO.message = message;
 		chatMessageVO.userNick = sender;
+		return chatMessageVO;
+	}*/
+	
+	private function onAdapt( rest:Array<Dynamic> ):ChatMessageVO
+	{
+		//TODO: really do i have to accept an array instead of concrete params?k
+		
+		var chatMessageVO:ChatMessageVO = new ChatMessageVO();
+		chatMessageVO.message = rest[2];
+		chatMessageVO.userNick = rest[1];
 		return chatMessageVO;
 	}
 	

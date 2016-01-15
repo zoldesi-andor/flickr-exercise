@@ -18,7 +18,16 @@ class AweServiceParser<DataType> implements IParser
 	
 	public function parse(serializedContent:Dynamic, target:Dynamic = null):Dynamic 
 	{
-		var jsonResult:Dynamic = Json.parse(serializedContent);
+		var jsonResult : Dynamic;
+		
+		try
+		{
+			jsonResult = Json.parse(serializedContent);
+		}
+		catch (error:Dynamic)
+		{
+			jsonResult = { data: {} };
+		}
 		
 		var serviceResultVO:ServiceResultVO<DataType> = new ServiceResultVO<DataType>();
 		

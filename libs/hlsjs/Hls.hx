@@ -9,6 +9,10 @@ import js.html.VideoElement;
 extern class Hls
 {
 	static var Events:HlsEvents;
+	
+	static var ErrorTypes:HlsErrorTypes;
+	
+	static var ErrorDetails:HlsErrorDetails;
 
 	static function isSupported():Bool;
 	

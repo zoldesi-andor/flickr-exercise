@@ -1,7 +1,7 @@
 package awepopunder.adapter.bootstrap.controller;
 
-import awepopunder.service.performer.IPerformerDataService;
-import awepopunder.service.performer.PerformerDataServiceParameters;
+import awepopunder.service.performer.performerdata.IPerformerDataService;
+import awepopunder.service.performer.performerdata.PerformerDataServiceParameters;
 import awepopunder.vo.settings.application.InitialApplicationSettingsVO;
 import hex.control.async.AsyncCommand;
 import hex.control.Request;

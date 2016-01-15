@@ -1,4 +1,4 @@
-package awepopunder.service.performer;
+package awepopunder.service.performer.performerdata;
 
 import awepopunder.parser.base.AweServiceParser;
 import awepopunder.vo.performer.PerformerDataVO;

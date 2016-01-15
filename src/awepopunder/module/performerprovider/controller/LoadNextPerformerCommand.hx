@@ -2,8 +2,8 @@ package awepopunder.module.performerprovider.controller;
 
 import awepopunder.module.performerprovider.message.PerformerProviderModulePublicMessage;
 import awepopunder.module.performerprovider.model.IPerformerProviderModel;
-import awepopunder.service.performer.IPerformerDataService;
-import awepopunder.service.performer.PerformerDataServiceParameters;
+import awepopunder.service.performer.performerdata.IPerformerDataService;
+import awepopunder.service.performer.performerdata.PerformerDataServiceParameters;
 import awepopunder.vo.performer.PerformerDataVO;
 import hex.control.async.AsyncCommand;
 import hex.control.Request;

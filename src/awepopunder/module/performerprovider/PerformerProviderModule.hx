@@ -7,7 +7,8 @@ import awepopunder.module.performerprovider.message.PerformerProviderModuleMessa
 import awepopunder.module.performerprovider.model.IPerformerProviderModel;
 import awepopunder.module.performerprovider.model.PerformerProviderModel;
 import awepopunder.module.performerprovider.request.SetFilterSettingsRequest;
-import awepopunder.service.performer.IPerformerDataService;
+import awepopunder.service.performer.performerdata.IPerformerDataService;
+import awepopunder.vo.performer.PerformerDataVO;
 import awepopunder.vo.settings.application.FilterSettingsVO;
 import hex.config.stateful.IStatefulConfig;
 import hex.config.stateless.StatelessCommandConfig;
@@ -22,6 +23,7 @@ import hex.module.Module;
  */
 class PerformerProviderModule extends Module implements IPerformerProviderModule
 {
+	private var _performerProviderModel:IPerformerProviderModel;
 
 	public function new(serviceConfig:IStatefulConfig) 
 	{
@@ -29,6 +31,8 @@ class PerformerProviderModule extends Module implements IPerformerProviderModule
 		
 		this._addStatelessConfigClasses([PerformerProviderCommandConfig, PerformerProviderModelConfig]);
 		this._addStatefulConfigs([serviceConfig]);
+		
+		this._performerProviderModel = this._getDependencyInjector().getInstance(IPerformerProviderModel);
 	}
 	
 	public function setFilterSettings( filterSettings:FilterSettingsVO, site:String ):Void
@@ -39,6 +43,11 @@ class PerformerProviderModule extends Module implements IPerformerProviderModule
 	public function loadNextPerformer( ):Void
 	{
 		this._dispatchPrivateMessage( PerformerProviderModuleMessage.LOAD_NEXT_PERFORMER );
+	}
+	
+	public function getActivePerformer():PerformerDataVO 
+	{
+		return this._performerProviderModel.getPerformerData();
 	}
 	
 	override private function _getRuntimeDependencies() : IRuntimeDependencies

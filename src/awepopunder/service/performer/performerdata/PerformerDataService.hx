@@ -1,6 +1,7 @@
-package awepopunder.service.performer;
+package awepopunder.service.performer.performerdata;
 
-import awepopunder.service.performer.PerformerDataParser;
+import awepopunder.service.performer.performerdata.IPerformerDataService;
+import awepopunder.service.performer.performerdata.PerformerDataParser;
 import awepopunder.vo.performer.PerformerDataVO;
 import hex.service.ServiceResultVO;
 import hex.service.stateless.http.HTTPService;

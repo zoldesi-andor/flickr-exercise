@@ -1,10 +1,13 @@
 package awepopunder.adapter.switchperformer;
 
 import awepopunder.adapter.bootstrap.controller.InitHlsStreamCommand;
+import awepopunder.adapter.switchperformer.controller.LoadNextPerformerCommand;
 import awepopunder.adapter.bootstrap.controller.SetOnlineCommand;
 import awepopunder.adapter.switchperformer.controller.SetStreamRatioCommand;
 import awepopunder.adapter.switchperformer.controller.SubscribeChatRoomCommand;
 import awepopunder.vo.performer.PerformerDataVO;
+import hex.control.async.AsyncCommand;
+import hex.control.async.AsyncHandler;
 import hex.control.payload.ExecutionPayload;
 import hex.event.MacroAdapterStrategy;
 
@@ -15,7 +18,7 @@ import hex.event.MacroAdapterStrategy;
 @:rtti
 class SwitchPerformerMacro extends MacroAdapterStrategy
 {
-	private var _performerData:PerformerDataVO;
+	//private var _performerData:PerformerDataVO;
 
 	public function new(target:Dynamic, method:Dynamic) 
 	{
@@ -25,7 +28,12 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 	
 	override function _prepare():Void 
 	{
-		var performerDataPayload:ExecutionPayload = new ExecutionPayload(this._performerData, PerformerDataVO);
+		this.add(LoadNextPerformerCommand).withCompleteHandlers(new AsyncHandler(this, this._onPerformerDataLoaded));
+	}
+	
+	private function _onPerformerDataLoaded( command:AsyncCommand ):Void
+	{
+		var performerDataPayload:ExecutionPayload = new ExecutionPayload(command.getPayload()[0], PerformerDataVO);
 		this.add(InitHlsStreamCommand).withPayloads([performerDataPayload]);
 		this.add(SetStreamRatioCommand).withPayloads([performerDataPayload]);
 		this.add(SubscribeChatRoomCommand).withPayloads([performerDataPayload]);
@@ -33,8 +41,8 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 	}
 	
 	
-	public function onAdapt( performerData:PerformerDataVO ) : Void
+	public function onAdapt( /*performerData:PerformerDataVO*/ ) : Void
 	{
-		this._performerData = performerData;
+		//this._performerData = performerData;
 	}
 }

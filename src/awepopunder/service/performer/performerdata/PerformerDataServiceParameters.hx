@@ -22,7 +22,7 @@ class PerformerDataServiceParameters extends HTTPServiceParameters
 	 * @param	site Site
 	 * @param	streamData We need the streamRatio and other stream information
 	 */
-	public function new( category:String = null, tid:String = null, banList:String = null, site:String = null, streamData:UInt = 1) 
+	public function new( category:String = "", tid:String = "", banList:String = "", site:String = "", streamData:UInt = 1) 
 	{
 		super();
 		

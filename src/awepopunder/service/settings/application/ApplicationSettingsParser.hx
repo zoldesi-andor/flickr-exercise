@@ -25,8 +25,8 @@ class ApplicationSettingsParser extends AweServiceParser<ApplicationSettingsVO>
 		result.chatPort = Std.parseInt(chatServiceAddressArr[1]);
 		
 		result.maxAppletCount = data.maxAppletCount;
-		result.reloadCount = data.reloadCount;
-		result.maxNextPerformerCount = data.maxJSReloadCount;
+		result.autoPerformerSwitchLimit = data.reloadCount;
+		result.manualPerformerSwitchLimit = data.maxJSReloadCount;
 		
 		return result;
 	}

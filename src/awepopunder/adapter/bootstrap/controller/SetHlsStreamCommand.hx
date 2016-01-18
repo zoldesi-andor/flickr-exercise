@@ -11,7 +11,7 @@ import hex.control.Request;
  * @author 
  */
 @:rtti
-class InitHlsStreamCommand extends BasicCommand
+class SetHlsStreamCommand extends BasicCommand
 {
 	@inject("name=hlsPlayerModule")
 	public var hlsPlayer:IHlsPlayerModule;

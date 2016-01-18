@@ -32,6 +32,7 @@ class LoadNextPerformerCommand extends AsyncCommand
 		this._handleComplete();
 	}
 	
+	//TODO: manage failure
 	override function _release():Void 
 	{
 		this.performerProviderModule.removeHandler( PerformerProviderModulePublicMessage.PERFORMER_DATA_UPDATED, this, this.onLoaded );

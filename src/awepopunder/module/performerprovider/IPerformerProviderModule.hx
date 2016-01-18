@@ -14,5 +14,10 @@ interface IPerformerProviderModule extends IModule
 	function loadNextPerformer():Void;
 	function getActivePerformer():PerformerDataVO;
 	
+	function isAutoPerformerSwitchLimitReached():Bool;
+	function isManualPerformerSwitchLimitReached():Bool;
+	
+	function setPerformerSwitchLimits(auto:Int, manual:Int):Void;
+	
 	
 }

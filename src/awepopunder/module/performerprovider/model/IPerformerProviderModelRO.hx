@@ -14,4 +14,9 @@ interface IPerformerProviderModelRO
 	
 	function getSite():String;
 	
+	function isAutoPerformerSwitchLimitReached():Bool;
+	
+	function isManualPerformerSwitchLimitReached():Bool;
+	
+	
 }

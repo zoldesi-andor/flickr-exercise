@@ -12,6 +12,7 @@ import hex.service.stateless.http.HTTPService;
 import hex.service.stateless.http.HTTPServiceConfiguration;
 import hex.service.stateless.http.HTTPServiceParameters;
 import hex.service.stateless.http.IHTTPService;
+import hex.service.stateless.http.IHTTPServiceListener;
 
 /**
  * Can periodically check for a performer status and notify about it, but it has timeout behavior,
@@ -20,7 +21,7 @@ import hex.service.stateless.http.IHTTPService;
  * @author dukr
  */
 @:rtti
-class PerformerStatusService extends StatefulService implements IPerformerStatusService
+class PerformerStatusService extends StatefulService implements IPerformerStatusService implements IHTTPServiceListener
 {
 	private var _performerStatusHttpSerice:PerformerStatusHttpSerice;
 	
@@ -38,31 +39,31 @@ class PerformerStatusService extends StatefulService implements IPerformerStatus
 	override public function createConfiguration():Void 
 	{
 		this.setConfiguration( new PerformerStatusServiceConfiguration() );
-		this._performerStatusHttpSerice = new PerformerStatusHttpSerice();
 	}
 	
 	public function startCheckPerformer( performerId:String ):Void
 	{
+		trace("PerformerStatusService.startCheckPerformer", performerId);
 		this._lock();
 		
 		this._performerId = performerId;
 		
-		var params:PerformerStatusHttpServiceParameters = new PerformerStatusHttpServiceParameters();
-		params.performerId = performerId;
-		
-		var config:HTTPServiceConfiguration = cast this._performerStatusHttpSerice.getConfiguration();
-		config.serviceUrl = cast(this._configuration, PerformerStatusServiceConfiguration).url;
-		config.parameters = params;
+		this._createNewService( );
 		
 		this._checkTimer = new Timer(cast(this._configuration, PerformerStatusServiceConfiguration).checkInterval);
 		this._checkTimerCounter = 0;
 		
 		this._performerStatusHttpSerice.call();
+		this._checkTimer.run = this._onTimer;
+		
 	}
 	
 	public function stopCheckPerformer( performerId:String ):Void
 	{
+		trace("PerformerStatusService.stopCheckPerformer", performerId);
 		this._performerStatusHttpSerice.release();
+		this._performerStatusHttpSerice.removeHTTPServiceListener( this );
+		this._performerStatusHttpSerice = null;
 		this._checkTimer.stop();
 		
 		this._release();
@@ -71,6 +72,7 @@ class PerformerStatusService extends StatefulService implements IPerformerStatus
 	public function onServiceComplete(service:IHTTPService):Void 
 	{
 		var status:PerformerStatus = this._performerStatusHttpSerice.getPerformerStatus().data.status;
+		//trace("PerformerStatusService.onServiceComplete", status);
 		
 		if ( status == PerformerStatus.FreeChat )
 		{
@@ -80,16 +82,42 @@ class PerformerStatusService extends StatefulService implements IPerformerStatus
 		{
 			this._compositeDispatcher.dispatch( PerformerStatusServiceMessage.OFFLINE, [this._performerStatusHttpSerice.getPerformerStatus().data] );
 		}
+		
+		this._createNewService( );
+	}
+	
+	private function _createNewService() 
+	{
+		if ( this._performerStatusHttpSerice != null )
+		{
+			this._performerStatusHttpSerice.removeHTTPServiceListener(this);
+		}
+			
+		
+		this._performerStatusHttpSerice = new PerformerStatusHttpSerice();
+		this._performerStatusHttpSerice.createConfiguration();
+		this._performerStatusHttpSerice.addHTTPServiceListener(this);
+		
+		var params:PerformerStatusHttpServiceParameters = new PerformerStatusHttpServiceParameters();
+		params.performerId = this._performerId;
+		
+		var config:HTTPServiceConfiguration = cast this._performerStatusHttpSerice.getConfiguration();
+		config.serviceUrl = cast(this._configuration, PerformerStatusServiceConfiguration).url;
+		config.parameters = params;
 	}
 	
 	private function _onTimer():Void
 	{
 		this._checkTimerCounter++;
-		if ( this._checkTimerCounter >= cast(this._configuration, PerformerStatusServiceConfiguration).dispatchOfflineTimeout )
+		//trace("PerformerStatusService._onTimer", this._checkTimerCounter);
+		
+		var config:PerformerStatusServiceConfiguration = cast this._configuration;
+		if ( this._checkTimerCounter >= config.dispatchOfflineCheckCount )
 		{
 			this._setPerformerOffline( );
+			this.stopCheckPerformer( this._performerId );
 		}
-		else if ( !this._performerStatusHttpSerice.isRunning )
+		else if ( !this._performerStatusHttpSerice.wasUsed )
 		{
 			this._performerStatusHttpSerice.call();
 		}
@@ -104,23 +132,25 @@ class PerformerStatusService extends StatefulService implements IPerformerStatus
 		performerStatus.performerId = this._performerId;
 		performerStatus.status = PerformerStatus.Offline;
 		
-		this.stopCheckPerformer( this._performerId );
 		this._compositeDispatcher.dispatch( PerformerStatusServiceMessage.OFFLINE, [performerStatus] );
 	}
 	
 	public function onServiceFail(service:IHTTPService):Void 
 	{
-		// nothing to do we will retry
+		trace("PerformerStatusService.onServiceFail");
+		this._createNewService( );
 	}
 	
 	public function onServiceCancel(service:IHTTPService):Void 
 	{
-		// nothing to do we will retry
+		trace("PerformerStatusService.onServiceCancel");
+		this._createNewService( );
 	}
 	
 	public function onServiceTimeout(service:IHTTPService):Void 
 	{
-		// nothing to do we will retry
+		trace("PerformerStatusService.onServiceTimeout");
+		this._createNewService( );
 	}
 	
 }

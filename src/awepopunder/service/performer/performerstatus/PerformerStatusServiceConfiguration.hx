@@ -10,14 +10,14 @@ class PerformerStatusServiceConfiguration extends ServiceConfiguration
 {
 	public var checkInterval:UInt;
 	public var url:String;
-	public var dispatchOfflineTimeout:UInt;
+	public var dispatchOfflineCheckCount:UInt;
 
-	public function new( url:String = null, dispatchOfflineTimeout:UInt = 5000, checkInterval:UInt = 1000, timeout:UInt = 5000) 
+	public function new( url:String = null, dispatchOfflineCheckCount:UInt = 5, checkInterval:UInt = 1000, timeout:UInt = 5000) 
 	{
 		super(timeout);
 		this.checkInterval = checkInterval;
 		this.url = url;
-		this.dispatchOfflineTimeout = dispatchOfflineTimeout;
+		this.dispatchOfflineCheckCount = dispatchOfflineCheckCount;
 		
 	}
 	

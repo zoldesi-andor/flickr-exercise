@@ -20,7 +20,7 @@ extern class Hls
 	
 	function attachMedia(videoElement:VideoElement):Void;
 	
-	function detachVideo():Void;
+	function detachMedia():Void;
 	
 	function loadSource(url:String):Void;
 	

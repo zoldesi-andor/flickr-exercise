@@ -7,7 +7,8 @@ import haxe.Json;
 import hex.di.IBasicInjector;
 import hex.ioc.assembler.ApplicationAssembler;
 import hex.ioc.assembler.ApplicationContext;
-import hex.ioc.parser.xml.XMLContextParser;
+import hex.ioc.parser.xml.ApplicationContextXMLParser;
+import hex.ioc.parser.xml.ApplicationXMLParser;
 import hex.ioc.parser.xml.XMLParserCollection;
 import hex.ioc.parser.xml.XMLParserUtil;
 import js.Browser;
@@ -36,7 +37,7 @@ class AwePopunder
 	
 	private var _applicationAssembler:ApplicationAssembler;
 	private var _applicationContext:ApplicationContext;
-	private var _contextParser:XMLContextParser;
+	private var _applicationXMLParser:ApplicationXMLParser;
 	
 	private var _injector:IBasicInjector;
 
@@ -52,14 +53,14 @@ class AwePopunder
 		var initialApplicationSettingsParser:InitialApplicationSettingsParser = new InitialApplicationSettingsParser();
 		var initialApplicationSettings:InitialApplicationSettingsVO = initialApplicationSettingsParser.parseSettings( config );
 		
-		var source:String = XMLParserUtil.getConcatenatedConfig( ["moduleConfig", "serviceConfig", "orderConfig", "viewConfig"] );
+		var source:String = XMLParserUtil.getConcatenatedConfig( ["moduleConfig", "serviceConfig", "orderConfig", "viewConfig"], "awePopunder" );
 		
 		var xml : Xml = Xml.parse( source );
 		
 		this._applicationAssembler 	= new ApplicationAssembler();
-		this._applicationContext 	= this._applicationAssembler.getApplicationContext( "applicationContext" );
-		this._injector = this._applicationContext.getInjector();
+		this._applicationContext = this._applicationAssembler.getApplicationContext("awePopunder");
 		
+		this._injector = this._applicationContext.getInjector();
 		//TODO: inject by subparts instead of a big stuff or inject into commands by parts
 		this._injector.mapToValue( InitialApplicationSettingsVO, initialApplicationSettings, "initialApplicationSettings" );
 		
@@ -71,11 +72,10 @@ class AwePopunder
 		
 	}
 	
-	private function _build( xml : Xml, applicationContext : ApplicationContext = null ) : Void
+	private function _build( xml : Xml ) : Void
 	{
-		this._contextParser = new XMLContextParser();
-		this._contextParser.setParserCollection( new XMLParserCollection() );
-		this._contextParser.parse( applicationContext != null ? applicationContext : this._applicationContext, this._applicationAssembler, xml );
+		this._applicationXMLParser = new ApplicationXMLParser();
+		this._applicationXMLParser.parse( this._applicationAssembler, xml );
 		
 		this._applicationAssembler.buildEverything();
 		

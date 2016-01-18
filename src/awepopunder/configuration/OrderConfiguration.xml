@@ -9,21 +9,12 @@
 		</listen>
 	</order>
 	
-	<!--<order id="switchPerformerOrder" type="hex.event.EventProxy">
-		<argument type="null"/>
-		<argument type="null"/>
-		<listen ref="performerProviderModule">
-			<event static-ref="awepopunder.module.performerprovider.message.PerformerProviderModulePublicMessage.PERFORMER_DATA_UPDATED" strategy="awepopunder.adapter.switchperformer.SwitchPerformerMacro"/>
-		</listen>
-	</order> -->
-	
 	<order id="streamOrder" type="hex.event.EventProxy">
 		<argument type="null"/>
 		<argument type="null"/>
 		<listen ref="hlsService">
 			<event static-ref="com.service.stream.hls.event.HlsServiceEvent.STALLED" strategy="awepopunder.adapter.stream.check.CheckStreamMacro"/>
 			
-			<event static-ref="awepopunder.service.performer.performerstatus.message.PerformerStatusServiceMessage.OFFLINE" strategy="awepopunder.adapter.switchperformer.SwitchPerformerMacro"/>
 			<event static-ref="com.service.stream.hls.event.HlsServiceEvent.MEDIA_ERR_DECODE" strategy="awepopunder.adapter.switchperformer.SwitchPerformerMacro"/>
 			<event static-ref="com.service.stream.hls.event.HlsServiceEvent.MEDIA_ERR_NETWORK" strategy="awepopunder.adapter.switchperformer.SwitchPerformerMacro"/>
 			<event static-ref="com.service.stream.hls.event.HlsServiceEvent.MEDIA_ERR_ABORTED" strategy="awepopunder.adapter.switchperformer.SwitchPerformerMacro"/>
@@ -31,4 +22,13 @@
 			<event static-ref="com.service.stream.hls.event.HlsServiceEvent.UNKNOWN_ERROR" strategy="awepopunder.adapter.switchperformer.SwitchPerformerMacro"/>
 		</listen>
 	</order>
+	
+	<order id="offlinePerformerOrder" type="hex.event.EventProxy">
+		<argument type="null"/>
+		<argument type="null"/>
+		<listen ref="performerStatusService">
+			<event static-ref="awepopunder.service.performer.performerstatus.message.PerformerStatusServiceMessage.OFFLINE" strategy="awepopunder.adapter.switchperformer.SwitchPerformerMacro"/>
+		</listen>
+	</order>
+	
 </root>

@@ -24,7 +24,7 @@ class PerformerDataServiceParameters extends HTTPServiceParameters
 	 * @param	banList Filter out these performers
 	 * @param	streamData We need the streamRatio and other stream information
 	 */
-	public function new( category:String = null, site:String = null, performerId:String = null, tid:String = null, banList:String = null, streamData:UInt = 1) 
+	public function new( category:String = "", site:String = "", performerId:String = "", tid:String = "", banList:String = "", streamData:UInt = 1) 
 	{
 		super();
 		

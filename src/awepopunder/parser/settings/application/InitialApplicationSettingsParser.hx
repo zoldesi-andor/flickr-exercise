@@ -5,6 +5,7 @@ import awepopunder.module.layout.constant.LayoutMode;
 import awepopunder.vo.settings.application.FilterSettingsVO;
 import awepopunder.vo.settings.application.InitialApplicationSettingsVO;
 import awepopunder.vo.settings.application.LayoutSettingsVO;
+import awepopunder.vo.settings.application.PromoInfoSettingsVO;
 import awepopunder.vo.settings.application.SiteSettingsVO;
 import haxe.Json;
 import hex.data.IParser;
@@ -35,6 +36,7 @@ class InitialApplicationSettingsParser implements IParser
 		result.layoutSettings = this._parseLayout( data.layout );
 		result.siteSettings = this._parseSiteSettings( data.site );
 		result.filterSettings = this._parseFilterSettings( data.filter );
+		result.promoInfoSettings = this._parsePromoInfoSettings( data.promoInfo );
 		
 		return result;
 	}
@@ -54,12 +56,23 @@ class InitialApplicationSettingsParser implements IParser
 	{
 		var result:SiteSettingsVO = new SiteSettingsVO( );
 		
-		result.brandId = data.brandId;
 		result.cobrandId = data.cobrandId;
 		result.language = data.language;
 		result.site = data.site;
-		result.subbrand = data.subbrand;
 		result.sessionId = data.sessionId;
+		
+		return result;
+	}
+	
+	function _parsePromoInfoSettings( data:Dynamic ) : PromoInfoSettingsVO
+	{
+		var result:PromoInfoSettingsVO = new PromoInfoSettingsVO( );
+		
+		result.psId = data.psId;
+		result.psTool = data.psTool;
+		result.psProgram = data.psProgram;
+		result.campaingId = data.campaingId;
+		result.subAffId = data.subAffId;
 		
 		return result;
 	}

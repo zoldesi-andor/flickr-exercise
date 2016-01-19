@@ -21,8 +21,6 @@
 	"site": {
 		"site": "jasmin",
 		"cobrandId": "",
-		"brandId": "jasmin",
-		"subbrand": "livejasmin",
 		"language": "en",
 		"sessionId": "AWELiveFeedGuest"
 	},
@@ -31,9 +29,8 @@
 		"psId": "awetest",
 		"psTool": "202_1",
 		"psProgram": "revs",
-		"campaingId": "",
-		"subAffId": "",
-		"psRef": ""
+		"campaingId": "xxx_campaign",
+		"subAffId": "asdcéál,2345-.,bvyxcb2á45él/=(%!/",
 	}
 	
 }

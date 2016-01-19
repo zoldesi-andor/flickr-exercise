@@ -6,6 +6,8 @@
 		<argument ref="performerProviderServiceLocator" />
 	</module>
 	
+	<module id="navigatorModule" type="awepopunder.module.navigator.NavigatorModule" map-type="awepopunder.module.navigator.INavigatorModule"></module>	
+	
 	<module id="chatBoxModule" type="com.module.chat.chatbox.ChatBoxModule">
 		<argument ref="chatArtifactList" />
 		<argument ref="chatBoxView" />

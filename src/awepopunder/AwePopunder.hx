@@ -61,7 +61,6 @@ class AwePopunder
 		this._applicationContext = this._applicationAssembler.getApplicationContext("awePopunder");
 		
 		this._injector = this._applicationContext.getInjector();
-		//TODO: inject by subparts instead of a big stuff or inject into commands by parts
 		this._injector.mapToValue( InitialApplicationSettingsVO, initialApplicationSettings, "initialApplicationSettings" );
 		
 		#if js

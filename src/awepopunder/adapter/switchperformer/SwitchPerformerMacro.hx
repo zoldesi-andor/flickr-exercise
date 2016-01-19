@@ -1,6 +1,7 @@
 package awepopunder.adapter.switchperformer;
 
 import awepopunder.adapter.bootstrap.controller.SetHlsStreamCommand;
+import awepopunder.adapter.switchperformer.controller.ClearChatMessagesCommand;
 import awepopunder.adapter.switchperformer.controller.LoadNextPerformerCommand;
 import awepopunder.adapter.switchperformer.controller.MaxAutoPerformerSwitchValidatorCommand;
 import awepopunder.adapter.switchperformer.controller.SetOfflineCommand;
@@ -18,7 +19,7 @@ import hex.event.MacroAdapterStrategy;
 
 /**
  * ...
- * @author 
+ * @author duke
  */
 @:rtti
 class SwitchPerformerMacro extends MacroAdapterStrategy
@@ -54,6 +55,7 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 		this.add(SetHlsStreamCommand).withPayloads([performerDataPayload]);
 		this.add(PlayHlsStreamCommand);
 		this.add(SetStreamRatioCommand).withPayloads([performerDataPayload]);
+		this.add(ClearChatMessagesCommand);
 		this.add(SubscribeChatRoomCommand).withPayloads([performerDataPayload]);
 		this.add(SetOnlineCommand);
 	}

@@ -5,6 +5,7 @@ import awepopunder.service.performer.performerstatus.IPerformerStatusService;
 import awepopunder.service.performer.performerstatus.message.PerformerStatusServiceMessage;
 import haxe.Json;
 import haxe.Timer;
+import hex.core.IMetaDataParsable;
 import hex.data.IParser;
 import hex.service.ServiceResultVO;
 import hex.service.stateful.StatefulService;
@@ -21,8 +22,11 @@ import hex.service.stateless.http.IHTTPServiceListener;
  * @author dukr
  */
 @:rtti
-class PerformerStatusService extends StatefulService implements IPerformerStatusService implements IHTTPServiceListener
+class PerformerStatusService extends StatefulService implements IPerformerStatusService implements IHTTPServiceListener implements IMetaDataParsable
 {
+	@url("modelStatus")
+	public var serviceUrl:String;
+	
 	private var _performerStatusHttpSerice:PerformerStatusHttpSerice;
 	
 	private var _performerId:String;
@@ -38,7 +42,7 @@ class PerformerStatusService extends StatefulService implements IPerformerStatus
 	@postConstruct
 	override public function createConfiguration():Void 
 	{
-		this.setConfiguration( new PerformerStatusServiceConfiguration() );
+		this.setConfiguration( new PerformerStatusServiceConfiguration(this.serviceUrl) );
 	}
 	
 	public function startCheckPerformer( performerId:String ):Void

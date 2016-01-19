@@ -2,13 +2,17 @@
 <root>
 	<!-- MODULES -->
 	
+	<module id="urlProviderModule" type="com.module.asset.urlprovider.UrlProviderModule" map-type="com.module.asset.urlprovider.IUrlProviderModule">
+		
+	</module>
+	
 	<module id="performerProviderModule" type="awepopunder.module.performerprovider.PerformerProviderModule" map-type="awepopunder.module.performerprovider.IPerformerProviderModule">
 		<argument ref="performerProviderServiceLocator" />
 	</module>
 	
 	<module id="navigatorModule" type="awepopunder.module.navigator.NavigatorModule" map-type="awepopunder.module.navigator.INavigatorModule"></module>	
 	
-	<module id="chatBoxModule" type="com.module.chat.chatbox.ChatBoxModule">
+	<module id="chatBoxModule" type="com.module.chat.chatbox.ChatBoxModule" map-type="com.module.chat.chatbox.IChatBoxModule">
 		<argument ref="chatArtifactList" />
 		<argument ref="chatBoxView" />
 		

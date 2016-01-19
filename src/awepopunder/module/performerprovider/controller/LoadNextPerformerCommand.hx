@@ -30,11 +30,8 @@ class LoadNextPerformerCommand extends AsyncCommand implements IHTTPServiceListe
 	{
 		this.performerProviderModel.increaseAutoPerformerSwitchCount( );
 		
-		//TODO: get connection params from config
-		var config:HTTPServiceConfiguration = new HTTPServiceConfiguration( "http://promo.awempire.com/live_feeds/get_performer_base.php" );
+		var config:HTTPServiceConfiguration = cast this.performerDataService.getConfiguration();
 		config.parameters = new PerformerDataServiceParameters( this.performerProviderModel.getFilterSettings().category, this.performerProviderModel.getFilterSettings().templateId, "", this.performerProviderModel.getSite() );
-		
-		this.performerDataService.setConfiguration( config );
 		
 		this.performerDataService.addHTTPServiceListener( this );
 		this.performerDataService.call();

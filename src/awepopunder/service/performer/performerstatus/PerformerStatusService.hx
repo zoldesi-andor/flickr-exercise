@@ -5,7 +5,7 @@ import awepopunder.service.performer.performerstatus.IPerformerStatusService;
 import awepopunder.service.performer.performerstatus.message.PerformerStatusServiceMessage;
 import haxe.Json;
 import haxe.Timer;
-import hex.core.IMetaDataParsable;
+import hex.core.IMetadataParsable;
 import hex.data.IParser;
 import hex.service.ServiceResultVO;
 import hex.service.stateful.StatefulService;
@@ -22,7 +22,7 @@ import hex.service.stateless.http.IHTTPServiceListener;
  * @author dukr
  */
 @:rtti
-class PerformerStatusService extends StatefulService implements IPerformerStatusService implements IHTTPServiceListener implements IMetaDataParsable
+class PerformerStatusService extends StatefulService implements IPerformerStatusService implements IHTTPServiceListener implements IMetadataParsable
 {
 	@url("modelStatus")
 	public var serviceUrl:String;

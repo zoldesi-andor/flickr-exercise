@@ -31,7 +31,7 @@ class ConnectChatWebSocketCommand extends AsyncCommand
 		this.chatWebSocketService.addHandler( WebSocketServiceMessage.ERROR, this, this._onWebSocketServiceFailed );
 		this.chatWebSocketService.addHandler( WebSocketServiceMessage.CLOSED, this, this._onWebSocketServiceFailed );
 		
-		var config:ChatWebSocketServiceConfiguration = cast this.chatWebSocketService.getConfiguration();
+		var config:ChatWebSocketServiceConfiguration = this.chatWebSocketService.getConfiguration();
 		config.host = this.settings.chatHost;
 		config.port = this.settings.chatPort;
 		config.path = this.internalApplicationSettings.chatPath;

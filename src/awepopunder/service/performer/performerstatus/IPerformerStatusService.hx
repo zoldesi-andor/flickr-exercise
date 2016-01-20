@@ -5,7 +5,7 @@ import hex.service.stateful.IStatefulService;
  * @author 
  */
 
-interface IPerformerStatusService extends IStatefulService
+interface IPerformerStatusService extends IStatefulService<PerformerStatusServiceConfiguration>
 {
 	
 	function startCheckPerformer(performerId:String):Void;

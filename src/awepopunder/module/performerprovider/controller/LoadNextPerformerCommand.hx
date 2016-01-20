@@ -17,7 +17,7 @@ import hex.service.stateless.http.IHTTPServiceListener;
  * @author 
  */
 @:rtti
-class LoadNextPerformerCommand extends AsyncCommand implements IHTTPServiceListener
+class LoadNextPerformerCommand extends AsyncCommand implements IHTTPServiceListener<HTTPServiceConfiguration>
 {
 	@inject
 	public var performerDataService:IPerformerDataService;
@@ -30,14 +30,14 @@ class LoadNextPerformerCommand extends AsyncCommand implements IHTTPServiceListe
 	{
 		this.performerProviderModel.increaseAutoPerformerSwitchCount( );
 		
-		var config:HTTPServiceConfiguration = cast this.performerDataService.getConfiguration();
+		var config:HTTPServiceConfiguration = this.performerDataService.getConfiguration();
 		config.parameters = new PerformerDataServiceParameters( this.performerProviderModel.getFilterSettings().category, this.performerProviderModel.getFilterSettings().templateId, "", this.performerProviderModel.getSite() );
 		
 		this.performerDataService.addHTTPServiceListener( this );
 		this.performerDataService.call();
 	}
 	
-	public function onServiceComplete(e:IHTTPService):Void 
+	public function onServiceComplete(e:IHTTPService<HTTPServiceConfiguration>):Void 
 	{
 		var result:ServiceResultVO<PerformerDataVO> = this.performerDataService.getPerformerData();
 		
@@ -55,18 +55,18 @@ class LoadNextPerformerCommand extends AsyncCommand implements IHTTPServiceListe
 	}
 	
 	//TODO: manage fail
-	public function onServiceFail(e:IHTTPService):Void 
+	public function onServiceFail(e:IHTTPService<HTTPServiceConfiguration>):Void 
 	{
 		this._handleFail();
 	}
 	
-	public function onServiceCancel(e:IHTTPService):Void 
+	public function onServiceCancel(e:IHTTPService<HTTPServiceConfiguration>):Void 
 	{
 		this._handleCancel( );
 	}
 	
 	//TODO: manage timeout
-	public function onServiceTimeout(e:IHTTPService):Void 
+	public function onServiceTimeout(e:IHTTPService<HTTPServiceConfiguration>):Void 
 	{
 		this._handleFail( );
 	}

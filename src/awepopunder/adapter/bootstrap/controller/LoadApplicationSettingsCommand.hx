@@ -15,7 +15,7 @@ import hex.service.stateless.http.IHTTPServiceListener;
  * @author duke
  */
 @:rtti
-class LoadApplicationSettingsCommand extends AsyncCommand implements IHTTPServiceListener implements IMetadataParsable
+class LoadApplicationSettingsCommand extends AsyncCommand implements IHTTPServiceListener<HTTPServiceConfiguration> implements IMetadataParsable
 {
 	@inject("name=applicationSettingsService")
 	public var applicationSettingsService:IApplicationSettingsService;
@@ -37,7 +37,7 @@ class LoadApplicationSettingsCommand extends AsyncCommand implements IHTTPServic
 		this.applicationSettingsService.call();
 	}
 	
-	public function onServiceComplete(e:IHTTPService):Void 
+	public function onServiceComplete(e:IHTTPService<HTTPServiceConfiguration>):Void 
 	{
 		if ( this.applicationSettingsService.getApplicationSettings().success )
 		{
@@ -55,18 +55,18 @@ class LoadApplicationSettingsCommand extends AsyncCommand implements IHTTPServic
 	}
 	
 	//TODO: manage fail
-	public function onServiceFail(e:IHTTPService):Void 
+	public function onServiceFail(e:IHTTPService<HTTPServiceConfiguration>):Void 
 	{
 		this._handleFail();
 	}
 	
-	public function onServiceCancel(e:IHTTPService):Void 
+	public function onServiceCancel(e:IHTTPService<HTTPServiceConfiguration>):Void 
 	{
 		this._handleCancel( );
 	}
 	
 	//TODO: manage timeout
-	public function onServiceTimeout(e:IHTTPService):Void 
+	public function onServiceTimeout(e:IHTTPService<HTTPServiceConfiguration>):Void 
 	{
 		this._handleFail( );
 	}

@@ -1,5 +1,5 @@
 package awepopunder.module.navigator.model;
-import awepopunder.module.navigator.vo.NavigatorSettingsVO;;
+import awepopunder.module.navigator.vo.NavigatorSettingsVO;
 
 /**
  * ...

@@ -2,6 +2,7 @@ package awepopunder.adapter.bootstrap;
 
 import awepopunder.adapter.bootstrap.controller.ConnectChatWebSocketCommand;
 import awepopunder.adapter.bootstrap.controller.InitPerformerProviderSettingsCommand;
+import awepopunder.adapter.bootstrap.controller.InitNavigatorSettingsCommand;
 import awepopunder.adapter.bootstrap.controller.InitUrlProviderCommand;
 import awepopunder.adapter.bootstrap.controller.LoadApplicationSettingsCommand;
 import awepopunder.adapter.bootstrap.controller.SetPerformerProviderSettingsCommand;
@@ -31,6 +32,7 @@ class BootstrapMacro extends MacroAdapterStrategy
 	{
 		this.add(InitUrlProviderCommand);
 		this.add(InitPerformerProviderSettingsCommand);
+		this.add(InitNavigatorSettingsCommand);
 		this.add(LoadApplicationSettingsCommand).withCompleteHandlers( new AsyncHandler(this, this.onApplicationSettingsLoaded ) );
 	}
 	

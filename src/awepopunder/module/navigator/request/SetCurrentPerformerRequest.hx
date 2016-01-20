@@ -1,5 +1,5 @@
 package awepopunder.module.navigator.request;
-import haxe.web.Request;
+import hex.control.Request;
 
 /**
  * ...

@@ -1,7 +1,7 @@
 package awepopunder.module.navigator.controller;
 import awepopunder.module.navigator.model.INavigatorModel;
 import awepopunder.module.navigator.request.SetCurrentPerformerRequest;
-import haxe.web.Request;
+import hex.control.Request;
 import hex.control.command.BasicCommand;
 
 /**

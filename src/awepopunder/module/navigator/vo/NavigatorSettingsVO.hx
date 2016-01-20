@@ -17,7 +17,7 @@ class NavigatorSettingsVO
 	public var psId:String;
 	public var psTool:String;
 	public var psProgram:String;
-	public var campaignId:String;
+	public var campaingId:String;
 	public var subAffId:String;
 	
 

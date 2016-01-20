@@ -10,6 +10,10 @@ import awepopunder.module.navigator.controller.SetNavigatorSettingsCommand;
 import awepopunder.module.navigator.controller.SetCurrentPerformerCommand;
 import awepopunder.module.navigator.controller.NavigateToCommand;
 import awepopunder.module.navigator.vo.NavigatorSettingsVO;
+import hex.config.stateless.StatelessCommandConfig;
+import hex.config.stateless.StatelessModelConfig;
+import hex.module.dependency.IRuntimeDependencies;
+import hex.module.dependency.RuntimeDependencies;
 import hex.module.Module;
 
 /**
@@ -22,6 +26,10 @@ class NavigatorModule extends Module implements INavigatorModule
 	
 	public function new() 
 	{
+		super();
+		
+		this._addStatelessConfigClasses([NavigatorCommandConfig, NavigatorModelConfig]);
+		
 		this._navigatorModel = this._getDependencyInjector().getInstance(INavigatorModelRO);
 	}
 	
@@ -37,7 +45,13 @@ class NavigatorModule extends Module implements INavigatorModule
 	
 	public function navigateTo( pageName:String ):Void
 	{
-		this._dispatchPrivateMessage( NavigatorModuleMessage.NAVIGATE_TO, [new navigateToRequest( pageName )] );
+		this._dispatchPrivateMessage( NavigatorModuleMessage.NAVIGATE_TO, [new NavigateToRequest( pageName )] );
+	}
+	
+	override private function _getRuntimeDependencies() : IRuntimeDependencies
+	{
+		var rd : RuntimeDependencies = new RuntimeDependencies();
+		return rd;
 	}
 }
 

@@ -1,7 +1,7 @@
 package awepopunder.adapter.switchperformer.controller;
 import awepopunder.module.navigator.INavigatorModule;
 import awepopunder.vo.performer.PerformerDataVO;
-import haxe.web.Request;
+import hex.control.Request;
 import hex.control.command.BasicCommand;
 
 /**
@@ -20,6 +20,7 @@ class SetPerformerIdCommand extends BasicCommand
 	override public function execute(?request:Request):Void 
 	{
 		this.navigator.setCurrentPerformer(this.performerData.performerId);
+		this.navigator.navigateTo("chatRoom");
 	}
 	
 }

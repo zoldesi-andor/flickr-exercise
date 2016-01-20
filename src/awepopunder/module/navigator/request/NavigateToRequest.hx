@@ -1,10 +1,11 @@
 package awepopunder.module.navigator.request;
+import hex.control.Request;
 
 /**
  * ...
  * @author Chris
  */
-class NavigateToRequest
+class NavigateToRequest extends Request
 {
 	public var pageName:String;
 

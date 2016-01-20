@@ -1,13 +1,13 @@
 package awepopunder.adapter.stream.check;
 
-import awepopunder.adapter.stream.check.controller.CheckPerformerStatusCommand;
+import awepopunder.adapter.stream.check.controller.StopCheckPerformerStatusCommand;
 import hex.event.MacroAdapterStrategy;
 
 /**
  * ...
  * @author 
  */
-class CheckStreamMacro extends MacroAdapterStrategy
+class StopCheckStreamMacro extends MacroAdapterStrategy
 {
 
 	public function new(target:Dynamic, method:Dynamic) 
@@ -18,7 +18,7 @@ class CheckStreamMacro extends MacroAdapterStrategy
 	
 	override function _prepare():Void 
 	{
-		this.add( CheckPerformerStatusCommand );
+		this.add( StopCheckPerformerStatusCommand );
 	}
 	
 	public function onAdapt():Void

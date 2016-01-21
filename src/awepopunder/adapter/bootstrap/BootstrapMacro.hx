@@ -42,7 +42,9 @@ class BootstrapMacro extends MacroAdapterStrategy
 		
 		var settingsPayload:ExecutionPayload = new ExecutionPayload(this._settings, ApplicationSettingsVO);
 		
+		//TODO: retry connection a few time, but don't wait the boostrap with this.
 		this.add(ConnectChatWebSocketCommand).withPayloads([settingsPayload]);
+		
 		this.add(SetPerformerProviderSettingsCommand).withPayloads([settingsPayload]);
 		this.add(SwitchPerformerMacro);
 		

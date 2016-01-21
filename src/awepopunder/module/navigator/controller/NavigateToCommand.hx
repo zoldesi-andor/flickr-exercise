@@ -52,7 +52,6 @@ class NavigateToCommand  extends BasicCommand
 		#elseif flash
 			flash.net.navigateToURL(new flash.net.URLRequest(url), "_blank");
 		#end
-		//navigate url;
 		
 	}
 	

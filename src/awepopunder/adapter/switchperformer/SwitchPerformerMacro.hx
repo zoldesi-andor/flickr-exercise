@@ -83,6 +83,8 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 		this.add(SetHlsStreamCommand).withPayloads([performerDataPayload]);
 		this.add(PlayHlsStreamCommand);
 		this.add(SetStreamRatioCommand).withPayloads([performerDataPayload]);
+		
+		//TODO: don't care if we cannot subscribe to a room, ingore it and go ahead with the other thigns
 		this.add(ClearChatMessagesCommand);
 		this.add(SubscribeChatRoomCommand).withPayloads([performerDataPayload]);
 		this.add(SetOnlineCommand);

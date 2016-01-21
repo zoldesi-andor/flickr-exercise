@@ -1,5 +1,6 @@
 package awepopunder.module.navigator.controller;
 import awepopunder.module.navigator.model.INavigatorModel;
+import awepopunder.module.navigator.constant.TargetPage;
 import awepopunder.module.navigator.request.NavigateToRequest;
 import haxe.remoting.FlashJsConnection;
 import hex.control.Request;
@@ -18,11 +19,25 @@ class NavigateToCommand  extends BasicCommand
 
 	override public function execute(?request:Request):Void 
 	{
-		//TODO check pageName!		
 		var request:NavigateToRequest = cast request;
+		var pageName:String = TargetPage.HOME;
+		var validPageNames:Array<String> = [
+			TargetPage.CHAT_ROOM,
+			TargetPage.HOME,
+			TargetPage.LISTPAGE,
+			TargetPage.LOGIN,
+			TargetPage.POLICY,
+			TargetPage.RANDOM_CHAT,
+			TargetPage.SIGNUP,
+			TargetPage.TERMS
+		];
+		
+		if ( validPageNames.indexOf(request.pageName) != -1) {
+			pageName = request.pageName;
+		}
 		
 		var params:Map<String,String> = [
-			"pageName" => request.pageName,
+			"pageName" => pageName,
 			"performerName" => navigatorModel.getCurrentPerformerId(),
 			"superCategoryName" => "girls",
 			

@@ -18,6 +18,7 @@ class NavigateToCommand  extends BasicCommand
 
 	override public function execute(?request:Request):Void 
 	{
+		//TODO check pageName!		
 		var request:NavigateToRequest = cast request;
 		
 		var params:Map<String,String> = [

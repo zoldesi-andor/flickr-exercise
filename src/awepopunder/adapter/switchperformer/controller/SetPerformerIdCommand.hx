@@ -20,7 +20,6 @@ class SetPerformerIdCommand extends BasicCommand
 	override public function execute(?request:Request):Void 
 	{
 		this.navigator.setCurrentPerformer(this.performerData.performerId);
-		this.navigator.navigateTo("chatRoom");
 	}
 	
 }

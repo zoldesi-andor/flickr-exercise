@@ -10,8 +10,6 @@
 		<argument ref="performerProviderServiceLocator" />
 	</module>
 	
-	<module id="navigatorModule" type="awepopunder.module.navigator.NavigatorModule" map-type="awepopunder.module.navigator.INavigatorModule"></module>	
-	
 	<module id="chatBoxModule" type="com.module.chat.chatbox.ChatBoxModule" map-type="com.module.chat.chatbox.IChatBoxModule">
 		<argument ref="chatArtifactList" />
 		<argument ref="chatBoxView" />
@@ -27,6 +25,12 @@
 		<argument ref="playButtonView"/>
 		<argument ref="hlsPlayerServiceLocator"/>
 	</module>
+	
+	<module id="navigatorModule" type="awepopunder.module.navigator.NavigatorModule" map-type="awepopunder.module.navigator.INavigatorModule">
+		<listen ref="hlsPlayerModule">
+			<event static-ref="com.module.stream.player.hlsplayer.message.STREAM_CLICK" method="navigateTo" strategy="awepopunder.adapter.navigator.StreamClickStrategy"/>
+		</listen>
+	</module>	
 	
 	<module id="layoutModule" type="awepopunder.module.layout.LayoutModule" map-type="awepopunder.module.layout.ILayoutModule">
 		<argument ref="layoutView"/>

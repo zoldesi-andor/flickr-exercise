@@ -22,7 +22,7 @@ import hex.service.stateless.http.IHTTPServiceListener;
  * @author dukr
  */
 @:rtti
-class PerformerStatusService extends StatefulService implements IPerformerStatusService implements IHTTPServiceListener implements IMetadataParsable
+class PerformerStatusService extends StatefulService<PerformerStatusServiceConfiguration> implements IPerformerStatusService implements IHTTPServiceListener<HTTPServiceConfiguration> implements IMetadataParsable
 {
 	@url("modelStatus")
 	public var serviceUrl:String;
@@ -54,7 +54,7 @@ class PerformerStatusService extends StatefulService implements IPerformerStatus
 		
 		this._createNewService( );
 		
-		this._checkTimer = new Timer(cast(this._configuration, PerformerStatusServiceConfiguration).checkInterval);
+		this._checkTimer = new Timer(this._configuration.checkInterval);
 		this._checkTimerCounter = 0;
 		
 		this._performerStatusHttpSerice.call();
@@ -73,7 +73,7 @@ class PerformerStatusService extends StatefulService implements IPerformerStatus
 		this._release();
 	}
 	
-	public function onServiceComplete(service:IHTTPService):Void 
+	public function onServiceComplete(service:IHTTPService<HTTPServiceConfiguration>):Void 
 	{
 		var status:PerformerStatus = this._performerStatusHttpSerice.getPerformerStatus().data.status;
 		//trace("PerformerStatusService.onServiceComplete", status);
@@ -105,8 +105,8 @@ class PerformerStatusService extends StatefulService implements IPerformerStatus
 		var params:PerformerStatusHttpServiceParameters = new PerformerStatusHttpServiceParameters();
 		params.performerId = this._performerId;
 		
-		var config:HTTPServiceConfiguration = cast this._performerStatusHttpSerice.getConfiguration();
-		config.serviceUrl = cast(this._configuration, PerformerStatusServiceConfiguration).url;
+		var config:HTTPServiceConfiguration = this._performerStatusHttpSerice.getConfiguration();
+		config.serviceUrl = this._configuration.url;
 		config.parameters = params;
 	}
 	
@@ -115,8 +115,7 @@ class PerformerStatusService extends StatefulService implements IPerformerStatus
 		this._checkTimerCounter++;
 		//trace("PerformerStatusService._onTimer", this._checkTimerCounter);
 		
-		var config:PerformerStatusServiceConfiguration = cast this._configuration;
-		if ( this._checkTimerCounter >= config.dispatchOfflineCheckCount )
+		if ( this._checkTimerCounter >= this._configuration.dispatchOfflineCheckCount )
 		{
 			this._setPerformerOffline( );
 			this.stopCheckPerformer( this._performerId );
@@ -139,19 +138,19 @@ class PerformerStatusService extends StatefulService implements IPerformerStatus
 		this._compositeDispatcher.dispatch( PerformerStatusServiceMessage.OFFLINE, [performerStatus] );
 	}
 	
-	public function onServiceFail(service:IHTTPService):Void 
+	public function onServiceFail(service:IHTTPService<HTTPServiceConfiguration>):Void 
 	{
 		trace("PerformerStatusService.onServiceFail");
 		this._createNewService( );
 	}
 	
-	public function onServiceCancel(service:IHTTPService):Void 
+	public function onServiceCancel(service:IHTTPService<HTTPServiceConfiguration>):Void 
 	{
 		trace("PerformerStatusService.onServiceCancel");
 		this._createNewService( );
 	}
 	
-	public function onServiceTimeout(service:IHTTPService):Void 
+	public function onServiceTimeout(service:IHTTPService<HTTPServiceConfiguration>):Void 
 	{
 		trace("PerformerStatusService.onServiceTimeout");
 		this._createNewService( );
@@ -159,7 +158,7 @@ class PerformerStatusService extends StatefulService implements IPerformerStatus
 	
 }
 
-private class PerformerStatusHttpSerice extends HTTPService
+private class PerformerStatusHttpSerice extends HTTPService<HTTPServiceConfiguration>
 {
 	override public function createConfiguration():Void 
 	{

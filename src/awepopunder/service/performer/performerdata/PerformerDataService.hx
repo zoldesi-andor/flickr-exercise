@@ -13,7 +13,7 @@ import hex.service.stateless.http.HTTPServiceConfiguration;
  * @author duke
  */
 @:rtti
-class PerformerDataService extends HTTPService implements IPerformerDataService implements IMetadataParsable
+class PerformerDataService extends HTTPService<HTTPServiceConfiguration> implements IPerformerDataService implements IMetadataParsable
 {
 	
 	@url("performerData")

@@ -12,6 +12,10 @@ class PerformerProviderModel implements IPerformerProviderModel
 	private var _performerData:PerformerDataVO;
 	private var _filterSettings:FilterSettingsVO;
 	private var _site:String;
+	private var _autoPerformerSwitchCount:UInt = 0;
+	private var _autoPerformerSwitchLimit:Int = -1;
+	private var _manualPerformerSwitchCount:UInt = 0;
+	private var _manualPerformerSwitchLimit:Int = -1;
 
 	public function new() 
 	{
@@ -48,4 +52,33 @@ class PerformerProviderModel implements IPerformerProviderModel
 		this._performerData = value;
 	}
 	
+	public function increaseAutoPerformerSwitchCount( ):Void
+	{
+		this._autoPerformerSwitchCount++;
+	}
+	
+	public function setAutoPerformerSwitchLimit( value:Int ):Void
+	{
+		this._autoPerformerSwitchLimit = value;
+	}
+		
+	public function isAutoPerformerSwitchLimitReached():Bool 
+	{
+		return this._autoPerformerSwitchLimit > -1 && this._autoPerformerSwitchCount >= this._autoPerformerSwitchLimit;
+	}
+	
+	public function increaseManualPerformerSwitchCount( ):Void
+	{
+		this._manualPerformerSwitchCount++;
+	}
+	
+	public function setManualPerformerSwitchLimit( value:Int ):Void 
+	{
+		this._manualPerformerSwitchLimit = value;
+	}
+	
+	public function isManualPerformerSwitchLimitReached():Bool 
+	{
+		return this._manualPerformerSwitchLimit > -1 && this._manualPerformerSwitchCount >= this._manualPerformerSwitchLimit;
+	}
 }

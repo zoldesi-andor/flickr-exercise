@@ -2,12 +2,16 @@ package awepopunder.module.performerprovider;
 
 import awepopunder.module.performerprovider.controller.LoadNextPerformerCommand;
 import awepopunder.module.performerprovider.controller.SetFilterSettingsCommand;
+import awepopunder.module.performerprovider.controller.SetPerformerSwitchLimitsCommand;
 import awepopunder.module.performerprovider.IPerformerProviderModule;
 import awepopunder.module.performerprovider.message.PerformerProviderModuleMessage;
 import awepopunder.module.performerprovider.model.IPerformerProviderModel;
+import awepopunder.module.performerprovider.model.IPerformerProviderModelRO;
 import awepopunder.module.performerprovider.model.PerformerProviderModel;
 import awepopunder.module.performerprovider.request.SetFilterSettingsRequest;
-import awepopunder.service.performer.IPerformerDataService;
+import awepopunder.module.performerprovider.request.SetPerformerSwitchLimitsRequest;
+import awepopunder.service.performer.performerdata.IPerformerDataService;
+import awepopunder.vo.performer.PerformerDataVO;
 import awepopunder.vo.settings.application.FilterSettingsVO;
 import hex.config.stateful.IStatefulConfig;
 import hex.config.stateless.StatelessCommandConfig;
@@ -22,6 +26,7 @@ import hex.module.Module;
  */
 class PerformerProviderModule extends Module implements IPerformerProviderModule
 {
+	private var _performerProviderModel:IPerformerProviderModelRO;
 
 	public function new(serviceConfig:IStatefulConfig) 
 	{
@@ -29,6 +34,8 @@ class PerformerProviderModule extends Module implements IPerformerProviderModule
 		
 		this._addStatelessConfigClasses([PerformerProviderCommandConfig, PerformerProviderModelConfig]);
 		this._addStatefulConfigs([serviceConfig]);
+		
+		this._performerProviderModel = this._getDependencyInjector().getInstance(IPerformerProviderModelRO);
 	}
 	
 	public function setFilterSettings( filterSettings:FilterSettingsVO, site:String ):Void
@@ -39,6 +46,26 @@ class PerformerProviderModule extends Module implements IPerformerProviderModule
 	public function loadNextPerformer( ):Void
 	{
 		this._dispatchPrivateMessage( PerformerProviderModuleMessage.LOAD_NEXT_PERFORMER );
+	}
+	
+	public function getActivePerformer():PerformerDataVO 
+	{
+		return this._performerProviderModel.getPerformerData();
+	}
+	
+	public function setPerformerSwitchLimits( auto:Int, manual:Int ):Void
+	{
+		this._dispatchPrivateMessage( PerformerProviderModuleMessage.SET_PERFORMER_SWITCH_LIMITS, [new SetPerformerSwitchLimitsRequest(auto, manual)] );
+	}
+	
+	public function isAutoPerformerSwitchLimitReached():Bool
+	{
+		return this._performerProviderModel.isAutoPerformerSwitchLimitReached();
+	}
+	
+	public function isManualPerformerSwitchLimitReached():Bool
+	{
+		return this._performerProviderModel.isManualPerformerSwitchLimitReached();
 	}
 	
 	override private function _getRuntimeDependencies() : IRuntimeDependencies
@@ -56,6 +83,7 @@ private class PerformerProviderCommandConfig extends StatelessCommandConfig
 	{
 		this.map( PerformerProviderModuleMessage.SET_FILTER_SETTINGS, SetFilterSettingsCommand );
 		this.map( PerformerProviderModuleMessage.LOAD_NEXT_PERFORMER, LoadNextPerformerCommand );
+		this.map( PerformerProviderModuleMessage.SET_PERFORMER_SWITCH_LIMITS, SetPerformerSwitchLimitsCommand );
 	}
 }
 

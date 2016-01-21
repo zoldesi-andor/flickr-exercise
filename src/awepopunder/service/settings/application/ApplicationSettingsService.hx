@@ -9,7 +9,7 @@ import hex.service.stateless.http.HTTPServiceConfiguration;
  * ...
  * @author duke
  */
-class ApplicationSettingsService extends HTTPService implements IApplicationSettingsService
+class ApplicationSettingsService extends HTTPService<HTTPServiceConfiguration> implements IApplicationSettingsService
 {
 
 	public function new() 

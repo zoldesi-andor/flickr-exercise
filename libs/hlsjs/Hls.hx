@@ -9,6 +9,10 @@ import js.html.VideoElement;
 extern class Hls
 {
 	static var Events:HlsEvents;
+	
+	static var ErrorTypes:HlsErrorTypes;
+	
+	static var ErrorDetails:HlsErrorDetails;
 
 	static function isSupported():Bool;
 	
@@ -16,7 +20,7 @@ extern class Hls
 	
 	function attachMedia(videoElement:VideoElement):Void;
 	
-	function detachVideo():Void;
+	function detachMedia():Void;
 	
 	function loadSource(url:String):Void;
 	

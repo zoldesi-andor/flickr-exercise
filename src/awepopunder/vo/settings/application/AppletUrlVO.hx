@@ -1,18 +1,15 @@
 package awepopunder.vo.settings.application;
+import com.module.asset.urlprovider.vo.UrlVO;
+import haxe.ds.StringMap;
 
 /**
  * ...
  * @author 
  */
-class AppletUrlVO
+class AppletUrlVO 
 {
-	public var applicationSettings:String = "http://promo.awempire.com/live_feeds/get_settings_base.php";
-	public var performerData:String = "http://promo.awempire.com/live_feeds/get_performer_base.php";
-	public var modelStatus:String = "http://promo.awempire.com/model_status/index.php";
-
-	public function new() 
-	{
-		
-	}
-	
+	public static var urlList:Map<String, UrlVO> = [
+		"applicationSettings" => new UrlVO("http://promo.awempire.com/live_feeds/get_settings_base.php"),
+		"performerData" => new UrlVO("http://promo.awempire.com/live_feeds/get_performer_base.php"),
+		"modelStatus" => new UrlVO("http://promo.awempire.com/model_status/index.php")];
 }

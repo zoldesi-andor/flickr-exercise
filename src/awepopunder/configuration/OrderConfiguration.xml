@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <root>
 	<!-- ORDER -->
-	<order id="bootstrapOrder" type="hex.event.EventProxy">
-		<argument type="null"/>
-		<argument type="null"/>
+	<trigger id="orderList" type="Object">
 		<listen ref="contextMockModule">
 			<event static-ref="awepopunder.module.contextmock.message.ContextModulePublicMessage.READY" strategy="awepopunder.adapter.bootstrap.BootstrapMacro"/>
 		</listen>
-	</order>
-	
-	<order id="switchPerformerOrder" type="hex.event.EventProxy">
-		<argument type="null"/>
-		<argument type="null"/>
-		<listen ref="performerProviderModule">
-			<event static-ref="awepopunder.module.performerprovider.message.PerformerProviderModulePublicMessage.PERFORMER_DATA_UPDATED" strategy="awepopunder.adapter.switchperformer.SwitchPerformerMacro"/>
+
+		<listen ref="hlsService">
+			<event static-ref="com.service.stream.hls.event.HlsServiceEvent.FREEZED" strategy="awepopunder.adapter.stream.check.StartCheckStreamMacro"/>
+			<event static-ref="com.service.stream.hls.event.HlsServiceEvent.UNFREEZED" strategy="awepopunder.adapter.stream.check.StopCheckStreamMacro"/>
+			
+			<event static-ref="com.service.stream.hls.event.HlsServiceEvent.MEDIA_ERR_DECODE" strategy="awepopunder.adapter.switchperformer.SwitchPerformerMacro"/>
+			<event static-ref="com.service.stream.hls.event.HlsServiceEvent.MEDIA_ERR_NETWORK" strategy="awepopunder.adapter.switchperformer.SwitchPerformerMacro"/>
+			<event static-ref="com.service.stream.hls.event.HlsServiceEvent.MEDIA_ERR_ABORTED" strategy="awepopunder.adapter.switchperformer.SwitchPerformerMacro"/>
+			<event static-ref="com.service.stream.hls.event.HlsServiceEvent.MEDIA_ERR_SRC_NOT_SUPPORTED" strategy="awepopunder.adapter.switchperformer.SwitchPerformerMacro"/>
+			<event static-ref="com.service.stream.hls.event.HlsServiceEvent.UNKNOWN_ERROR" strategy="awepopunder.adapter.switchperformer.SwitchPerformerMacro"/>
 		</listen>
-	</order>
+		
+		<listen ref="performerStatusService">
+			<event static-ref="awepopunder.service.performer.performerstatus.message.PerformerStatusServiceMessage.OFFLINE" strategy="awepopunder.adapter.switchperformer.SwitchPerformerMacro"/>
+		</listen>
+	</trigger>
+	
 </root>

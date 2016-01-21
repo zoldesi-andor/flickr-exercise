@@ -1,4 +1,5 @@
 package awepopunder.vo.settings.application;
+import com.module.asset.urlprovider.vo.UrlVO;
 
 /**
  * ...
@@ -6,7 +7,7 @@ package awepopunder.vo.settings.application;
  */
 class InternalApplicationSettingsVO
 {
-	public var appletUrl:AppletUrlVO = new AppletUrlVO();
+	public var appletUrl:Map<String, UrlVO> = AppletUrlVO.urlList;
 	
 	public var chatPath:String = "docler-ws";
 	public var chatResource:String = "js-client";

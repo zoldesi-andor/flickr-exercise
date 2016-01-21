@@ -15,4 +15,12 @@ interface IPerformerProviderModel extends IPerformerProviderModelRO
 	
 	function setSite(value:String):Void;
 	
+	function increaseAutoPerformerSwitchCount():Void;
+	
+	function setAutoPerformerSwitchLimit( value:Int ):Void;
+	
+	function increaseManualPerformerSwitchCount():Void;
+	
+	function setManualPerformerSwitchLimit( value:Int ):Void;
+	
 }

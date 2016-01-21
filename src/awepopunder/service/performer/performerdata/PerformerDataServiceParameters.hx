@@ -1,4 +1,4 @@
-package awepopunder.service.performer;
+package awepopunder.service.performer.performerdata;
 
 import hex.service.stateless.http.HTTPServiceParameters;
 

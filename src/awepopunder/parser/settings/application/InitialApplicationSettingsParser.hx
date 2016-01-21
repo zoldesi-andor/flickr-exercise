@@ -45,6 +45,7 @@ class InitialApplicationSettingsParser implements IParser
 		
 		result.category = data.category;
 		result.performerId = data.performerId;
+		result.forcePerformer = data.forcePerformer;
 		result.templateId = data.templateId;
 		
 		return result;

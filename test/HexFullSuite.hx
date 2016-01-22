@@ -2,6 +2,7 @@ package;
 import com.service.ServiceTestSuite;
 import hex.HexCoreSuite;
 import hex.HexInjectSuite;
+import hex.HexMachinaSuite;
 import hex.HexMVCSuite;
 import hex.state.HexStateSuite;
 
@@ -12,10 +13,10 @@ import hex.state.HexStateSuite;
 class HexFullSuite
 {
 
-	@suite( "HexMVC suite" )
-    public var list : Array<Class<Dynamic>> = [HexMVCSuite, HexCoreSuite, HexInjectSuite, HexStateSuite];
+	@Suite( "HexMVC suite" )
+    public var list : Array<Class<Dynamic>> = [HexMVCSuite, HexCoreSuite, HexInjectSuite, HexMachinaSuite, HexStateSuite];
 	
-	@suite( "Docler suite" )
-    public var list2 : Array<Class<Dynamic>> = [ServiceTestSuite];
+	//@Suite( "Docler suite" )
+    //public var list2 : Array<Class<Dynamic>> = [ServiceTestSuite];
 	
 }

@@ -3,6 +3,7 @@ package awepopunder.adapter.switchperformer;
 import awepopunder.adapter.bootstrap.controller.SetHlsStreamCommand;
 import awepopunder.adapter.switchperformer.controller.ClearChatMessagesCommand;
 import awepopunder.adapter.switchperformer.controller.LoadNextPerformerCommand;
+import awepopunder.adapter.switchperformer.controller.ForcePerformerValidatorCommand;
 import awepopunder.adapter.switchperformer.controller.MaxAutoPerformerSwitchValidatorCommand;
 import awepopunder.adapter.switchperformer.controller.SetOfflineCommand;
 import awepopunder.adapter.switchperformer.controller.SetOnlineCommand;
@@ -38,6 +39,7 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 	
 	override function _prepare():Void 
 	{
+		this.add(ForcePerformerValidatorCommand).withFailHandlers(new AsyncHandler(this, this._onForcePerformerValidatonFailed));
 		//TODO: add manual switch support
 		this.add(MaxAutoPerformerSwitchValidatorCommand).withFailHandlers(new AsyncHandler(this, this._onMaxSwitchPerformerValidationFailed));
 		
@@ -60,8 +62,19 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 		}
 	}
 	
+	private function _onForcePerformerValidatonFailed( command:AsyncCommand ):Void
+	{
+		this.setOffline();
+	}
+	
 	private function _onMaxSwitchPerformerValidationFailed( command:AsyncCommand ):Void
 	{
+		this.setOffline();
+	}
+	
+	private function setOffline():Void
+	{
+		trace("setOffline");
 		this.add(StopHlsStreamCommand);
 		this.add(SetOfflineCommand);
 	}

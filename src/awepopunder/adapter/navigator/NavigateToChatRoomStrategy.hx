@@ -7,7 +7,7 @@ import awepopunder.module.navigator.constant.TargetPage;
  * @author Chris
  */
 @:rtti
-class StreamClickStrategy extends AdapterStrategy
+class NavigateToChatRoomStrategy extends AdapterStrategy
 {
 
 	public function new(target:Dynamic, method:Dynamic) 

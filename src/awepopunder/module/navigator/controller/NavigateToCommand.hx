@@ -1,21 +1,26 @@
 package awepopunder.module.navigator.controller;
 import awepopunder.module.navigator.model.INavigatorModel;
 import awepopunder.module.navigator.constant.TargetPage;
+import awepopunder.module.navigator.parser.JumpSiteParameterParser;
 import awepopunder.module.navigator.request.NavigateToRequest;
+import awepopunder.module.navigator.vo.JumpSiteParametersVO;
 import haxe.remoting.FlashJsConnection;
 import hex.control.Request;
 import hex.control.command.BasicCommand;
+import hex.core.IAnnotationParsable;
 
 /**
  * ...
  * @author Chris
  */
 @:rtti
-class NavigateToCommand  extends BasicCommand
+class NavigateToCommand  extends BasicCommand implements IAnnotationParsable
 {
-
 	@inject
 	public var navigatorModel:INavigatorModel;
+	
+	@url("jumpSite")
+	public var jumpSiteUrl:String;
 
 	override public function execute(?request:Request):Void 
 	{
@@ -36,30 +41,16 @@ class NavigateToCommand  extends BasicCommand
 			pageName = request.pageName;
 		}
 		
-		var params:Map<String,String> = [
-			"pageName" => pageName,
-			"performerName" => navigatorModel.getCurrentPerformerId(),
-			"superCategoryName" => "girls",
-			
-			//NavigatorSettings
-			"siteId" => navigatorModel.getNavigatorSettings().site,
-			"cobrandId" => navigatorModel.getNavigatorSettings().cobrandId,
-			"categoryName" => navigatorModel.getNavigatorSettings().category,
-			"params[psid]" => navigatorModel.getNavigatorSettings().psId,
-			"params[pstool]" => navigatorModel.getNavigatorSettings().psTool,
-			"params[psprogram]" => navigatorModel.getNavigatorSettings().psProgram,
-			"params[campaign_id]" => navigatorModel.getNavigatorSettings().campaingId,
-			"subAffId" => navigatorModel.getNavigatorSettings().subAffId,
-		];
+		var jumpSiteParameters:JumpSiteParametersVO = new JumpSiteParametersVO();
+		jumpSiteParameters.pageName = pageName;
+		jumpSiteParameters.performerId =  navigatorModel.getCurrentPerformerId();
+		jumpSiteParameters.superCategory = "girls";
+		jumpSiteParameters.navigatorSettings = navigatorModel.getNavigatorSettings();
 		
-		var validParams:Array<String> = [];
-		for (key in params.keys()) {
-			if (params[key] != null) {
-				validParams.push( key + "=" + params[key] );
-			}
-		}
+		var jumpSiteParameterParser:JumpSiteParameterParser = new JumpSiteParameterParser();
+		var parameters:String = jumpSiteParameterParser.parseSettings( jumpSiteParameters );
 		
-		var url:String = "http://jmp.awempire.com/?" + validParams.join('&');
+		var url:String = this.jumpSiteUrl + "?" + parameters;
 		
 		trace("Navigate To:", url);
 		#if js

@@ -30,7 +30,7 @@ class InitNavigatorSettingsCommand extends BasicCommand
 		navigatorSettings.psTool = this.initialApplicationSettings.promoInfoSettings.psTool;
 		navigatorSettings.psProgram = this.initialApplicationSettings.promoInfoSettings.psProgram;
 		navigatorSettings.campaingId = this.initialApplicationSettings.promoInfoSettings.campaingId;
-		navigatorSettings.subAffId = this.initialApplicationSettings.promoInfoSettings.subAffId;
+		navigatorSettings.subAffiliateId = this.initialApplicationSettings.promoInfoSettings.subAffiliateId;
 		
 		this.navigatorModule.setNavigatorSettings(navigatorSettings);
 	}

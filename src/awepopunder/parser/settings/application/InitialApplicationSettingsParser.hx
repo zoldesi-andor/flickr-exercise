@@ -72,7 +72,7 @@ class InitialApplicationSettingsParser implements IParser
 		result.psTool = data.psTool;
 		result.psProgram = data.psProgram;
 		result.campaingId = data.campaingId;
-		result.subAffId = data.subAffId;
+		result.subAffiliateId = data.subAffiliateId;
 		
 		return result;
 	}

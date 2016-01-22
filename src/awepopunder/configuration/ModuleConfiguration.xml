@@ -28,7 +28,7 @@
 	
 	<module id="navigatorModule" type="awepopunder.module.navigator.NavigatorModule" map-type="awepopunder.module.navigator.INavigatorModule">
 		<listen ref="hlsPlayerModule">
-			<event static-ref="com.module.stream.player.hlsplayer.message.HlsPlayerModulePublicMessage.ON_STREAM_CLICK" method="navigateTo" strategy="awepopunder.adapter.navigator.StreamClickStrategy"/>
+			<event static-ref="com.module.stream.player.hlsplayer.message.HlsPlayerModulePublicMessage.ON_STREAM_CLICK" method="navigateTo" strategy="awepopunder.adapter.navigator.NavigateToChatRoomStrategy"/>
 		</listen>
 	</module>	
 	

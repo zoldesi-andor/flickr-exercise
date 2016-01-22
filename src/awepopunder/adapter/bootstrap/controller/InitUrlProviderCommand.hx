@@ -12,10 +12,10 @@ import hex.control.Request;
 @:rtti
 class InitUrlProviderCommand extends BasicCommand
 {
-	@inject("name=urlProviderModule")
+	@Inject("name=urlProviderModule")
 	public var urlProviderModule:IUrlProviderModule;
 	
-	@inject("name=internalApplicationSettings")
+	@Inject("name=internalApplicationSettings")
 	public var internalApplicationSettings:InternalApplicationSettingsVO;
 
 	override public function execute(?request:Request):Void 

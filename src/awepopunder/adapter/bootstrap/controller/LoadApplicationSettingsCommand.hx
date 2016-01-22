@@ -17,10 +17,10 @@ import hex.service.stateless.http.IHTTPServiceListener;
 @:rtti
 class LoadApplicationSettingsCommand extends AsyncCommand implements IHTTPServiceListener<HTTPServiceConfiguration> implements IAnnotationParsable
 {
-	@inject("name=applicationSettingsService")
+	@Inject("name=applicationSettingsService")
 	public var applicationSettingsService:IApplicationSettingsService;
 	
-	@inject("name=initialApplicationSettings")
+	@Inject("name=initialApplicationSettings")
 	public var initialApplicationSettings:InitialApplicationSettingsVO;
 	
 	@url("applicationSettings")

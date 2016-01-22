@@ -19,10 +19,10 @@ import hex.service.stateless.http.IHTTPServiceListener;
 @:rtti
 class LoadNextPerformerCommand extends AsyncCommand implements IHTTPServiceListener<HTTPServiceConfiguration>
 {
-	@inject
+	@Inject
 	public var performerDataService:IPerformerDataService;
 	
-	@inject
+	@Inject
 	public var performerProviderModel:IPerformerProviderModel;
 	
 

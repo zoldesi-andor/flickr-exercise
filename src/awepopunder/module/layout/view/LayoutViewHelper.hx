@@ -13,7 +13,7 @@ class LayoutViewHelper extends ViewHelper implements ILayoutModelListener
 {
 	var _layoutView:ILayoutView;
 	
-	@inject
+	@Inject
 	public var layoutModel:ILayoutModelRO;
 
 	public function new() 

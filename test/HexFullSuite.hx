@@ -16,7 +16,7 @@ class HexFullSuite
 	@Suite( "HexMVC suite" )
     public var list : Array<Class<Dynamic>> = [HexMVCSuite, HexCoreSuite, HexInjectSuite, HexMachinaSuite, HexStateSuite];
 	
-	//@Suite( "Docler suite" )
-    //public var list2 : Array<Class<Dynamic>> = [ServiceTestSuite];
+	@Suite( "Docler suite" )
+    public var list2 : Array<Class<Dynamic>> = [ServiceTestSuite];
 	
 }

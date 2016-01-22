@@ -12,10 +12,10 @@ import hex.control.Request;
 @:rtti
 class SetPerformerProviderSettingsCommand extends BasicCommand
 {
-	@inject("name=performerProviderModule")
+	@Inject("name=performerProviderModule")
 	public var performerProviderModule:IPerformerProviderModule;
 	
-	@inject
+	@Inject
 	public var applicationSettings:ApplicationSettingsVO;
 
 	override public function execute(?request:Request):Void 

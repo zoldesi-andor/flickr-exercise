@@ -11,7 +11,7 @@ import hex.control.Request;
 @:rtti
 class SetOfflineCommand extends BasicCommand
 {
-	@inject("name=layoutModule")
+	@Inject("name=layoutModule")
 	public var layoutModule:ILayoutModule;
 
 	override public function execute(?request:Request):Void 

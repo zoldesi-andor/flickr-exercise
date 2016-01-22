@@ -12,7 +12,7 @@ import hex.control.Request;
 @:rtti
 class SetFilterSettingsCommand extends BasicCommand
 {
-	@inject
+	@Inject
 	public var performerProviderModel:IPerformerProviderModel;
 
 	override public function execute(?request:Request):Void 

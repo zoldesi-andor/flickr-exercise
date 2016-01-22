@@ -11,7 +11,7 @@ import hex.control.Request;
 @:rtti
 class SetOfflineStateCommand extends BasicCommand
 {
-	@inject
+	@Inject
 	public var model:ILayoutModel;
 
 	override public function execute(?request:Request):Void 

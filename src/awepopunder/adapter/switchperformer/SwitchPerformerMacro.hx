@@ -26,7 +26,7 @@ import hex.event.MacroAdapterStrategy;
 @:rtti
 class SwitchPerformerMacro extends MacroAdapterStrategy
 {
-	@inject("name=performerProviderModule")
+	@Inject("name=performerProviderModule")
 	public var performerProviderModule:IPerformerProviderModule;
 	
 	private var _previourPerformerData:PerformerDataVO;

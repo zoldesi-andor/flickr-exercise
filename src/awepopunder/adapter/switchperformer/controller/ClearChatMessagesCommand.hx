@@ -11,7 +11,7 @@ import hex.control.Request;
 @:rtti
 class ClearChatMessagesCommand extends BasicCommand
 {
-	@inject("name=chatBoxModule")
+	@Inject("name=chatBoxModule")
 	public var chatBoxModule:IChatBoxModule;
 	
 	override public function execute(?request:Request):Void 

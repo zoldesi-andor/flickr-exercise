@@ -13,7 +13,7 @@ import hex.control.Request;
 @:rtti
 class LoadNextPerformerCommand extends AsyncCommand
 {
-	@inject("name=performerProviderModule")
+	@Inject("name=performerProviderModule")
 	public var performerProviderModule:IPerformerProviderModule;
 
 	override public function execute(?request:Request):Void 

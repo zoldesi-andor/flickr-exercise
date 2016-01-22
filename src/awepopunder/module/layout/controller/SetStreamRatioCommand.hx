@@ -12,7 +12,7 @@ import hex.control.Request;
 @:rtti
 class SetStreamRatioCommand extends BasicCommand
 {
-	@inject
+	@Inject
 	public var layoutModel:ILayoutModel;
 
 	override public function execute(?request:Request):Void 

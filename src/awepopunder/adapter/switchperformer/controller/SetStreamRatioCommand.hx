@@ -12,10 +12,10 @@ import hex.control.Request;
 @:rtti
 class SetStreamRatioCommand extends BasicCommand
 {
-	@inject("name=layoutModule")
+	@Inject("name=layoutModule")
 	public var layoutModule:ILayoutModule;
 	
-	@inject
+	@Inject
 	public var performerData:PerformerDataVO;
 
 	override public function execute(?request:Request):Void 

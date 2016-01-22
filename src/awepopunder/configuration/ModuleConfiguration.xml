@@ -30,8 +30,6 @@
 		<argument ref="layoutView"/>
 	</module>
 	
-	<module id="contextMockModule" type="awepopunder.module.contextmock.ContextMockModule"/>
-	
 	
 	<!-- OTHER -->
 	<bean id="chatArtifactList" type="com.vo.chat.artifact.ChatArtifactVO" />

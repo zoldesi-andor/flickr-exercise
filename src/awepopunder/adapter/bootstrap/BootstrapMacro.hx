@@ -9,26 +9,27 @@ import awepopunder.adapter.switchperformer.SwitchPerformerMacro;
 import awepopunder.vo.settings.application.ApplicationSettingsVO;
 import hex.control.async.AsyncCommand;
 import hex.control.async.AsyncHandler;
+import hex.control.macro.Macro;
 import hex.control.payload.ExecutionPayload;
-import hex.event.MacroAdapterStrategy;
 
 /**
  * ...
  * @author 
  */
 @:rtti
-class BootstrapMacro extends MacroAdapterStrategy
+class BootstrapMacro extends Macro
 {
 	
 	private var _settings:ApplicationSettingsVO;
 
 	public function new() 
 	{
-		super(this, this.onAdapt);
+		super();
 	}
 	
 	override function _prepare():Void 
 	{
+		trace("TADAAA");
 		this.add(InitUrlProviderCommand);
 		this.add(InitPerformerProviderSettingsCommand);
 		this.add(LoadApplicationSettingsCommand).withCompleteHandlers( new AsyncHandler(this, this.onApplicationSettingsLoaded ) );
@@ -43,11 +44,6 @@ class BootstrapMacro extends MacroAdapterStrategy
 		this.add(ConnectChatWebSocketCommand).withPayloads([settingsPayload]);
 		this.add(SetPerformerProviderSettingsCommand).withPayloads([settingsPayload]);
 		this.add(SwitchPerformerMacro);
-		
-	}
-	
-	public function onAdapt( ) : Void
-	{
 		
 	}
 	

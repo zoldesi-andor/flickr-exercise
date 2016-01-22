@@ -3,7 +3,7 @@ package awepopunder.service.performer.performerdata;
 import awepopunder.service.performer.performerdata.IPerformerDataService;
 import awepopunder.service.performer.performerdata.PerformerDataParser;
 import awepopunder.vo.performer.PerformerDataVO;
-import hex.core.IMetadataParsable;
+import hex.core.IAnnotationParsable;
 import hex.service.ServiceResultVO;
 import hex.service.stateless.http.HTTPService;
 import hex.service.stateless.http.HTTPServiceConfiguration;
@@ -13,7 +13,7 @@ import hex.service.stateless.http.HTTPServiceConfiguration;
  * @author duke
  */
 @:rtti
-class PerformerDataService extends HTTPService<HTTPServiceConfiguration> implements IPerformerDataService implements IMetadataParsable
+class PerformerDataService extends HTTPService<HTTPServiceConfiguration> implements IPerformerDataService implements IAnnotationParsable
 {
 	
 	@url("performerData")

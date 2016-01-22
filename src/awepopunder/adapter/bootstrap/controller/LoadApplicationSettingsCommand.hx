@@ -5,7 +5,7 @@ import awepopunder.service.settings.application.IApplicationSettingsService;
 import awepopunder.vo.settings.application.InitialApplicationSettingsVO;
 import hex.control.async.AsyncCommand;
 import hex.control.Request;
-import hex.core.IMetadataParsable;
+import hex.core.IAnnotationParsable;
 import hex.service.stateless.http.HTTPServiceConfiguration;
 import hex.service.stateless.http.IHTTPService;
 import hex.service.stateless.http.IHTTPServiceListener;
@@ -15,7 +15,7 @@ import hex.service.stateless.http.IHTTPServiceListener;
  * @author duke
  */
 @:rtti
-class LoadApplicationSettingsCommand extends AsyncCommand implements IHTTPServiceListener<HTTPServiceConfiguration> implements IMetadataParsable
+class LoadApplicationSettingsCommand extends AsyncCommand implements IHTTPServiceListener<HTTPServiceConfiguration> implements IAnnotationParsable
 {
 	@inject("name=applicationSettingsService")
 	public var applicationSettingsService:IApplicationSettingsService;

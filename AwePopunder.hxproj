@@ -35,6 +35,9 @@
     <class path="hexMachina\src" />
     <class path="hexMachina\test" />
     <class path="test" />
+    <class path="C:\Program Files (x86)\haxe\lib\mconsole\1,6,0" />
+    <class path="libs\hamcrest\src" />
+    <class path="libs\mockatoo\src" />
   </classpaths>
   <!-- Build options -->
   <build>
@@ -55,7 +58,6 @@
     <compile path="..\..\..\\TestMainTmp.hx" />
     <compile path="AwePopunder.hxproj\TestMainTmp.hx" />
     <compile path="src\Main.hx" />
-    <compile path="src\TestMainTmp.hx" />
     <compile path="src\TestMainTmp.hx" />
     <compile path="src\awepopunder\AwePopunder.hx" />
   </compileTargets>

@@ -9,6 +9,7 @@ import awepopunder.adapter.switchperformer.controller.SetOfflineCommand;
 import awepopunder.adapter.switchperformer.controller.SetOnlineCommand;
 import awepopunder.adapter.switchperformer.controller.PlayHlsStreamCommand;
 import awepopunder.adapter.switchperformer.controller.SetStreamRatioCommand;
+import awepopunder.adapter.switchperformer.controller.SetPerformerIdCommand;
 import awepopunder.adapter.switchperformer.controller.StopHlsStreamCommand;
 import awepopunder.adapter.switchperformer.controller.SubscribeChatRoomCommand;
 import awepopunder.adapter.switchperformer.controller.UnsubscripbeChatRoomCommand;
@@ -91,9 +92,12 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 			this.add(UnsubscripbeChatRoomCommand).withPayloads([new ExecutionPayload(this._previourPerformerData, PerformerDataVO)]);
 		}
 		
+		this.add(SetPerformerIdCommand).withPayloads([performerDataPayload]);
 		this.add(SetHlsStreamCommand).withPayloads([performerDataPayload]);
 		this.add(PlayHlsStreamCommand);
 		this.add(SetStreamRatioCommand).withPayloads([performerDataPayload]);
+		
+		//TODO: don't care if we cannot subscribe to a room, ingore it and go ahead with the other thigns
 		this.add(ClearChatMessagesCommand);
 		this.add(SubscribeChatRoomCommand).withPayloads([performerDataPayload]);
 		this.add(SetOnlineCommand);

@@ -1,5 +1,4 @@
 package awepopunder.module.performerprovider.controller;
-
 import awepopunder.module.performerprovider.model.IPerformerProviderModel;
 import awepopunder.module.performerprovider.request.SetFilterSettingsRequest;
 import hex.control.command.BasicCommand;

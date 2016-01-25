@@ -11,10 +11,10 @@ import hex.control.command.BasicCommand;
 @:rtti
 class SetPerformerIdCommand extends BasicCommand
 {
-	@inject("name=navigatorModule")
+	@Inject("name=navigatorModule")
 	public var navigator:INavigatorModule;
 	
-	@inject
+	@Inject
 	public var performerData:PerformerDataVO;
 
 	override public function execute(?request:Request):Void 

@@ -16,7 +16,7 @@ import hex.core.IAnnotationParsable;
 @:rtti
 class NavigateToCommand  extends BasicCommand implements IAnnotationParsable
 {
-	@inject
+	@Inject
 	public var navigatorModel:INavigatorModel;
 	
 	@url("jumpSite")

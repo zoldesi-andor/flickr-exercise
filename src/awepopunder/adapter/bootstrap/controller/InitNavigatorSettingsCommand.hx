@@ -13,10 +13,10 @@ import hex.control.Request;
 class InitNavigatorSettingsCommand extends BasicCommand
 {
 
-	@inject("name=navigatorModule")
+	@Inject("name=navigatorModule")
 	public var navigatorModule:INavigatorModule;
 	
-	@inject("name=initialApplicationSettings")
+	@Inject("name=initialApplicationSettings")
 	public var initialApplicationSettings:InitialApplicationSettingsVO;
 
 	override public function execute(?request:Request):Void 

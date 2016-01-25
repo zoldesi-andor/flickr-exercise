@@ -11,7 +11,7 @@ import hex.control.command.BasicCommand;
 @:rtti
 class SetCurrentPerformerCommand extends BasicCommand
 {
-	@inject
+	@Inject
 	public var navigatorModel:INavigatorModel;
 
 	override public function execute(?request:Request):Void 

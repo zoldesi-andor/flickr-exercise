@@ -14,4 +14,15 @@ class TargetPage
 	public static inline var LOGIN:String = "login";
 	public static inline var POLICY:String = "policy";
 	public static inline var TERMS:String = "terms";		
+	
+	public static var validPageNames:Array<String> = [
+			HOME,
+			CHAT_ROOM,
+			RANDOM_CHAT,
+			LISTPAGE,
+			SIGNUP,
+			LOGIN,
+			POLICY,
+			TERMS
+		];
 }

@@ -26,26 +26,17 @@ class NavigateToCommand  extends BasicCommand implements IAnnotationParsable
 	{
 		var request:NavigateToRequest = cast request;
 		var pageName:String = TargetPage.HOME;
-		var validPageNames:Array<String> = [
-			TargetPage.CHAT_ROOM,
-			TargetPage.HOME,
-			TargetPage.LISTPAGE,
-			TargetPage.LOGIN,
-			TargetPage.POLICY,
-			TargetPage.RANDOM_CHAT,
-			TargetPage.SIGNUP,
-			TargetPage.TERMS
-		];
 		
-		if ( validPageNames.indexOf(request.pageName) != -1) {
+		if ( TargetPage.validPageNames.indexOf(request.pageName) != -1) {
 			pageName = request.pageName;
 		}
 		
 		var jumpSiteParameters:JumpSiteParametersVO = new JumpSiteParametersVO();
 		jumpSiteParameters.pageName = pageName;
-		jumpSiteParameters.performerId =  navigatorModel.getCurrentPerformerId();
-		jumpSiteParameters.superCategory = "girls";
-		jumpSiteParameters.navigatorSettings = navigatorModel.getNavigatorSettings();
+		jumpSiteParameters.performerId =  this.navigatorModel.getCurrentPerformerId();
+		//TODO: Add superCategory handling.
+		//jumpSiteParameters.superCategory = "girls";
+		jumpSiteParameters.navigatorSettings = this.navigatorModel.getNavigatorSettings();
 		
 		var jumpSiteParameterParser:JumpSiteParameterParser = new JumpSiteParameterParser();
 		var parameters:String = jumpSiteParameterParser.parseSettings( jumpSiteParameters );

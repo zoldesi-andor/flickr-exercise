@@ -11,7 +11,7 @@ import hex.control.Request;
 @:rtti
 class StopHlsStreamCommand extends BasicCommand
 {
-	@inject("name=hlsPlayerModule")
+	@Inject("name=hlsPlayerModule")
 	public var hlsPlayer:IHlsPlayerModule;
 
 	override public function execute(?request:Request):Void 

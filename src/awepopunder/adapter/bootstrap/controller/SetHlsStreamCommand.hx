@@ -13,10 +13,10 @@ import hex.control.Request;
 @:rtti
 class SetHlsStreamCommand extends BasicCommand
 {
-	@inject("name=hlsPlayerModule")
+	@Inject("name=hlsPlayerModule")
 	public var hlsPlayer:IHlsPlayerModule;
 	
-	@inject
+	@Inject
 	public var performerData:PerformerDataVO;
 
 	override public function execute(?request:Request):Void 

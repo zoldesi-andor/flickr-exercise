@@ -22,7 +22,6 @@ class PerformerDataService extends HTTPService<HTTPServiceConfiguration> impleme
 	public function new() 
 	{
 		super();
-		
 	}
 	
 	@postConstruct

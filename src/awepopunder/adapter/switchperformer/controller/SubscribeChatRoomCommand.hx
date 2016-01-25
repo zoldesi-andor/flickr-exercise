@@ -14,13 +14,13 @@ import hex.control.Request;
 @:rtti
 class SubscribeChatRoomCommand extends AsyncCommand
 {
-	@inject("name=chatWebSocketService")
+	@Inject("name=chatWebSocketService")
 	public var webSocketService:IChatWebSocketService;
 	
-	@inject("name=initialApplicationSettings")
+	@Inject("name=initialApplicationSettings")
 	public var initialApplicationSettings:InitialApplicationSettingsVO;
 	
-	@inject
+	@Inject
 	public var performerData:PerformerDataVO;
 
 	override public function execute( ?request : Request ):Void 

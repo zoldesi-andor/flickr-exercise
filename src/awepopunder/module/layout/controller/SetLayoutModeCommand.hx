@@ -12,7 +12,7 @@ import hex.control.Request;
 @:rtti
 class SetLayoutModeCommand extends BasicCommand
 {
-	@inject
+	@Inject
 	public var model:ILayoutModel;
 	
 	override public function execute(?request:Request):Void 

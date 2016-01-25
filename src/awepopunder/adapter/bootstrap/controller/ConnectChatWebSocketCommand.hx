@@ -16,13 +16,13 @@ import hex.event.BasicEvent;
 @:rtti
 class ConnectChatWebSocketCommand extends AsyncCommand
 {
-	@inject("name=chatWebSocketService")
+	@Inject("name=chatWebSocketService")
 	public var chatWebSocketService:IChatWebSocketService;
 	
-	@inject("name=internalApplicationSettings")
+	@Inject("name=internalApplicationSettings")
 	public var internalApplicationSettings:InternalApplicationSettingsVO;
 	
-	@inject
+	@Inject
 	public var settings:ApplicationSettingsVO;
 
 	override public function execute( ?request : Request ):Void

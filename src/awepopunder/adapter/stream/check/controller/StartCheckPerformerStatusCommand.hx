@@ -12,10 +12,10 @@ import hex.control.Request;
 @:rtti
 class StartCheckPerformerStatusCommand extends BasicCommand
 {
-	@inject("name=performerStatusService")
+	@Inject("name=performerStatusService")
 	public var performerStatusService:IPerformerStatusService;
 	
-	@inject("name=performerProviderModule")
+	@Inject("name=performerProviderModule")
 	public var performerProviderModule:IPerformerProviderModule;
 
 	override public function execute(?request:Request):Void 

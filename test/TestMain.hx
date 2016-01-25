@@ -1,6 +1,7 @@
 package;
 
 //import hex.config.stateful.ServiceLocator;
+import hex.inject.InjectorTest;
 import hex.unittest.event.ITestRunnerListener;
 import hex.unittest.notifier.BrowserUnitTestNotifier;
 import hex.unittest.notifier.WebSocketNotifier;
@@ -17,8 +18,8 @@ class TestMain
     static public function main() : Void
     {
 		emu = new ExMachinaUnitCore();
-		//emu.addTest( HexFullSuite );
 		emu.addTest( HexFullSuite );
+		//emu.addTestMethod( InjectorTest, 'one_named_parameter_constructor_injection_fulfilled' );
 		
 		#if js
 			js.Browser.document.getElementById("console").style.display = "block";

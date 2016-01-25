@@ -11,7 +11,7 @@ import hex.control.Request;
 @:rtti
 class SetPerformerSwitchLimitsCommand extends BasicCommand
 {
-	@inject
+	@Inject
 	public var performerProviderModel:IPerformerProviderModel;
 
 	override public function execute(?request:Request):Void 

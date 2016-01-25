@@ -14,10 +14,10 @@ import hex.control.Request;
 class UnsubscripbeChatRoomCommand extends AsyncCommand
 {
 
-	@inject("name=chatWebSocketService")
+	@Inject("name=chatWebSocketService")
 	public var webSocketService:IChatWebSocketService;
 	
-	@inject
+	@Inject
 	public var performerData:PerformerDataVO;
 
 	override public function execute( ?request : Request ):Void 

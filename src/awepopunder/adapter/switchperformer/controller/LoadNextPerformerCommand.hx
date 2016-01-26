@@ -22,7 +22,7 @@ class LoadNextPerformerCommand extends AsyncCommand
 		this.performerProviderModule.addHandler( PerformerProviderModulePublicMessage.PERFORMER_DATA_UPDATED, this, this.onLoaded );
 	}
 	
-	override public function getPayload():Array<Dynamic> 
+	override public function getResult():Array<Dynamic> 
 	{
 		return [this.performerProviderModule.getActivePerformer()];
 	}

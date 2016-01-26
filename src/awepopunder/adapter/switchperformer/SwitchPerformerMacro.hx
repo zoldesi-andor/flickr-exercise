@@ -82,9 +82,9 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 	
 	private function _onPerformerDataLoaded( command:AsyncCommand ):Void
 	{
-		trace("SwitchPerformerMacro._onPerformerDataLoaded", command.getPayload()[0]);
+		trace("SwitchPerformerMacro._onPerformerDataLoaded", command.getResult()[0]);
 		
-		var performerDataPayload:ExecutionPayload = new ExecutionPayload(command.getPayload()[0], PerformerDataVO);
+		var performerDataPayload:ExecutionPayload = new ExecutionPayload(command.getResult()[0], PerformerDataVO);
 		
 		if ( this._previourPerformerData != null && this._previourPerformerData.performerId != null )
 		{

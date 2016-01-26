@@ -39,7 +39,7 @@ class BootstrapMacro extends Macro
 	
 	function onApplicationSettingsLoaded( command:AsyncCommand ):Void
 	{
-		this._settings = command.getPayload()[0];
+		this._settings = command.getResult()[0];
 		
 		var settingsPayload:ExecutionPayload = new ExecutionPayload(this._settings, ApplicationSettingsVO);
 		

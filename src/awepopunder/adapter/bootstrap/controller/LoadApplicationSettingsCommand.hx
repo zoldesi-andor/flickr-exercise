@@ -49,7 +49,7 @@ class LoadApplicationSettingsCommand extends AsyncCommand implements IHTTPServic
 		}
 	}
 	
-	override public function getPayload():Array<Dynamic> 
+	override public function getResult():Array<Dynamic> 
 	{
 		return [this.applicationSettingsService.getApplicationSettings().data];
 	}

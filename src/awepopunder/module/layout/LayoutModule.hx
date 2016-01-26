@@ -34,7 +34,7 @@ class LayoutModule extends Module implements ILayoutModule
 		this.setLayoutView( layoutView );
 	}
 	
-	override private function _getRuntimeDependencies() : IRuntimeDependencies
+	override function _getRuntimeDependencies() : IRuntimeDependencies
 	{
 		var rd : RuntimeDependencies = new RuntimeDependencies();
 		return rd;
@@ -60,7 +60,7 @@ class LayoutModule extends Module implements ILayoutModule
 		this._dispatchPrivateMessage( LayoutModuleMessage.LAYOUT_MODE_CHANGED, [new LayoutModeRequest(mode)] );
 	}
 	
-	private function setLayoutView( layoutView:ILayoutView ):Void
+	function setLayoutView( layoutView:ILayoutView ):Void
 	{
 		this.buildViewHelper( LayoutViewHelper, layoutView );
 	}

@@ -9,9 +9,9 @@ import awepopunder.module.layout.constant.OnlineState;
 @:rtti
 class LayoutModel implements ILayoutModel
 {
-	private var _onlineState:OnlineState = OnlineState.Loading;
-	private var _layoutMode:LayoutMode = LayoutMode.InFrame;
-	private var _streamRatio:Float;
+	var _onlineState:OnlineState = OnlineState.Loading;
+	var _layoutMode:LayoutMode = LayoutMode.InFrame;
+	var _streamRatio:Float;
 	
 	public var dispatcher:LayoutModelDispatcher;
 

@@ -17,7 +17,7 @@ class ChatRoomMessageStrategy extends AdapterStrategy
 		
 	}
 	
-	/*private function onAdapt( roomName:String, sender:String, message:String ):ChatMessageVO
+	/*function onAdapt( roomName:String, sender:String, message:String ):ChatMessageVO
 	{
 		var chatMessageVO:ChatMessageVO = new ChatMessageVO();
 		chatMessageVO.message = message;
@@ -25,7 +25,7 @@ class ChatRoomMessageStrategy extends AdapterStrategy
 		return chatMessageVO;
 	}*/
 	
-	private function onAdapt( rest:Array<Dynamic> ):ChatMessageVO
+	function onAdapt( rest:Array<Dynamic> ):ChatMessageVO
 	{
 		//TODO: really do i have to accept an array instead of concrete params?k
 		

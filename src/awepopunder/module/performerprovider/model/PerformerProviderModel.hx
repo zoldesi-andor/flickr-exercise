@@ -9,13 +9,13 @@ import awepopunder.vo.settings.application.FilterSettingsVO;
 @:rtti
 class PerformerProviderModel implements IPerformerProviderModel
 {
-	private var _performerData:PerformerDataVO;
-	private var _filterSettings:FilterSettingsVO;
-	private var _site:String;
-	private var _autoPerformerSwitchCount:UInt = 0;
-	private var _autoPerformerSwitchLimit:Int = -1;
-	private var _manualPerformerSwitchCount:UInt = 0;
-	private var _manualPerformerSwitchLimit:Int = -1;
+	var _performerData:PerformerDataVO;
+	var _filterSettings:FilterSettingsVO;
+	var _site:String;
+	var _autoPerformerSwitchCount:UInt = 0;
+	var _autoPerformerSwitchLimit:Int = -1;
+	var _manualPerformerSwitchCount:UInt = 0;
+	var _manualPerformerSwitchLimit:Int = -1;
 
 	public function new() 
 	{

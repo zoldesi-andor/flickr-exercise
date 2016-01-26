@@ -16,8 +16,8 @@ import protohx.Protohx;
 import haxe.io.BytesOutput;
 
 class WritingBuffer {
-    private var slices:Array<PT_UInt>;
-    private var buf:BytesOutput;
+    var slices:Array<PT_UInt>;
+    var buf:BytesOutput;
     public var position(default, null):Int;
 
     public function new() {

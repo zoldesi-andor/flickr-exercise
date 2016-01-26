@@ -33,13 +33,13 @@ wait for focus egyelore nem kell
 class AwePopunder
 {
 	
-	private static var self:AwePopunder;
+	static var self:AwePopunder;
 	
-	private var _applicationAssembler:ApplicationAssembler;
-	private var _applicationContext:ApplicationContext;
-	private var _applicationXMLParser:ApplicationXMLParser;
+	var _applicationAssembler:ApplicationAssembler;
+	var _applicationContext:ApplicationContext;
+	var _applicationXMLParser:ApplicationXMLParser;
 	
-	private var _injector:IBasicInjector;
+	var _injector:IBasicInjector;
 
 	static public function main() : Void
 	{
@@ -71,7 +71,7 @@ class AwePopunder
 		
 	}
 	
-	private function _build( xml : Xml ) : Void
+	function _build( xml : Xml ) : Void
 	{
 		this._applicationXMLParser = new ApplicationXMLParser();
 		this._applicationXMLParser.parse( this._applicationAssembler, xml );

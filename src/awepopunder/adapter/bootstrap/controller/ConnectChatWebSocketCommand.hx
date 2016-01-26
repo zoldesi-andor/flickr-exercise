@@ -41,12 +41,12 @@ class ConnectChatWebSocketCommand extends AsyncCommand
 		this.chatWebSocketService.connect();
 	}
 	
-	private function _onWebSocketServiceConnected( e:BasicEvent ):Void
+	function _onWebSocketServiceConnected( e:BasicEvent ):Void
 	{
 		this._handleComplete();
 	}
 	
-	private function _onWebSocketServiceFailed( e:BasicEvent ):Void
+	function _onWebSocketServiceFailed( e:BasicEvent ):Void
 	{
 		this._handleFail();
 	}

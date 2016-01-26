@@ -26,7 +26,7 @@ import hex.module.Module;
  */
 class PerformerProviderModule extends Module implements IPerformerProviderModule
 {
-	private var _performerProviderModel:IPerformerProviderModelRO;
+	var _performerProviderModel:IPerformerProviderModelRO;
 
 	public function new(serviceConfig:IStatefulConfig) 
 	{
@@ -68,7 +68,7 @@ class PerformerProviderModule extends Module implements IPerformerProviderModule
 		return this._performerProviderModel.isManualPerformerSwitchLimitReached();
 	}
 	
-	override private function _getRuntimeDependencies() : IRuntimeDependencies
+	override function _getRuntimeDependencies() : IRuntimeDependencies
 	{
 		var rd : RuntimeDependencies = new RuntimeDependencies();
 		rd.addServiceDependencies([IPerformerDataService]);

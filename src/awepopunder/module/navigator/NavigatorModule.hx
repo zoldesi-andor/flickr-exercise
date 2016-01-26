@@ -22,7 +22,7 @@ import hex.module.Module;
  */
 class NavigatorModule extends Module implements INavigatorModule
 {
-	private var _navigatorModel:INavigatorModelRO;
+	var _navigatorModel:INavigatorModelRO;
 	
 	public function new() 
 	{
@@ -48,7 +48,7 @@ class NavigatorModule extends Module implements INavigatorModule
 		this._dispatchPrivateMessage( NavigatorModuleMessage.NAVIGATE_TO, [new NavigateToRequest( pageName )] );
 	}
 	
-	override private function _getRuntimeDependencies() : IRuntimeDependencies
+	override function _getRuntimeDependencies() : IRuntimeDependencies
 	{
 		var rd : RuntimeDependencies = new RuntimeDependencies();
 		return rd;

@@ -39,7 +39,7 @@ class AweServiceParser<DataType> implements IParser
 		return serviceResultVO;
 	}
 	
-	private function _parseData( data:Dynamic ):DataType
+	function _parseData( data:Dynamic ):DataType
 	{
 		throw new VirtualMethodException("Override");
 		return null;

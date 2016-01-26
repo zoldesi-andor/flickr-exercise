@@ -15,7 +15,7 @@ class NavigateToChatRoomStrategy extends AdapterStrategy
 		super(this, this.onAdapt);
 		
 	}
-	private function onAdapt( rest:Array<Dynamic> ):String
+	function onAdapt( rest:Array<Dynamic> ):String
 	{
 		return TargetPage.CHAT_ROOM;
 	}

@@ -17,7 +17,7 @@ class PerformerDataParser extends AweServiceParser<PerformerDataVO>
 	
 	
 	//TODO: create generic parser when it is so trivial like this
-	override private function _parseData(data:Dynamic):PerformerDataVO 
+	override function _parseData(data:Dynamic):PerformerDataVO 
 	{
 		var result:PerformerDataVO = new PerformerDataVO();
 		

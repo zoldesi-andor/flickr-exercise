@@ -15,7 +15,7 @@ class ApplicationSettingsParser extends AweServiceParser<ApplicationSettingsVO>
 		super();
 	}
 	
-	override private function _parseData(data:Dynamic):ApplicationSettingsVO 
+	override function _parseData(data:Dynamic):ApplicationSettingsVO 
 	{
 		var result:ApplicationSettingsVO = new ApplicationSettingsVO();
 		

@@ -11,9 +11,9 @@ import hex.unittest.runner.ExMachinaUnitCore;
 class TestMain
 {
 	#if js
-	static private var notifier:ITestRunnerListener;
+	static var notifier:ITestRunnerListener;
 	#end
-	static private var emu:ExMachinaUnitCore;
+	static var emu:ExMachinaUnitCore;
 	
     static public function main() : Void
     {
@@ -39,7 +39,7 @@ class TestMain
 		
     }
 	
-	static private function _onConnected( e:WebSocketNotifierEvent ):Void 
+	static function _onConnected( e:WebSocketNotifierEvent ):Void 
 	{
 		emu.run();
 	}

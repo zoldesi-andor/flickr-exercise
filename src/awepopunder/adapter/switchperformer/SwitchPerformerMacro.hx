@@ -30,7 +30,7 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 	@Inject("name=performerProviderModule")
 	public var performerProviderModule:IPerformerProviderModule;
 	
-	private var _previourPerformerData:PerformerDataVO;
+	var _previourPerformerData:PerformerDataVO;
 
 	public function new(target:Dynamic, method:Dynamic) 
 	{
@@ -49,7 +49,7 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 		this.add(LoadNextPerformerCommand).withCompleteHandlers(new AsyncHandler(this, this._onPerformerDataLoaded));
 	}
 	
-	private function clonePerformerData():Void
+	function clonePerformerData():Void
 	{
 		this._previourPerformerData = new PerformerDataVO();
 		var performerData:PerformerDataVO = this.performerProviderModule.getActivePerformer();
@@ -63,24 +63,24 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 		}
 	}
 	
-	private function _onForcePerformerValidatonFailed( command:AsyncCommand ):Void
+	function _onForcePerformerValidatonFailed( command:AsyncCommand ):Void
 	{
 		this.setOffline();
 	}
 	
-	private function _onMaxSwitchPerformerValidationFailed( command:AsyncCommand ):Void
+	function _onMaxSwitchPerformerValidationFailed( command:AsyncCommand ):Void
 	{
 		this.setOffline();
 	}
 	
-	private function setOffline():Void
+	function setOffline():Void
 	{
 		trace("setOffline");
 		this.add(StopHlsStreamCommand);
 		this.add(SetOfflineCommand);
 	}
 	
-	private function _onPerformerDataLoaded( command:AsyncCommand ):Void
+	function _onPerformerDataLoaded( command:AsyncCommand ):Void
 	{
 		trace("SwitchPerformerMacro._onPerformerDataLoaded", command.getResult()[0]);
 		

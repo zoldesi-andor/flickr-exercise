@@ -21,7 +21,7 @@ import hex.control.payload.ExecutionPayload;
 class BootstrapMacro extends Macro
 {
 	
-	private var _settings:ApplicationSettingsVO;
+	var _settings:ApplicationSettingsVO;
 
 	public function new() 
 	{

@@ -27,12 +27,12 @@ class PerformerStatusService extends StatefulService<PerformerStatusServiceConfi
 	@url("modelStatus")
 	public var serviceUrl:String;
 	
-	private var _performerStatusHttpSerice:PerformerStatusHttpSerice;
+	var _performerStatusHttpSerice:PerformerStatusHttpSerice;
 	
-	private var _performerId:String;
+	var _performerId:String;
 	
-	private var _checkTimer:Timer;
-	private var _checkTimerCounter:UInt = 0;
+	var _checkTimer:Timer;
+	var _checkTimerCounter:UInt = 0;
 
 	public function new() 
 	{
@@ -90,7 +90,7 @@ class PerformerStatusService extends StatefulService<PerformerStatusServiceConfi
 		this._createNewService( );
 	}
 	
-	private function _createNewService() 
+	function _createNewService() 
 	{
 		if ( this._performerStatusHttpSerice != null )
 		{
@@ -110,7 +110,7 @@ class PerformerStatusService extends StatefulService<PerformerStatusServiceConfi
 		config.parameters = params;
 	}
 	
-	private function _onTimer():Void
+	function _onTimer():Void
 	{
 		this._checkTimerCounter++;
 		//trace("PerformerStatusService._onTimer", this._checkTimerCounter);
@@ -129,7 +129,7 @@ class PerformerStatusService extends StatefulService<PerformerStatusServiceConfi
 	/**
 	 * We propagate the performer offline even if the service says it's only, because checking is still required, so something is wrong.
 	 */
-	private function _setPerformerOffline() 
+	function _setPerformerOffline() 
 	{
 		var performerStatus:PerformerStatusVO = new PerformerStatusVO( );
 		performerStatus.performerId = this._performerId;

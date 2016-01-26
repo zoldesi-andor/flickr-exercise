@@ -8,8 +8,8 @@ import awepopunder.module.navigator.vo.NavigatorSettingsVO;
 @:rtti
 class NavigatorModel implements INavigatorModel
 {
-	private var _navigatorSettings:NavigatorSettingsVO;
-	private var _currentPerformerId:String;
+	var _navigatorSettings:NavigatorSettingsVO;
+	var _currentPerformerId:String;
 
 	public function new() 
 	{

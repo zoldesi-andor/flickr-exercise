@@ -78,7 +78,7 @@ class InitialApplicationSettingsParser implements IParser
 		return result;
 	}
 	
-	private function _parseLayout( data:Dynamic ) : LayoutSettingsVO
+	function _parseLayout( data:Dynamic ) : LayoutSettingsVO
 	{
 		var result:LayoutSettingsVO = new LayoutSettingsVO();
 		

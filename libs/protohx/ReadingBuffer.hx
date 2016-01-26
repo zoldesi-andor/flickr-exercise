@@ -7,7 +7,7 @@ class ReadingBuffer {
     public var length (get, null):Int;
     public var bytesAvailable (get, null):Int;
 
-    private var buf:BytesInput;
+    var buf:BytesInput;
 
     public function new(buf:BytesInput) {
         this.buf = buf;

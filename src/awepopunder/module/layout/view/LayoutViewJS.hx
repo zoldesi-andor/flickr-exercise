@@ -12,16 +12,16 @@ import js.html.Event;
  */
 class LayoutViewJS implements ILayoutView
 {
-	private var _layout:DivElement;
+	var _layout:DivElement;
 	
-	private var _chatContainer:Element;
-	private var _liveLogo:Element;
-	private var _offlineLabel:Element;
-	private var _video:Element;
+	var _chatContainer:Element;
+	var _liveLogo:Element;
+	var _offlineLabel:Element;
+	var _video:Element;
 	
-	private var _inverseFrameHandling:Bool = false;
-	private var _layoutMode:LayoutMode;
-	private var _ratio:Float;
+	var _inverseFrameHandling:Bool = false;
+	var _layoutMode:LayoutMode;
+	var _ratio:Float;
 
 	public function new( layout:DivElement ) 
 	{
@@ -37,7 +37,7 @@ class LayoutViewJS implements ILayoutView
 		this._onWindowResize(null);
 	}
 	
-	private function _onWindowResize(e:Event):Void 
+	function _onWindowResize(e:Event):Void 
 	{
 		var rect:DOMRect = this._layout.getBoundingClientRect();
 		

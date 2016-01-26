@@ -30,7 +30,7 @@ class SubscribeChatRoomCommand extends AsyncCommand
 		this.webSocketService.subscribeRoom( this.performerData.performerId, this.initialApplicationSettings.siteSettings.sessionId);
 	}
 	
-	private function onSubscribeRoomResult( nick:String, success:Bool, errorMsg:UInt ):Void 
+	function onSubscribeRoomResult( nick:String, success:Bool, errorMsg:UInt ):Void 
 	{
 		this.webSocketService.removeHandler( ChatWebSocketServiceMessage.SUBSCRIBE_ROOM_RESULT, this, this.onSubscribeRoomResult);
 		

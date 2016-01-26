@@ -16,7 +16,7 @@ import haxe.io.Bytes;
 import protohx.Protohx;
 
 class Message {
-    private var otherFields:IntMap<Dynamic>;
+    var otherFields:IntMap<Dynamic>;
 
     public function new():Void {
 
@@ -121,7 +121,7 @@ class Message {
 //        throw new PT_IllegalOperationError("Not implemented!");
     }
 
-    private function writeSingleUnknown(output:PT_OutputStream, tag:PT_UInt,  value:Dynamic):Void {
+    function writeSingleUnknown(output:PT_OutputStream, tag:PT_UInt,  value:Dynamic):Void {
         WriteUtils.write__TYPE_UINT32(output, tag);
         switch (tag & 7) {
         case WireType.VARINT:

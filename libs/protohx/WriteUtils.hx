@@ -13,7 +13,7 @@ import protohx.Protohx;
 using haxe.Int64;
 
 class WriteUtils {
-    private static function writeSingleUnknown(output:PT_OutputStream, tag:PT_UInt, value:Dynamic):Void {
+    static function writeSingleUnknown(output:PT_OutputStream, tag:PT_UInt, value:Dynamic):Void {
         WriteUtils.write__TYPE_UINT32(output, tag);
         switch (tag & 7) {
         case WireType.VARINT:
@@ -41,7 +41,7 @@ class WriteUtils {
         }
     }
 
-    private static function writeVarint64(output:PT_OutputStream, low:PT_Int, high:PT_Int):Void {
+    static function writeVarint64(output:PT_OutputStream, low:PT_Int, high:PT_Int):Void {
         if (high == 0) {
             write__TYPE_UINT32(output, low);
         } else {

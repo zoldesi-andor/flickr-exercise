@@ -27,7 +27,7 @@ class UnsubscripbeChatRoomCommand extends AsyncCommand
 		this.webSocketService.unsubscribeRoom( this.performerData.performerId);
 	}
 	
-	private function onUnsubscribeRoomResult( nick:String, success:Bool, errorMsg:UInt ):Void 
+	function onUnsubscribeRoomResult( nick:String, success:Bool, errorMsg:UInt ):Void 
 	{
 		this.webSocketService.removeHandler( ChatWebSocketServiceMessage.UNSUBSCRIBE_ROOM_RESULT, this, this.onUnsubscribeRoomResult);
 		

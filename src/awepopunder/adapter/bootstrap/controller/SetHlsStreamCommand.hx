@@ -22,7 +22,7 @@ class SetHlsStreamCommand extends BasicCommand
 	override public function execute(?request:Request):Void 
 	{
 		//TODO: read stream url from configuration
-		var streamVO= new HlsVO();
+		var streamVO = new HlsVO();
 		streamVO.streamUrl = this.performerData.streamUrl != null ? this.performerData.streamUrl : "http://192.168.206.47:1935/dashtest/myStream/playlist.m3u8";
 		this.hlsPlayer.setStream( streamVO );
 	}

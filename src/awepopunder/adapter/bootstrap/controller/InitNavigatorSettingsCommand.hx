@@ -21,7 +21,7 @@ class InitNavigatorSettingsCommand extends BasicCommand
 
 	override public function execute(?request:Request):Void 
 	{
-		var navigatorSettings= new NavigatorSettingsVO();
+		var navigatorSettings = new NavigatorSettingsVO();
 				
 		navigatorSettings.site = this.initialApplicationSettings.siteSettings.site;
 		navigatorSettings.cobrandId = this.initialApplicationSettings.siteSettings.cobrandId;

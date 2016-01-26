@@ -31,14 +31,14 @@ class NavigateToCommand  extends BasicCommand implements IAnnotationParsable
 			pageName = request.pageName;
 		}
 		
-		var jumpSiteParameters= new JumpSiteParametersVO();
+		var jumpSiteParameters = new JumpSiteParametersVO();
 		jumpSiteParameters.pageName = pageName;
 		jumpSiteParameters.performerId =  this.navigatorModel.getCurrentPerformerId();
 		//TODO: Add superCategory handling.
 		//jumpSiteParameters.superCategory = "girls";
 		jumpSiteParameters.navigatorSettings = this.navigatorModel.getNavigatorSettings();
 		
-		var jumpSiteParameterParser= new JumpSiteParameterParser();
+		var jumpSiteParameterParser = new JumpSiteParameterParser();
 		var parameters:String = jumpSiteParameterParser.parseSettings( jumpSiteParameters );
 		
 		var url:String = this.jumpSiteUrl + "?" + parameters;

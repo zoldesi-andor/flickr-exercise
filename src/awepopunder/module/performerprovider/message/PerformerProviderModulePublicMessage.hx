@@ -8,6 +8,6 @@ import hex.event.MessageType;
 class PerformerProviderModulePublicMessage
 {
 
-	public static var PERFORMER_DATA_UPDATED= new MessageType("performerDataUpdated");
+	public static var PERFORMER_DATA_UPDATED = new MessageType("performerDataUpdated");
 	
 }

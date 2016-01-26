@@ -41,7 +41,7 @@ class BootstrapMacro extends Macro
 	{
 		this._settings = command.getResult()[0];
 		
-		var settingsPayload= new ExecutionPayload(this._settings, ApplicationSettingsVO);
+		var settingsPayload = new ExecutionPayload(this._settings, ApplicationSettingsVO);
 		
 		//TODO: retry connection a few time, but don't wait the boostrap with this.
 		this.add(ConnectChatWebSocketCommand).withPayloads([settingsPayload]);

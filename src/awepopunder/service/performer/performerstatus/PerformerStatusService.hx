@@ -102,7 +102,7 @@ class PerformerStatusService extends StatefulService<PerformerStatusServiceConfi
 		this._performerStatusHttpSerice.createConfiguration();
 		this._performerStatusHttpSerice.addHTTPServiceListener(this);
 		
-		var params= new PerformerStatusHttpServiceParameters();
+		var params = new PerformerStatusHttpServiceParameters();
 		params.performerId = this._performerId;
 		
 		var config:HTTPServiceConfiguration = this._performerStatusHttpSerice.getConfiguration();
@@ -131,7 +131,7 @@ class PerformerStatusService extends StatefulService<PerformerStatusServiceConfi
 	 */
 	function _setPerformerOffline() 
 	{
-		var performerStatus= new PerformerStatusVO( );
+		var performerStatus = new PerformerStatusVO( );
 		performerStatus.performerId = this._performerId;
 		performerStatus.status = PerformerStatus.Offline;
 		
@@ -192,7 +192,7 @@ private class PerformerStatusHttpServiceParser implements IParser
 	
 	public function parse(serializedContent:Dynamic, target:Dynamic = null):Dynamic 
 	{
-		var result= new ServiceResultVO<PerformerStatusVO>();
+		var result = new ServiceResultVO<PerformerStatusVO>();
 		
 		var jsonData:Dynamic;
 		try

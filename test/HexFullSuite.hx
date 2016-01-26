@@ -1,4 +1,5 @@
 package;
+import com.ModulesSuite;
 import com.service.ServiceTestSuite;
 import hex.HexCoreSuite;
 import hex.HexInjectSuite;
@@ -17,6 +18,6 @@ class HexFullSuite
     public var list : Array<Class<Dynamic>> = [HexMVCSuite, HexCoreSuite, HexInjectSuite, HexMachinaSuite, HexStateSuite];
 	
 	@Suite( "Docler suite" )
-    public var list2 : Array<Class<Dynamic>> = [ServiceTestSuite];
+    public var list2 : Array<Class<Dynamic>> = [ModulesSuite, ServiceTestSuite];
 	
 }

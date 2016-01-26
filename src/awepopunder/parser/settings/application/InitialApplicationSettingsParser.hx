@@ -31,7 +31,7 @@ class InitialApplicationSettingsParser implements IParser
 	{
 		var data:Dynamic = serializedContent;
 		
-		var result:InitialApplicationSettingsVO = new InitialApplicationSettingsVO();
+		var result= new InitialApplicationSettingsVO();
 		
 		result.layoutSettings = this._parseLayout( data.layout );
 		result.siteSettings = this._parseSiteSettings( data.site );
@@ -43,7 +43,7 @@ class InitialApplicationSettingsParser implements IParser
 	
 	function _parseFilterSettings( data:Dynamic ) : FilterSettingsVO
 	{
-		var result:FilterSettingsVO = new FilterSettingsVO( );
+		var result= new FilterSettingsVO( );
 		
 		result.category = data.category;
 		result.performerId = data.performerId;
@@ -55,7 +55,7 @@ class InitialApplicationSettingsParser implements IParser
 	
 	function _parseSiteSettings( data:Dynamic ) : SiteSettingsVO
 	{
-		var result:SiteSettingsVO = new SiteSettingsVO( );
+		var result= new SiteSettingsVO( );
 		
 		result.cobrandId = data.cobrandId;
 		result.language = data.language;
@@ -67,7 +67,7 @@ class InitialApplicationSettingsParser implements IParser
 	
 	function _parsePromoInfoSettings( data:Dynamic ) : PromoInfoSettingsVO
 	{
-		var result:PromoInfoSettingsVO = new PromoInfoSettingsVO( );
+		var result= new PromoInfoSettingsVO( );
 		
 		result.psId = data.psId;
 		result.psTool = data.psTool;
@@ -80,7 +80,7 @@ class InitialApplicationSettingsParser implements IParser
 	
 	function _parseLayout( data:Dynamic ) : LayoutSettingsVO
 	{
-		var result:LayoutSettingsVO = new LayoutSettingsVO();
+		var result= new LayoutSettingsVO();
 		
 		if ( data )
 		{

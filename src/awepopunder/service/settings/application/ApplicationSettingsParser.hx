@@ -17,7 +17,7 @@ class ApplicationSettingsParser extends AweServiceParser<ApplicationSettingsVO>
 	
 	override function _parseData(data:Dynamic):ApplicationSettingsVO 
 	{
-		var result:ApplicationSettingsVO = new ApplicationSettingsVO();
+		var result= new ApplicationSettingsVO();
 		
 		var chatServiceAddressArr:Array<String> = cast(data.chatServiceAddress, String).split(":");
 		

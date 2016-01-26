@@ -70,7 +70,7 @@ class PerformerProviderModule extends Module implements IPerformerProviderModule
 	
 	override function _getRuntimeDependencies() : IRuntimeDependencies
 	{
-		var rd : RuntimeDependencies = new RuntimeDependencies();
+		var rd = new RuntimeDependencies();
 		rd.addServiceDependencies([IPerformerDataService]);
 		return rd;
 	}

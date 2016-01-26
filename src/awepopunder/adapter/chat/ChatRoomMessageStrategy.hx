@@ -19,7 +19,7 @@ class ChatRoomMessageStrategy extends AdapterStrategy
 	
 	/*function onAdapt( roomName:String, sender:String, message:String ):ChatMessageVO
 	{
-		var chatMessageVO:ChatMessageVO = new ChatMessageVO();
+		var chatMessageVO= new ChatMessageVO();
 		chatMessageVO.message = message;
 		chatMessageVO.userNick = sender;
 		return chatMessageVO;
@@ -29,7 +29,7 @@ class ChatRoomMessageStrategy extends AdapterStrategy
 	{
 		//TODO: really do i have to accept an array instead of concrete params?k
 		
-		var chatMessageVO:ChatMessageVO = new ChatMessageVO();
+		var chatMessageVO= new ChatMessageVO();
 		chatMessageVO.message = rest[2];
 		chatMessageVO.userNick = rest[1];
 		return chatMessageVO;

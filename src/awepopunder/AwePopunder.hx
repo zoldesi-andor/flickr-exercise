@@ -50,7 +50,7 @@ class AwePopunder
 	
 	public function new( config:Dynamic )
 	{
-		var initialApplicationSettingsParser:InitialApplicationSettingsParser = new InitialApplicationSettingsParser();
+		var initialApplicationSettingsParser= new InitialApplicationSettingsParser();
 		var initialApplicationSettings:InitialApplicationSettingsVO = initialApplicationSettingsParser.parseSettings( config );
 		
 		var source:String = XMLParserUtil.getConcatenatedConfig( ["moduleConfig", "serviceConfig", "orderConfig", "viewConfig"], "awePopunder" );

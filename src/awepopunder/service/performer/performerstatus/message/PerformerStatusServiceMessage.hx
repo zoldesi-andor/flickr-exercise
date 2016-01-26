@@ -7,8 +7,8 @@ import hex.event.MessageType;
  */
 class PerformerStatusServiceMessage
 {
-	public static var ONLINE:MessageType = new MessageType("online");
+	public static var ONLINE= new MessageType("online");
 	
-	public static var OFFLINE:MessageType = new MessageType("offline");
+	public static var OFFLINE= new MessageType("offline");
 	
 }

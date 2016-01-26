@@ -28,7 +28,7 @@ class LoadApplicationSettingsCommand extends AsyncCommand implements IHTTPServic
 
 	override public function execute( ?request : Request ):Void 
 	{
-		var config:HTTPServiceConfiguration = new HTTPServiceConfiguration( this.applicationSettingsUrl );
+		var config= new HTTPServiceConfiguration( this.applicationSettingsUrl );
 		config.parameters = new ApplicationSettingsServiceParameters( this.initialApplicationSettings.siteSettings.cobrandId, this.initialApplicationSettings.siteSettings.language, this.initialApplicationSettings.siteSettings.site );
 		
 		this.applicationSettingsService.setConfiguration( config );

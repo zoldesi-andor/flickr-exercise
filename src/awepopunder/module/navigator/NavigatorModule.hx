@@ -50,7 +50,7 @@ class NavigatorModule extends Module implements INavigatorModule
 	
 	override function _getRuntimeDependencies() : IRuntimeDependencies
 	{
-		var rd : RuntimeDependencies = new RuntimeDependencies();
+		var rd = new RuntimeDependencies();
 		return rd;
 	}
 }

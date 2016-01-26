@@ -36,7 +36,7 @@ class LayoutModule extends Module implements ILayoutModule
 	
 	override function _getRuntimeDependencies() : IRuntimeDependencies
 	{
-		var rd : RuntimeDependencies = new RuntimeDependencies();
+		var rd = new RuntimeDependencies();
 		return rd;
 	}
 	

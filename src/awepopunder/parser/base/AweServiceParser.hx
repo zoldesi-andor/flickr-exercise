@@ -29,7 +29,7 @@ class AweServiceParser<DataType> implements IParser
 			jsonResult = { data: {} };
 		}
 		
-		var serviceResultVO:ServiceResultVO<DataType> = new ServiceResultVO<DataType>();
+		var serviceResultVO= new ServiceResultVO<DataType>();
 		
 		serviceResultVO.success = jsonResult.status == "OK";
 		serviceResultVO.errorCode = jsonResult.errorCode;

@@ -19,7 +19,7 @@ class NavigateToCommand  extends BasicCommand implements IAnnotationParsable
 	@Inject
 	public var navigatorModel:INavigatorModel;
 	
-	@url("jumpSite")
+	@Url("jumpSite")
 	public var jumpSiteUrl:String;
 
 	override public function execute(?request:Request):Void 

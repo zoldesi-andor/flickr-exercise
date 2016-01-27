@@ -16,7 +16,7 @@ import hex.service.stateless.http.HTTPServiceConfiguration;
 class PerformerDataService extends HTTPService<HTTPServiceConfiguration> implements IPerformerDataService implements IAnnotationParsable
 {
 	
-	@url("performerData")
+	@Url("performerData")
 	public var serviceUrl:String;
 
 	public function new() 

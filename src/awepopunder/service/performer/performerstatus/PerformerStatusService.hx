@@ -24,7 +24,7 @@ import hex.service.stateless.http.IHTTPServiceListener;
 @:rtti
 class PerformerStatusService extends StatefulService<PerformerStatusServiceConfiguration> implements IPerformerStatusService implements IHTTPServiceListener<HTTPServiceConfiguration> implements IAnnotationParsable
 {
-	@url("modelStatus")
+	@Url("modelStatus")
 	public var serviceUrl:String;
 	
 	var _performerStatusHttpSerice:PerformerStatusHttpSerice;
@@ -42,7 +42,7 @@ class PerformerStatusService extends StatefulService<PerformerStatusServiceConfi
 	@postConstruct
 	override public function createConfiguration():Void 
 	{
-		this.setConfiguration( new PerformerStatusServiceConfiguration(this.serviceUrl) );
+		
 	}
 	
 	public function startCheckPerformer( performerId:String ):Void
@@ -51,6 +51,9 @@ class PerformerStatusService extends StatefulService<PerformerStatusServiceConfi
 		this._lock();
 		
 		this._performerId = performerId;
+		
+		this.setConfiguration( new PerformerStatusServiceConfiguration(this.serviceUrl) );
+		trace("AAAAAAA", this.serviceUrl);
 		
 		this._createNewService( );
 		

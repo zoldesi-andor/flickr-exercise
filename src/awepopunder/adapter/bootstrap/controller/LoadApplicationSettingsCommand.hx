@@ -23,7 +23,7 @@ class LoadApplicationSettingsCommand extends AsyncCommand implements IHTTPServic
 	@Inject("name=initialApplicationSettings")
 	public var initialApplicationSettings:InitialApplicationSettingsVO;
 	
-	@url("applicationSettings")
+	@Url("applicationSettings")
 	public var applicationSettingsUrl:String;
 
 	override public function execute( ?request : Request ):Void 

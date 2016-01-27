@@ -14,6 +14,8 @@ import awepopunder.adapter.switchperformer.controller.ShowChatWelcomeMessageComm
 import awepopunder.adapter.switchperformer.controller.StopHlsStreamCommand;
 import awepopunder.adapter.switchperformer.controller.SubscribeChatRoomCommand;
 import awepopunder.adapter.switchperformer.controller.UnsubscribeChatRoomCommand;
+import awepopunder.adapter.switchperformer.macro.SwitchChatMacro;
+import awepopunder.adapter.switchperformer.marco.SwitchStreamMacro;
 import awepopunder.module.performerprovider.IPerformerProviderModule;
 import awepopunder.vo.performer.PerformerDataVO;
 import hex.control.async.AsyncCommand;
@@ -31,7 +33,7 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 	@Inject("name=performerProviderModule")
 	public var performerProviderModule:IPerformerProviderModule;
 	
-	var _previourPerformerData:PerformerDataVO;
+	var _previousPerformerData:PerformerDataVO;
 
 	public function new(target:Dynamic, method:Dynamic) 
 	{
@@ -50,18 +52,20 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 		this.add(LoadNextPerformerCommand).withCompleteHandlers(new AsyncHandler(this, this._onPerformerDataLoaded));
 	}
 	
-	function clonePerformerData():Void
+	function _onPerformerDataLoaded( command:AsyncCommand ):Void
 	{
-		this._previourPerformerData = new PerformerDataVO();
-		var performerData:PerformerDataVO = this.performerProviderModule.getActivePerformer();
+		trace("SwitchPerformerMacro._onPerformerDataLoaded", command.getResult()[0]);
 		
-		if ( performerData != null )
-		{
-			this._previourPerformerData.imageUrl = performerData.imageUrl;
-			this._previourPerformerData.performerId = performerData.performerId;
-			this._previourPerformerData.streamRatio = performerData.streamRatio;
-			this._previourPerformerData.streamUrl = performerData.streamUrl;
-		}
+		var performerDataPayload = new ExecutionPayload(command.getResult()[0], PerformerDataVO);
+		var previousPerformerDataPayload = new ExecutionPayload(this._previousPerformerData, PerformerDataVO, "previous");
+		
+		
+		this.add(SetPerformerIdCommand).withPayloads([performerDataPayload]);
+		
+		//TODO: don't care if we cannot subscribe to a room, ingore it and go ahead with the other thigns
+		this.add(SwitchStreamMacro).withPayloads([performerDataPayload, previousPerformerDataPayload]);
+		this.add(SwitchChatMacro).withPayloads([performerDataPayload, previousPerformerDataPayload]);
+		this.add(SetOnlineCommand);
 	}
 	
 	function _onForcePerformerValidatonFailed( command:AsyncCommand ):Void
@@ -81,28 +85,18 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 		this.add(SetOfflineCommand);
 	}
 	
-	function _onPerformerDataLoaded( command:AsyncCommand ):Void
+	function clonePerformerData():Void
 	{
-		trace("SwitchPerformerMacro._onPerformerDataLoaded", command.getResult()[0]);
+		this._previousPerformerData = new PerformerDataVO();
+		var performerData:PerformerDataVO = this.performerProviderModule.getActivePerformer();
 		
-		var performerDataPayload = new ExecutionPayload(command.getResult()[0], PerformerDataVO);
-		
-		if ( this._previourPerformerData != null && this._previourPerformerData.performerId != null )
+		if ( performerData != null )
 		{
-			this.add(StopHlsStreamCommand);
-			this.add(UnsubscribeChatRoomCommand).withPayloads([new ExecutionPayload(this._previourPerformerData, PerformerDataVO)]);
+			this._previousPerformerData.imageUrl = performerData.imageUrl;
+			this._previousPerformerData.performerId = performerData.performerId;
+			this._previousPerformerData.streamRatio = performerData.streamRatio;
+			this._previousPerformerData.streamUrl = performerData.streamUrl;
 		}
-		
-		this.add(SetPerformerIdCommand).withPayloads([performerDataPayload]);
-		this.add(SetHlsStreamCommand).withPayloads([performerDataPayload]);
-		this.add(PlayHlsStreamCommand);
-		this.add(SetStreamRatioCommand).withPayloads([performerDataPayload]);
-		
-		//TODO: don't care if we cannot subscribe to a room, ingore it and go ahead with the other thigns
-		this.add(ClearChatMessagesCommand);
-		this.add(SubscribeChatRoomCommand).withPayloads([performerDataPayload]);
-		this.add(ShowChatWelcomeMessageCommand).withPayloads([performerDataPayload]);
-		this.add(SetOnlineCommand);
 	}
 	
 	

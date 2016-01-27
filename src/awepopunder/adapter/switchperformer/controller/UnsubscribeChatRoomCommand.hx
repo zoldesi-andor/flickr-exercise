@@ -11,7 +11,7 @@ import hex.control.Request;
  * @author duke
  */
 @:rtti
-class UnsubscripbeChatRoomCommand extends AsyncCommand
+class UnsubscribeChatRoomCommand extends AsyncCommand
 {
 
 	@Inject("name=chatWebSocketService")

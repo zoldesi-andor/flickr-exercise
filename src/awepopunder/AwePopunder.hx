@@ -15,15 +15,6 @@ import js.Browser;
 
 import Imports;
 
-/**
- * TODO: JEGYZET
-
-wowza elso kepkocka utana pending?
-
-
-wait for focus egyelore nem kell
- * 
- */
 
 
 /**

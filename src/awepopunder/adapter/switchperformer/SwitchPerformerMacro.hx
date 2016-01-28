@@ -49,11 +49,15 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 	
 	override function _prepare():Void 
 	{
-		this.add(ForcePerformerValidatorCommand).withFailHandlers(new AsyncHandler(this, this._onForcePerformerValidatonFailed));
-		//TODO: add manual switch support
-		this.add(MaxAutoPerformerSwitchValidatorCommand).withFailHandlers(new AsyncHandler(this, this._onMaxSwitchPerformerValidationFailed));
-		
 		this.clonePerformerData( );
+		
+		// Check if this is the first performer switch, unless we skip the validations
+		if ( this._previousPerformerData.performerId != null )
+		{
+			this.add(ForcePerformerValidatorCommand).withFailHandlers(new AsyncHandler(this, this._onForcePerformerValidatonFailed));
+			//TODO: add manual switch support
+			this.add(MaxAutoPerformerSwitchValidatorCommand).withFailHandlers(new AsyncHandler(this, this._onMaxSwitchPerformerValidationFailed));
+		}
 		
 		this.add(LoadNextPerformerCommand).withCompleteHandlers(new AsyncHandler(this, this._onPerformerDataLoaded));
 	}

@@ -1,5 +1,6 @@
 package awepopunder.adapter.switchperformer;
 
+import com.service.net.chatwebsocket.IChatWebSocketService;
 import awepopunder.adapter.bootstrap.controller.SetHlsStreamCommand;
 import awepopunder.adapter.switchperformer.controller.ClearChatMessagesCommand;
 import awepopunder.adapter.switchperformer.controller.ConnectedToChatGuard;
@@ -33,6 +34,10 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 {
 	@Inject("name=performerProviderModule")
 	public var performerProviderModule:IPerformerProviderModule;
+
+	@Inject("name=chatWebSocketService")
+	public var webSocketService:IChatWebSocketService;
+
 	
 	var _previousPerformerData:PerformerDataVO;
 
@@ -65,6 +70,12 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 		
 		//TODO: don't care if we cannot subscribe to a room, ingore it and go ahead with the other thigns
 		this.add(SwitchStreamMacro).withPayloads([performerDataPayload, previousPerformerDataPayload]);
+		//TODO implement guard injection
+		///this.add(SwitchChatMacro).withPayloads([performerDataPayload, previousPerformerDataPayload]).withGuards([ConnectedToChatGuard]);
+		if ( this.webSocketService.inUse() )
+		{
+
+		}
 		this.add(SwitchChatMacro).withPayloads([performerDataPayload, previousPerformerDataPayload]).withGuards([ConnectedToChatGuard]);
 		this.add(SetOnlineCommand);
 	}

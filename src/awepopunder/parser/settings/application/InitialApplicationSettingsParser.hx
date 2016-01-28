@@ -85,7 +85,6 @@ class InitialApplicationSettingsParser implements IParser
 		if ( data )
 		{
 			result.rootElementId = data.rootElementId;
-			result.backgroundColor = ~/$^#[0-9a-zA-F]{3,6}$/.match(data.backgroundColor) ? data.backgroundColor : null;
 			
 			switch ( data.chatMode )
 			{
@@ -100,9 +99,6 @@ class InitialApplicationSettingsParser implements IParser
 				case "outFrame": result.layoutMode = LayoutMode.OutFrame;
 				default: result.layoutMode = LayoutMode.InFrame;
 			}
-			
-			result.width = Std.parseInt(data.width);
-			result.height = Std.parseInt(data.height);
 		}
 		
 		return result;

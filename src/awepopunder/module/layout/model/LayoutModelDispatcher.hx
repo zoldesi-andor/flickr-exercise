@@ -1,4 +1,5 @@
 package awepopunder.module.layout.model;
+import awepopunder.module.layout.constant.ChatMode;
 import awepopunder.module.layout.constant.LayoutMode;
 import hex.model.ModelDispatcher;
 
@@ -27,6 +28,11 @@ class LayoutModelDispatcher extends ModelDispatcher<ILayoutModelListener> implem
 	}
 
 	public function onStreamRatioChange(ratio:Float):Void 
+	{
+		
+	}
+	
+	public function onChatModeChange(chatMode:ChatMode):Void 
 	{
 		
 	}

@@ -3967,3 +3967,6 @@ test.json
 src/Imports.hx
 temp/
 src/TestMainTmp.hx
+.idea/
+AwePopunderApp.iml
+hexMachina.iml

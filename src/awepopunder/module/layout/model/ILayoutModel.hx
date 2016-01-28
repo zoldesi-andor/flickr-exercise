@@ -1,4 +1,5 @@
 package awepopunder.module.layout.model;
+import awepopunder.module.layout.constant.ChatMode;
 import awepopunder.module.layout.constant.LayoutMode;
 import awepopunder.module.layout.constant.OnlineState;
 
@@ -17,4 +18,6 @@ interface ILayoutModel extends ILayoutModelRO
 	function setLayoutMode( state:LayoutMode ):Void;
 	
 	function setStreamRatio(ratio:Float):Void;
+	
+	function setChatMode( chatMode:ChatMode ):Void;
 }

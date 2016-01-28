@@ -1,4 +1,5 @@
 package awepopunder.module.layout.model;
+import awepopunder.module.layout.constant.ChatMode;
 import awepopunder.module.layout.constant.LayoutMode;
 import awepopunder.module.layout.constant.OnlineState;
 
@@ -11,6 +12,7 @@ class LayoutModel implements ILayoutModel
 {
 	var _onlineState:OnlineState = OnlineState.Loading;
 	var _layoutMode:LayoutMode = LayoutMode.InFrame;
+	var _chatMode:ChatMode = ChatMode.AlwaysOn;
 	var _streamRatio:Float;
 	
 	public var dispatcher:LayoutModelDispatcher;
@@ -60,6 +62,17 @@ class LayoutModel implements ILayoutModel
 	{
 		this._streamRatio = ratio;
 		this.dispatcher.onStreamRatioChange( ratio );
+	}
+	
+	public function setChatMode(chatMode:ChatMode):Void 
+	{
+		this._chatMode = chatMode;
+		this.dispatcher.onChatModeChange( chatMode );
+	}
+	
+	public function getChatMode():ChatMode 
+	{
+		return this._chatMode;
 	}
 	
 	public function addListener( listener : ILayoutModelListener ):Void

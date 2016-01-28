@@ -5,6 +5,7 @@ import awepopunder.adapter.bootstrap.controller.InitPerformerProviderSettingsCom
 import awepopunder.adapter.bootstrap.controller.InitNavigatorSettingsCommand;
 import awepopunder.adapter.bootstrap.controller.InitUrlProviderCommand;
 import awepopunder.adapter.bootstrap.controller.LoadApplicationSettingsCommand;
+import awepopunder.adapter.bootstrap.controller.SetLayoutSettingsCommand;
 import awepopunder.adapter.bootstrap.controller.SetPerformerProviderSettingsCommand;
 import awepopunder.adapter.switchperformer.SwitchPerformerMacro;
 import awepopunder.vo.settings.application.ApplicationSettingsVO;
@@ -32,6 +33,7 @@ class BootstrapMacro extends Macro
 	{
 		trace("BootstrapMacro._prepare");
 		this.add(InitUrlProviderCommand);
+		this.add(SetLayoutSettingsCommand);
 		this.add(InitPerformerProviderSettingsCommand);
 		this.add(InitNavigatorSettingsCommand);
 		this.add(LoadApplicationSettingsCommand).withCompleteHandlers( new AsyncHandler(this, this.onApplicationSettingsLoaded ) );

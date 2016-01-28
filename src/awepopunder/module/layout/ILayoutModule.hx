@@ -1,5 +1,5 @@
 package awepopunder.module.layout;
-import awepopunder.module.layout.constant.LayoutMode;
+import awepopunder.vo.settings.application.LayoutSettingsVO;
 import hex.module.IModule;
 
 /**
@@ -13,7 +13,7 @@ interface ILayoutModule extends IModule
 	
 	function setOffline( ):Void;
 	
-	function setLayoutMode(mode:LayoutMode):Void;
+	function setLayoutSettings(settings:LayoutSettingsVO):Void;
 	
 	function setStreamRatio(ratio:Float):Void;
 	

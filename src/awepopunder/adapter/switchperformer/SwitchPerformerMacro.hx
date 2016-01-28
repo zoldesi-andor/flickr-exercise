@@ -74,9 +74,9 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 		///this.add(SwitchChatMacro).withPayloads([performerDataPayload, previousPerformerDataPayload]).withGuards([ConnectedToChatGuard]);
 		if ( this.webSocketService.inUse() )
 		{
-
+			this.add(SwitchChatMacro).withPayloads([performerDataPayload, previousPerformerDataPayload]);
 		}
-		this.add(SwitchChatMacro).withPayloads([performerDataPayload, previousPerformerDataPayload]).withGuards([ConnectedToChatGuard]);
+
 		this.add(SetOnlineCommand);
 	}
 	

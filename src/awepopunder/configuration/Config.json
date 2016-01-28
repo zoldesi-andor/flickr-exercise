@@ -2,10 +2,7 @@
 	"layout": {
 		"rootElementId": "testApp",
 		"layoutMode": "inFrame",
-		"chatMode": "alwaysOn",
-		"backgroundColor": "#000000",
-		"width": 640,
-		"height": 480
+		"chatMode": "alwaysOn"
 	},
 	
 	"stream": {

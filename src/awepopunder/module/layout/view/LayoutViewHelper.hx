@@ -1,6 +1,8 @@
 package awepopunder.module.layout.view;
 
+import awepopunder.module.layout.constant.ChatMode;
 import awepopunder.module.layout.constant.LayoutMode;
+import awepopunder.module.layout.constant.OnlineState;
 import awepopunder.module.layout.model.ILayoutModelListener;
 import awepopunder.module.layout.model.ILayoutModelRO;
 import hex.view.viewhelper.ViewHelper;
@@ -38,7 +40,10 @@ class LayoutViewHelper extends ViewHelper implements ILayoutModelListener
 	
 	public function onOnline():Void 
 	{
-		this._layoutView.showChat( );
+		if ( this.layoutModel.getChatMode() == ChatMode.AlwaysOn )
+		{
+			this._layoutView.showChat( );
+		}
 		this._layoutView.showLive( );
 		this._layoutView.hideOffline( );
 	}
@@ -59,6 +64,19 @@ class LayoutViewHelper extends ViewHelper implements ILayoutModelListener
 	public function onStreamRatioChange(ratio:Float):Void 
 	{
 		this._layoutView.setStreamRatio( ratio );
+	}
+	
+	
+	public function onChatModeChange(chatMode:ChatMode):Void 
+	{
+		if ( chatMode == ChatMode.AlwaysOn && this.layoutModel.getOnlineState() == OnlineState.Online )
+		{
+			this._layoutView.showChat();
+		}
+		else if ( chatMode == ChatMode.Hidden )
+		{
+			this._layoutView.hideChat();
+		}
 	}
 	
 }

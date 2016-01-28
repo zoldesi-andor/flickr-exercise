@@ -30,7 +30,7 @@ class BootstrapMacro extends Macro
 	
 	override function _prepare():Void 
 	{
-		trace("TADAAA");
+		trace("BootstrapMacro._prepare");
 		this.add(InitUrlProviderCommand);
 		this.add(InitPerformerProviderSettingsCommand);
 		this.add(InitNavigatorSettingsCommand);
@@ -44,7 +44,10 @@ class BootstrapMacro extends Macro
 		var settingsPayload = new ExecutionPayload(this._settings, ApplicationSettingsVO);
 		
 		//TODO: retry connection a few time, but don't wait the boostrap with this.
-		this.add(ConnectChatWebSocketCommand).withPayloads([settingsPayload]);
+		if ( this._settings.chatHost != null && this._settings.chatHost != "" )
+		{
+			this.add(ConnectChatWebSocketCommand).withPayloads([settingsPayload]);
+		}
 		
 		this.add(SetPerformerProviderSettingsCommand).withPayloads([settingsPayload]);
 		this.add(SwitchPerformerMacro);

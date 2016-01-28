@@ -2,6 +2,7 @@ package awepopunder.adapter.switchperformer;
 
 import awepopunder.adapter.bootstrap.controller.SetHlsStreamCommand;
 import awepopunder.adapter.switchperformer.controller.ClearChatMessagesCommand;
+import awepopunder.adapter.switchperformer.controller.ConnectedToChatGuard;
 import awepopunder.adapter.switchperformer.controller.LoadNextPerformerCommand;
 import awepopunder.adapter.switchperformer.controller.ForcePerformerValidatorCommand;
 import awepopunder.adapter.switchperformer.controller.MaxAutoPerformerSwitchValidatorCommand;
@@ -64,7 +65,7 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 		
 		//TODO: don't care if we cannot subscribe to a room, ingore it and go ahead with the other thigns
 		this.add(SwitchStreamMacro).withPayloads([performerDataPayload, previousPerformerDataPayload]);
-		this.add(SwitchChatMacro).withPayloads([performerDataPayload, previousPerformerDataPayload]);
+		this.add(SwitchChatMacro).withPayloads([performerDataPayload, previousPerformerDataPayload]).withGuards([ConnectedToChatGuard]);
 		this.add(SetOnlineCommand);
 	}
 	

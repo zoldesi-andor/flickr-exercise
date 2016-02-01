@@ -1,9 +1,7 @@
 package awepopunder.adapter.switchperformer;
 
 import awepopunder.adapter.stream.check.StopCheckStreamMacro;
-import awepopunder.adapter.switchperformer.controller.ForcePerformerValidatorCommand;
 import awepopunder.adapter.switchperformer.controller.LoadNextPerformerCommand;
-import awepopunder.adapter.switchperformer.controller.MaxAutoPerformerSwitchValidatorCommand;
 import awepopunder.adapter.switchperformer.controller.SetOfflineCommand;
 import awepopunder.adapter.switchperformer.controller.SetOnlineCommand;
 import awepopunder.adapter.switchperformer.controller.SetPerformerIdCommand;
@@ -12,6 +10,7 @@ import awepopunder.adapter.switchperformer.macro.SwitchChatMacro;
 import awepopunder.adapter.switchperformer.marco.SwitchStreamMacro;
 import awepopunder.module.performerprovider.IPerformerProviderModule;
 import awepopunder.vo.performer.PerformerDataVO;
+import awepopunder.vo.settings.application.InitialApplicationSettingsVO;
 import com.service.net.chatwebsocket.IChatWebSocketService;
 import hex.control.async.AsyncCommand;
 import hex.control.async.AsyncHandler;
@@ -30,6 +29,9 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 
 	@Inject("name=chatWebSocketService")
 	public var webSocketService:IChatWebSocketService;
+	
+	@Inject("name=initialApplicationSettings")
+	public var initialApplicationSettings:InitialApplicationSettingsVO;
 
 	
 	var _previousPerformerData:PerformerDataVO;
@@ -48,9 +50,15 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 		if ( this._previousPerformerData.performerId != null )
 		{
 			this.add(StopCheckStreamMacro);
-			this.add(ForcePerformerValidatorCommand).withFailHandlers(new AsyncHandler(this, this._onForcePerformerValidatonFailed));
+			
 			//TODO: add manual switch support
-			this.add(MaxAutoPerformerSwitchValidatorCommand).withFailHandlers(new AsyncHandler(this, this._onMaxSwitchPerformerValidationFailed));
+			if ( this.initialApplicationSettings.filterSettings.forcePerformer ||
+				this.performerProviderModule.isAutoPerformerSwitchLimitReached() )
+			{
+				this.setOffline();
+				return;
+			}
+			
 		}
 		
 		this.add(LoadNextPerformerCommand).withCompleteHandlers(new AsyncHandler(this, this._onPerformerDataLoaded));
@@ -76,16 +84,6 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 		}
 
 		this.add(SetOnlineCommand);
-	}
-	
-	function _onForcePerformerValidatonFailed( command:AsyncCommand ):Void
-	{
-		this.setOffline();
-	}
-	
-	function _onMaxSwitchPerformerValidationFailed( command:AsyncCommand ):Void
-	{
-		this.setOffline();
 	}
 	
 	function setOffline():Void

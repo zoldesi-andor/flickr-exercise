@@ -1,4 +1,11 @@
 {
+	"filter": {
+		"performerId": "Perftest08",
+		"category": "girl",
+		"templateId": "kontx_w2_girl_teen",
+		"forcePerformer": false
+	},
+	
 	"layout": {
 		"rootElementId": "testApp",
 		"layoutMode": "inFrame",
@@ -7,13 +14,6 @@
 	
 	"stream": {
 		"muted": true
-	},
-	
-	"filter": {
-		"category": "girl",
-		"templateId": "kontx_w2_girl_teen",
-		"performerId": "",
-		"forcePerformer": false
 	},
 	
 	"site": {

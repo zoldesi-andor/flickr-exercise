@@ -1007,7 +1007,7 @@ var MSEMediaController = (function () {
                   /* we have no idea about which fragment should be loaded.
                      so let's load mid fragment. it will help computing playlist sliding and find the right one
                   */
-                  _frag = fragments[Math.round(fragLen / 2)];
+                  _frag = fragments[Math.floor(fragLen / 2)];
                   _utilsLogger.logger.log('live playlist, switching playlist, unknown, load middle frag : ' + _frag.sn);
                 }
               }

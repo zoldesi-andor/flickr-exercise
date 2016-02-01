@@ -10,6 +10,7 @@ import hex.control.command.BasicCommand;
  * ...
  * @author duke
  */
+@:rtti
 class ShowChatWelcomeMessageCommand extends BasicCommand
 {
 	@Inject("name=chatBoxModule")

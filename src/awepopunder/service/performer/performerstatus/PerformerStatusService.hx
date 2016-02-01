@@ -48,12 +48,16 @@ class PerformerStatusService extends StatefulService<PerformerStatusServiceConfi
 	public function startCheckPerformer( performerId:String ):Void
 	{
 		trace("PerformerStatusService.startCheckPerformer", performerId);
-		this._lock();
+		
+		if ( this._inUse )
+		{
+			this._throwExecutionIllegalStateError("startCheckPerformer");
+		}
 		
 		this._performerId = performerId;
 		
 		this.setConfiguration( new PerformerStatusServiceConfiguration(this.serviceUrl) );
-		trace("AAAAAAA", this.serviceUrl);
+		this._lock();
 		
 		this._createNewService( );
 		
@@ -68,6 +72,12 @@ class PerformerStatusService extends StatefulService<PerformerStatusServiceConfi
 	public function stopCheckPerformer( performerId:String ):Void
 	{
 		trace("PerformerStatusService.stopCheckPerformer", performerId);
+		
+		if ( !this._inUse )
+		{
+			this._throwIllegalStateError("stopCheckPerformer() failed. This service is not in use.");
+		}
+		
 		this._performerStatusHttpSerice.release();
 		this._performerStatusHttpSerice.removeHTTPServiceListener( this );
 		this._performerStatusHttpSerice = null;

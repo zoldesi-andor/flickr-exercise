@@ -20,7 +20,7 @@ class StopCheckPerformerStatusCommand extends BasicCommand
 
 	override public function execute(?request:Request):Void 
 	{
-		if ( !this.performerStatusService.inUse() )
+		if ( this.performerStatusService.inUse() )
 		{
 			this.performerStatusService.stopCheckPerformer( this.performerProviderModule.getActivePerformer( ).performerId );
 		}

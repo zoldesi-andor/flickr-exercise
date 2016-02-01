@@ -1,25 +1,18 @@
 package awepopunder.adapter.switchperformer;
 
-import com.service.net.chatwebsocket.IChatWebSocketService;
-import awepopunder.adapter.bootstrap.controller.SetHlsStreamCommand;
-import awepopunder.adapter.switchperformer.controller.ClearChatMessagesCommand;
-import awepopunder.adapter.switchperformer.controller.ConnectedToChatGuard;
-import awepopunder.adapter.switchperformer.controller.LoadNextPerformerCommand;
+import awepopunder.adapter.stream.check.StopCheckStreamMacro;
 import awepopunder.adapter.switchperformer.controller.ForcePerformerValidatorCommand;
+import awepopunder.adapter.switchperformer.controller.LoadNextPerformerCommand;
 import awepopunder.adapter.switchperformer.controller.MaxAutoPerformerSwitchValidatorCommand;
 import awepopunder.adapter.switchperformer.controller.SetOfflineCommand;
 import awepopunder.adapter.switchperformer.controller.SetOnlineCommand;
-import awepopunder.adapter.switchperformer.controller.PlayHlsStreamCommand;
-import awepopunder.adapter.switchperformer.controller.SetStreamRatioCommand;
 import awepopunder.adapter.switchperformer.controller.SetPerformerIdCommand;
-import awepopunder.adapter.switchperformer.controller.ShowChatWelcomeMessageCommand;
 import awepopunder.adapter.switchperformer.controller.StopHlsStreamCommand;
-import awepopunder.adapter.switchperformer.controller.SubscribeChatRoomCommand;
-import awepopunder.adapter.switchperformer.controller.UnsubscribeChatRoomCommand;
 import awepopunder.adapter.switchperformer.macro.SwitchChatMacro;
 import awepopunder.adapter.switchperformer.marco.SwitchStreamMacro;
 import awepopunder.module.performerprovider.IPerformerProviderModule;
 import awepopunder.vo.performer.PerformerDataVO;
+import com.service.net.chatwebsocket.IChatWebSocketService;
 import hex.control.async.AsyncCommand;
 import hex.control.async.AsyncHandler;
 import hex.control.payload.ExecutionPayload;
@@ -54,6 +47,7 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 		// Check if this is the first performer switch, unless we skip the validations
 		if ( this._previousPerformerData.performerId != null )
 		{
+			this.add(StopCheckStreamMacro);
 			this.add(ForcePerformerValidatorCommand).withFailHandlers(new AsyncHandler(this, this._onForcePerformerValidatonFailed));
 			//TODO: add manual switch support
 			this.add(MaxAutoPerformerSwitchValidatorCommand).withFailHandlers(new AsyncHandler(this, this._onMaxSwitchPerformerValidationFailed));

@@ -8,6 +8,7 @@ import hex.service.stateless.http.HTTPServiceParameters;
  */
 class PerformerDataServiceParameters extends HTTPServiceParameters
 {
+	public var wowza:UInt;
 	public var category:String;
 	public var site:String;
 	public var performerId:String;
@@ -24,7 +25,7 @@ class PerformerDataServiceParameters extends HTTPServiceParameters
 	 * @param	banList Filter out these performers
 	 * @param	streamData We need the streamRatio and other stream information
 	 */
-	public function new( category:String = "", site:String = "", performerId:String = "", tid:String = "", banList:String = "", streamData:UInt = 1) 
+	public function new( category:String = "", site:String = "", performerId:String = "", tid:String = "", banList:String = "", streamData:UInt = 1, wowza:UInt = 1) 
 	{
 		super();
 		
@@ -34,5 +35,6 @@ class PerformerDataServiceParameters extends HTTPServiceParameters
 		this.tid = tid;
 		this.banList = banList;
 		this.streamData = streamData;
+		this.wowza = wowza;
 	}
 }

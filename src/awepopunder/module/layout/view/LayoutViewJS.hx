@@ -18,6 +18,7 @@ class LayoutViewJS implements ILayoutView
 	var _liveLogo:Element;
 	var _offlineLabel:Element;
 	var _video:Element;
+	var _wrapper:Element;
 	
 	var _inverseFrameHandling:Bool = false;
 	var _layoutMode:LayoutMode;
@@ -110,11 +111,13 @@ class LayoutViewJS implements ILayoutView
 	public function showOffline( ):Void
 	{
 		this._offlineLabel.classList.remove("hidden");
+		this._layout.classList.add("end-broadcast");
 	}
 	
 	public function hideOffline( ):Void
 	{
 		this._offlineLabel.classList.add("hidden");
+		this._layout.classList.remove("end-broadcast");
 	}
 	
 	

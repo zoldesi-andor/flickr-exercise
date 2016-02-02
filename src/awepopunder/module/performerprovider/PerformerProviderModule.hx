@@ -3,6 +3,7 @@ package awepopunder.module.performerprovider;
 import awepopunder.module.performerprovider.controller.LoadNextPerformerCommand;
 import awepopunder.module.performerprovider.controller.SetFilterSettingsCommand;
 import awepopunder.module.performerprovider.controller.SetPerformerSwitchLimitsCommand;
+import awepopunder.module.performerprovider.controller.SetPreferredPerformerCommand;
 import awepopunder.module.performerprovider.IPerformerProviderModule;
 import awepopunder.module.performerprovider.message.PerformerProviderModuleMessage;
 import awepopunder.module.performerprovider.model.IPerformerProviderModel;
@@ -10,12 +11,14 @@ import awepopunder.module.performerprovider.model.IPerformerProviderModelRO;
 import awepopunder.module.performerprovider.model.PerformerProviderModel;
 import awepopunder.module.performerprovider.request.SetFilterSettingsRequest;
 import awepopunder.module.performerprovider.request.SetPerformerSwitchLimitsRequest;
+import awepopunder.module.performerprovider.request.SetPreferredPerformerRequest;
 import awepopunder.service.performer.performerdata.IPerformerDataService;
 import awepopunder.vo.performer.PerformerDataVO;
 import awepopunder.vo.settings.application.FilterSettingsVO;
 import hex.config.stateful.IStatefulConfig;
 import hex.config.stateless.StatelessCommandConfig;
 import hex.config.stateless.StatelessModelConfig;
+import hex.control.Request;
 import hex.module.dependency.IRuntimeDependencies;
 import hex.module.dependency.RuntimeDependencies;
 import hex.module.Module;
@@ -46,6 +49,11 @@ class PerformerProviderModule extends Module implements IPerformerProviderModule
 	public function loadNextPerformer( ):Void
 	{
 		this._dispatchPrivateMessage( PerformerProviderModuleMessage.LOAD_NEXT_PERFORMER );
+	}
+	
+	public function setPreferredPerformer(preferredPerformer:String):Void
+	{
+		this._dispatchPrivateMessage( PerformerProviderModuleMessage.SET_PREFERRED_PERFORMER, [new SetPreferredPerformerRequest(preferredPerformer)] );
 	}
 	
 	public function getActivePerformer():PerformerDataVO 
@@ -84,6 +92,7 @@ private class PerformerProviderCommandConfig extends StatelessCommandConfig
 		this.map( PerformerProviderModuleMessage.SET_FILTER_SETTINGS, SetFilterSettingsCommand );
 		this.map( PerformerProviderModuleMessage.LOAD_NEXT_PERFORMER, LoadNextPerformerCommand );
 		this.map( PerformerProviderModuleMessage.SET_PERFORMER_SWITCH_LIMITS, SetPerformerSwitchLimitsCommand );
+		this.map( PerformerProviderModuleMessage.SET_PREFERRED_PERFORMER, SetPreferredPerformerCommand );
 	}
 }
 

@@ -8,10 +8,12 @@ import awepopunder.vo.settings.application.FilterSettingsVO;
  */
 interface IPerformerProviderModel extends IPerformerProviderModelRO
 {
-
+	
 	function setPerformerData(value:PerformerDataVO):Void;
 	
 	function setFilterSettings(value:FilterSettingsVO):Void;
+	
+	function setPreferredPerformer(value:String):Void;
 	
 	function setSite(value:String):Void;
 	

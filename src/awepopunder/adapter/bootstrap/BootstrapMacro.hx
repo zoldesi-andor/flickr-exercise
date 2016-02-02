@@ -7,6 +7,7 @@ import awepopunder.adapter.bootstrap.controller.InitUrlProviderCommand;
 import awepopunder.adapter.bootstrap.controller.LoadApplicationSettingsCommand;
 import awepopunder.adapter.bootstrap.controller.SetLayoutSettingsCommand;
 import awepopunder.adapter.bootstrap.controller.SetPerformerProviderSettingsCommand;
+import awepopunder.adapter.bootstrap.controller.SetPreferredPerformerCommand;
 import awepopunder.adapter.switchperformer.SwitchPerformerMacro;
 import awepopunder.vo.settings.application.ApplicationSettingsVO;
 import hex.control.async.AsyncCommand;
@@ -52,6 +53,7 @@ class BootstrapMacro extends Macro
 		}
 		
 		this.add(SetPerformerProviderSettingsCommand).withPayloads([settingsPayload]);
+		this.add(SetPreferredPerformerCommand);
 		this.add(SwitchPerformerMacro);
 		
 	}

@@ -51,9 +51,9 @@ class PerformerProviderModule extends Module implements IPerformerProviderModule
 		this._dispatchPrivateMessage( PerformerProviderModuleMessage.LOAD_NEXT_PERFORMER );
 	}
 	
-	public function setPreferredPerformer(preferredPerformer:String):Void
+	public function setPreferredPerformer(preferredPerformerId:String):Void
 	{
-		this._dispatchPrivateMessage( PerformerProviderModuleMessage.SET_PREFERRED_PERFORMER, [new SetPreferredPerformerRequest(preferredPerformer)] );
+		this._dispatchPrivateMessage( PerformerProviderModuleMessage.SET_PREFERRED_PERFORMER, [new SetPreferredPerformerRequest(preferredPerformerId)] );
 	}
 	
 	public function getActivePerformer():PerformerDataVO 

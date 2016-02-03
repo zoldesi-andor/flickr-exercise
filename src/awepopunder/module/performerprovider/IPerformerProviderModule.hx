@@ -19,5 +19,5 @@ interface IPerformerProviderModule extends IModule
 	
 	function setPerformerSwitchLimits(auto:Int, manual:Int):Void;
 	
-	function setPreferredPerformer(performerId:String):Void;
+	function setPreferredPerformer(preferredPerformerId:String):Void;
 }

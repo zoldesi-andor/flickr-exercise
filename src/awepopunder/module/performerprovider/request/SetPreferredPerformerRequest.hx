@@ -8,12 +8,12 @@ import hex.control.Request;
  */
 class SetPreferredPerformerRequest extends Request
 {
-	public var preferredPerformer:String;
+	public var preferredPerformerId:String;
 
-	public function new( preferredPerformer:String ) 
+	public function new( preferredPerformerId:String ) 
 	{
 		super();
-		this.preferredPerformer = preferredPerformer;
+		this.preferredPerformerId = preferredPerformerId;
 	}
 	
 }

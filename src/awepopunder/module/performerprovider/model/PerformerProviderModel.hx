@@ -11,7 +11,6 @@ class PerformerProviderModel implements IPerformerProviderModel
 {
 	var _performerData:PerformerDataVO;
 	var _filterSettings:FilterSettingsVO;
-	var _preferredPerformer:String;
 	var _site:String;
 	var _autoPerformerSwitchCount:UInt = 0;
 	var _autoPerformerSwitchLimit:Int = -1;
@@ -30,7 +29,7 @@ class PerformerProviderModel implements IPerformerProviderModel
 	
 	public function setPreferredPerformer(value:String):Void 
 	{
-		this._preferredPerformer = value;
+		this._filterSettings.preferredPerformerId = value;
 	}
 	
 	public function setSite(value:String):Void 
@@ -45,7 +44,7 @@ class PerformerProviderModel implements IPerformerProviderModel
 	
 	public function getPreferredPerformer():String 
 	{
-		return this._preferredPerformer;
+		return this._filterSettings.preferredPerformerId;
 	}
 	
 	public function getSite():String 

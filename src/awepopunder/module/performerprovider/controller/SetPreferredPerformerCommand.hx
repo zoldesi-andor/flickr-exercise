@@ -18,7 +18,7 @@ class SetPreferredPerformerCommand extends BasicCommand
 	{
 		var request:SetPreferredPerformerRequest = cast request;
 		
-		this.performerProviderModel.setPreferredPerformer( request.preferredPerformer );
+		this.performerProviderModel.setPreferredPerformer( request.preferredPerformerId );
 	}
 	
 }

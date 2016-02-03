@@ -31,7 +31,8 @@ class LoadNextPerformerCommand extends AsyncCommand implements IHTTPServiceListe
 		this.performerProviderModel.increaseAutoPerformerSwitchCount( );
 		
 		var config:HTTPServiceConfiguration = this.performerDataService.getConfiguration();
-		config.parameters = new PerformerDataServiceParameters( this.performerProviderModel.getFilterSettings().category, this.performerProviderModel.getSite(), this.performerProviderModel.getFilterSettings().performerId, this.performerProviderModel.getFilterSettings().templateId);
+		config.parameters = new PerformerDataServiceParameters( this.performerProviderModel.getFilterSettings().category, this.performerProviderModel.getSite(), this.performerProviderModel.getPreferredPerformer(), this.performerProviderModel.getFilterSettings().templateId);
+		this.performerProviderModel.setPreferredPerformer("");
 		
 		this.performerDataService.setConfiguration( config );
 		

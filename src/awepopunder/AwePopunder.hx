@@ -32,35 +32,50 @@ class AwePopunder
 	var _applicationXMLParser:ApplicationXMLParser;
 	
 	var _injector:IBasicInjector;
+	var _initialApplicationSettings:InitialApplicationSettingsVO;
 
 	static public function main() : Void
 	{
 		#if debug
-		self = new AwePopunder( Json.parse(haxe.Resource.getString("initialConfig")) ); 
+			self = new AwePopunder( DebugConfig.config ); 
 		#end
 	}
 	
 	public function new( config:Dynamic )
 	{
-		var initialApplicationSettingsParser = new InitialApplicationSettingsParser();
-		var initialApplicationSettings:InitialApplicationSettingsVO = initialApplicationSettingsParser.parseSettings( config );
-		
 		var source:String = XMLParserUtil.getConcatenatedConfig( ["moduleConfig", "serviceConfig", "orderConfig", "viewConfig"], "awePopunder" );
 		
 		var xml : Xml = Xml.parse( source );
 		
-		this._applicationAssembler 	= new ApplicationAssembler();
-		this._applicationContext = this._applicationAssembler.getApplicationContext("awePopunder");
+		this._init( );
 		
-		this._injector = this._applicationContext.getBasicInjector();
-		this._injector.mapToValue( InitialApplicationSettingsVO, initialApplicationSettings, "initialApplicationSettings" );
+		this._setInitialApplicationSettings( config );
 		
-		#if js
-		this._applicationAssembler.getBuilderFactory( this._applicationContext ).getCoreFactory().register( "dom", js.Browser.document.getElementById(initialApplicationSettings.layoutSettings.rootElementId) );
-		#end
+		this._registerView( );
 		
 		this._build( xml );
 		
+	}
+	
+	function _init():Void
+	{
+		this._applicationAssembler 	= new ApplicationAssembler();
+		this._applicationContext = this._applicationAssembler.getApplicationContext("awePopunder");
+		this._injector = this._applicationContext.getBasicInjector();
+	}
+	
+	function _setInitialApplicationSettings(config:Dynamic):Void
+	{
+		var initialApplicationSettingsParser = new InitialApplicationSettingsParser();
+		this._initialApplicationSettings = initialApplicationSettingsParser.parseSettings( config );
+		this._injector.mapToValue( InitialApplicationSettingsVO, this._initialApplicationSettings, "initialApplicationSettings" );
+	}
+	
+	function _registerView():Void
+	{
+		#if js
+		this._applicationAssembler.getBuilderFactory( this._applicationContext ).getCoreFactory().register( "dom", js.Browser.document.getElementById(this._initialApplicationSettings.layoutSettings.rootElementId) );
+		#end
 	}
 	
 	function _build( xml : Xml ) : Void
@@ -69,8 +84,6 @@ class AwePopunder
 		this._applicationXMLParser.parse( this._applicationAssembler, xml );
 		
 		this._applicationAssembler.buildEverything();
-		
-		
 	}
 	
 	public function playStream( ):Void

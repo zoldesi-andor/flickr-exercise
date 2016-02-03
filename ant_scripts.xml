@@ -1,0 +1,189 @@
+<project name="MemberApplet3" basedir="../../" >
+
+    <property name="memberappletpackage" value="${basedir}/MemberApplet3/src/memberapplet/" />
+    <property name="configfolder" value="${memberappletpackage}/configuration/main/xml/" />
+    <property name="apimvcpackage" value="${basedir}/api/v2/com/mvc/" />
+
+    <target name="generateDispatchers">
+
+        <copy todir="${memberappletpackage}" overwrite="true">
+            <fileset dir="${memberappletpackage}"/>
+            <regexpmapper from="(.*)\\I(.+)ModelListener\.as" to="\1\\\2ModelDispatcher.as" />
+            <filterchain>
+                <replaceregex pattern="(package[^{]+\{)" replace="\1${line.separator}    import com.mvc.model.base.BaseModelDispatcher;" flags="gm" byline="false" />
+                <replaceregex pattern="public[ ]+interface[ ]+I([a-zA-Z0-9_]+)ModelListener[^\r\n{]+" replace="public class \1ModelDispatcher extends BaseModelDispatcher implements I\1ModelListener" flags="gm" byline="false" />
+                <replaceregex pattern="function ([ a-zA-Z0-9_]+)\(([^)]*)\)([^;\r\n]*)(;|\r|\n)" replace="public function \1(\2)\3 { for (var i:int=0, l:int=this._listeners.length; i&lt;l; i++) { this._listeners[i].\1.apply( null, arguments ); }; }" flags="gm" byline="false" />
+            </filterchain>
+        </copy>
+        <copy todir="${apimvcpackage}" overwrite="true">
+            <fileset dir="${apimvcpackage}"/>
+            <regexpmapper from="(.*)\\I(.+)ModelListener\.as" to="\1\\\2ModelDispatcher.as"/>
+            <filterchain>
+                <replaceregex pattern="(package[^{]+\{)" replace="\1${line.separator}    import com.mvc.model.base.BaseModelDispatcher;" flags="gm" byline="false" />
+                <replaceregex pattern="public[ ]+interface[ ]+I([a-zA-Z0-9_]+)ModelListener[^\r\n{]+" replace="public class \1ModelDispatcher extends BaseModelDispatcher implements I\1ModelListener" flags="gm" byline="false" />
+                <replaceregex pattern="function ([ a-zA-Z0-9_]+)\(([^)]*)\)([^;\r\n]*)(;|\r|\n)" replace="public function \1(\2)\3 { for (var i:int=0, l:int=this._listeners.length; i&lt;l; i++) { this._listeners[i].\1.apply( null, arguments ); }; }" flags="gm" byline="false" />
+            </filterchain>
+        </copy>
+    </target>
+
+    <target name="createModule" description="Generate a new module">
+        <input message="Module name:" addproperty="modulename" />
+        <property name="modulefoldername" value="" />
+        <script language="javascript">
+            <![CDATA[
+
+            // getting the value
+            property = project.getProperty("modulename");
+
+            // convert to uppercase
+            lowercaseValue = property.toLowerCase();
+
+            // store the result in a new property
+            project.setProperty("modulefoldername",lowercaseValue);
+            ]]>
+        </script>
+        <mkdir dir="${memberappletpackage}/module/${modulefoldername}"/>
+        <mkdir dir="${memberappletpackage}/module/${modulefoldername}/model"/>
+        <mkdir dir="${memberappletpackage}/module/${modulefoldername}/controller"/>
+        <mkdir dir="${memberappletpackage}/module/${modulefoldername}/view"/>
+        <echo file="${memberappletpackage}/module/${modulefoldername}/${modulename}Module.as" >/**
+ * Created by ant on 2015-05-21.
+ */
+package memberapplet.module.${modulefoldername}
+{
+	import com.mvc.module.base.BaseModule;
+
+	public class ${modulename}Module extends BaseModule implements I${modulename}Module
+	{
+		public function ${modulename}Module( )
+		{
+			this.addConfigurationClass( ${modulename}CommandConfig, ${modulename}ModelConfig );
+		}
+	}
+}
+
+import com.mvc.config.base.BaseActorConfig;
+import com.mvc.config.base.BaseCommandConfig;
+import com.mvc.config.base.BaseModelConfig;
+
+internal class ${modulename}CommandConfig extends BaseCommandConfig
+{
+	override public function configure():void
+	{
+		
+	}
+}
+
+internal class ${modulename}ModelConfig extends BaseModelConfig
+{
+	override public function configure():void
+	{
+
+	}
+}</echo>
+
+        <echo file="${memberappletpackage}/module/${modulefoldername}/I${modulename}Module.as" >/**
+ * Created by ant on 2015-05-19.
+ */
+package memberapplet.module.${modulefoldername}
+{
+	import com.mvc.module.base.IModule;
+
+	public interface I${modulename}Module extends IModule
+	{
+		
+	}
+}</echo>
+    </target>
+
+    <target name="createModel">
+        <input message="Model class name:" addproperty="modelname" />
+        <input message="Module folder:" addproperty="modulefoldername" />
+        <echo file="${memberappletpackage}/module/${modulefoldername}/model/${modelname}Model.as" >/**
+ * Created by ant on 2015-05-19.
+ */
+package memberapplet.module.${modulefoldername}.model
+{
+	import com.mvc.model.base.BaseModel;
+
+	public class ${modelname}Model extends BaseModel implements I${modelname}Model
+	{
+
+		public var dispatcher:${modelname}ModelDispatcher;
+
+		public function ${modelname}Model()
+		{
+			this.dispatcher = new ${modelname}ModelDispatcher();
+		}
+
+
+		public function addListener( listener:I${modelname}ModelListener ):void
+		{
+			this.dispatcher.addListener( listener );
+		}
+
+		public function removeListener( listener:I${modelname}ModelListener ):void
+		{
+			this.dispatcher.removeListener( listener );
+		}
+	}
+
+}</echo>
+
+		<echo file="${memberappletpackage}/module/${modulefoldername}/model/I${modelname}Model.as" >/**
+ * Created by ant on 2015-04-23.
+ */
+package memberapplet.module.${modulefoldername}.model
+{
+
+    public interface I${modelname}Model extends I${modelname}ModelRO
+    {
+       
+    }
+}</echo>
+
+		<echo file="${memberappletpackage}/module/${modulefoldername}/model/I${modelname}ModelRO.as" >/**
+ * Created by ant on 2015-04-24.
+ */
+package memberapplet.module.${modulefoldername}.model
+{
+    import com.mvc.model.base.IModel;
+
+    public interface I${modelname}ModelRO extends IModel
+    {
+        function addListener( listener : I${modelname}ModelListener ) : void;
+        function removeListener( listener : I${modelname}ModelListener ) : void;
+    }
+}</echo>
+
+		<echo file="${memberappletpackage}/module/${modulefoldername}/model/I${modelname}ModelListener.as" >/**
+ * Created by ant on 2015-05-07.
+ */
+package memberapplet.module.${modulefoldername}.model
+{
+	import com.mvc.model.base.IModelListener;
+
+	public interface I${modelname}ModelListener extends IModelListener
+	{
+
+	}
+}</echo>
+
+		<antcall target="generateDispatchers" />
+    </target>
+
+    <path id="addFlashImportsClass">
+        <pathelement location="${basedir}/MemberApplet3/obj/AddFlashImportsTask.jar"/>
+    </path>
+
+    <target name="generateImports">
+        <taskdef name="flashImporter" classname="AddFlashImportsTask" classpathref="addFlashImportsClass"/>
+        <flashImporter importclass="${memberappletpackage}/Imports.as" importclassoverride="true">
+            <fileset dir="${configfolder}" includes="**/*.xml"></fileset>
+        </flashImporter>
+        <flashImporter importclass="${memberappletpackage}/ImportsInitial.as" importclassoverride="true">
+            <fileset dir="${configfolder}" includes="MemberAppletInitialConfig.xml"></fileset>
+        </flashImporter>
+    </target>
+
+</project>

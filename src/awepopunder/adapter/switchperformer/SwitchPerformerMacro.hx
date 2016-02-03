@@ -5,6 +5,7 @@ import awepopunder.adapter.switchperformer.controller.LoadNextPerformerCommand;
 import awepopunder.adapter.switchperformer.controller.SetOfflineCommand;
 import awepopunder.adapter.switchperformer.controller.SetOnlineCommand;
 import awepopunder.adapter.switchperformer.controller.SetPerformerIdCommand;
+import awepopunder.adapter.switchperformer.controller.SetPerformerProfilePictureCommand;
 import awepopunder.adapter.switchperformer.controller.StopHlsStreamCommand;
 import awepopunder.adapter.switchperformer.macro.SwitchChatMacro;
 import awepopunder.adapter.switchperformer.marco.SwitchStreamMacro;
@@ -73,6 +74,7 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 		
 		
 		this.add(SetPerformerIdCommand).withPayloads([performerDataPayload]);
+		this.add(SetPerformerProfilePictureCommand).withPayloads([performerDataPayload]);
 		
 		//TODO: don't care if we cannot subscribe to a room, ingore it and go ahead with the other thigns
 		this.add(SwitchStreamMacro).withPayloads([performerDataPayload, previousPerformerDataPayload]);
@@ -88,7 +90,6 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 	
 	function setOffline():Void
 	{
-		trace("setOffline");
 		this.add(StopHlsStreamCommand);
 		this.add(SetOfflineCommand);
 	}

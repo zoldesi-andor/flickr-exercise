@@ -17,6 +17,10 @@
 		<argument ref="dom.embed-chat-messages" />
 	</view>
 	
+	<view id="profilePictureView" type="com.module.image.view.BackgroundImageViewJS">
+		<argument ref="dom.embed" />
+	</view>
+	
 	<view id="layoutView" type="awepopunder.module.layout.view.LayoutViewJS">
 		<argument ref="dom.embed" />
 	</view>

@@ -30,7 +30,11 @@
 		<listen ref="hlsPlayerModule">
 			<event static-ref="com.module.stream.player.hlsplayer.message.HlsPlayerModulePublicMessage.STREAM_CLICK" method="navigateTo" strategy="awepopunder.adapter.navigator.NavigateToChatRoomStrategy"/>
 		</listen>
-	</module>	
+	</module>
+	
+	<module id="profilePictureModule" type="com.module.image.ImageModule" map-type="com.module.image.IImageModule">
+		<argument ref="profilePictureView" />
+	</module>
 	
 	<module id="layoutModule" type="awepopunder.module.layout.LayoutModule" map-type="awepopunder.module.layout.ILayoutModule">
 		<argument ref="layoutView"/>

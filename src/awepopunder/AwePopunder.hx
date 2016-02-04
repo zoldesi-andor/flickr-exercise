@@ -21,7 +21,7 @@ import Imports;
  * ...
  * @author duke
  */
- 
+@:expose("AwePopunder")
 class AwePopunder
 {
 	

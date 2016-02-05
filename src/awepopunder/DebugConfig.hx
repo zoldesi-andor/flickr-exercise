@@ -8,36 +8,36 @@ class DebugConfig
 {
 	public static var config:Dynamic = {  
 		
-		"filter":{  
-			"preferredPerformerId":"SexyNicole",
-			"category":"girl",
-			"templateId":"kontx_w2_girl_teen",
-			"forcePerformer":false
+		filter:{
+			preferredPerformerId:"ErinTaylor",
+			category:"girl",
+			templateId:"kontx_w2_girl_teen",
+			forcePerformer:false
 		},
 		
-		"layout":{  
-			"rootElementId":"testApp",
-			"layoutMode":"inFrame",
-			"chatMode":"alwaysOn"
+		layout:{
+			rootElementId:"testApp",
+			layoutMode:"inFrame",
+			chatMode:"alwaysOn"
 		},
 		
-		"stream":{  
-			"muted":true
+		stream:{
+			muted:true // we don't care with it at this moment
 		},
 		
-		"site":{  
-			"site":"jasmin",
-			"cobrandId":"",
-			"language":"en",
-			"sessionId":"AWELiveFeedGuest"
+		site:{
+			site:"jasmin",
+			cobrandId:"",
+			language:"en",
+			sessionId:"AWELiveFeedGuest"
 		},
 		
-		"promoInfo":{  
-			"psId":"awetest",
-			"psTool":"202_1",
-			"psProgram":"revs",
-			"campaingId":"xxx_campaign",
-			"subAffiliateId":"asdcéál,2345-.,bvyxcb2á45él/=(%!/"
+		promoInfo:{
+			psId:"awetest",
+			psTool:"202_1",
+			psProgram:"revs",
+			campaingId:"xxx_campaign",
+			subAffiliateId:"asdcéál,2345-.,bvyxcb2á45él/=(%!/"
 		}
 	};
 	

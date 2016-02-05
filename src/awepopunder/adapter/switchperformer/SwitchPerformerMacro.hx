@@ -59,7 +59,6 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 				this.setOffline();
 				return;
 			}
-			
 		}
 		
 		this.add(LoadNextPerformerCommand).withCompleteHandlers(new AsyncHandler(this, this._onPerformerDataLoaded));
@@ -68,13 +67,21 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 	function _onPerformerDataLoaded( command:AsyncCommand ):Void
 	{
 		trace("SwitchPerformerMacro._onPerformerDataLoaded", command.getResult()[0]);
-		
-		var performerDataPayload = new ExecutionPayload(command.getResult()[0], PerformerDataVO);
+
+		var performerData:PerformerDataVO = command.getResult()[0];
+
+		var performerDataPayload = new ExecutionPayload(performerData, PerformerDataVO);
 		var previousPerformerDataPayload = new ExecutionPayload(this._previousPerformerData, PerformerDataVO, "previous");
-		
-		
+
+
 		this.add(SetPerformerIdCommand).withPayloads([performerDataPayload]);
 		this.add(SetPerformerProfilePictureCommand).withPayloads([performerDataPayload]);
+
+		if ( performerData.streamUrl == null || performerData.streamUrl == "" )
+		{
+			this.add(SwitchPerformerMacro); //switch to another performer if the current one doesn't have stream
+			return;
+		}
 		
 		//TODO: don't care if we cannot subscribe to a room, ingore it and go ahead with the other thigns
 		this.add(SwitchStreamMacro).withPayloads([performerDataPayload, previousPerformerDataPayload]);

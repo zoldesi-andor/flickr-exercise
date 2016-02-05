@@ -11,5 +11,6 @@ class LayoutModuleMessage
 	static public var OFFLINE = new MessageType("offline");
 	static public var STREAM_RATIO_CHANGED = new MessageType("streamRatioChanged");
 	static public var LAYOUT_SETTINGS_CHANGED = new MessageType("layoutSettingsChanged");
-	
+	static public var SHOW_STREAM_BACKGROUND = new MessageType("showStreamBackground");
+
 }

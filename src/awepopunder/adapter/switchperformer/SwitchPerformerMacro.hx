@@ -1,5 +1,6 @@
 package awepopunder.adapter.switchperformer;
 
+import awepopunder.adapter.switchperformer.controller.PlayHlsStreamCommand;
 import awepopunder.adapter.stream.check.StopCheckStreamMacro;
 import awepopunder.adapter.switchperformer.controller.LoadNextPerformerCommand;
 import awepopunder.adapter.switchperformer.controller.SetOfflineCommand;
@@ -85,6 +86,12 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 		
 		//TODO: don't care if we cannot subscribe to a room, ingore it and go ahead with the other thigns
 		this.add(SwitchStreamMacro).withPayloads([performerDataPayload, previousPerformerDataPayload]);
+
+		if ( this._previousPerformerData.performerId != null || this.initialApplicationSettings.streamSettings.autoPlay )
+		{
+			this.add(PlayHlsStreamCommand);
+		}
+
 		//TODO implement guard injection
 		///this.add(SwitchChatMacro).withPayloads([performerDataPayload, previousPerformerDataPayload]).withGuards([ConnectedToChatGuard]);
 		if ( this.webSocketService.inUse() )

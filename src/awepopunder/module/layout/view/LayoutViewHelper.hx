@@ -53,6 +53,12 @@ class LayoutViewHelper extends ViewHelper implements ILayoutModelListener
 		this._layoutView.hideChat( );
 		this._layoutView.hideLive( );
 		this._layoutView.showOffline( );
+		this._layoutView.hideBlackBackground();
+	}
+
+	public function showStreamBackground( ):Void
+	{
+		this._layoutView.showBlackBackground( );
 	}
 	
 	override public function release():Void

@@ -1,7 +1,6 @@
 package awepopunder.adapter.switchperformer.marco;
 
 import awepopunder.adapter.bootstrap.controller.SetHlsStreamCommand;
-import awepopunder.adapter.switchperformer.controller.PlayHlsStreamCommand;
 import awepopunder.adapter.switchperformer.controller.SetStreamRatioCommand;
 import awepopunder.adapter.switchperformer.controller.StopHlsStreamCommand;
 import awepopunder.vo.performer.PerformerDataVO;
@@ -30,7 +29,6 @@ class SwitchStreamMacro extends Macro
 		var performerDataPayload = new ExecutionPayload(this.performerData, PerformerDataVO);
 		
 		this.add(SetHlsStreamCommand).withPayloads([performerDataPayload]);
-		this.add(PlayHlsStreamCommand);
 		this.add(SetStreamRatioCommand).withPayloads([performerDataPayload]);
 	}
 	

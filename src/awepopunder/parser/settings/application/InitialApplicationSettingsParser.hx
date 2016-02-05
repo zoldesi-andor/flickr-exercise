@@ -1,5 +1,6 @@
 package awepopunder.parser.settings.application;
 
+import awepopunder.vo.settings.application.StreamSettingsVO;
 import awepopunder.module.layout.constant.ChatMode;
 import awepopunder.module.layout.constant.LayoutMode;
 import awepopunder.vo.settings.application.FilterSettingsVO;
@@ -37,7 +38,8 @@ class InitialApplicationSettingsParser implements IParser
 		result.siteSettings = this._parseSiteSettings( data.site );
 		result.filterSettings = this._parseFilterSettings( data.filter );
 		result.promoInfoSettings = this._parsePromoInfoSettings( data.promoInfo );
-		
+		result.streamSettings = this._parseStreamSettings( data.stream );
+
 		return result;
 	}
 	
@@ -81,11 +83,11 @@ class InitialApplicationSettingsParser implements IParser
 	function _parseLayout( data:Dynamic ) : LayoutSettingsVO
 	{
 		var result = new LayoutSettingsVO();
-		
+
 		if ( data )
 		{
 			result.rootElementId = data.rootElementId;
-			
+
 			switch ( data.chatMode )
 			{
 				case "alwaysOn": result.chatMode = ChatMode.AlwaysOn;
@@ -93,7 +95,7 @@ class InitialApplicationSettingsParser implements IParser
 				case "hidden": result.chatMode = ChatMode.Hidden;
 				default: result.chatMode = ChatMode.AlwaysOn;
 			}
-			
+
 			switch ( data.layoutMode )
 			{
 				case "inFrame": result.layoutMode = LayoutMode.InFrame;
@@ -101,7 +103,17 @@ class InitialApplicationSettingsParser implements IParser
 				default: result.layoutMode = LayoutMode.InFrame;
 			}
 		}
-		
+
+		return result;
+	}
+
+	function _parseStreamSettings( data:Dynamic ) : StreamSettingsVO
+	{
+		var result = new StreamSettingsVO( );
+
+		result.muted = data.muted == true ? true : false;
+		result.autoPlay = data.autoPlay == true ? true : false;
+
 		return result;
 	}
 	

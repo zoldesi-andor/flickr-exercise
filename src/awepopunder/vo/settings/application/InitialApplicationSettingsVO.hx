@@ -10,6 +10,7 @@ class InitialApplicationSettingsVO
 	public var layoutSettings:LayoutSettingsVO;
 	public var filterSettings:FilterSettingsVO;
 	public var promoInfoSettings:PromoInfoSettingsVO;
+	public var streamSettings:StreamSettingsVO;
 
 	public function new() 
 	{

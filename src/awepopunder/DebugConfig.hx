@@ -9,7 +9,7 @@ class DebugConfig
 	public static var config:Dynamic = {  
 		
 		filter:{
-			preferredPerformerId:"ErinTaylor",
+			preferredPerformerId:"nahomy19",
 			category:"girl",
 			templateId:"kontx_w2_girl_teen",
 			forcePerformer:false
@@ -22,7 +22,8 @@ class DebugConfig
 		},
 		
 		stream:{
-			muted:true // we don't care with it at this moment
+			muted:true, // we don't care with it at this moment
+			autoPlay:false
 		},
 		
 		site:{

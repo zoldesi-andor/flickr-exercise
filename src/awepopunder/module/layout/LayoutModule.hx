@@ -1,5 +1,6 @@
 package awepopunder.module.layout;
 
+import awepopunder.module.layout.controller.ShowStreamBackgroundCommand;
 import awepopunder.module.layout.controller.SetLayoutSettingsCommand;
 import awepopunder.module.layout.controller.SetOfflineStateCommand;
 import awepopunder.module.layout.controller.SetOnlineStateCommand;
@@ -59,6 +60,11 @@ class LayoutModule extends Module implements ILayoutModule
 	{
 		this._dispatchPrivateMessage( LayoutModuleMessage.OFFLINE );
 	}
+
+	public function showStreamBackground( ):Void
+	{
+		this._dispatchPrivateMessage( LayoutModuleMessage.SHOW_STREAM_BACKGROUND );
+	}
 	
 	function setLayoutView( layoutView:ILayoutView ):Void
 	{
@@ -75,6 +81,7 @@ private class LayoutCommandConfig extends StatelessCommandConfig
 		this.map( LayoutModuleMessage.OFFLINE, SetOfflineStateCommand );
 		this.map( LayoutModuleMessage.STREAM_RATIO_CHANGED, SetStreamRatioCommand );
 		this.map( LayoutModuleMessage.LAYOUT_SETTINGS_CHANGED, SetLayoutSettingsCommand );
+		this.map( LayoutModuleMessage.SHOW_STREAM_BACKGROUND, ShowStreamBackgroundCommand );
 	}
 }
 

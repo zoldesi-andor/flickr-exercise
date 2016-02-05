@@ -42,6 +42,10 @@
 	
 	<module id="layoutModule" type="awepopunder.module.layout.LayoutModule" map-type="awepopunder.module.layout.ILayoutModule">
 		<argument ref="layoutView"/>
+
+		<listen ref="hlsService">
+			<event static-ref="com.service.stream.hls.event.HlsServiceEvent.PLAYED" method="showStreamBackground"/>
+		</listen>
 	</module>
 	
 	

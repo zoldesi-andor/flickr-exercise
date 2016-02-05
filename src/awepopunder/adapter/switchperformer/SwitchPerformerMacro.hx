@@ -99,6 +99,7 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 	{
 		this.add(StopHlsStreamCommand);
 		this.add(SetOfflineCommand);
+		//TODO: disconnecft from chat server
 	}
 	
 	function clonePerformerData():Void

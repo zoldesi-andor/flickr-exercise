@@ -8,4 +8,5 @@ enum ChatMode
 {
 	AlwaysOn;
 	Hidden;
+	None;
 }

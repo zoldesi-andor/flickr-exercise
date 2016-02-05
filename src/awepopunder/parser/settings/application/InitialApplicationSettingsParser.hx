@@ -89,6 +89,7 @@ class InitialApplicationSettingsParser implements IParser
 			switch ( data.chatMode )
 			{
 				case "alwaysOn": result.chatMode = ChatMode.AlwaysOn;
+				case "none": result.chatMode = ChatMode.None;
 				case "hidden": result.chatMode = ChatMode.Hidden;
 				default: result.chatMode = ChatMode.AlwaysOn;
 			}

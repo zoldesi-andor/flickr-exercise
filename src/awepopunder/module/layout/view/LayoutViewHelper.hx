@@ -73,10 +73,9 @@ class LayoutViewHelper extends ViewHelper implements ILayoutModelListener
 		{
 			this._layoutView.showChat();
 		}
-		else if ( chatMode == ChatMode.Hidden )
+		else if ( chatMode == ChatMode.None || chatMode == ChatMode.Hidden  ) //For Desktop we will add a the hidden mode too.
 		{
 			this._layoutView.hideChat();
 		}
 	}
-	
 }

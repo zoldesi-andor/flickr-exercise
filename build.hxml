@@ -1,6 +1,4 @@
-﻿-debug 
-
---each 
+--each
 
 -cp src 
 -cp hexcore/src 

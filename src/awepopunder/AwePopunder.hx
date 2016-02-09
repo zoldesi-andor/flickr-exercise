@@ -62,6 +62,7 @@ class AwePopunder
 		this._applicationAssembler 	= new ApplicationAssembler();
 		this._applicationContext = this._applicationAssembler.getApplicationContext("awePopunder");
 		this._injector = this._applicationContext.getBasicInjector();
+		this._applicationXMLParser = new ApplicationXMLParser();
 	}
 	
 	function _setInitialApplicationSettings(config:Dynamic):Void
@@ -69,6 +70,8 @@ class AwePopunder
 		var initialApplicationSettingsParser = new InitialApplicationSettingsParser();
 		this._initialApplicationSettings = initialApplicationSettingsParser.parseSettings( config );
 		this._injector.mapToValue( InitialApplicationSettingsVO, this._initialApplicationSettings, "initialApplicationSettings" );
+		
+		this._applicationAssembler.addConditionalProperty( ["useHlsJs" => this._initialApplicationSettings.streamSettings.useHlsJs] );
 	}
 	
 	function _registerView():Void
@@ -80,7 +83,6 @@ class AwePopunder
 	
 	function _build( xml : Xml ) : Void
 	{
-		this._applicationXMLParser = new ApplicationXMLParser();
 		this._applicationXMLParser.parse( this._applicationAssembler, xml );
 		
 		this._applicationAssembler.buildEverything();

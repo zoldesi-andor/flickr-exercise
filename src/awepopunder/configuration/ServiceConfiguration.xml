@@ -2,7 +2,11 @@
 <root>
 	<!-- SERVICES -->
 			
-	<service id="hlsService" type="com.service.stream.hlsjs.HlsJsService">
+	<service id="hlsService" type="com.service.stream.hls.HlsService" if="useHlsJs">
+		<property name="video" ref="dom.embed-video" />
+	</service>
+	
+	<service id="hlsService" type="com.service.stream.hls.HlsService" if-not="useHlsJs">
 		<property name="video" ref="dom.embed-video" />
 	</service>
 	

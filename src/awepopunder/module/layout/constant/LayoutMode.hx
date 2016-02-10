@@ -6,6 +6,5 @@ package awepopunder.module.layout.constant;
 
 enum LayoutMode 
 {
-	InFrame;
 	OutFrame;
 }

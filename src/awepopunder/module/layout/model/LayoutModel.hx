@@ -11,7 +11,7 @@ import awepopunder.module.layout.constant.OnlineState;
 class LayoutModel implements ILayoutModel
 {
 	var _onlineState:OnlineState = OnlineState.Loading;
-	var _layoutMode:LayoutMode = LayoutMode.InFrame;
+	var _layoutMode:LayoutMode = LayoutMode.OutFrame;
 	var _chatMode:ChatMode = ChatMode.AlwaysOn;
 	var _streamRatio:Float;
 	

@@ -98,9 +98,8 @@ class InitialApplicationSettingsParser implements IParser
 
 			switch ( data.layoutMode )
 			{
-				case "inFrame": result.layoutMode = LayoutMode.InFrame;
 				case "outFrame": result.layoutMode = LayoutMode.OutFrame;
-				default: result.layoutMode = LayoutMode.InFrame;
+				default: result.layoutMode = LayoutMode.OutFrame;
 			}
 		}
 

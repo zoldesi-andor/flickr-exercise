@@ -9,7 +9,7 @@ class DebugConfig
 	public static var config:Dynamic = {  
 		
 		filter:{
-			preferredPerformerId:"nahomy19",
+			preferredPerformerId:"AlyonaCage",
 			category:"girl",
 			templateId:"kontx_w2_girl_teen",
 			forcePerformer:false
@@ -17,7 +17,7 @@ class DebugConfig
 		
 		layout:{
 			rootElementId:"testApp",
-			layoutMode:"inFrame",
+			layoutMode:"outFrame",
 			chatMode:"alwaysOn"
 		},
 		

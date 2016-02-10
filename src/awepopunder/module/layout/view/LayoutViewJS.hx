@@ -33,7 +33,6 @@ class LayoutViewJS implements ILayoutView
 		this._liveLogo = this._layout.getElementsByClassName("embed-live-logo")[0];
 		this._offlineLabel = this._layout.getElementsByClassName("embed-status")[0];
 		this._video = this._layout.getElementsByClassName("embed-video")[0];
-		this._blackBacground = this._layout.getElementsByClassName("embed-bg")[0];
 
 		Browser.window.addEventListener( "resize", this._onWindowResize );
 		
@@ -66,18 +65,7 @@ class LayoutViewJS implements ILayoutView
 	{
 		this._layoutMode = layoutMode;
 		
-		if ( layoutMode == InFrame )
-		{
-			if ( this._inverseFrameHandling )
-			{
-				this._layout.classList.add('video-full-height');
-			}
-			else
-			{
-				this._layout.classList.remove('video-full-height');
-			}
-		}
-		else
+		if ( layoutMode == LayoutMode.OutFrame )
 		{
 			if ( this._inverseFrameHandling )
 			{
@@ -120,16 +108,6 @@ class LayoutViewJS implements ILayoutView
 	{
 		this._offlineLabel.classList.add("hidden");
 		this._layout.classList.remove("end-broadcast");
-	}
-
-	public function showBlackBackground( ):Void
-	{
-		this._blackBacground.classList.remove("hidden");
-	}
-
-	public function hideBlackBackground( ):Void
-	{
-		this._blackBacground.classList.add("hidden");
 	}
 	
 	

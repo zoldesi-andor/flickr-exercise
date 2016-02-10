@@ -19,17 +19,32 @@
 	
 	<!-- SERVICE CONFIGURATIONS -->
 	
-	<servicelocator id="hlsPlayerServiceLocator" type="hex.config.stateful.ServiceLocator" >
+	<serviceLocator id="hlsPlayerServiceLocator" type="hex.config.stateful.ServiceLocator" >
 		<item> 
 			<key type="Class" value="com.service.stream.hls.IHlsService"/>
 			<value ref="hlsService"/>
 		</item>
-	</servicelocator>
+	</serviceLocator>
 	
-	<servicelocator id="performerProviderServiceLocator" type="hex.config.stateful.ServiceLocator" >
+	<serviceLocator id="performerProviderServiceLocator" type="hex.config.stateful.ServiceLocator" >
 		<item> 
 			<key type="Class" value="awepopunder.service.performer.performerdata.IPerformerDataService"/>
 			<value type="Class" value="awepopunder.service.performer.performerdata.PerformerDataService"/>
 		</item>
-	</servicelocator>
+	</serviceLocator>
+	
+	
+	<!-- SERVICE ERROR STRATEGIES -->
+	
+	<serviceStrategy id="basicHttpErrorStrategy" type="hex.service.monitor.http.BasicHTTPServiceErrorStrategy">
+		<argument type="UInt" value="3" />
+		<argument type="UInt" value="1000" />
+	</serviceStrategy>
+	
+	<serviceMonitor id="httpServiceMonitor" type="hex.service.monitor.BasicServiceMonitor">
+		<method-call name="mapStrategy">
+			<argument type="Class" value="hex.service.stateless.http.HTTPService" />
+			<argument ref="basicHttpErrorStrategy" />
+		</method-call>
+	</serviceMonitor>
 </root>

@@ -16,26 +16,23 @@
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
     <class path="src" />
-    <class path="hexcore\src" />
-    <class path="hexcore\test" />
-    <class path="hexunit\src" />
-    <class path="hexinject\src" />
-    <class path="hexinject\test" />
-    <class path="hexmvc\src" />
-    <class path="hexmvc\test" />
-    <class path="hexState\src" />
-    <class path="hexState\test" />
-    <class path="hexmachina\src" />
-    <class path="hexmachina\test" />
+    <class path="..\hexMachina\hexCore\src" />
+    <class path="..\hexMachina\hexCore\test" />
+    <class path="..\hexMachina\hexUnit\src" />
+    <class path="..\hexMachina\hexInject\src" />
+    <class path="..\hexMachina\hexInject\test" />
+    <class path="..\hexMachina\hexMVC\src" />
+    <class path="..\hexMachina\hexMVC\test" />
+    <class path="..\hexMachina\hexState\src" />
+    <class path="..\hexMachina\hexState\test" />
+    <class path="..\hexMachina\hexIoC\src" />
+    <class path="..\hexMachina\hexIoC\test" />
     <class path="libs" />
     <class path="doclerModules\src" />
     <class path="doclerModules\test" />
     <class path="doclerServices\src" />
     <class path="doclerServices\test" />
-    <class path="hexMachina\src" />
-    <class path="hexMachina\test" />
     <class path="test" />
-    <class path="C:\Program Files (x86)\haxe\lib\mconsole\1,6,0" />
     <class path="libs\hamcrest\src" />
     <class path="libs\mockatoo\src" />
   </classpaths>
@@ -66,7 +63,7 @@
     <hidden path="obj" />
   </hiddenPaths>
   <!-- Executed before build -->
-  <preBuildCommand>neko $(ProjectDir)\hex3rdPartyTools\utilities\xml\GenerateImports\bin\GenerateImports.n  -dir $(ProjectDir)\src\awepopunder\configuration -output $(ProjectDir)\src\Imports.hx</preBuildCommand>
+  <preBuildCommand>neko $(ProjectDir)\..\hexMachina\hex3rdPartyTools\utilities\xml\GenerateImports\bin\GenerateImports.n  -dir $(ProjectDir)\src\awepopunder\configuration -output $(ProjectDir)\src\Imports.hx</preBuildCommand>
   <!-- Executed after build -->
   <postBuildCommand alwaysRun="False" />
   <!-- Other project options -->

@@ -1,6 +1,6 @@
 package;
-import com.ModulesSuite;
-import com.service.ServiceTestSuite;
+import com.ModuleSuite;
+import com.service.ServiceSuite;
 import hex.HexCoreSuite;
 import hex.HexInjectSuite;
 import hex.HexMachinaSuite;
@@ -14,10 +14,11 @@ import hex.state.HexStateSuite;
 class HexFullSuite
 {
 
-	@Suite( "HexMVC suite" )
-    public var list : Array<Class<Dynamic>> = [HexMVCSuite, HexCoreSuite, HexInjectSuite, HexMachinaSuite, HexStateSuite];
+	@Suite( "FullSuite" )
+    public var list : Array<Class<Dynamic>> = [
 	
-	@Suite( "Docler suite" )
-    public var list2 : Array<Class<Dynamic>> = [ModulesSuite, ServiceTestSuite];
+	HexMVCSuite, HexCoreSuite, HexInjectSuite, HexMachinaSuite, HexStateSuite,
+	
+	ModuleSuite, ServiceSuite];
 	
 }

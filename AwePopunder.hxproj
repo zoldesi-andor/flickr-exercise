@@ -16,26 +16,26 @@
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
     <class path="src" />
-    <class path="..\..\Common\hexMachina\hexCore\src" />
-    <class path="..\..\Common\hexMachina\hexCore\test" />
-    <class path="..\..\Common\hexMachina\hexUnit\src" />
-    <class path="..\..\Common\hexMachina\hexInject\src" />
-    <class path="..\..\Common\hexMachina\hexInject\test" />
-    <class path="..\..\Common\hexMachina\hexMVC\src" />
-    <class path="..\..\Common\hexMachina\hexMVC\test" />
-    <class path="..\..\Common\hexMachina\hexState\src" />
-    <class path="..\..\Common\hexMachina\hexState\test" />
-    <class path="..\..\Common\hexMachina\hexIoC\src" />
-    <class path="..\..\Common\hexMachina\hexIoC\test" />
-    <class path="..\..\Common\docler\doclerModules\src" />
-    <class path="..\..\Common\docler\doclerModules\test" />
-    <class path="..\..\Common\docler\doclerServices\src" />
-    <class path="..\..\Common\docler\doclerServices\test" />
     <class path="test" />
-    <class path="..\..\Common\3rdparty\hamcrest\src" />
-    <class path="..\..\Common\3rdparty\protohx" />
-    <class path="..\..\Common\3rdparty\mockatoo\src" />
-    <class path="..\..\Common\3rdparty\hlsjs\src" />
+    <class path="lib\hexMachina\hexCore\src" />
+    <class path="lib\hexMachina\hexCore\test" />
+    <class path="lib\hexMachina\hexUnit\src" />
+    <class path="lib\hexMachina\hexInject\src" />
+    <class path="lib\hexMachina\hexInject\test" />
+    <class path="lib\hexMachina\hexMVC\src" />
+    <class path="lib\hexMachina\hexMVC\test" />
+    <class path="lib\hexMachina\hexState\src" />
+    <class path="lib\hexMachina\hexState\test" />
+    <class path="lib\hexMachina\hexIoC\src" />
+    <class path="lib\hexMachina\hexIoC\test" />
+    <class path="lib\docler\hexmachina-modules\src" />
+    <class path="lib\docler\hexmachina-modules\test" />
+    <class path="lib\docler\hexmachina-services\src" />
+    <class path="lib\docler\hexmachina-services\test" />
+    <class path="lib\3rdparty\hamcrest\src" />
+    <class path="lib\3rdparty\protohx" />
+    <class path="lib\3rdparty\mockatoo\src" />
+    <class path="lib\3rdparty\hls.js-haxe-extern\src" />
   </classpaths>
   <!-- Build options -->
   <build>
@@ -64,7 +64,7 @@
     <hidden path="obj" />
   </hiddenPaths>
   <!-- Executed before build -->
-  <preBuildCommand>neko $(ProjectDir)\..\..\Common\hexMachina\hex3rdPartyTools\utilities\xml\GenerateImports\bin\GenerateImports.n  -dir $(ProjectDir)\src\awepopunder\configuration -output $(ProjectDir)\src\Imports.hx</preBuildCommand>
+  <preBuildCommand>neko $(ProjectDir)\lib\hexMachina\hex3rdPartyTools\utilities\xml\GenerateImports\bin\GenerateImports.n  -dir $(ProjectDir)\src\awepopunder\configuration -output $(ProjectDir)\src\Imports.hx</preBuildCommand>
   <!-- Executed after build -->
   <postBuildCommand alwaysRun="False" />
   <!-- Other project options -->

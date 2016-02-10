@@ -16,25 +16,26 @@
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
     <class path="src" />
-    <class path="..\hexMachina\hexCore\src" />
-    <class path="..\hexMachina\hexCore\test" />
-    <class path="..\hexMachina\hexUnit\src" />
-    <class path="..\hexMachina\hexInject\src" />
-    <class path="..\hexMachina\hexInject\test" />
-    <class path="..\hexMachina\hexMVC\src" />
-    <class path="..\hexMachina\hexMVC\test" />
-    <class path="..\hexMachina\hexState\src" />
-    <class path="..\hexMachina\hexState\test" />
-    <class path="..\hexMachina\hexIoC\src" />
-    <class path="..\hexMachina\hexIoC\test" />
-    <class path="libs" />
-    <class path="doclerModules\src" />
-    <class path="doclerModules\test" />
-    <class path="doclerServices\src" />
-    <class path="doclerServices\test" />
+    <class path="..\..\Common\hexMachina\hexCore\src" />
+    <class path="..\..\Common\hexMachina\hexCore\test" />
+    <class path="..\..\Common\hexMachina\hexUnit\src" />
+    <class path="..\..\Common\hexMachina\hexInject\src" />
+    <class path="..\..\Common\hexMachina\hexInject\test" />
+    <class path="..\..\Common\hexMachina\hexMVC\src" />
+    <class path="..\..\Common\hexMachina\hexMVC\test" />
+    <class path="..\..\Common\hexMachina\hexState\src" />
+    <class path="..\..\Common\hexMachina\hexState\test" />
+    <class path="..\..\Common\hexMachina\hexIoC\src" />
+    <class path="..\..\Common\hexMachina\hexIoC\test" />
+    <class path="..\..\Common\docler\doclerModules\src" />
+    <class path="..\..\Common\docler\doclerModules\test" />
+    <class path="..\..\Common\docler\doclerServices\src" />
+    <class path="..\..\Common\docler\doclerServices\test" />
     <class path="test" />
-    <class path="libs\hamcrest\src" />
-    <class path="libs\mockatoo\src" />
+    <class path="..\..\Common\3rdparty\hamcrest\src" />
+    <class path="..\..\Common\3rdparty\protohx" />
+    <class path="..\..\Common\3rdparty\mockatoo\src" />
+    <class path="..\..\Common\3rdparty\hlsjs\src" />
   </classpaths>
   <!-- Build options -->
   <build>
@@ -63,7 +64,7 @@
     <hidden path="obj" />
   </hiddenPaths>
   <!-- Executed before build -->
-  <preBuildCommand>neko $(ProjectDir)\..\hexMachina\hex3rdPartyTools\utilities\xml\GenerateImports\bin\GenerateImports.n  -dir $(ProjectDir)\src\awepopunder\configuration -output $(ProjectDir)\src\Imports.hx</preBuildCommand>
+  <preBuildCommand>neko $(ProjectDir)\..\..\Common\hexMachina\hex3rdPartyTools\utilities\xml\GenerateImports\bin\GenerateImports.n  -dir $(ProjectDir)\src\awepopunder\configuration -output $(ProjectDir)\src\Imports.hx</preBuildCommand>
   <!-- Executed after build -->
   <postBuildCommand alwaysRun="False" />
   <!-- Other project options -->

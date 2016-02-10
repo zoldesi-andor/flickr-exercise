@@ -8,7 +8,7 @@ import hex.unittest.notifier.WebSocketNotifier;
 import hex.unittest.notifier.WebSocketNotifierEvent;
 import hex.unittest.runner.ExMachinaUnitCore;
 
-class TestMain
+class AwePopunderTest
 {
 	#if js
 	static var notifier:ITestRunnerListener;

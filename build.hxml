@@ -1,26 +1,29 @@
 --each
 
 -cp src 
--cp test 
--cp lib/hexMachina/hexCore/src 
--cp lib/hexMachina/hexCore/test 
--cp lib/hexMachina/hexUnit/src 
--cp lib/hexMachina/hexInject/src 
--cp lib/hexMachina/hexInject/test 
--cp lib/hexMachina/hexMVC/src 
--cp lib/hexMachina/hexMVC/test 
--cp lib/hexMachina/hexState/src 
--cp lib/hexMachina/hexState/test 
--cp lib/hexMachina/hexIoC/src 
--cp lib/hexMachina/hexIoC/test 
--cp lib/docler/hexmachina-modules/src 
--cp lib/docler/hexmachina-modules/test 
--cp lib/docler/hexmachina-services/src 
--cp lib/docler/hexmachina-services/test 
--cp lib/3rdparty/hamcrest/src 
--cp lib/3rdparty/protohx 
--cp lib/3rdparty/mockatoo/src 
--cp lib/3rdparty/hls.js/src
+-cp test
+
+-cp node_modules/doclermodules/src 
+-cp node_modules/doclermodules/test 
+-cp node_modules/doclerservices/src 
+-cp node_modules/doclerservices/test 
+
+-cp node_modules/hexmachina/node_modules/hexCore/src 
+-cp node_modules/hexmachina/node_modules/hexCore/test 
+-cp node_modules/hexmachina/node_modules/hexUnit/src 
+-cp node_modules/hexmachina/node_modules/hexInject/src 
+-cp node_modules/hexmachina/node_modules/hexInject/test 
+-cp node_modules/hexmachina/node_modules/hexMVC/src 
+-cp node_modules/hexmachina/node_modules/hexMVC/test 
+-cp node_modules/hexmachina/node_modules/hexState/src 
+-cp node_modules/hexmachina/node_modules/hexState/test 
+-cp node_modules/hexmachina/node_modules/hexIoC/src 
+-cp node_modules/hexmachina/node_modules/hexIoC/test 
+
+-cp node_modules/hamcrest/src 
+-cp node_modules/protohx 
+-cp node_modules/mockatoo/src 
+-cp node_modules/hls.js-extern/src
 
 
 -js ./bin/Main.js 

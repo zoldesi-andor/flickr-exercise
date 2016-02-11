@@ -7,9 +7,17 @@
     "test": "test"
   },
   "scripts": {
-    "build.dev": "explorer && npm run compile-haxe && npm run generate-static",
+    "build.dev": "npm run compile-haxe && npm run generate-static",
     "compile-haxe": "haxe build.hxml",
-    "generate-static": "gulp --gulpfile ./build/gulpfile.js"
+    "generate-static": "gulp --gulpfile ./build/gulpfile.js",
+    "install": "napa"
+  },
+  "napa": {
+    "protohx": "https://github.com/nitrobin/protohx.git",
+    "hls.js-extern": "https://github.com/grosmar/hls.js-haxe-extern.git",
+    "mockatoo": "https://github.com/grosmar/mockatoo.git",
+    "hamcrest": "https://github.com/grosmar/hamcrest-haxe.git",
+    "hls.js": "https://github.com/dailymotion/hls.js.git"
   },
   "repository": {
     "type": "git",
@@ -19,11 +27,13 @@
   "license": "ISC",
   "devDependencies": {
     "classlist-polyfill": "^1.0.2",
+    "doclermodules": "git+https://stash.doclerholding.com/scm/haxe/hexmachina-modules.git#master",
+    "doclerservices": "git+https://stash.doclerholding.com/scm/haxe/hexmachina-services.git#master",
     "es6-promise": "~3.0.2",
     "gulp": "~3.9.0",
     "gulp-autoprefixer": "~3.1.0",
     "gulp-concat": "^2.6.0",
-    "hls.js": "^0.5.0",
-	"hexmachina": "git+https://github.com/DoclerLabs/hexMachina.git#master"
+    "hexmachina": "git+https://github.com/DoclerLabs/hexMachina.git#master",
+    "napa": "^2.3.0"
   }
 }

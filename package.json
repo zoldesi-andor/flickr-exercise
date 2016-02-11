@@ -17,7 +17,8 @@
     "hls.js-extern": "https://github.com/grosmar/hls.js-haxe-extern.git",
     "mockatoo": "https://github.com/grosmar/mockatoo.git",
     "hamcrest": "https://github.com/grosmar/hamcrest-haxe.git",
-    "hls.js": "https://github.com/dailymotion/hls.js.git"
+    "hls.js": "https://github.com/dailymotion/hls.js.git",
+	"hexmachina-tools": "https://github.com/DoclerLabs/hex3rdPartyTools.git"
   },
   "repository": {
     "type": "git",

@@ -1,28 +1,29 @@
 {
-  "name": "hexmachina",
-  "version": "0.9.0",
-  "description": "Bundle package for hexMachina framework",
-  
+  "name": "awepopunder",
+  "version": "1.0.0",
+  "description": "AwePopunder",
+  "main": "index.js",
   "directories": {
-    "test": "test",
-	"src": "src"
+    "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build.dev": "explorer && npm run compile-haxe && npm run generate-static",
+    "compile-haxe": "haxe build.hxml",
+    "generate-static": "gulp --gulpfile ./build/gulpfile.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/DoclerLabs/hexMachina.git"
+    "url": "https://stash.doclerholding.com/scm/haxe/awe-popunder.git"
   },
-  "keywords": [
-    "mvc",
-    "haxe",
-    "framework" 
-  ],
-  "author": "DoclerLabs",
+  "author": "duke",
   "license": "ISC",
-  
-  "dependencies": {
-	"hexcore": "git+https://github.com/DoclerLabs/hexCore.git#master"
+  "devDependencies": {
+    "classlist-polyfill": "^1.0.2",
+    "es6-promise": "~3.0.2",
+    "gulp": "~3.9.0",
+    "gulp-autoprefixer": "~3.1.0",
+    "gulp-concat": "^2.6.0",
+    "hls.js": "^0.5.0",
+	"hexmachina": "git+https://github.com/DoclerLabs/hexMachina.git#master"
   }
 }

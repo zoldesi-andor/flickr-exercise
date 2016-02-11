@@ -41,9 +41,7 @@ class AwePopunder
 	
 	public function new( config:Dynamic )
 	{
-		var source:String = XMLParserUtil.getConcatenatedConfig( ["moduleConfig", "serviceConfig", "orderConfig", "viewConfig"], "awePopunder" );
-		
-		var xml : Xml = Xml.parse( source );
+		var xml:Xml = this._getApplicationXml( );
 		
 		this._init( );
 		
@@ -53,6 +51,20 @@ class AwePopunder
 		
 		this._build( xml );
 		
+	}
+	
+	function _getApplicationXml( ):Xml
+	{
+		var source:String = "";
+		var viewConfigName:String = "";
+		
+		#if js
+		viewConfigName = "viewConfigJS";
+		#end
+		
+		source = XMLParserUtil.getConcatenatedConfig( [viewConfigName, "moduleConfig", "serviceConfig", "orderConfig"], "awePopunder" );
+		
+		return Xml.parse( source );
 	}
 	
 	function _init():Void

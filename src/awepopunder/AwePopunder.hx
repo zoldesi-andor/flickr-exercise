@@ -3,17 +3,12 @@ package awepopunder;
 import awepopunder.parser.settings.application.InitialApplicationSettingsParser;
 import awepopunder.vo.settings.application.InitialApplicationSettingsVO;
 import com.module.stream.player.hlsplayer.IHlsPlayerModule;
-import haxe.Json;
 import hex.di.IBasicInjector;
 import hex.ioc.assembler.ApplicationAssembler;
 import hex.ioc.assembler.ApplicationContext;
-import hex.ioc.parser.xml.ApplicationContextXMLParser;
 import hex.ioc.parser.xml.ApplicationXMLParser;
-import hex.ioc.parser.xml.XMLParserCollection;
 import hex.ioc.parser.xml.XMLParserUtil;
-import js.Browser;
 
-import Imports;
 
 
 
@@ -24,6 +19,9 @@ import Imports;
 @:expose("AwePopunder")
 class AwePopunder
 {
+	#if js
+	static var imports:Imports;
+	#end
 	
 	static var self:AwePopunder;
 	

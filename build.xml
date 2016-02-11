@@ -1,30 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project basedir="." name="MyProject">
+<project name="AwePopunder" default="build" basedir="./" >
+	
+	<property environment="env"/>
 
-    <target name="compile">
-
-        <!--
-        <exec executable="haxe" failonerror="true">
-            <arg line="-cp src -main Main -php php"/>
-        </exec>
-        -->
-
-        <!--
-        <exec executable="haxe" failonerror="true">
-            <arg line="-cp src -main Main -D HXCPP_DEBUGGER -lib debugger -debug -cpp cpp"/>
-        </exec>
-        -->
-		
-		<exec executable="node" failonerror="true">
-            <arg line="../../node_modules/haxe/bin/haxe-cli.js"/>
-            <arg line="-cp src -cp hamcrest -cp hexmvc/src -cp hexmvc/example -cp hexmvc/test -cp hexcore/src -cp hexcore/test -cp hexmachina/src -cp hexmachina/example -cp hexmachina/test -cp hexunit/src -cp hexinject/src -cp hexinject/test -js ${basedir}/bin/Main.js -main Main -debug"/>
-        </exec>
-
-		
-		<exec command="cmd.exe" spawn="true" osfamily="windows">
-			<arg line="/c start ant.bat adb"/>
+    <target name="copyResources" >
+        <copy file="resource/index.html" tofile="bin/index.html" />
+    </target>
+	
+	<target name="generateCss" >
+		<exec dir="resource/css" executable="npm.cmd">
+			<arg line="start" />
 		</exec>
+	</target>
 
+    <target name="build" description="Generate a new module">
+        <antcall target="generateCss" />
+        <antcall target="copyResources" />
     </target>
 
 </project>

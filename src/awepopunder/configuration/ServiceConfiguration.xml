@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<!-- SERVICES -->
+			
+	<service id="hlsService" type="com.service.stream.hls.HlsService" if="useHlsJs">
+		<property name="video" ref="dom.embed-video" />
+	</service>
+	
+	<service id="hlsService" type="com.service.stream.hls.HlsService" if-not="useHlsJs">
+		<property name="video" ref="dom.embed-video" />
+	</service>
+	
+	<service id="chatWebSocketService" type="com.service.net.chatwebsocket.ChatWebSocketService" map-type="com.service.net.chatwebsocket.IChatWebSocketService"/>
+	
+	<service id="applicationSettingsService" type="awepopunder.service.settings.application.ApplicationSettingsService" map-type="awepopunder.service.settings.application.IApplicationSettingsService"/>
+	
+	<service id="performerStatusService" type="awepopunder.service.performer.performerstatus.PerformerStatusService" map-type="awepopunder.service.performer.performerstatus.IPerformerStatusService"/>
+	
+	
+	<!-- SERVICE CONFIGURATIONS -->
+	
+	<serviceLocator id="hlsPlayerServiceLocator" type="hex.config.stateful.ServiceLocator" >
+		<item> 
+			<key type="Class" value="com.service.stream.hls.IHlsService"/>
+			<value ref="hlsService"/>
+		</item>
+	</serviceLocator>
+	
+	<serviceLocator id="performerProviderServiceLocator" type="hex.config.stateful.ServiceLocator" >
+		<item> 
+			<key type="Class" value="awepopunder.service.performer.performerdata.IPerformerDataService"/>
+			<value type="Class" value="awepopunder.service.performer.performerdata.PerformerDataService"/>
+		</item>
+	</serviceLocator>
+	
+	
+	<!-- SERVICE ERROR STRATEGIES -->
+	
+	<serviceStrategy id="basicHttpErrorStrategy" type="hex.service.monitor.http.BasicHTTPServiceErrorStrategy">
+		<argument type="UInt" value="3" />
+		<argument type="UInt" value="1000" />
+	</serviceStrategy>
+	
+	<serviceMonitor id="httpServiceMonitor" type="hex.service.monitor.BasicServiceMonitor">
+		<method-call name="mapStrategy">
+			<argument type="Class" value="hex.service.stateless.http.HTTPService" />
+			<argument ref="basicHttpErrorStrategy" />
+		</method-call>
+	</serviceMonitor>
+</root>

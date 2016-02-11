@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project version="2">
+  <!-- Output SWF options -->
+  <output>
+    <movie outputType="Application" />
+    <movie input="" />
+    <movie path="bin\Main.js" />
+    <movie fps="30" />
+    <movie width="1280" />
+    <movie height="720" />
+    <movie version="0" />
+    <movie minorVersion="0" />
+    <movie platform="JavaScript" />
+    <movie background="#FFFFFF" />
+  </output>
+  <!-- Other classes to be compiled into your SWF -->
+  <classpaths>
+    <class path="src" />
+    <class path="test" />
+    <class path="lib\hexMachina\hexCore\src" />
+    <class path="lib\hexMachina\hexCore\test" />
+    <class path="lib\hexMachina\hexUnit\src" />
+    <class path="lib\hexMachina\hexInject\src" />
+    <class path="lib\hexMachina\hexInject\test" />
+    <class path="lib\hexMachina\hexMVC\src" />
+    <class path="lib\hexMachina\hexMVC\test" />
+    <class path="lib\hexMachina\hexState\src" />
+    <class path="lib\hexMachina\hexState\test" />
+    <class path="lib\hexMachina\hexIoC\src" />
+    <class path="lib\hexMachina\hexIoC\test" />
+    <class path="lib\docler\hexmachina-modules\src" />
+    <class path="lib\docler\hexmachina-modules\test" />
+    <class path="lib\docler\hexmachina-services\src" />
+    <class path="lib\docler\hexmachina-services\test" />
+    <class path="lib\3rdparty\hamcrest\src" />
+    <class path="lib\3rdparty\protohx" />
+    <class path="lib\3rdparty\mockatoo\src" />
+    <class path="lib\3rdparty\hls.js-haxe-extern\src" />
+  </classpaths>
+  <!-- Build options -->
+  <build>
+    <option directives="" />
+    <option flashStrict="True" />
+    <option noInlineOnDebug="False" />
+    <option mainClass="awepopunder.AwePopunder" />
+    <option enabledebug="True" />
+    <option additional="-resource src/awepopunder/configuration/ModuleConfiguration.xml@moduleConfig&#xA;-resource src/awepopunder/configuration/ServiceConfiguration.xml@serviceConfig&#xA;-resource src/awepopunder/configuration/ViewConfiguration.xml@viewConfig&#xA;-resource src/awepopunder/configuration/OrderConfiguration.xml@orderConfig" />
+  </build>
+  <!-- haxelib libraries -->
+  <haxelib>
+    <!-- example: <library name="..." /> -->
+  </haxelib>
+  <!-- Class files to compile (other referenced classes will automatically be included) -->
+  <compileTargets>
+    <compile path="hexmachina\example\Main.hx" />
+    <compile path="..\..\..\\TestMainTmp.hx" />
+    <compile path="AwePopunder.hxproj\TestMainTmp.hx" />
+    <compile path="src\Main.hx" />
+    <compile path="src\TestMainTmp.hx" />
+    <compile path="src\awepopunder\AwePopunder.hx" />
+  </compileTargets>
+  <!-- Paths to exclude from the Project Explorer tree -->
+  <hiddenPaths>
+    <hidden path="obj" />
+  </hiddenPaths>
+  <!-- Executed before build -->
+  <preBuildCommand>neko $(ProjectDir)\lib\hexMachina\hex3rdPartyTools\utilities\xml\GenerateImports\bin\GenerateImports.n  -dir $(ProjectDir)\src\awepopunder\configuration -output $(ProjectDir)\src\Imports.hx</preBuildCommand>
+  <!-- Executed after build -->
+  <postBuildCommand alwaysRun="False" />
+  <!-- Other project options -->
+  <options>
+    <option showHiddenPaths="True" />
+    <option testMovie="Webserver" />
+    <option testMovieCommand="bin/index.html" />
+  </options>
+  <!-- Plugin storage -->
+  <storage />
+</project>

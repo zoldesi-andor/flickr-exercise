@@ -11,6 +11,9 @@
     "compile.haxe": "haxe build.hxml",
 	"generate.imports": "neko ./node_modules/hexmachina-tools/utilities/xml/GenerateImports/bin/GenerateImports.n  -dir ./src/awepopunder/configuration -output ./src/Imports.hx",
     "generate.static": "gulp --gulpfile ./build/gulpfile.js",
+	"update.internal": "npm run update.hexmachina & npm run update.docler",
+    "update.hexmachina": "npm update hexmachina",
+	"update.docler": "npm update doclermodules & npm update doclerservices",
     "install": "napa"
   },
   "napa": {

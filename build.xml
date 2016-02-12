@@ -1,20 +1,53 @@
-<project name="AwePopunder" default="build" basedir="./" >
+<project name="AwePopunder" default="build.dev" basedir="./" >
 	
 	<property environment="env"/>
-
-    <target name="copyResources" >
-        <copy file="resource/index.html" tofile="bin/index.html" />
-    </target>
 	
-	<target name="generateCss" >
-		<exec dir="resource/css" executable="npm.cmd">
-			<arg line="start" />
+	<target name="install" >
+		<exec executable="npm.cmd">
+			<arg line="install" />
 		</exec>
 	</target>
-
-    <target name="build" description="Generate a new module">
-        <antcall target="generateCss" />
-        <antcall target="copyResources" />
-    </target>
+	
+	<target name="build.dev" >
+		<exec executable="npm.cmd">
+			<arg line="run build.dev" />
+		</exec>
+	</target>
+	
+	<target name="update.internal" >
+		<exec executable="npm.cmd">
+			<arg line="run update.internal" />
+		</exec>
+	</target>
+	
+	<target name="update.hexmachina" >
+		<exec executable="npm.cmd">
+			<arg line="run update.hexmachina" />
+		</exec>
+	</target>
+	
+	<target name="update.docler" >
+		<exec executable="npm.cmd">
+			<arg line="run update.docler" />
+		</exec>
+	</target>
+	
+	<target name="compile.haxe" >
+		<exec executable="npm.cmd">
+			<arg line="run compile.haxe" />
+		</exec>
+	</target>
+	
+	<target name="generate.imports" >
+		<exec executable="npm.cmd">
+			<arg line="run generate.imports" />
+		</exec>
+	</target>
+	
+	<target name="generate.static" >
+		<exec executable="npm.cmd">
+			<arg line="run generate.imports" />
+		</exec>
+	</target>
 
 </project>

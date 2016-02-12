@@ -7,9 +7,10 @@
     "test": "test"
   },
   "scripts": {
-    "build.dev": "npm run compile-haxe && npm run generate-static",
-    "compile-haxe": "haxe build.hxml",
-    "generate-static": "gulp --gulpfile ./build/gulpfile.js",
+    "build.dev": "npm run generate.imports && npm run compile.haxe && npm run generate.static",
+    "compile.haxe": "haxe build.hxml",
+	"generate.imports": "neko ./node_modules/hexmachina-tools/utilities/xml/GenerateImports/bin/GenerateImports.n  -dir ./src/awepopunder/configuration -output ./src/Imports.hx",
+    "generate.static": "gulp --gulpfile ./build/gulpfile.js",
     "install": "napa"
   },
   "napa": {

@@ -18,7 +18,9 @@
 -cp node_modules/hexmachina/node_modules/hexState/src 
 -cp node_modules/hexmachina/node_modules/hexState/test 
 -cp node_modules/hexmachina/node_modules/hexIoC/src 
--cp node_modules/hexmachina/node_modules/hexIoC/test 
+-cp node_modules/hexmachina/node_modules/hexIoC/test
+-cp node_modules/hexmachina/node_modules/hexService/src 
+-cp node_modules/hexmachina/node_modules/hexService/test 
 
 -cp node_modules/hamcrest/src 
 -cp node_modules/protohx 

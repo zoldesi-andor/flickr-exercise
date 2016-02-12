@@ -36,6 +36,10 @@
     <class path="node_modules\protohx" />
     <class path="node_modules\mockatoo\src" />
     <class path="node_modules\hls.js-extern\src" />
+    <class path="node_modules\hexmachina\node_modules\hexservice\src" />
+    <class path="node_modules\hexmachina\node_modules\hexservice\test" />
+    <class path="node_modules\hexmachina\src" />
+    <class path="node_modules\hexmachina\test" />
   </classpaths>
   <!-- Build options -->
   <build>
@@ -71,7 +75,7 @@
   <options>
     <option showHiddenPaths="True" />
     <option testMovie="Webserver" />
-    <option testMovieCommand="" />
+    <option testMovieCommand="bin/index.html" />
   </options>
   <!-- Plugin storage -->
   <storage />

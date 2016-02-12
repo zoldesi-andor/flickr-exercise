@@ -1,4 +1,4 @@
-package;
+package awepopunder;
 
 //import hex.config.stateful.ServiceLocator;
 import hex.inject.InjectorTest;
@@ -8,7 +8,7 @@ import hex.unittest.notifier.WebSocketNotifier;
 import hex.unittest.notifier.WebSocketNotifierEvent;
 import hex.unittest.runner.ExMachinaUnitCore;
 
-class AwePopunderTest
+class AwePopunderMainTest
 {
 	#if js
 	static var notifier:ITestRunnerListener;
@@ -18,7 +18,7 @@ class AwePopunderTest
     static public function main() : Void
     {
 		emu = new ExMachinaUnitCore();
-		emu.addTest( HexFullSuite );
+		emu.addTest( AwePopunderSuite );
 		//emu.addTestMethod( InjectorTest, 'one_named_parameter_constructor_injection_fulfilled' );
 		
 		#if js

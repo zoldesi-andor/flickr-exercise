@@ -8,19 +8,19 @@
 -cp node_modules/doclerservices/src 
 -cp node_modules/doclerservices/test 
 
--cp node_modules/hexmachina/node_modules/hexCore/src 
--cp node_modules/hexmachina/node_modules/hexCore/test 
--cp node_modules/hexmachina/node_modules/hexUnit/src 
--cp node_modules/hexmachina/node_modules/hexInject/src 
--cp node_modules/hexmachina/node_modules/hexInject/test 
--cp node_modules/hexmachina/node_modules/hexMVC/src 
--cp node_modules/hexmachina/node_modules/hexMVC/test 
--cp node_modules/hexmachina/node_modules/hexState/src 
--cp node_modules/hexmachina/node_modules/hexState/test 
--cp node_modules/hexmachina/node_modules/hexIoC/src 
--cp node_modules/hexmachina/node_modules/hexIoC/test
--cp node_modules/hexmachina/node_modules/hexService/src 
--cp node_modules/hexmachina/node_modules/hexService/test 
+-cp node_modules/hexCore/src 
+-cp node_modules/hexCore/test 
+-cp node_modules/hexUnit/src 
+-cp node_modules/hexInject/src 
+-cp node_modules/hexInject/test 
+-cp node_modules/hexMVC/src 
+-cp node_modules/hexMVC/test 
+-cp node_modules/hexState/src 
+-cp node_modules/hexState/test 
+-cp node_modules/hexIoC/src 
+-cp node_modules/hexIoC/test
+-cp node_modules/hexService/src 
+-cp node_modules/hexService/test 
 
 -cp node_modules/hamcrest/src 
 -cp node_modules/protohx 

@@ -79,4 +79,8 @@
   </options>
   <!-- Plugin storage -->
   <storage />
+  <configurations>
+    <configuration name="Debug" />
+    <configuration name="Release" />
+  </configurations>
 </project>

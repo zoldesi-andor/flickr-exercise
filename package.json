@@ -8,13 +8,14 @@
     "test": "test"
   },
   "scripts": {
-    "build.dev": "npm run generate.imports && npm run compile.haxe && npm run generate.static",
-    "compile.haxe": "haxe build.hxml",
+    "build.dev": "npm run compile.haxe.js.dev && npm run generate.static",
+	"build.prod": "npm run compile.haxe.js.prod && npm run generate.static",
+    "compile.haxe.js.prod": "npm run generate.imports & haxe ./build/haxe/build-src.hxml -js bin/Main.js",
+	"compile.haxe.js.dev": "npm run generate.imports & haxe ./build/haxe/build-src.hxml -js bin/Main.js -debug",
+	"compile.haxe.js.test": "haxe ./build/haxe/build-test.hxml -js bin/Main.js -debug",
 	"generate.imports": "neko ./node_modules/hexmachina-tools/utilities/xml/GenerateImports/bin/GenerateImports.n  -dir ./src/awepopunder/configuration -output ./src/Imports.hx",
     "generate.static": "gulp --gulpfile ./build/gulpfile.js",
-	"update.internal": "npm run update.hexmachina & npm run update.docler",
     "update.hexmachina": "npm update hexmachina",
-	"update.docler": "npm update doclermodules & npm update doclerservices",
     "install": "napa"
   },
   "napa": {
@@ -23,7 +24,8 @@
     "mockatoo": "https://github.com/grosmar/mockatoo.git",
     "hamcrest": "https://github.com/grosmar/hamcrest-haxe.git",
     "hls.js": "https://github.com/dailymotion/hls.js.git",
-	"hexmachina-tools": "https://github.com/DoclerLabs/hex3rdPartyTools.git"
+	"hexmachina-tools": "https://github.com/DoclerLabs/hex3rdPartyTools.git",
+	"mconsole": "https://github.com/massiveinteractive/mconsole.git"
   },
   "repository": {
     "type": "git",

@@ -1,3 +1,4 @@
+
 --each
 
 -cp src 
@@ -26,11 +27,7 @@
 -cp node_modules/protohx 
 -cp node_modules/mockatoo/src 
 -cp node_modules/hls.js-extern/src
-
-
--js ./bin/Main.js 
-
--main awepopunder.AwePopunder 
+-cp node_modules/mconsole/src/lib
 
 -resource src/awepopunder/configuration/ModuleConfiguration.xml@moduleConfig 
 -resource src/awepopunder/configuration/ServiceConfiguration.xml@serviceConfig 

@@ -2,15 +2,15 @@
 <project version="2">
   <!-- Output SWF options -->
   <output>
-    <movie outputType="Application" />
+    <movie outputType="CustomBuild" />
     <movie input="" />
-    <movie path="bin\Main.js" />
+    <movie path="build.hxml" />
     <movie fps="30" />
     <movie width="1280" />
     <movie height="720" />
     <movie version="0" />
     <movie minorVersion="0" />
-    <movie platform="JavaScript" />
+    <movie platform="Custom" />
     <movie background="#FFFFFF" />
   </output>
   <!-- Other classes to be compiled into your SWF -->
@@ -46,7 +46,7 @@
     <option directives="" />
     <option flashStrict="True" />
     <option noInlineOnDebug="False" />
-    <option mainClass="awepopunder.AwePopunder" />
+    <option mainClass="" />
     <option enabledebug="True" />
     <option additional="-resource src/awepopunder/configuration/ModuleConfiguration.xml@moduleConfig &#xA;-resource src/awepopunder/configuration/ServiceConfiguration.xml@serviceConfig &#xA;-resource src/awepopunder/configuration/ViewConfigurationJS.xml@viewConfigJS &#xA;-resource src/awepopunder/configuration/OrderConfiguration.xml@orderConfig" />
   </build>
@@ -61,14 +61,13 @@
     <compile path="AwePopunder.hxproj\TestMainTmp.hx" />
     <compile path="src\Main.hx" />
     <compile path="src\TestMainTmp.hx" />
-    <compile path="src\awepopunder\AwePopunder.hx" />
   </compileTargets>
   <!-- Paths to exclude from the Project Explorer tree -->
   <hiddenPaths>
     <hidden path="obj" />
   </hiddenPaths>
   <!-- Executed before build -->
-  <preBuildCommand>neko $(ProjectDir)\node_modules\hexmachina-tools\utilities\xml\GenerateImports\bin\GenerateImports.n  -dir $(ProjectDir)\src\awepopunder\configuration -output $(ProjectDir)\src\Imports.hx</preBuildCommand>
+  <preBuildCommand>haxe ./build/haxe/build-test.hxml -js bin/Main.js -debug</preBuildCommand>
   <!-- Executed after build -->
   <postBuildCommand alwaysRun="False" />
   <!-- Other project options -->
@@ -79,8 +78,4 @@
   </options>
   <!-- Plugin storage -->
   <storage />
-  <configurations>
-    <configuration name="Debug" />
-    <configuration name="Release" />
-  </configurations>
 </project>

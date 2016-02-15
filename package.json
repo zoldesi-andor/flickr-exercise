@@ -10,9 +10,9 @@
   "scripts": {
     "build.dev": "npm run compile.haxe.js.dev && npm run generate.static",
 	"build.prod": "npm run compile.haxe.js.prod && npm run generate.static",
-    "compile.haxe.js.prod": "npm run generate.imports & haxe ./build/haxe/build-src.hxml -js bin/Main.js",
-	"compile.haxe.js.dev": "npm run generate.imports & haxe ./build/haxe/build-src.hxml -js bin/Main.js -debug",
-	"compile.haxe.js.test": "haxe ./build/haxe/build-test.hxml -js bin/Main.js -debug",
+    "build.haxe.js.prod": "npm run generate.imports & haxe ./build/haxe/build-src.hxml -js bin/Main.js",
+	"build.haxe.js.dev": "npm run generate.imports & haxe ./build/haxe/build-src.hxml -js bin/Main.js -debug",
+	"build.haxe.js.test": "haxe ./build/haxe/build-test.hxml -js bin/Main.js -debug",
 	"generate.imports": "neko ./node_modules/hexmachina-tools/utilities/xml/GenerateImports/bin/GenerateImports.n  -dir ./src/awepopunder/configuration -output ./src/Imports.hx",
     "generate.static": "gulp --gulpfile ./build/gulpfile.js",
     "update.hexmachina": "npm update hexmachina",

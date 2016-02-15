@@ -20,27 +20,27 @@
 		</exec>
 	</target>
 	
-	<target name="update.hexmachina" >
-		<exec executable="npm.cmd">
-			<arg line="run update.hexmachina" />
-		</exec>
-	</target>
-	
-	<target name="compile.haxe.js.prod" >
+	<target name="build.haxe.js.prod" >
 		<exec executable="npm.cmd">
 			<arg line="run compile.haxe.js.prod" />
 		</exec>
 	</target>
 	
-	<target name="compile.haxe.js.dev" >
+	<target name="build.haxe.js.dev" >
 		<exec executable="npm.cmd">
 			<arg line="run compile.haxe.js.dev" />
 		</exec>
 	</target>
 	
-	<target name="compile.haxe.js.test" >
+	<target name="build.haxe.js.test" >
 		<exec executable="npm.cmd">
 			<arg line="run compile.haxe.js.test" />
+		</exec>
+	</target>
+	
+	<target name="update.hexmachina" >
+		<exec executable="npm.cmd">
+			<arg line="run update.hexmachina" />
 		</exec>
 	</target>
 	

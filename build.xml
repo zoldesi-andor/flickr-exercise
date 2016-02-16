@@ -90,6 +90,50 @@
 		</exec>
 	</target>
 	
+	<target name="update.all" >
+		<antcall target="update.hexmachina" />
+		<antcall target="update.docler" />
+	</target>
+	
+	<target name="update.hexmachina" >
+		<exec executable="git" dir="./lib/hexMachina">
+			<arg line="pull" />
+		</exec>
+		<exec executable="git" dir="./lib/hexMachina/hexUnit">
+			<arg line="pull" />
+		</exec>
+		<exec executable="git" dir="./lib/hexMachina/hexState">
+			<arg line="pull" />
+		</exec>
+		<exec executable="git" dir="./lib/hexMachina/hexService">
+			<arg line="pull" />
+		</exec>
+		<exec executable="git" dir="./lib/hexMachina/hexMVC">
+			<arg line="pull" />
+		</exec>
+		<exec executable="git" dir="./lib/hexMachina/hexIoC">
+			<arg line="pull" />
+		</exec>
+		<exec executable="git" dir="./lib/hexMachina/hexInject">
+			<arg line="pull" />
+		</exec>
+		<exec executable="git" dir="./lib/hexMachina/hexCore">
+			<arg line="pull" />
+		</exec>
+		<exec executable="git" dir="./lib/hexMachina/hex3rdPartyTools">
+			<arg line="pull" />
+		</exec>
+	</target>
+	
+	<target name="update.docler" >
+		<exec executable="git" dir="./lib/Docler/hexMachina-modules">
+			<arg line="pull" />
+		</exec>
+		<exec executable="git" dir="./lib/Docler/hexMachina-services">
+			<arg line="pull" />
+		</exec>
+	</target>
+	
 	<target name="generate.imports" >
 		<exec executable="neko">
 			<arg line="./lib/hexMachina/hex3rdPartyTools/utilities/xml/GenerateImports/bin/GenerateImports.n  -dir ./src/awepopunder/configuration -output ./src/Imports.hx" />

@@ -15,7 +15,20 @@
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
-    <!-- example: <class path="..." /> -->
+    <class path="lib\hexMachina\src" />
+    <class path="lib\hexMachina\test" />
+    <class path="lib\hexMachina\hexCore\src" />
+    <class path="lib\hexMachina\hexCore\test" />
+    <class path="lib\hexMachina\hexInject\src" />
+    <class path="lib\hexMachina\hexInject\test" />
+    <class path="lib\hexMachina\hexIoC\src" />
+    <class path="lib\hexMachina\hexIoC\test" />
+    <class path="lib\hexMachina\hexMVC\src" />
+    <class path="lib\hexMachina\hexMVC\test" />
+    <class path="lib\hexMachina\hexService\src" />
+    <class path="lib\hexMachina\hexService\test" />
+    <class path="lib\hexMachina\hexState\src" />
+    <class path="lib\hexMachina\hexState\test" />
   </classpaths>
   <!-- Build options -->
   <build>

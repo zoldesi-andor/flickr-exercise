@@ -3,50 +3,93 @@
 	<property environment="env"/>
 	
 	<target name="install" >
+		<exec executable="git">
+			<arg line="clone https://github.com/nitrobin/protohx.git ./lib/3rdparty/protohx" />
+		</exec>
+		<exec executable="git">
+			<arg line="clone https://github.com/grosmar/hls.js-haxe-extern.git ./lib/3rdparty/hls.js-haxe-extern" />
+		</exec>
+		<exec executable="git">
+			<arg line="clone https://github.com/grosmar/mockatoo.git ./lib/3rdparty/mockatoo" />
+		</exec>
+		<exec executable="git">
+			<arg line="clone https://github.com/grosmar/hamcrest-haxe.git ./lib/3rdparty/hamcrest-haxe" />
+		</exec>
+		
+		<exec executable="git">
+			<arg line="clone https://github.com/DoclerLabs/hexMachina.git ./lib/hexMachina" />
+		</exec>
+		<exec executable="git">
+			<arg line="clone https://github.com/DoclerLabs/hexCore.git ./lib/hexMachina/hexCore" />
+		</exec>
+		<exec executable="git">
+			<arg line="clone https://github.com/DoclerLabs/hexMVC.git ./lib/hexMachina/hexMVC" />
+		</exec>
+		<exec executable="git">
+			<arg line="clone https://github.com/DoclerLabs/hexInject.git ./lib/hexMachina/hexInject" />
+		</exec>
+		<exec executable="git">
+			<arg line="clone https://github.com/DoclerLabs/hexIoC.git ./lib/hexMachina/hexIoC" />
+		</exec>
+		<exec executable="git">
+			<arg line="clone https://github.com/DoclerLabs/hexState.git ./lib/hexMachina/hexState" />
+		</exec>
+		<exec executable="git">
+			<arg line="clone https://github.com/DoclerLabs/hexService.git ./lib/hexMachina/hexService" />
+		</exec>
+		<exec executable="git">
+			<arg line="clone https://github.com/DoclerLabs/hexUnit.git ./lib/hexMachina/hexUnit" />
+		</exec>
+		
+		<exec executable="git">
+			<arg line="clone https://stash.doclerholding.com/scm/haxe/hexmachina-modules.git ./lib/Docler/hexMachina-modules" />
+		</exec>
+		<exec executable="git">
+			<arg line="clone https://stash.doclerholding.com/scm/haxe/hexmachina-services.git ./lib/Docler/hexMachina-services" />
+		</exec>
+		
 		<exec executable="npm.cmd">
 			<arg line="install" />
 		</exec>
 	</target>
 	
 	<target name="build.dev" >
+		<antcall target="build.haxe.js.dev" />
 		<exec executable="npm.cmd">
-			<arg line="run build.dev" />
+			<arg line="run generate.static" />
 		</exec>
 	</target>
 	
 	<target name="build.prod" >
+		<antcall target="build.haxe.js.prod" />
 		<exec executable="npm.cmd">
-			<arg line="run build.prod" />
+			<arg line="run generate.static" />
 		</exec>
 	</target>
 	
 	<target name="build.haxe.js.prod" >
-		<exec executable="npm.cmd">
-			<arg line="run compile.haxe.js.prod" />
+		<antcall target="generate.imports" />
+		<exec executable="haxe">
+			<arg line="./build/haxe/build-src.hxml -js bin/Main.js" />
 		</exec>
 	</target>
 	
 	<target name="build.haxe.js.dev" >
-		<exec executable="npm.cmd">
-			<arg line="run compile.haxe.js.dev" />
+		<antcall target="generate.imports" />
+		<exec executable="haxe">
+			<arg line="./build/haxe/build-src.hxml -js bin/Main.js -debug" />
 		</exec>
 	</target>
 	
 	<target name="build.haxe.js.test" >
-		<exec executable="npm.cmd">
-			<arg line="run compile.haxe.js.test" />
-		</exec>
-	</target>
-	
-	<target name="update.hexmachina" >
-		<exec executable="npm.cmd">
-			<arg line="run update.hexmachina" />
+		<exec executable="haxe">
+			<arg line="./build/haxe/build-test.hxml -js bin/Main.js -debug" />
 		</exec>
 	</target>
 	
 	<target name="generate.imports" >
-		<exec executable="npm.cmd">
-			<arg line="run generate.imports" />
+		<exec executable="neko">
+			<arg line="./node_modules/hexmachina-tools/utilities/xml/GenerateImports/bin/GenerateImports.n  -dir ./src/awepopunder/configuration -output ./src/Imports.hx" />
 		</exec>
 	</target>
 	

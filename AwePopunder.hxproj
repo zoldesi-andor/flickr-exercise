@@ -67,7 +67,7 @@
     <hidden path="obj" />
   </hiddenPaths>
   <!-- Executed before build -->
-  <preBuildCommand>haxe ./build/haxe/build-test.hxml -js bin/Main.js -debug</preBuildCommand>
+  <preBuildCommand>ant.bat build.haxe.js.prod</preBuildCommand>
   <!-- Executed after build -->
   <postBuildCommand alwaysRun="False" />
   <!-- Other project options -->
@@ -78,4 +78,9 @@
   </options>
   <!-- Plugin storage -->
   <storage />
+  <configurations>
+    <configuration name="Debug" />
+    <configuration name="Release" />
+    <configuration name="Test" />
+  </configurations>
 </project>

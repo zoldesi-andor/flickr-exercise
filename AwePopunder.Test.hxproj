@@ -39,7 +39,7 @@
     <!-- example: <hidden path="..." /> -->
   </hiddenPaths>
   <!-- Executed before build -->
-  <preBuildCommand>haxe ./build/haxe/build-test.hxml -js bin/Main.js -debug</preBuildCommand>
+  <preBuildCommand>ant.bat build.haxe.js.test</preBuildCommand>
   <!-- Executed after build -->
   <postBuildCommand alwaysRun="False" />
   <!-- Other project options -->

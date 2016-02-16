@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build.dev": "ant build.haxe.js.dev && ant run generate.static",
-	"build.dev": "ant build.haxe.js.prod && ant run generate.static",
+	"build.prod": "ant build.haxe.js.prod && ant run generate.static",
     "generate.static": "gulp --gulpfile ./build/gulpfile.js",
     "install": "napa"
   },

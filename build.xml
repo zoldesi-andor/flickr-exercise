@@ -40,6 +40,9 @@
 		<exec executable="git">
 			<arg line="clone https://github.com/DoclerLabs/hexUnit.git ./lib/hexMachina/hexUnit" />
 		</exec>
+		<exec executable="git">
+			<arg line="clone https://github.com/DoclerLabs/hex3rdPartyTools.git ./lib/hexMachina/hex3rdPartyTools" />
+		</exec>
 		
 		<exec executable="git">
 			<arg line="clone https://stash.doclerholding.com/scm/haxe/hexmachina-modules.git ./lib/Docler/hexMachina-modules" />
@@ -89,7 +92,7 @@
 	
 	<target name="generate.imports" >
 		<exec executable="neko">
-			<arg line="./node_modules/hexmachina-tools/utilities/xml/GenerateImports/bin/GenerateImports.n  -dir ./src/awepopunder/configuration -output ./src/Imports.hx" />
+			<arg line="./lib/hexMachina/hex3rdPartyTools/utilities/xml/GenerateImports/bin/GenerateImports.n  -dir ./src/awepopunder/configuration -output ./src/Imports.hx" />
 		</exec>
 	</target>
 	

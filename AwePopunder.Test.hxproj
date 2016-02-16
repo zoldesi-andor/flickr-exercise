@@ -15,8 +15,6 @@
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
-    <class path="lib\src" />
-    <class path="lib\test" />
     <class path="lib\hexMachina\src" />
     <class path="lib\hexMachina\test" />
     <class path="lib\hexMachina\hexCore\src" />
@@ -33,10 +31,8 @@
     <class path="lib\hexMachina\hexState\test" />
     <class path="lib\hexMachina\hexUnit\src" />
     <class path="lib\hexMachina\hexUnit\test" />
-	<class path="lib\Docler\hexMachina-modules\src" />
-    <class path="lib\Docler\hexMachina-modules\test" />
-	<class path="lib\Docler\hexMachina-services\src" />
-    <class path="lib\Docler\hexMachina-services\test" />
+    <class path="src" />
+    <class path="test" />
   </classpaths>
   <!-- Build options -->
   <build>

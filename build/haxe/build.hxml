@@ -29,6 +29,7 @@
 -cp node_modules/hls.js-extern/src
 -cp node_modules/mconsole/src/lib
 
+-resource src/awepopunder/configuration/InitialConfiguration.xml@initialConfig 
 -resource src/awepopunder/configuration/ModuleConfiguration.xml@moduleConfig 
 -resource src/awepopunder/configuration/ServiceConfiguration.xml@serviceConfig 
 -resource src/awepopunder/configuration/ViewConfigurationJS.xml@viewConfigJS 

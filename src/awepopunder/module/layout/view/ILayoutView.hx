@@ -24,4 +24,6 @@ interface ILayoutView extends IView
 	function hideOffline():Void;
 	
 	function setStreamRatio(ratio:Float):Void;
+	
+	function onTranslate():Void;
 }

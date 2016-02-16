@@ -1,5 +1,6 @@
 package awepopunder.module.layout.view;
 import awepopunder.module.layout.constant.LayoutMode;
+import hex.core.IAnnotationParsable;
 import js.Browser;
 import js.html.DivElement;
 import js.html.DOMRect;
@@ -10,11 +11,16 @@ import js.html.Event;
  * ...
  * @author duke
  */
-class LayoutViewJS implements ILayoutView
+@:rtti
+class LayoutViewJS implements ILayoutView implements IAnnotationParsable
 {
+	@language('welcome_text')
+	var welcomeMessage : String;
+	
 	var _layout:DivElement;
 	
 	var _chatContainer:Element;
+	var _welcome:Element;
 	var _liveLogo:Element;
 	var _offlineLabel:Element;
 	var _video:Element;
@@ -30,6 +36,7 @@ class LayoutViewJS implements ILayoutView
 		this._layout = layout;
 		
 		this._chatContainer = this._layout.getElementsByClassName("embed-chat")[0];
+		this._welcome = this._layout.querySelector(".welcome");
 		this._liveLogo = this._layout.getElementsByClassName("embed-live-logo")[0];
 		this._offlineLabel = this._layout.getElementsByClassName("embed-status")[0];
 		this._video = this._layout.getElementsByClassName("embed-video")[0];
@@ -110,11 +117,15 @@ class LayoutViewJS implements ILayoutView
 		this._layout.classList.remove("end-broadcast");
 	}
 	
-	
 	public function setStreamRatio(ratio:Float):Void 
 	{
 		this._ratio = ratio;
 		this._onWindowResize(null);
+	}
+	
+	public function onTranslate():Void 
+	{
+		this._welcome.textContent = this.welcomeMessage;
 	}
 	
 	@:isVar public var visible(get, set):Bool;

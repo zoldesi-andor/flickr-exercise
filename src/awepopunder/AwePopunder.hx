@@ -9,9 +9,6 @@ import hex.ioc.assembler.ApplicationContext;
 import hex.ioc.parser.xml.ApplicationXMLParser;
 import hex.ioc.parser.xml.XMLParserUtil;
 
-
-
-
 /**
  * ...
  * @author duke
@@ -27,7 +24,6 @@ class AwePopunder
 	
 	var _applicationAssembler:ApplicationAssembler;
 	var _applicationContext:ApplicationContext;
-	var _applicationXMLParser:ApplicationXMLParser;
 	
 	var _injector:IBasicInjector;
 	var _initialApplicationSettings:InitialApplicationSettingsVO;
@@ -41,16 +37,18 @@ class AwePopunder
 	
 	public function new( config:Dynamic )
 	{
+		this._init();
+		
+		var initialParser : ApplicationXMLParser = new ApplicationXMLParser();
+		initialParser.parse( this._applicationAssembler, Xml.parse(haxe.Resource.getString( 'initialConfig')) );
+		this._applicationAssembler.buildEverything();
+		
 		var xml:Xml = this._getApplicationXml( );
-		
-		this._init( );
-		
 		this._setInitialApplicationSettings( config );
 		
 		this._registerView( );
 		
 		this._build( xml );
-		
 	}
 	
 	function _getApplicationXml( ):Xml
@@ -72,12 +70,12 @@ class AwePopunder
 		this._applicationAssembler 	= new ApplicationAssembler();
 		this._applicationContext = this._applicationAssembler.getApplicationContext("awePopunder");
 		this._injector = this._applicationContext.getBasicInjector();
-		this._applicationXMLParser = new ApplicationXMLParser();
 	}
 	
 	function _setInitialApplicationSettings(config:Dynamic):Void
 	{
 		var initialApplicationSettingsParser = new InitialApplicationSettingsParser();
+		var initialParser : ApplicationXMLParser = new ApplicationXMLParser();
 		this._initialApplicationSettings = initialApplicationSettingsParser.parseSettings( config );
 		this._injector.mapToValue( InitialApplicationSettingsVO, this._initialApplicationSettings, "initialApplicationSettings" );
 		
@@ -93,7 +91,8 @@ class AwePopunder
 	
 	function _build( xml : Xml ) : Void
 	{
-		this._applicationXMLParser.parse( this._applicationAssembler, xml );
+		var normalParser : ApplicationXMLParser = new ApplicationXMLParser();
+		normalParser.parse( this._applicationAssembler, xml );
 		
 		this._applicationAssembler.buildEverything();
 	}

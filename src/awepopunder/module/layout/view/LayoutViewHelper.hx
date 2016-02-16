@@ -29,13 +29,13 @@ class LayoutViewHelper extends ViewHelper implements ILayoutModelListener
 		super._initialize();
 		
 		this._layoutView = cast this._view;
+		this._layoutView.onTranslate();
 		this.layoutModel.addListener( this );
 	}
 	
 	public function onLayoutModeChange( layoutMode:LayoutMode ):Void
 	{
 		this._layoutView.setLayoutMode( layoutMode );
-		
 	}
 	
 	public function onOnline():Void 

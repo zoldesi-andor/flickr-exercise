@@ -15,7 +15,20 @@
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
-    <!-- example: <class path="..." /> -->
+    <class path="lib\hexMachina\src" />
+    <class path="lib\hexMachina\test" />
+    <class path="lib\hexMachina\hexCore\src" />
+    <class path="lib\hexMachina\hexCore\test" />
+    <class path="lib\hexMachina\hexInject\src" />
+    <class path="lib\hexMachina\hexInject\test" />
+    <class path="lib\hexMachina\hexIoC\src" />
+    <class path="lib\hexMachina\hexIoC\test" />
+    <class path="lib\hexMachina\hexMVC\src" />
+    <class path="lib\hexMachina\hexMVC\test" />
+    <class path="lib\hexMachina\hexService\src" />
+    <class path="lib\hexMachina\hexService\test" />
+    <class path="lib\hexMachina\hexState\src" />
+    <class path="lib\hexMachina\hexState\test" />
   </classpaths>
   <!-- Build options -->
   <build>
@@ -39,8 +52,7 @@
     <!-- example: <hidden path="..." /> -->
   </hiddenPaths>
   <!-- Executed before build -->
-  <preBuildCommand>neko ./node_modules/hexmachina-tools/utilities/xml/GenerateImports/bin/GenerateImports.n  -dir ./src/awepopunder/configuration -output ./src/Imports.hx
-haxe ./build/haxe/build-src.hxml -js bin/Main.js</preBuildCommand>
+  <preBuildCommand>ant.bat build.haxe.js.prod</preBuildCommand>
   <!-- Executed after build -->
   <postBuildCommand alwaysRun="False" />
   <!-- Other project options -->

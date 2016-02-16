@@ -8,24 +8,13 @@
     "test": "test"
   },
   "scripts": {
-    "build.dev": "npm run compile.haxe.js.dev && npm run generate.static",
-	"build.prod": "npm run compile.haxe.js.prod && npm run generate.static",
-    "build.haxe.js.prod": "npm run generate.imports & haxe ./build/haxe/build-src.hxml -js bin/Main.js",
-	"build.haxe.js.dev": "npm run generate.imports & haxe ./build/haxe/build-src.hxml -js bin/Main.js -debug",
-	"build.haxe.js.test": "haxe ./build/haxe/build-test.hxml -js bin/Main.js -debug",
-	"generate.imports": "neko ./node_modules/hexmachina-tools/utilities/xml/GenerateImports/bin/GenerateImports.n  -dir ./src/awepopunder/configuration -output ./src/Imports.hx",
+    "build.dev": "ant build.haxe.js.dev && ant run generate.static",
+	"build.dev": "ant build.haxe.js.prod && ant run generate.static",
     "generate.static": "gulp --gulpfile ./build/gulpfile.js",
-    "update.hexmachina": "npm update hexmachina",
     "install": "napa"
   },
   "napa": {
-    "protohx": "https://github.com/nitrobin/protohx.git",
-    "hls.js-extern": "https://github.com/grosmar/hls.js-haxe-extern.git",
-    "mockatoo": "https://github.com/grosmar/mockatoo.git",
-    "hamcrest": "https://github.com/grosmar/hamcrest-haxe.git",
-    "hls.js": "https://github.com/dailymotion/hls.js.git",
-	"hexmachina-tools": "https://github.com/DoclerLabs/hex3rdPartyTools.git",
-	"mconsole": "https://github.com/massiveinteractive/mconsole.git"
+    "hls.js": "https://github.com/dailymotion/hls.js.git"
   },
   "repository": {
     "type": "git",
@@ -35,13 +24,9 @@
   "license": "ISC",
   "devDependencies": {
     "classlist-polyfill": "^1.0.2",
-    "doclermodules": "git+https://stash.doclerholding.com/scm/haxe/hexmachina-modules.git#master",
-    "doclerservices": "git+https://stash.doclerholding.com/scm/haxe/hexmachina-services.git#master",
-    "es6-promise": "~3.0.2",
     "gulp": "~3.9.0",
     "gulp-autoprefixer": "~3.1.0",
     "gulp-concat": "^2.6.0",
-    "hexmachina": "git+https://github.com/DoclerLabs/hexMachina.git#master",
     "napa": "^2.3.0"
   }
 }

@@ -15,31 +15,28 @@
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
-    <class path="src" />
-    <class path="test" />
-    <class path="node_modules\doclermodules\src" />
-    <class path="node_modules\doclermodules\test" />
-    <class path="node_modules\doclerservices\src" />
-    <class path="node_modules\doclerservices\test" />
-    <class path="node_modules\hexCore\src" />
-    <class path="node_modules\hexCore\test" />
-    <class path="node_modules\hexUnit\src" />
-    <class path="node_modules\hexInject\src" />
-    <class path="node_modules\hexInject\test" />
-    <class path="node_modules\hexMVC\src" />
-    <class path="node_modules\hexMVC\test" />
-    <class path="node_modules\hexState\src" />
-    <class path="node_modules\hexState\test" />
-    <class path="node_modules\hexIoC\src" />
-    <class path="node_modules\hexIoC\test" />
-    <class path="node_modules\hamcrest\src" />
-    <class path="node_modules\protohx" />
-    <class path="node_modules\mockatoo\src" />
-    <class path="node_modules\hls.js-extern\src" />
-    <class path="node_modules\hexservice\src" />
-    <class path="node_modules\hexservice\test" />
-    <class path="node_modules\hexmachina\src" />
-    <class path="node_modules\hexmachina\test" />
+    <class path="lib\src" />
+    <class path="lib\test" />
+	<class path="lib\hexMachina\src" />
+    <class path="lib\hexMachina\test" />
+    <class path="lib\hexMachina\hexCore\src" />
+    <class path="lib\hexMachina\hexCore\test" />
+    <class path="lib\hexMachina\hexInject\src" />
+    <class path="lib\hexMachina\hexInject\test" />
+    <class path="lib\hexMachina\hexIoC\src" />
+    <class path="lib\hexMachina\hexIoC\test" />
+    <class path="lib\hexMachina\hexMVC\src" />
+    <class path="lib\hexMachina\hexMVC\test" />
+    <class path="lib\hexMachina\hexService\src" />
+    <class path="lib\hexMachina\hexService\test" />
+    <class path="lib\hexMachina\hexState\src" />
+    <class path="lib\hexMachina\hexState\test" />
+    <class path="lib\hexMachina\hexUnit\src" />
+    <class path="lib\hexMachina\hexUnit\test" />
+	<class path="lib\Docler\hexMachina-modules\src" />
+    <class path="lib\Docler\hexMachina-modules\test" />
+	<class path="lib\Docler\hexMachina-services\src" />
+    <class path="lib\Docler\hexMachina-services\test" />
   </classpaths>
   <!-- Build options -->
   <build>

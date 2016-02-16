@@ -24,12 +24,20 @@
 			<key type="Class" value="com.service.stream.hls.IHlsService"/>
 			<value ref="hlsService"/>
 		</item>
+		<item> 
+			<key type="Class" value="hex.service.monitor.IServiceMonitor"/>
+			<value ref="httpServiceMonitor"/>
+		</item>
 	</serviceLocator>
 	
 	<serviceLocator id="performerProviderServiceLocator" type="hex.config.stateful.ServiceLocator" >
 		<item> 
 			<key type="Class" value="awepopunder.service.performer.performerdata.IPerformerDataService"/>
 			<value type="Class" value="awepopunder.service.performer.performerdata.PerformerDataService"/>
+		</item>
+		<item> 
+			<key type="Class" value="hex.service.monitor.IServiceMonitor"/>
+			<value ref="httpServiceMonitor"/>
 		</item>
 	</serviceLocator>
 	
@@ -41,7 +49,7 @@
 		<argument type="UInt" value="1000" />
 	</serviceStrategy>
 	
-	<serviceMonitor id="httpServiceMonitor" type="hex.service.monitor.BasicServiceMonitor">
+	<serviceMonitor id="httpServiceMonitor" type="hex.service.monitor.BasicServiceMonitor" map-type="hex.service.monitor.IServiceMonitor">
 		<method-call name="mapStrategy">
 			<argument type="Class" value="hex.service.stateless.http.HTTPService" />
 			<argument ref="basicHttpErrorStrategy" />

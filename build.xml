@@ -15,6 +15,9 @@
 		<exec executable="git">
 			<arg line="clone https://github.com/grosmar/hamcrest-haxe.git ./lib/3rdparty/hamcrest-haxe" />
 		</exec>
+		<exec executable="git">
+			<arg line="clone https://github.com/massiveinteractive/mconsole.git ./lib/3rdparty/mconsole" />
+		</exec>
 		
 		<exec executable="git">
 			<arg line="clone https://github.com/DoclerLabs/hexMachina.git ./lib/hexMachina" />

@@ -12,6 +12,7 @@
 -cp lib/hexMachina/hexCore/src 
 -cp lib/hexMachina/hexCore/test 
 -cp lib/hexMachina/hexUnit/src 
+-cp lib/hexMachina/hexUnit/test 
 -cp lib/hexMachina/hexInject/src 
 -cp lib/hexMachina/hexInject/test 
 -cp lib/hexMachina/hexMVC/src 
@@ -22,8 +23,10 @@
 -cp lib/hexMachina/hexIoC/test
 -cp lib/hexMachina/hexService/src 
 -cp lib/hexMachina/hexService/test 
+-cp lib/hexMachina/src 
+-cp lib/hexMachina/test 
 
--cp lib/3rdparty/hamcrest/src 
+-cp lib/3rdparty/hamcrest-haxe/src 
 -cp lib/3rdparty/protohx 
 -cp lib/3rdparty/mockatoo/src 
 -cp lib/3rdparty/hls.js-haxe-extern/src

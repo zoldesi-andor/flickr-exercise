@@ -31,7 +31,7 @@ class BootstrapMacro extends Macro
 	
 	override function _prepare():Void 
 	{
-		trace("BootstrapMacro._prepare");
+		trace("BootstrapMacro._prepare ");
 		this.add(InitUrlProviderCommand);
 		this.add(SetLayoutSettingsCommand);
 		this.add(InitPerformerProviderSettingsCommand);

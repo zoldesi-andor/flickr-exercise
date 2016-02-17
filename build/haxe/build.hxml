@@ -28,8 +28,8 @@
 
 -cp lib/3rdparty/hamcrest-haxe/src 
 -cp lib/3rdparty/protohx 
--cp lib/3rdparty/mockatoo/src 
 -cp lib/3rdparty/hls.js-haxe-extern/src
+-cp lib/3rdparty/mockatoo/src 
 -cp lib/3rdparty/mconsole/src/lib
 
 -resource src/awepopunder/configuration/InitialConfiguration.xml@initialConfig 

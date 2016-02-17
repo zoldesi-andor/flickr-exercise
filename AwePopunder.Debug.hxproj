@@ -32,6 +32,8 @@
     <class path="src" />
     <class path="test" />
     <class path="lib\3rdparty\hls.js-haxe-extern\src" />
+	<class path="lib\3rdparty\protohx" />
+
   </classpaths>
   <!-- Build options -->
   <build>

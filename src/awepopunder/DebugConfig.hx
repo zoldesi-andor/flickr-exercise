@@ -23,7 +23,8 @@ class DebugConfig
 		
 		stream:{
 			muted:true, // we don't care with it at this moment
-			autoPlay:false
+			autoPlay:false,
+			useHlsJs:true
 		},
 		
 		site:{

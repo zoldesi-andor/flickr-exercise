@@ -67,9 +67,18 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 	
 	function _onPerformerDataLoaded( command:AsyncCommand ):Void
 	{
-		trace("SwitchPerformerMacro._onPerformerDataLoaded", command.getResult()[0]);
 
 		var performerData:PerformerDataVO = command.getResult()[0];
+		
+		#if debug
+			if ( performerData.streamUrl == null || performerData.streamUrl == "" )
+			{
+				performerData.streamUrl =  "http://192.168.206.47:1935/dashtest/myStream/playlist.m3u8";
+				performerData.streamRatio = 16/9;
+			}
+		#end
+		
+		trace("SwitchPerformerMacro._onPerformerDataLoaded2222", performerData);
 
 		var performerDataPayload = new ExecutionPayload(performerData, PerformerDataVO);
 		var previousPerformerDataPayload = new ExecutionPayload(this._previousPerformerData, PerformerDataVO, "previous");

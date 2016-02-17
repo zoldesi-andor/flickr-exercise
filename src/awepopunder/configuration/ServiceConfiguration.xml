@@ -2,7 +2,7 @@
 <root>
 	<!-- SERVICES -->
 			
-	<service id="hlsService" type="com.service.stream.hls.HlsService" if="useHlsJs">
+	<service id="hlsService" type="com.service.stream.hlsjs.HlsJsService" if="useHlsJs">
 		<property name="video" ref="dom.embed-video" />
 	</service>
 	
@@ -51,7 +51,7 @@
 	
 	<serviceMonitor id="httpServiceMonitor" type="hex.service.monitor.BasicServiceMonitor" map-type="hex.service.monitor.IServiceMonitor">
 		<method-call name="mapStrategy">
-			<argument type="Class" value="hex.service.stateless.http.HTTPService" />
+			<argument type="Class" value="awepopunder.service.servicemonitor.MonitoredHttpService" />
 			<argument ref="basicHttpErrorStrategy" />
 		</method-call>
 	</serviceMonitor>

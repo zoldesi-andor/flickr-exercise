@@ -112,6 +112,7 @@ class InitialApplicationSettingsParser implements IParser
 
 		result.muted = data.muted == true ? true : false;
 		result.autoPlay = data.autoPlay == true ? true : false;
+		result.useHlsJs = data.useHlsJs == true ? true : false;
 
 		return result;
 	}

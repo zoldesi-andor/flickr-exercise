@@ -29,11 +29,15 @@
     <class path="lib\hexMachina\hexService\test" />
     <class path="lib\hexMachina\hexState\src" />
     <class path="lib\hexMachina\hexState\test" />
+    <class path="lib\hexMachina\hexUnit\src" />
+    <class path="lib\hexMachina\hexUnit\test" />
     <class path="src" />
     <class path="test" />
     <class path="lib\3rdparty\hls.js-haxe-extern\src" />
-	<class path="lib\3rdparty\protohx" />
-
+    <class path="lib\3rdparty\mconsole\src\lib" />
+    <class path="lib\3rdparty\hamcrest-haxe\src " />
+    <class path="lib\3rdparty\mockatoo\src " />
+    <class path="lib\3rdparty\protohx" />
   </classpaths>
   <!-- Build options -->
   <build>
@@ -57,7 +61,7 @@
     <!-- example: <hidden path="..." /> -->
   </hiddenPaths>
   <!-- Executed before build -->
-  <preBuildCommand>ant.bat build.haxe.js.dev</preBuildCommand>
+  <preBuildCommand>ant.bat build.haxe.js.test</preBuildCommand>
   <!-- Executed after build -->
   <postBuildCommand alwaysRun="False" />
   <!-- Other project options -->

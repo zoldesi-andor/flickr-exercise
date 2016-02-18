@@ -31,8 +31,8 @@
     <class path="lib\hexMachina\hexState\test" />
     <class path="src" />
     <class path="test" />
-	<class path="lib\3rdparty\hls.js-haxe-extern\src" />
-	<class path="lib\3rdparty\protohx" />
+    <class path="lib\3rdparty\hls.js-haxe-extern\src" />
+    <class path="lib\3rdparty\protohx" />
   </classpaths>
   <!-- Build options -->
   <build>
@@ -53,10 +53,10 @@
   </compileTargets>
   <!-- Paths to exclude from the Project Explorer tree -->
   <hiddenPaths>
-    <!-- example: <hidden path="..." /> -->
+    <hidden path="obj" />
   </hiddenPaths>
   <!-- Executed before build -->
-  <preBuildCommand>ant.bat build.haxe.js.prod</preBuildCommand>
+  <preBuildCommand>ant.bat build.haxe.js.dev</preBuildCommand>
   <!-- Executed after build -->
   <postBuildCommand alwaysRun="False" />
   <!-- Other project options -->
@@ -67,5 +67,9 @@
   </options>
   <!-- Plugin storage -->
   <storage />
-  <configurations />
+  <configurations>
+    <configuration name="Debug" />
+    <configuration name="Release" />
+    <configuration name="Test" />
+  </configurations>
 </project>

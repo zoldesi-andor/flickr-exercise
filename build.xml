@@ -146,7 +146,7 @@
 	
 	<target name="generate.static" >
 		<exec executable="npm.cmd">
-			<arg line="run generate.imports" />
+			<arg line="run generate.static" />
 		</exec>
 	</target>
 

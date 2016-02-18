@@ -3,3 +3,7 @@ node_modules/
 src/Imports.hx
 src/TestMainTmp.hx
 lib/
+AwePopunder.hxproj
+AwePopunder.Test.hxproj
+AwePopunder.Debug.hxproj
+AwePopunder.Release.hxproj

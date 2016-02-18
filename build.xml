@@ -57,6 +57,8 @@
 		<exec executable="npm.cmd">
 			<arg line="install" />
 		</exec>
+		
+		<antcall target="update.projectfiles" />
 	</target>
 	
 	<target name="build.dev" >
@@ -135,6 +137,12 @@
 		<exec executable="git" dir="./lib/Docler/hexMachina-services">
 			<arg line="pull" />
 		</exec>
+	</target>
+	
+	<target name="update.projectfiles" >
+		<copy todir="." overwrite="true">
+			<fileset dir="resource/flashdevelop"/>
+		</copy>
 	</target>
 	
 	<target name="generate.imports" >

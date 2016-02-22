@@ -9,7 +9,7 @@
 	<!-- SERVICES -->
 	<service id="translationService" type="com.service.translation.XmlResourceTranslationService">
 		<argument value="translation" />
-		<argument value="da" />
+		<argument value="en" />
 	</service>
 	
 	<servicelocator id="languageServiceLocator" type="hex.config.stateful.ServiceLocator" >

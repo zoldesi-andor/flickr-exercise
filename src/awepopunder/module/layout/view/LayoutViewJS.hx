@@ -1,9 +1,10 @@
 package awepopunder.module.layout.view;
+
 import awepopunder.module.layout.constant.LayoutMode;
 import hex.core.IAnnotationParsable;
 import js.Browser;
-import js.html.DivElement;
 import js.html.DOMRect;
+import js.html.DivElement;
 import js.html.Element;
 import js.html.Event;
 
@@ -11,19 +12,19 @@ import js.html.Event;
  * ...
  * @author duke
  */
-@:rtti
+@rtti
 class LayoutViewJS implements ILayoutView implements IAnnotationParsable
 {
-	@language('welcome_text')
-	var welcomeMessage : String;
+	@language('input_text')
+	var _inputText : String;
 	
 	var _layout:DivElement;
 	
 	var _chatContainer:Element;
-	var _welcome:Element;
 	var _liveLogo:Element;
 	var _offlineLabel:Element;
 	var _video:Element;
+	var _joinChatLabel:Element;
 	var _wrapper:Element;
 	var _blackBacground:Element;
 
@@ -36,16 +37,16 @@ class LayoutViewJS implements ILayoutView implements IAnnotationParsable
 		this._layout = layout;
 		
 		this._chatContainer = this._layout.getElementsByClassName("embed-chat")[0];
-		this._welcome = this._layout.querySelector(".welcome");
 		this._liveLogo = this._layout.getElementsByClassName("embed-live-logo")[0];
 		this._offlineLabel = this._layout.getElementsByClassName("embed-status")[0];
 		this._video = this._layout.getElementsByClassName("embed-video")[0];
-
+		this._joinChatLabel = this._layout.querySelector(".embed-chat-join");
+		
 		Browser.window.addEventListener( "resize", this._onWindowResize );
 		
 		this._onWindowResize(null);
 	}
-	
+
 	function _onWindowResize(e:Event):Void 
 	{
 		var rect:DOMRect = this._layout.getBoundingClientRect();
@@ -125,7 +126,7 @@ class LayoutViewJS implements ILayoutView implements IAnnotationParsable
 	
 	public function onTranslate():Void 
 	{
-		this._welcome.textContent = this.welcomeMessage;
+		this._joinChatLabel.textContent = this._inputText;
 	}
 	
 	@:isVar public var visible(get, set):Bool;

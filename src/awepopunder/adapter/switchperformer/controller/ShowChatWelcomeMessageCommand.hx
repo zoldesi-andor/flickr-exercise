@@ -5,13 +5,14 @@ import com.module.chat.chatbox.IChatBoxModule;
 import com.vo.chat.ChatMessageVO;
 import hex.control.Request;
 import hex.control.command.BasicCommand;
+import hex.core.IAnnotationParsable;
 
 /**
  * ...
  * @author duke
  */
 @:rtti
-class ShowChatWelcomeMessageCommand extends BasicCommand
+class ShowChatWelcomeMessageCommand extends BasicCommand implements IAnnotationParsable
 {
 	@Inject("name=chatBoxModule")
 	public var chatBoxModule:IChatBoxModule;
@@ -19,13 +20,16 @@ class ShowChatWelcomeMessageCommand extends BasicCommand
 	@Inject
 	public var performerData:PerformerDataVO;
 	
+	@language('welcome_text')
+	var _welcomeMessage : String;
+	
 	override public function execute(?request:Request):Void 
 	{
-		//TODO: get it from translation
 		var chatMessage = new ChatMessageVO();
-		chatMessage.message = "Welcome to " + this.performerData.performerId + "'s Video Chat!\nHere You can watch the Performer's free, live camera feed!";
 		
+		var r = ~/{\$performerid}/g;
+		chatMessage.message = r.replace(this._welcomeMessage, this.performerData.performerId);
+
 		this.chatBoxModule.addNewLine( chatMessage );
 	}
-	
 }

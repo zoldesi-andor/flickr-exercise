@@ -38,17 +38,15 @@ class AwePopunder
 	public function new( config:Dynamic )
 	{
 		this._init();
+		this._setInitialApplicationSettings( config );
 		
 		var initialParser : ApplicationXMLParser = new ApplicationXMLParser();
-		initialParser.parse( this._applicationAssembler, Xml.parse(haxe.Resource.getString( 'initialConfig')) );
+		initialParser.parse( this._applicationAssembler, Xml.parse(haxe.Resource.getString('initialConfig')) );
 		this._applicationAssembler.buildEverything();
-		
-		var xml:Xml = this._getApplicationXml( );
-		this._setInitialApplicationSettings( config );
 		
 		this._registerView( );
 		
-		this._build( xml );
+		this._build( this._getApplicationXml() );
 	}
 	
 	function _getApplicationXml( ):Xml
@@ -75,10 +73,9 @@ class AwePopunder
 	function _setInitialApplicationSettings(config:Dynamic):Void
 	{
 		var initialApplicationSettingsParser = new InitialApplicationSettingsParser();
-		var initialParser : ApplicationXMLParser = new ApplicationXMLParser();
 		this._initialApplicationSettings = initialApplicationSettingsParser.parseSettings( config );
 		this._injector.mapToValue( InitialApplicationSettingsVO, this._initialApplicationSettings, "initialApplicationSettings" );
-		
+		this._applicationAssembler.getBuilderFactory(this._applicationContext).getCoreFactory().register("initialApplicationSettings", this._initialApplicationSettings);
 		this._applicationAssembler.addConditionalProperty( ["useHlsJs" => this._initialApplicationSettings.streamSettings.useHlsJs] );
 	}
 	
@@ -101,8 +98,5 @@ class AwePopunder
 	{
 		var hlsPlayerModule:IHlsPlayerModule = cast this._injector.getInstance(IHlsPlayerModule, "hlsPlayerModule");
 		hlsPlayerModule.play();
-	}
-	
-	
-	
+	}	
 }

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data 
+	xml:cs="awepopunder/language/cs"
+	xml:da="awepopunder/language/da"
+	xml:de="awepopunder/language/de"
+	xml:en="awepopunder/language/en"
+	xml:es="awepopunder/language/es"
+	xml:fi="awepopunder/language/fi"
+	xml:fr="awepopunder/language/fr"
+	xml:hu="awepopunder/language/hu"
+	xml:it="awepopunder/language/it"
+	xml:ja="awepopunder/language/ja"
+	xml:no="awepopunder/language/no"
+	xml:pl="awepopunder/language/pl"
+	xml:pt="awepopunder/language/pt"
+	xml:ro="awepopunder/language/ro"
+	xml:ru="awepopunder/language/ru"
+	xml:sk="awepopunder/language/sk"
+	xml:sv="awepopunder/language/sv"
+	xml:zh="awepopunder/language/zh"
+	>
+
+	<cs:input_text><![CDATA[Klikněte zde pro chat]]></cs:input_text>
+	<cs:welcome_text><![CDATA[Vítá Vás {$performerid}na svém chatu!\nZde můžete sledovat zdarma živé vystoupení účinkující/ho!]]></cs:welcome_text>
+	
+	<da:input_text><![CDATA[Klik her for at chatte]]></da:input_text>
+	<da:welcome_text><![CDATA[Welkom bij de videochat van {$performerid}!]]></da:welcome_text>
+	
+	<de:input_text><![CDATA[Hier klicken um zu chatten]]></de:input_text>
+	<de:welcome_text><![CDATA[Willkommen bei {$performerid}'s Video Chat!\nHier können Sie die Live Camera Feed des Performers sehen!]]></de:welcome_text>
+		
+	<en:input_text><![CDATA[Click here to chat]]></en:input_text>
+	<en:welcome_text><![CDATA[Welcome to {$performerid}'s Video Chat!\nHere You can watch the Performer's free, live camera feed!]]></en:welcome_text>
+		
+	<es:input_text><![CDATA[Haga clic para el chat]]></es:input_text>
+	<es:welcome_text><![CDATA[!Bienvenido en el Video Chat de {$performerid}!\nAquí puedes ver gratuitamente la imagen de cámara del Protagonista!]]></es:welcome_text>
+		
+	<fi:input_text><![CDATA[Klikkaa chattiin]]></fi:input_text>
+	<fi:welcome_text><![CDATA[Tervetuloa {$performerid}'s Video-Chattiin!\nTäällä Voit katsoa Esiintyjän ilmaista, live-kamera-kuvaa!]]></fi:welcome_text>
+		
+	<fr:input_text><![CDATA[Tchat maintenant!]]></fr:input_text>
+	<fr:welcome_text><![CDATA[Bienvenue sur le Vidéo Chat de {$performerid}!\nIci, vous pouvez visualiser l'image caméra in live du Participant!]]></fr:welcome_text>
+		
+	<hu:input_text><![CDATA[Kattints ide a chateléshez]]></hu:input_text>
+	<hu:welcome_text><![CDATA[Üdvözlünk {$performerid} Video Chat-jében!\nItt ingyen nézheted a Szereplõ élõ kameraképét!]]></hu:welcome_text>
+		
+	<it:input_text><![CDATA[Clicca qui per chattare]]></it:input_text>
+	<it:welcome_text><![CDATA[Benvenuto nel Video Chat di {$performerid}!\nQui puoi vedere gratuitamente l'immagine de camera del Personaggio!]]></it:welcome_text>
+		
+	<ja:input_text><![CDATA[クリックしてチャットを開始]]></ja:input_text>
+	<ja:welcome_text><![CDATA[ようこそ {$performerid}'のﾋﾞﾃﾞｵﾁｬｯﾄへ!\nここではﾊﾌｫｰﾏｰのﾗｲﾌﾞｶﾒﾗ配信を無料でご利用頂けます!]]></ja:welcome_text>
+		
+	<nl:input_text><![CDATA[Klik hier om te chatten]]></nl:input_text>
+	<nl:welcome_text><![CDATA[Welkom bij {$performerid}'s Video Chat!\nHier kun je de gratis, live camerafeed van performer bekijken!]]></nl:welcome_text>
+		
+	<no:input_text><![CDATA[Klikk her for å chatte]]></no:input_text>
+	<no:welcome_text><![CDATA[Velkommen til {$performerid}'s Video Chat!]]></no:welcome_text>
+		
+	<pl:input_text><![CDATA[Kliknij tutaj by czatować]]></pl:input_text>
+	<pl:welcome_text><![CDATA[Witaj w {$performerid} czacie wideo!\nTutaj możesz oglądać za darmo Wykonawcę na żywo!]]></pl:welcome_text>
+		
+	<pt:input_text><![CDATA[Clique aqui para o chat]]></pt:input_text>
+	<pt:welcome_text><![CDATA[Bemvindo a {$performerid} Conversa Vídeo!\nAqui voce pode ver a transmissao em directo do Executante gratuita!]]></pt:welcome_text>
+		
+	<ro:input_text><![CDATA[Apasa aici pentru a conversa]]></ro:input_text>
+	<ro:welcome_text><![CDATA[Bine ai venit la Video Chat-ul lui {$performerid}!]]></ro:welcome_text>
+		
+	<ru:input_text><![CDATA[Нажмите здесь для общения в чате]]></ru:input_text>
+	<ru:welcome_text><![CDATA[Добро Пожаловать в {$performerid}'Видео Чат!\nЗдесь Вы можете смотреть бесплатный прямой эфир Участника!]]></ru:welcome_text>
+		
+	<sk:input_text><![CDATA[Klikni tu pre chat]]></sk:input_text>
+	<sk:welcome_text><![CDATA[Víta Vás {$performerid} na svojom chate!\nTu môžete sledovať zadarmo živé vystúpenie účinkujúcej/ho!]]></sk:welcome_text>
+		
+	<sv:input_text><![CDATA[Klicka här för att chatta]]></sv:input_text>
+	<sv:welcome_text><![CDATA[Välkommen till {$performerid}s Video Chatt!\nHär kan du titta pa Modellens live-kameraflöden!]]></sv:welcome_text>
+		
+	<zh:input_text><![CDATA[点击这里，开始聊天]]></zh:input_text>
+	<zh:welcome_text><![CDATA[欢迎来到 {$performerid} 的视频聊天！\n这里您可以观赏演员的免费现场视频!]]></zh:welcome_text>
+
+</data>

@@ -32,6 +32,7 @@
 -cp lib/3rdparty/mockatoo/src 
 -cp lib/3rdparty/mconsole/src/lib
 
+-resource src/awepopunder/configuration/Translation.xml@translation 
 -resource src/awepopunder/configuration/InitialConfiguration.xml@initialConfig 
 -resource src/awepopunder/configuration/ModuleConfiguration.xml@moduleConfig 
 -resource src/awepopunder/configuration/ServiceConfiguration.xml@serviceConfig 

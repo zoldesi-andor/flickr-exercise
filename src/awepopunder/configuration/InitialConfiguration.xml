@@ -7,10 +7,15 @@
     </module>
 	
 	<!-- SERVICES -->
+	<service id="translationService" type="com.service.translation.XmlResourceTranslationService">
+		<argument value="translation" />
+		<argument value="da" />
+	</service>
+	
 	<servicelocator id="languageServiceLocator" type="hex.config.stateful.ServiceLocator" >
         <item> 
             <key type="Class" value="com.module.language.service.ILanguageDataService"/>
-            <value type="Class" value="com.docler.translation.StaticTranslationService"/>
+            <value ref="translationService"/>
         </item>
     </servicelocator>
 </root>

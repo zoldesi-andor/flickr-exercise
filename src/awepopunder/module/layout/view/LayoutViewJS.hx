@@ -12,7 +12,7 @@ import js.html.Event;
  * ...
  * @author duke
  */
-@rtti
+@:rtti
 class LayoutViewJS implements ILayoutView implements IAnnotationParsable
 {
 	@language('input_text')

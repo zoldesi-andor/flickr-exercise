@@ -75,8 +75,22 @@ class AwePopunder
 		var initialApplicationSettingsParser = new InitialApplicationSettingsParser();
 		this._initialApplicationSettings = initialApplicationSettingsParser.parseSettings( config );
 		this._injector.mapToValue( InitialApplicationSettingsVO, this._initialApplicationSettings, "initialApplicationSettings" );
+		
 		this._applicationAssembler.getBuilderFactory(this._applicationContext).getCoreFactory().register("initialApplicationSettings", this._initialApplicationSettings);
+		
+		var useHlsJs:Bool = this._initialApplicationSettings.streamSettings.useHlsJs;
+		
+		#if js
+		useHlsJs = useHlsJs && !this.isMobile();
+		#end
+		
 		this._applicationAssembler.addConditionalProperty( ["useHlsJs" => this._initialApplicationSettings.streamSettings.useHlsJs] );
+	}
+	
+	function isMobile( ):Bool
+	{
+		trace(js.Browser.navigator.userAgent);
+		return ~/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.match(js.Browser.navigator.userAgent);
 	}
 	
 	function _registerView():Void

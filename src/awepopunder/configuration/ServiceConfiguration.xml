@@ -49,10 +49,20 @@
 		<argument type="UInt" value="1000" />
 	</serviceStrategy>
 	
+	<serviceStrategy id="webSocketErrorStrategy" type="com.service.net.websocket.monitor.WebSocketServiceErrorStrategy">
+		<argument type="UInt" value="5" />
+		<argument type="UInt" value="5000" />
+	</serviceStrategy>
+	
 	<serviceMonitor id="httpServiceMonitor" type="hex.service.monitor.BasicServiceMonitor" map-type="hex.service.monitor.IServiceMonitor">
 		<method-call name="mapStrategy">
 			<argument type="Class" value="awepopunder.service.servicemonitor.MonitoredHttpService" />
 			<argument ref="basicHttpErrorStrategy" />
 		</method-call>
+		<method-call name="mapStrategy">
+			<argument type="Class" value="com.service.net.websocket.WebSocketServiceJS" />
+			<argument ref="webSocketErrorStrategy" />
+		</method-call>
 	</serviceMonitor>
+	
 </root>

@@ -8,10 +8,11 @@ import hex.service.stateless.http.HTTPServiceConfiguration;
  * ...
  * @author duke
  */
+@:rtti
 class MonitoredHttpService<ServiceConfigurationType:HTTPServiceConfiguration> extends HTTPService<ServiceConfigurationType>
 {
 	
-	@Inject
+	@Inject("name=httpServiceMonitor")
 	public var serviceMonitor:IServiceMonitor;
 
 	public function new() 

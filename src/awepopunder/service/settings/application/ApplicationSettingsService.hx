@@ -1,5 +1,6 @@
 package awepopunder.service.settings.application;
 
+import awepopunder.service.servicemonitor.MonitoredHttpService;
 import awepopunder.vo.settings.application.ApplicationSettingsVO;
 import hex.service.ServiceResultVO;
 import hex.service.stateless.http.HTTPService;
@@ -24,6 +25,19 @@ class ApplicationSettingsService extends HTTPService<HTTPServiceConfiguration> i
 		this.setConfiguration( new HTTPServiceConfiguration() );
 		
 		this.setParser( new ApplicationSettingsParser() );
+	}
+	
+	private static var i:Int = 0;
+	
+	override function _onData( result : String ) : Void
+	{
+		/*if ( i < 2 )
+		{
+			i++;
+			this._onError('fake');
+			return;
+		}*/
+		this._onResultHandler( result );
 	}
 	
 	public function getApplicationSettings( ):ServiceResultVO<ApplicationSettingsVO>

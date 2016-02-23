@@ -5,8 +5,8 @@ import awepopunder.vo.settings.application.InternalApplicationSettingsVO;
 import com.service.net.chatwebsocket.ChatWebSocketServiceConfiguration;
 import com.service.net.chatwebsocket.IChatWebSocketService;
 import com.service.net.websocket.message.WebSocketServiceMessage;
-import hex.control.async.AsyncCommand;
 import hex.control.Request;
+import hex.control.command.BasicCommand;
 import hex.event.BasicEvent;
 
 /**
@@ -14,7 +14,7 @@ import hex.event.BasicEvent;
  * @author 
  */
 @:rtti
-class ConnectChatWebSocketCommand extends AsyncCommand
+class ConnectChatWebSocketCommand extends BasicCommand
 {
 	@Inject("name=chatWebSocketService")
 	public var chatWebSocketService:IChatWebSocketService;
@@ -27,9 +27,9 @@ class ConnectChatWebSocketCommand extends AsyncCommand
 
 	override public function execute( ?request : Request ):Void
 	{
-		this.chatWebSocketService.addHandler( WebSocketServiceMessage.CONNECTED, this, this._onWebSocketServiceConnected );
+		/*this.chatWebSocketService.addHandler( WebSocketServiceMessage.CONNECTED, this, this._onWebSocketServiceConnected );
 		this.chatWebSocketService.addHandler( WebSocketServiceMessage.ERROR, this, this._onWebSocketServiceFailed );
-		this.chatWebSocketService.addHandler( WebSocketServiceMessage.CLOSED, this, this._onWebSocketServiceFailed );
+		this.chatWebSocketService.addHandler( WebSocketServiceMessage.CLOSED, this, this._onWebSocketServiceFailed );*/
 		
 		var config:ChatWebSocketServiceConfiguration = this.chatWebSocketService.getConfiguration();
 		config.host = this.settings.chatHost;
@@ -41,7 +41,7 @@ class ConnectChatWebSocketCommand extends AsyncCommand
 		this.chatWebSocketService.connect();
 	}
 	
-	function _onWebSocketServiceConnected( e:BasicEvent ):Void
+	/*function _onWebSocketServiceConnected( e:BasicEvent ):Void
 	{
 		this._handleComplete();
 	}
@@ -58,6 +58,6 @@ class ConnectChatWebSocketCommand extends AsyncCommand
 		this.chatWebSocketService.removeHandler( WebSocketServiceMessage.CLOSED, this, this._onWebSocketServiceFailed );
 		
 		super._release();
-	}
+	}*/
 	
 }

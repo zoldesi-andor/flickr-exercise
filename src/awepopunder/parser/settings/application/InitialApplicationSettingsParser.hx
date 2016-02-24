@@ -48,7 +48,7 @@ class InitialApplicationSettingsParser implements IParser
 		var result = new FilterSettingsVO( );
 		
 		result.category = data.category;
-		result.preferredPerformerId = data.preferredPerformerId;
+		result.preferredPerformerList = data.preferredPerformerList;
 		result.forcePerformer = data.forcePerformer;
 		result.templateId = data.templateId;
 		

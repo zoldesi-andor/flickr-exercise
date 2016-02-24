@@ -18,6 +18,4 @@ interface IPerformerProviderModule extends IModule
 	function isManualPerformerSwitchLimitReached():Bool;
 	
 	function setPerformerSwitchLimits(auto:Int, manual:Int):Void;
-	
-	function setPreferredPerformer(preferredPerformerId:String):Void;
 }

@@ -12,6 +12,7 @@ class PerformerDataServiceParameters extends HTTPServiceParameters
 	public var category:String;
 	public var site:String;
 	public var performerId:String;
+	public var preferredList:String;
 	public var tid:String;
 	public var banList:String;
 	public var streamData:UInt;
@@ -25,13 +26,14 @@ class PerformerDataServiceParameters extends HTTPServiceParameters
 	 * @param	banList Filter out these performers
 	 * @param	streamData We need the streamRatio and other stream information
 	 */
-	public function new( category:String = "", site:String = "", performerId:String = "", tid:String = "", banList:String = "", streamData:UInt = 1, wowza:UInt = 1) 
+	public function new( category:String = "", site:String = "", performerId:String = "", preferredList:String = "", tid:String = "", banList:String = "", streamData:UInt = 1, wowza:UInt = 1) 
 	{
 		super();
 		
 		this.category = category;
 		this.site = site;
 		this.performerId = performerId;
+		this.preferredList = preferredList;
 		this.tid = tid;
 		this.banList = banList;
 		this.streamData = streamData;

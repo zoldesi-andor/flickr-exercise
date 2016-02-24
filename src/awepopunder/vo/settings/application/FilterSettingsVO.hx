@@ -7,7 +7,7 @@ package awepopunder.vo.settings.application;
 class FilterSettingsVO
 {
 	public var category:String;
-	public var preferredPerformerId:String;
+	public var preferredPerformerList:String;
 	public var templateId:String;
 	public var forcePerformer:Bool;
 

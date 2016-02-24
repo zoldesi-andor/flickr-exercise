@@ -13,8 +13,6 @@ interface IPerformerProviderModel extends IPerformerProviderModelRO
 	
 	function setFilterSettings(value:FilterSettingsVO):Void;
 	
-	function setPreferredPerformer(value:String):Void;
-	
 	function setSite(value:String):Void;
 	
 	function increaseAutoPerformerSwitchCount():Void;

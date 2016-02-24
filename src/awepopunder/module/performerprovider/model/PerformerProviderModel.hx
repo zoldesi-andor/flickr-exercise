@@ -27,11 +27,6 @@ class PerformerProviderModel implements IPerformerProviderModel
 		this._filterSettings = value;
 	}
 	
-	public function setPreferredPerformer(value:String):Void 
-	{
-		this._filterSettings.preferredPerformerId = value;
-	}
-	
 	public function setSite(value:String):Void 
 	{
 		this._site = value;
@@ -40,11 +35,6 @@ class PerformerProviderModel implements IPerformerProviderModel
 	public function getFilterSettings():FilterSettingsVO 
 	{
 		return this._filterSettings;
-	}
-	
-	public function getPreferredPerformer():String 
-	{
-		return this._filterSettings.preferredPerformerId;
 	}
 	
 	public function getSite():String 

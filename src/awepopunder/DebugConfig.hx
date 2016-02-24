@@ -9,7 +9,7 @@ class DebugConfig
 	public static var config:Dynamic = {  
 		
 		filter:{
-			preferredPerformerId:"AlyonaCage",
+			preferredPerformerList:"AllyWilliams,Katirina,NaomiKitten,rfhhfnjh,AriannaDevine,KarlaKrush,RebeccaHart,DahianKing,EvaAddison,SpicyGia",
 			category:"girl",
 			templateId:"kontx_w2_girl_teen",
 			forcePerformer:false

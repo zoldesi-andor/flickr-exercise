@@ -78,7 +78,7 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 			}
 		#end
 		
-		trace("SwitchPerformerMacro._onPerformerDataLoaded2222", performerData);
+		trace("SwitchPerformerMacro._onPerformerDataLoaded", performerData);
 
 		var performerDataPayload = new ExecutionPayload(performerData, PerformerDataVO);
 		var previousPerformerDataPayload = new ExecutionPayload(this._previousPerformerData, PerformerDataVO, "previous");

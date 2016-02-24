@@ -12,8 +12,6 @@ interface IPerformerProviderModelRO
 	
 	function getFilterSettings():FilterSettingsVO;
 	
-	function getPreferredPerformer():String;
-	
 	function getSite():String;
 	
 	function isAutoPerformerSwitchLimitReached():Bool;

@@ -30,9 +30,9 @@ class AwePopunder
 
 	static public function main() : Void
 	{
-		//#if debug
+		#if debug
 			self = new AwePopunder( DebugConfig.config ); 
-		//#end
+		#end
 	}
 	
 	public function new( config:Dynamic )

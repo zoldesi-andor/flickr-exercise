@@ -56,7 +56,7 @@
     <hidden path="obj" />
   </hiddenPaths>
   <!-- Executed before build -->
-  <preBuildCommand>ant.bat build.haxe.js.dev</preBuildCommand>
+  <preBuildCommand>ant.bat build.haxe.js.prod</preBuildCommand>
   <!-- Executed after build -->
   <postBuildCommand alwaysRun="False" />
   <!-- Other project options -->

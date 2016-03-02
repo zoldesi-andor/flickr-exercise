@@ -12,7 +12,9 @@
 	
 	<service id="chatWebSocketService" type="com.service.net.chatwebsocket.ChatWebSocketService" map-type="com.service.net.chatwebsocket.IChatWebSocketService"/>
 	
-	<service id="applicationSettingsService" type="awepopunder.service.settings.application.ApplicationSettingsService" map-type="awepopunder.service.settings.application.IApplicationSettingsService"/>
+	<service id="applicationSettingsService" type="awepopunder.service.settings.application.ApplicationSettingsService" map-type="awepopunder.service.settings.application.IApplicationSettingsService">
+		<argument ref="httpServiceMonitor" />
+	</service>
 	
 	<service id="performerStatusService" type="awepopunder.service.performer.performerstatus.PerformerStatusService" map-type="awepopunder.service.performer.performerstatus.IPerformerStatusService"/>
 	

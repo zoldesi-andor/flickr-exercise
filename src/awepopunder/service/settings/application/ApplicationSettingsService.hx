@@ -3,6 +3,7 @@ package awepopunder.service.settings.application;
 import awepopunder.service.servicemonitor.MonitoredHttpService;
 import awepopunder.vo.settings.application.ApplicationSettingsVO;
 import hex.service.ServiceResultVO;
+import hex.service.monitor.IServiceMonitor;
 import hex.service.stateless.http.HTTPService;
 import hex.service.stateless.http.HTTPServiceConfiguration;
 
@@ -10,13 +11,13 @@ import hex.service.stateless.http.HTTPServiceConfiguration;
  * ...
  * @author duke
  */
-class ApplicationSettingsService extends HTTPService<HTTPServiceConfiguration> implements IApplicationSettingsService
+class ApplicationSettingsService extends MonitoredHttpService<HTTPServiceConfiguration> implements IApplicationSettingsService
 {
 
-	public function new() 
+	public function new( serviceMonitor:IServiceMonitor ) 
 	{
 		super();
-		
+		this.serviceMonitor = serviceMonitor;
 	}
 	
 	@postConstruct

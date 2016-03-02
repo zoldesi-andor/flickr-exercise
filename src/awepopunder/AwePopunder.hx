@@ -84,12 +84,12 @@ class AwePopunder
 		useHlsJs = useHlsJs && !this.isMobile();
 		#end
 		
-		this._applicationAssembler.addConditionalProperty( ["useHlsJs" => this._initialApplicationSettings.streamSettings.useHlsJs] );
+		this._applicationAssembler.addConditionalProperty( ["useHlsJs" => useHlsJs] );
 	}
 	
 	function isMobile( ):Bool
 	{
-		trace(js.Browser.navigator.userAgent);
+		
 		return ~/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.match(js.Browser.navigator.userAgent);
 	}
 	

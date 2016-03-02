@@ -1,6 +1,7 @@
 package awepopunder.service.servicemonitor;
 
 import hex.service.monitor.IServiceMonitor;
+import hex.service.monitor.IServiceMonitorStrategy;
 import hex.service.stateless.http.HTTPService;
 import hex.service.stateless.http.HTTPServiceConfiguration;
 
@@ -21,12 +22,27 @@ class MonitoredHttpService<ServiceConfigurationType:HTTPServiceConfiguration> ex
 		
 	}
 	
+	@PostConstruct
+	function _initMonitorStrategy() : Void
+	{
+		//this.serviceMonitor.getStrategy( this ).setExceptionCallback( this, this._onException );
+	}
+	
 	override function _onError( msg : String ) : Void
 	{
-		if ( !this.serviceMonitor.handleError( this, new HTTPServiceException( msg ) ) )
+		var strategy = this.serviceMonitor.getStrategy( this );
+		
+		if ( strategy.handleError( this, new HTTPServiceException( msg ) ) )
+		{
+			this._reset();
+			strategy.retry( this );
+		}
+		else
 		{
 			super._onError( msg );
 		}
 	}
+	
+	
 	
 }

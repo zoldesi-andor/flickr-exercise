@@ -1,0 +1,15 @@
+{
+  "name": "awe-popunder",
+  "version": "1.0.0",
+  "dependencies": {
+    "hexmachina": "git:https://github.com/DoclerLabs/hexMachina.git",
+    "hexmachina-modules": "git:ssh://git@stash.doclerholding.com:7999/haxe/hexmachina-modules.git",
+    "hexmachina-services": "git:ssh://git@stash.doclerholding.com:7999/haxe/hexmachina-services.git",
+    "hamcrest": "",
+    "protohx": "",
+    "hlsjs-haxe-extern": "git:https://github.com/grosmar/hls.js-haxe-extern.git",
+    "mockatoo": "",
+    "mconsole": "",
+    "riot.hx": ""
+  }
+}

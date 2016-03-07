@@ -10,8 +10,8 @@
   "scripts": {
 	"postinstall": "npm run install.haxelibs && npm run build.prod",
 	"install.haxelibs": "haxelib install",
-    "build.dev": "ant build.haxe.js.dev && ant run generate.static",
-	"build.prod": "ant build.haxe.js.prod && ant run generate.static",
+    "build.dev": "npm run build.haxe.js.dev && npm run generate.static",
+	"build.prod": "npm build.haxe.js.prod && npm run generate.static",
 	"build.haxe.js.prod": "npm run generate.imports && haxe ./build/haxe/build-src.hxml -js bin/Main.js",
 	"build.haxe.js.dev": "npm run generate.imports && haxe ./build/haxe/build-src.hxml -js bin/Main.js -debug",
 	"build.haxe.js.test": "haxe ./build/haxe/build-test.hxml -js bin/Main.js -debug",

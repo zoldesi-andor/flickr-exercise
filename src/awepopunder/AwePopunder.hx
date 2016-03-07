@@ -89,8 +89,11 @@ class AwePopunder
 	
 	function isMobile( ):Bool
 	{
-		
+		#if js
 		return ~/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.match(js.Browser.navigator.userAgent);
+		#else
+		return false;
+		#end
 	}
 	
 	function _registerView():Void

@@ -17,7 +17,9 @@
 	"build.haxe.js.test": "haxe ./build/haxe/build-test.hxml -js bin/Main.js -debug",
 	"generate.imports": "neko ./tools/hex3rdPartyTools/utilities/xml/GenerateImports/bin/GenerateImports.n  -dir ./src/awepopunder/configuration -output ./src/Imports.hx",
     "generate.static": "gulp --gulpfile ./build/gulpfile.js",
-	"checkout.tools": "rm -rf tools/hex3rdPartyTools && git clone https://github.com/DoclerLabs/hex3rdPartyTools.git tools/hex3rdPartyTools"
+	"checkout.tools": "rm -rf tools/hex3rdPartyTools && git clone https://github.com/DoclerLabs/hex3rdPartyTools.git tools/hex3rdPartyTools",
+	"update.projectfiles": "cp ./resource/flashdevelop/AwePopunder.hxproj ./AwePopunder.hxproj -f",
+	"update.all": "haxelib update"
   },
   "repository": {
     "type": "git",

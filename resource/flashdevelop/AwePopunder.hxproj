@@ -4,7 +4,7 @@
   <output>
     <movie outputType="CustomBuild" />
     <movie input="" />
-    <movie path="build.hxml" />
+    <movie path="" />
     <movie fps="30" />
     <movie width="1280" />
     <movie height="720" />
@@ -15,31 +15,33 @@
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
-    <class path="lib\hexMachina\src" />
-    <class path="lib\hexMachina\test" />
-    <class path="lib\hexMachina\hexCore\src" />
-    <class path="lib\hexMachina\hexCore\test" />
-    <class path="lib\hexMachina\hexInject\src" />
-    <class path="lib\hexMachina\hexInject\test" />
-    <class path="lib\hexMachina\hexIoC\src" />
-    <class path="lib\hexMachina\hexIoC\test" />
-    <class path="lib\hexMachina\hexMVC\src" />
-    <class path="lib\hexMachina\hexMVC\test" />
-    <class path="lib\hexMachina\hexService\src" />
-    <class path="lib\hexMachina\hexService\test" />
-    <class path="lib\hexMachina\hexState\src" />
-    <class path="lib\hexMachina\hexState\test" />
+    <class path=".haxelib\hexmachina\git\src" />
+    <class path=".haxelib\hexmachina\git\test" />
+    <class path=".haxelib\hexcore\git\src" />
+    <class path=".haxelib\hexcore\git\test" />
+    <class path=".haxelib\hexinject\git\src" />
+    <class path=".haxelib\hexinject\git\test" />
+    <class path=".haxelib\hexioc\git\src" />
+    <class path=".haxelib\hexioc\git\test" />
+    <class path=".haxelib\hexmvc\git\src" />
+    <class path=".haxelib\hexmvc\git\test" />
+    <class path=".haxelib\hexservice\git\src" />
+    <class path=".haxelib\hexservice\git\test" />
+    <class path=".haxelib\hexstate\git\src" />
+    <class path=".haxelib\hexstate\git\test" />
     <class path="src" />
     <class path="test" />
-    <class path="lib\3rdparty\hls.js-haxe-extern\src" />
-    <class path="lib\3rdparty\protohx" />
+    <class path=".haxelib\hlsjs-haxe-extern\git\src" />
+    <class path=".haxelib\protohx\0.4.6" />
+    <class path=".haxelib\mockatoo\3.2.1" />
+    <class path=".haxelib\hamcrest\2.0.1" />
   </classpaths>
   <!-- Build options -->
   <build>
     <option directives="" />
     <option flashStrict="False" />
     <option noInlineOnDebug="False" />
-    <option mainClass="" />
+    <option mainClass="awepopunder.AwePopunder" />
     <option enabledebug="False" />
     <option additional="" />
   </build>
@@ -56,7 +58,8 @@
     <hidden path="obj" />
   </hiddenPaths>
   <!-- Executed before build -->
-  <preBuildCommand>ant.bat build.haxe.js.dev</preBuildCommand>
+  <preBuildCommand>neko ./tools/hex3rdPartyTools/utilities/xml/GenerateImports/bin/GenerateImports.n  -dir ./src/awepopunder/configuration -output ./src/Imports.hx
+cmd /c IF $(BuildConfig)==debug (haxe ./build/haxe/build-src.hxml -js bin/Main.js -debug) ELSE (haxe ./build/haxe/build-src.hxml -js bin/Main.js)</preBuildCommand>
   <!-- Executed after build -->
   <postBuildCommand alwaysRun="False" />
   <!-- Other project options -->
@@ -67,9 +70,4 @@
   </options>
   <!-- Plugin storage -->
   <storage />
-  <configurations>
-    <configuration name="Debug" />
-    <configuration name="Release" />
-    <configuration name="Test" />
-  </configurations>
 </project>

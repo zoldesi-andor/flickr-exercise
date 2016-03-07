@@ -8,16 +8,16 @@
     "test": "test"
   },
   "scripts": {
-	"postinstall": "npm run install.haxelibs && npm run build.prod",
-	"install.haxelibs": "haxelib install",
+	"postinstall": "npm run install.haxelibs && npm run checkout.tools && npm run build.prod",
+	"install.haxelibs": "haxelib newrepo && haxelib install --always",
     "build.dev": "npm run build.haxe.js.dev && npm run generate.static",
-	"build.prod": "npm build.haxe.js.prod && npm run generate.static",
+	"build.prod": "npm run build.haxe.js.prod && npm run generate.static",
 	"build.haxe.js.prod": "npm run generate.imports && haxe ./build/haxe/build-src.hxml -js bin/Main.js",
 	"build.haxe.js.dev": "npm run generate.imports && haxe ./build/haxe/build-src.hxml -js bin/Main.js -debug",
 	"build.haxe.js.test": "haxe ./build/haxe/build-test.hxml -js bin/Main.js -debug",
 	"generate.imports": "neko ./tools/hex3rdPartyTools/utilities/xml/GenerateImports/bin/GenerateImports.n  -dir ./src/awepopunder/configuration -output ./src/Imports.hx",
     "generate.static": "gulp --gulpfile ./build/gulpfile.js",
-	"checkout.tools": "git clone https://github.com/DoclerLabs/hex3rdPartyTools.git tools/hex3rdPartyTools"
+	"checkout.tools": "rm -rf tools/hex3rdPartyTools && git clone https://github.com/DoclerLabs/hex3rdPartyTools.git tools/hex3rdPartyTools"
   },
   "repository": {
     "type": "git",
@@ -33,5 +33,5 @@
   },
   "dependencies": {
 	"hls.js": "^0.5.8"
-  }
+  } 
 }

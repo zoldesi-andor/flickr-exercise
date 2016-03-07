@@ -4,33 +4,16 @@
 -cp src 
 -cp test
 
--cp lib/Docler/hexMachina-modules/src 
--cp lib/Docler/hexMachina-modules/test 
--cp lib/Docler/hexMachina-services/src 
--cp lib/Docler/hexMachina-services/test 
+-lib hexmachina
 
--cp lib/hexMachina/hexCore/src 
--cp lib/hexMachina/hexCore/test 
--cp lib/hexMachina/hexUnit/src 
--cp lib/hexMachina/hexUnit/test 
--cp lib/hexMachina/hexInject/src 
--cp lib/hexMachina/hexInject/test 
--cp lib/hexMachina/hexMVC/src 
--cp lib/hexMachina/hexMVC/test 
--cp lib/hexMachina/hexState/src 
--cp lib/hexMachina/hexState/test 
--cp lib/hexMachina/hexIoC/src 
--cp lib/hexMachina/hexIoC/test
--cp lib/hexMachina/hexService/src 
--cp lib/hexMachina/hexService/test 
--cp lib/hexMachina/src 
--cp lib/hexMachina/test 
+-lib hexmachina-services
+-lib hexmachina-modules
 
--cp lib/3rdparty/hamcrest-haxe/src 
--cp lib/3rdparty/protohx 
--cp lib/3rdparty/hls.js-haxe-extern/src
--cp lib/3rdparty/mockatoo/src 
--cp lib/3rdparty/mconsole/src/lib
+-lib hamcrest
+-lib protohx
+-lib hlsjs-haxe-extern
+-lib mockatoo
+ 
 
 -resource src/awepopunder/configuration/Translation.xml@translation 
 -resource src/awepopunder/configuration/InitialConfiguration.xml@initialConfig 

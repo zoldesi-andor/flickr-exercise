@@ -7,3 +7,4 @@ lib/
 /AwePopunder.Test.hxproj
 /AwePopunder.Debug.hxproj
 /AwePopunder.Release.hxproj
+.haxelib/

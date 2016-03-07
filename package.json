@@ -8,7 +8,7 @@
     "test": "test"
   },
   "scripts": {
-	"postinstall": "npm run install.haxelibs && npm run checkout.tools && npm run build.prod",
+	"postinstall": "npm run install.haxelibs && npm run checkout.tools && npm run build.prod && update.projectfiles",
 	"install.haxelibs": "haxelib newrepo && haxelib install --always",
     "build.dev": "npm run build.haxe.js.dev && npm run generate.static",
 	"build.prod": "npm run build.haxe.js.prod && npm run generate.static",

@@ -4,8 +4,8 @@ import awepopunder.parser.settings.application.InitialApplicationSettingsParser;
 import awepopunder.vo.settings.application.InitialApplicationSettingsVO;
 import com.module.stream.player.hlsplayer.IHlsPlayerModule;
 import hex.di.IBasicInjector;
+import hex.ioc.assembler.AbstractApplicationContext;
 import hex.ioc.assembler.ApplicationAssembler;
-import hex.ioc.assembler.ApplicationContext;
 import hex.ioc.parser.xml.ApplicationXMLParser;
 import hex.ioc.parser.xml.XMLParserUtil;
 
@@ -23,7 +23,7 @@ class AwePopunder
 	static var self:AwePopunder;
 	
 	var _applicationAssembler:ApplicationAssembler;
-	var _applicationContext:ApplicationContext;
+	var _applicationContext:AbstractApplicationContext;
 	
 	var _injector:IBasicInjector;
 	var _initialApplicationSettings:InitialApplicationSettingsVO;

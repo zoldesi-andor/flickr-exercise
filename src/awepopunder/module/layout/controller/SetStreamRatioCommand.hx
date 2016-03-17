@@ -18,6 +18,11 @@ class SetStreamRatioCommand extends BasicCommand
 	override public function execute(?request:Request):Void 
 	{
 		var setStreamRatioRequest:SetStreamRatioRequest = cast request;
+		
+		#if debug
+		hex.log.Logger.DEBUG("awepopunder.module.layout.controller.SetStreamRatioCommand ratio: " + setStreamRatioRequest.ratio);
+		#end
+		
 		this.layoutModel.setStreamRatio( setStreamRatioRequest.ratio );
 	}
 	

@@ -37,7 +37,9 @@ class UnsubscribeChatRoomCommand extends AsyncCommand
 		}
 		else
 		{
-			trace("UnsubscripbeChatRoomCommand.onUnsubscribeRoomResult Failed from unsubscribe from the following room: " + this.performerData.performerId);
+			#if debug
+			hex.log.Logger.DEBUG("UnsubscripbeChatRoomCommand.onUnsubscribeRoomResult Failed from unsubscribe from the following room: " + this.performerData.performerId);
+			#end
 			this._handleComplete( );
 			//this._handleFail( );
 		}

@@ -16,6 +16,9 @@ class SetOfflineStateCommand extends BasicCommand
 
 	override public function execute(?request:Request):Void 
 	{
+		#if debug
+		hex.log.Logger.DEBUG("awepopunder.module.layout.controller.SetOfflineStateCommand");
+		#end
 		this.model.setOffline();
 	}
 	

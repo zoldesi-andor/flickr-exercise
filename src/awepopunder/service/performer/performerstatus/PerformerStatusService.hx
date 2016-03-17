@@ -47,7 +47,9 @@ class PerformerStatusService extends StatefulService<PerformerStatusServiceConfi
 	
 	public function startCheckPerformer( performerId:String ):Void
 	{
-		trace("PerformerStatusService.startCheckPerformer", performerId);
+		#if debug
+		hex.log.Logger.DEBUG("PerformerStatusService.startCheckPerformer " + performerId);
+		#end
 		
 		if ( this._inUse )
 		{
@@ -71,7 +73,9 @@ class PerformerStatusService extends StatefulService<PerformerStatusServiceConfi
 	
 	public function stopCheckPerformer( performerId:String ):Void
 	{
-		trace("PerformerStatusService.stopCheckPerformer", performerId);
+		#if debug
+		hex.log.Logger.DEBUG("PerformerStatusService.stopCheckPerformer " + performerId);
+		#end
 		
 		if ( !this._inUse )
 		{
@@ -89,7 +93,9 @@ class PerformerStatusService extends StatefulService<PerformerStatusServiceConfi
 	public function onServiceComplete(service:IHTTPService<HTTPServiceConfiguration>):Void 
 	{
 		var status:PerformerStatus = this._performerStatusHttpSerice.getPerformerStatus().data.status;
-		//trace("PerformerStatusService.onServiceComplete", status);
+		#if debug
+		hex.log.Logger.DEBUG("PerformerStatusService.onServiceComplete " + status);
+		#end
 		
 		if ( status == PerformerStatus.FreeChat )
 		{
@@ -109,7 +115,6 @@ class PerformerStatusService extends StatefulService<PerformerStatusServiceConfi
 		{
 			this._performerStatusHttpSerice.removeHTTPServiceListener(this);
 		}
-			
 		
 		this._performerStatusHttpSerice = new PerformerStatusHttpSerice();
 		this._performerStatusHttpSerice.createConfiguration();
@@ -126,7 +131,9 @@ class PerformerStatusService extends StatefulService<PerformerStatusServiceConfi
 	function _onTimer():Void
 	{
 		this._checkTimerCounter++;
-		//trace("PerformerStatusService._onTimer", this._checkTimerCounter);
+		#if debug
+		hex.log.Logger.DEBUG("PerformerStatusService._onTimer " + this._checkTimerCounter);
+		#end
 		
 		if ( this._checkTimerCounter >= this._configuration.dispatchOfflineCheckCount )
 		{
@@ -153,19 +160,28 @@ class PerformerStatusService extends StatefulService<PerformerStatusServiceConfi
 	
 	public function onServiceFail(service:IHTTPService<HTTPServiceConfiguration>):Void 
 	{
-		trace("PerformerStatusService.onServiceFail");
+		#if debug
+		hex.log.Logger.DEBUG("PerformerStatusService.onServiceFail");
+		#end
+		
 		this._createNewService( );
 	}
 	
 	public function onServiceCancel(service:IHTTPService<HTTPServiceConfiguration>):Void 
 	{
-		trace("PerformerStatusService.onServiceCancel");
+		#if debug
+		hex.log.Logger.DEBUG("PerformerStatusService.onServiceCancel");
+		#end
+		
 		this._createNewService( );
 	}
 	
 	public function onServiceTimeout(service:IHTTPService<HTTPServiceConfiguration>):Void 
 	{
-		trace("PerformerStatusService.onServiceTimeout");
+		#if debug
+		hex.log.Logger.DEBUG("PerformerStatusService.onServiceTimeout");
+		#end
+		
 		this._createNewService( );
 	}
 	

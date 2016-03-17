@@ -20,6 +20,10 @@ class SetLayoutSettingsCommand extends BasicCommand
 	{
 		var settings:LayoutSettingsVO = cast(request, SetLayoutSettingsRequest).layoutSettings;
 		
+		#if debug
+		hex.log.Logger.DEBUG("awepopunder.module.layout.controller.SetLayoutSettingsCommand layoutMode: " + settings.layoutMode + ", chatMode: " + settings.chatMode);
+		#end
+		
 		this.layoutModel.setLayoutMode(settings.layoutMode);
 		this.layoutModel.setChatMode(settings.chatMode);
 	}

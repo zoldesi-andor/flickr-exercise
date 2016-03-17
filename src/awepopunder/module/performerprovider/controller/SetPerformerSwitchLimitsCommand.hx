@@ -18,6 +18,10 @@ class SetPerformerSwitchLimitsCommand extends BasicCommand
 	{
 		var setPerformerSwitchLimitsRequest:SetPerformerSwitchLimitsRequest = cast request;
 		
+		#if debug
+		hex.log.Logger.DEBUG("SetPerformerSwitchLimitsCommand auto: " + setPerformerSwitchLimitsRequest.auto + ", manual: " + setPerformerSwitchLimitsRequest.manual);
+		#end
+		
 		this.performerProviderModel.setAutoPerformerSwitchLimit( setPerformerSwitchLimitsRequest.auto );
 		this.performerProviderModel.setManualPerformerSwitchLimit( setPerformerSwitchLimitsRequest.manual );
 	}

@@ -8,6 +8,9 @@ import hex.ioc.assembler.AbstractApplicationContext;
 import hex.ioc.assembler.ApplicationAssembler;
 import hex.ioc.parser.xml.ApplicationXMLParser;
 import hex.ioc.parser.xml.XMLParserUtil;
+import hex.log.layout.LogLayoutHTMLView;
+import hex.log.layout.LogProxyLayout;
+import hex.log.layout.SimpleBrowserLayout;
 
 /**
  * ...
@@ -31,7 +34,11 @@ class AwePopunder
 	static public function main() : Void
 	{
 		#if debug
-			self = new AwePopunder( DebugConfig.config ); 
+		var proxy : LogProxyLayout = new LogProxyLayout();
+		var controller = new LogLayoutHTMLView( proxy );
+		proxy.addListener( new SimpleBrowserLayout( controller.consoleWrapperTaget ) );
+
+		self = new AwePopunder( DebugConfig.config ); 
 		#end
 	}
 	

@@ -25,6 +25,10 @@ class SubscribeChatRoomCommand extends AsyncCommand
 
 	override public function execute( ?request : Request ):Void 
 	{
+		#if debug
+		hex.log.Logger.DEBUG("SubscribeChatRoomCommand.execute");
+		#end
+		
 		this.webSocketService.addHandler( ChatWebSocketServiceMessage.SUBSCRIBE_ROOM_RESULT, this, this.onSubscribeRoomResult);
 		
 		this.webSocketService.subscribeRoom( this.performerData.performerId, this.initialApplicationSettings.siteSettings.sessionId);

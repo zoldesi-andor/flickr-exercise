@@ -18,6 +18,10 @@ class LoadNextPerformerCommand extends AsyncCommand
 
 	override public function execute(?request:Request):Void 
 	{
+		#if debug
+		hex.log.Logger.DEBUG("LoadNextPerformerCommand.execute");
+		#end
+		
 		this.performerProviderModule.loadNextPerformer();
 		this.performerProviderModule.addHandler( PerformerProviderModulePublicMessage.PERFORMER_DATA_UPDATED, this, this.onLoaded );
 	}

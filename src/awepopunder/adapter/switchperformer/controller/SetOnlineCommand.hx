@@ -16,6 +16,10 @@ class SetOnlineCommand extends BasicCommand
 
 	override public function execute(?request:Request):Void 
 	{
+		#if debug
+		hex.log.Logger.DEBUG("SetOnlineCommand.execute");
+		#end
+		
 		this.layoutModule.setOnline();
 	}
 	

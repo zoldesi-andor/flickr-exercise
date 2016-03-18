@@ -24,6 +24,9 @@
 		<argument ref="loadingView"/>
 		<argument ref="playButtonView"/>
 		<argument ref="hlsPlayerServiceLocator"/>
+		<listen ref="pageVisibilityService">
+			<event static-ref="com.service.visibility.event.PageVisibilityServiceEvent.ON_HIDDEN" method="stop"/>
+		</listen>
 	</module>
 	
 	<module id="navigatorModule" type="awepopunder.module.navigator.NavigatorModule" map-type="awepopunder.module.navigator.INavigatorModule">

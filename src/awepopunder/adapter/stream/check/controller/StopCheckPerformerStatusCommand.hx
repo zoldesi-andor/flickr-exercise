@@ -20,6 +20,9 @@ class StopCheckPerformerStatusCommand extends BasicCommand
 
 	override public function execute(?request:Request):Void 
 	{
+		#if debug
+		hex.log.Logger.DEBUG("awepopunder.adapter.stream.check.controller.StopCheckPerformerStatusCommand if: " + this.performerStatusService.inUse() );
+		#end
 		if ( this.performerStatusService.inUse() )
 		{
 			this.performerStatusService.stopCheckPerformer( this.performerProviderModule.getActivePerformer( ).performerId );

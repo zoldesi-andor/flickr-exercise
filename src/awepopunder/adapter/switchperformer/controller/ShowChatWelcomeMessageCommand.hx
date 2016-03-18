@@ -25,6 +25,10 @@ class ShowChatWelcomeMessageCommand extends BasicCommand implements IAnnotationP
 	
 	override public function execute(?request:Request):Void 
 	{
+		#if debug
+		hex.log.Logger.DEBUG("ShowChatWelcomeMessageCommand.execute");
+		#end
+		
 		var chatMessage = new ChatMessageVO();
 		
 		var r = ~/{\$performerid}/g;

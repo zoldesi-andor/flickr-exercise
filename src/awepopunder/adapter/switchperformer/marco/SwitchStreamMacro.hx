@@ -21,6 +21,10 @@ class SwitchStreamMacro extends Macro
 
 	override function _prepare():Void 
 	{
+		#if debug
+		hex.log.Logger.DEBUG("SwitchStreamMacro._prepare");
+		#end
+		
 		if ( this.previousPerformerData.performerId != null )
 		{
 			this.add(StopHlsStreamCommand);

@@ -20,6 +20,10 @@ class SetStreamRatioCommand extends BasicCommand
 
 	override public function execute(?request:Request):Void 
 	{
+		#if debug
+		hex.log.Logger.DEBUG("SetStreamRatioCommand.execute");
+		#end
+		
 		this.layoutModule.setStreamRatio(this.performerData.streamRatio);
 	}
 	

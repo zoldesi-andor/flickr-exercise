@@ -22,6 +22,10 @@ class SwitchChatMacro extends Macro
 
 	override function _prepare():Void 
 	{
+		#if debug
+		hex.log.Logger.DEBUG("SwitchChatMacro._prepare");
+		#end
+		
 		if ( this.previousPerformerData.performerId != null )
 		{
 			this.add(UnsubscribeChatRoomCommand).withPayloads([new ExecutionPayload(this.previousPerformerData, PerformerDataVO)]);

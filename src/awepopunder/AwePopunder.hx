@@ -11,6 +11,7 @@ import hex.ioc.parser.xml.XMLParserUtil;
 import hex.log.layout.LogLayoutHTMLView;
 import hex.log.layout.LogProxyLayout;
 import hex.log.layout.SimpleBrowserLayout;
+import hex.log.layout.TraceLayout;
 
 /**
  * ...
@@ -37,6 +38,7 @@ class AwePopunder
 		var proxy : LogProxyLayout = new LogProxyLayout();
 		var controller = new LogLayoutHTMLView( proxy );
 		proxy.addListener( new SimpleBrowserLayout( controller.consoleWrapperTaget ) );
+		proxy.addListener( new TraceLayout() );
 
 		self = new AwePopunder( DebugConfig.config ); 
 		#end

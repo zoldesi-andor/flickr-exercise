@@ -19,6 +19,10 @@ class SetPerformerIdCommand extends BasicCommand
 
 	override public function execute(?request:Request):Void 
 	{
+		#if debug
+		hex.log.Logger.DEBUG("SetPerformerIdCommand.execute");
+		#end
+		
 		this.navigator.setCurrentPerformer(this.performerData.performerId);
 	}
 	

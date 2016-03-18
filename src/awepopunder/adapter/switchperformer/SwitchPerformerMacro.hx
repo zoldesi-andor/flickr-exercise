@@ -73,7 +73,7 @@ class SwitchPerformerMacro extends MacroAdapterStrategy
 		#if debug
 			if ( performerData.streamUrl == null || performerData.streamUrl == "" )
 			{
-				performerData.streamUrl =  "http://192.168.206.47:1935/dashtest/myStream/playlist.m3u8";
+				performerData.streamUrl =  "http://109.71.162.112/live/hd.jasminchannel.stream/playlist.m3u8";
 				performerData.streamRatio = 16/9;
 			}
 		#end

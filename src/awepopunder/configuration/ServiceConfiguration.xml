@@ -18,6 +18,7 @@
 	
 	<service id="performerStatusService" type="awepopunder.service.performer.performerstatus.PerformerStatusService" map-type="awepopunder.service.performer.performerstatus.IPerformerStatusService"/>
 	
+	<service id="pageVisibilityService" type="com.service.visibility.PageVisibilityService"/>
 	
 	<!-- SERVICE CONFIGURATIONS -->
 	
@@ -42,7 +43,6 @@
 			<value ref="httpServiceMonitor"/>
 		</item>
 	</serviceLocator>
-	
 	
 	<!-- SERVICE ERROR STRATEGIES -->
 	

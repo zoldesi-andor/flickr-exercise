@@ -16,6 +16,10 @@ class PlayHlsStreamCommand extends BasicCommand
 
 	override public function execute(?request:Request):Void 
 	{
+		#if debug
+		hex.log.Logger.DEBUG("PlayHlsStreamCommand.execute");
+		#end
+		
 		this.hlsPlayer.play( );
 	}
 }

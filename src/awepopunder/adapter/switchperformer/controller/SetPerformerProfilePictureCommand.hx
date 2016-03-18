@@ -20,6 +20,10 @@ class SetPerformerProfilePictureCommand extends BasicCommand
 
 	override public function execute(?request:Request):Void 
 	{
+		#if debug
+		hex.log.Logger.DEBUG("SetPerformerProfilePictureCommand.execute");
+		#end
+		
 		this.profilePictureModule.setUrl( this.performerData.imageUrl );
 	}
 	

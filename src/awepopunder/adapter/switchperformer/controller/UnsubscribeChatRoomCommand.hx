@@ -22,6 +22,10 @@ class UnsubscribeChatRoomCommand extends AsyncCommand
 
 	override public function execute( ?request : Request ):Void 
 	{
+		#if debug
+		hex.log.Logger.DEBUG("UnsubscribeChatRoomCommand.execute");
+		#end
+		
 		this.webSocketService.addHandler( ChatWebSocketServiceMessage.UNSUBSCRIBE_ROOM_RESULT, this, this.onUnsubscribeRoomResult);
 		
 		this.webSocketService.unsubscribeRoom( this.performerData.performerId);

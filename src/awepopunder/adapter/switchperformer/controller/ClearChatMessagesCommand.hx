@@ -16,6 +16,10 @@ class ClearChatMessagesCommand extends BasicCommand
 	
 	override public function execute(?request:Request):Void 
 	{
+		#if debug
+		hex.log.Logger.DEBUG("ClearChatMessagesCommand.execute");
+		#end
+		
 		this.chatBoxModule.clear( );
 	}
 	

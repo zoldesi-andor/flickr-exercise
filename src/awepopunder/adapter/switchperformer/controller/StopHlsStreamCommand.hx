@@ -16,6 +16,10 @@ class StopHlsStreamCommand extends BasicCommand
 
 	override public function execute(?request:Request):Void 
 	{
+		#if debug
+		hex.log.Logger.DEBUG("StopHlsStreamCommand.execute");
+		#end
+		
 		this.hlsPlayer.stop( );
 	}
 	

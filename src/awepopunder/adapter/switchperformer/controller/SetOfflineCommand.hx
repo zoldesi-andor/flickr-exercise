@@ -16,6 +16,10 @@ class SetOfflineCommand extends BasicCommand
 
 	override public function execute(?request:Request):Void 
 	{
+		#if debug
+		hex.log.Logger.DEBUG("SetOfflineCommand.execute");
+		#end
+		
 		this.layoutModule.setOffline();
 	}
 	

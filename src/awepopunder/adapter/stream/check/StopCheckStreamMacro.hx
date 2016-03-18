@@ -10,10 +10,12 @@ import hex.event.MacroAdapterStrategy;
 class StopCheckStreamMacro extends MacroAdapterStrategy
 {
 
-	public function new(target:Dynamic, method:Dynamic) 
+	public function new() 
 	{
 		super(this, this.onAdapt);
-		
+		#if debug
+		hex.log.Logger.DEBUG("awepopunder.adapter.stream.check.StopCheckStreamMacro");
+		#end
 	}
 	
 	override function _prepare():Void 

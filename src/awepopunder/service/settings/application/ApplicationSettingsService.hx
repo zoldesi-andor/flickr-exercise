@@ -4,7 +4,6 @@ import awepopunder.service.servicemonitor.MonitoredHttpService;
 import awepopunder.vo.settings.application.ApplicationSettingsVO;
 import hex.service.ServiceResultVO;
 import hex.service.monitor.IServiceMonitor;
-import hex.service.stateless.http.HTTPService;
 import hex.service.stateless.http.HTTPServiceConfiguration;
 
 /**
@@ -20,7 +19,7 @@ class ApplicationSettingsService extends MonitoredHttpService<HTTPServiceConfigu
 		this.serviceMonitor = serviceMonitor;
 	}
 	
-	@postConstruct
+	@PostConstruct
 	override public function createConfiguration() : Void
 	{
 		this.setConfiguration( new HTTPServiceConfiguration() );

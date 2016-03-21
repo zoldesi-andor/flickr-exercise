@@ -6,7 +6,6 @@ import awepopunder.module.navigator.constant.TargetPage;
  * ...
  * @author Chris
  */
-@:rtti
 class NavigateToChatRoomStrategy extends AdapterStrategy
 {
 

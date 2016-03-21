@@ -4,18 +4,18 @@ import awepopunder.module.layout.ILayoutModule;
 import awepopunder.vo.settings.application.InitialApplicationSettingsVO;
 import hex.control.Request;
 import hex.control.command.BasicCommand;
+import hex.di.ISpeedInjectorContainer;
 
 /**
  * ...
  * @author duke
  */
-@:rtti
-class SetLayoutSettingsCommand extends BasicCommand
+class SetLayoutSettingsCommand extends BasicCommand implements ISpeedInjectorContainer
 {
-	@Inject("name=initialApplicationSettings")
+	@Inject("initialApplicationSettings")
 	public var initialApplicationSettings:InitialApplicationSettingsVO;
 	
-	@Inject("name=layoutModule")
+	@Inject("layoutModule")
 	public var layoutModule:ILayoutModule;
 
 	override public function execute(?request:Request):Void 

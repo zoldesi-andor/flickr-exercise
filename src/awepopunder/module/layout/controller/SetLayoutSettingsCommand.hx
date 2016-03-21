@@ -5,13 +5,13 @@ import awepopunder.module.layout.request.SetLayoutSettingsRequest;
 import awepopunder.vo.settings.application.LayoutSettingsVO;
 import hex.control.Request;
 import hex.control.command.BasicCommand;
+import hex.di.ISpeedInjectorContainer;
 
 /**
  * ...
  * @author duke
  */
-@:rtti
-class SetLayoutSettingsCommand extends BasicCommand
+class SetLayoutSettingsCommand extends BasicCommand implements ISpeedInjectorContainer
 {
 	@Inject
 	public var layoutModel:ILayoutModel;

@@ -5,13 +5,14 @@ import awepopunder.module.layout.constant.LayoutMode;
 import awepopunder.module.layout.constant.OnlineState;
 import awepopunder.module.layout.model.ILayoutModelListener;
 import awepopunder.module.layout.model.ILayoutModelRO;
+import hex.di.ISpeedInjectorContainer;
 import hex.view.viewhelper.ViewHelper;
 
 /**
  * ...
  * @author duke
  */
-class LayoutViewHelper extends ViewHelper implements ILayoutModelListener
+class LayoutViewHelper extends ViewHelper implements ILayoutModelListener implements ISpeedInjectorContainer
 {
 	var _layoutView:ILayoutView;
 	

@@ -4,18 +4,18 @@ import awepopunder.vo.performer.PerformerDataVO;
 import com.module.image.IImageModule;
 import hex.control.Request;
 import hex.control.command.BasicCommand;
+import hex.di.ISpeedInjectorContainer;
 
 /**
  * ...
  * @author duke
  */
-@:rtti
-class SetPerformerProfilePictureCommand extends BasicCommand
+class SetPerformerProfilePictureCommand extends BasicCommand implements ISpeedInjectorContainer
 {
 	@Inject
 	public var performerData:PerformerDataVO;
 	
-	@Inject("name=profilePictureModule")
+	@Inject("profilePictureModule")
 	public var profilePictureModule:IImageModule;
 
 	override public function execute(?request:Request):Void 

@@ -5,15 +5,15 @@ import awepopunder.module.performerprovider.message.PerformerProviderModulePubli
 import awepopunder.vo.performer.PerformerDataVO;
 import hex.control.async.AsyncCommand;
 import hex.control.Request;
+import hex.di.ISpeedInjectorContainer;
 
 /**
  * ...
  * @author 
  */
-@:rtti
-class LoadNextPerformerCommand extends AsyncCommand
+class LoadNextPerformerCommand extends AsyncCommand implements ISpeedInjectorContainer
 {
-	@Inject("name=performerProviderModule")
+	@Inject("performerProviderModule")
 	public var performerProviderModule:IPerformerProviderModule;
 
 	override public function execute(?request:Request):Void 

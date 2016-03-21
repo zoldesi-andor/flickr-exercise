@@ -3,15 +3,15 @@ import awepopunder.module.navigator.INavigatorModule;
 import awepopunder.vo.performer.PerformerDataVO;
 import hex.control.Request;
 import hex.control.command.BasicCommand;
+import hex.di.ISpeedInjectorContainer;
 
 /**
  * ...
  * @author Chris
  */
-@:rtti
-class SetPerformerIdCommand extends BasicCommand
+class SetPerformerIdCommand extends BasicCommand implements ISpeedInjectorContainer
 {
-	@Inject("name=navigatorModule")
+	@Inject("navigatorModule")
 	public var navigator:INavigatorModule;
 	
 	@Inject

@@ -6,6 +6,7 @@ import awepopunder.adapter.switchperformer.controller.StopHlsStreamCommand;
 import awepopunder.vo.performer.PerformerDataVO;
 import hex.control.macro.Macro;
 import hex.control.payload.ExecutionPayload;
+import hex.di.ISpeedInjectorContainer;
 
 /**
  * ...
@@ -16,7 +17,7 @@ class SwitchStreamMacro extends Macro
 	@Inject
 	public var performerData:PerformerDataVO;
 	
-	@Inject("name=previous")
+	@Inject("previous")
 	public var previousPerformerData:PerformerDataVO;
 
 	override function _prepare():Void 

@@ -5,15 +5,15 @@ import com.module.stream.player.hlsplayer.IHlsPlayerModule;
 import com.module.stream.player.hlsplayer.vo.HlsVO;
 import hex.control.command.BasicCommand;
 import hex.control.Request;
+import hex.di.ISpeedInjectorContainer;
 
 /**
  * ...
  * @author 
  */
-@:rtti
-class SetHlsStreamCommand extends BasicCommand
+class SetHlsStreamCommand extends BasicCommand implements ISpeedInjectorContainer
 {
-	@Inject("name=hlsPlayerModule")
+	@Inject("hlsPlayerModule")
 	public var hlsPlayer:IHlsPlayerModule;
 	
 	@Inject

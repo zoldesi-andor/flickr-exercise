@@ -5,7 +5,6 @@ import awepopunder.module.navigator.vo.NavigatorSettingsVO;
  * ...
  * @author Chris
  */
-@:rtti
 class NavigatorModel implements INavigatorModel
 {
 	var _navigatorSettings:NavigatorSettingsVO;

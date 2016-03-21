@@ -6,18 +6,18 @@ import com.service.net.chatwebsocket.IChatWebSocketService;
 import com.service.net.chatwebsocket.message.ChatWebSocketServiceMessage;
 import hex.control.async.AsyncCommand;
 import hex.control.Request;
+import hex.di.ISpeedInjectorContainer;
 
 /**
  * ...
  * @author 
  */
-@:rtti
-class SubscribeChatRoomCommand extends AsyncCommand
+class SubscribeChatRoomCommand extends AsyncCommand implements ISpeedInjectorContainer
 {
-	@Inject("name=chatWebSocketService")
+	@Inject("chatWebSocketService")
 	public var webSocketService:IChatWebSocketService;
 	
-	@Inject("name=initialApplicationSettings")
+	@Inject("initialApplicationSettings")
 	public var initialApplicationSettings:InitialApplicationSettingsVO;
 	
 	@Inject

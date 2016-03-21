@@ -7,7 +7,6 @@ import hex.event.AdapterStrategy;
  * ...
  * @author 
  */
-@:rtti
 class ChatRoomMessageStrategy extends AdapterStrategy
 {
 

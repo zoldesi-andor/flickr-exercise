@@ -4,13 +4,13 @@ import awepopunder.module.navigator.model.INavigatorModel;
 import awepopunder.module.navigator.request.SetNavigatorSettingsRequest;
 import hex.control.Request;
 import hex.control.command.BasicCommand;
+import hex.di.ISpeedInjectorContainer;
 
 /**
  * ...
  * @author Chris
  */
-@:rtti
-class SetNavigatorSettingsCommand extends BasicCommand
+class SetNavigatorSettingsCommand extends BasicCommand implements ISpeedInjectorContainer
 {
 	@Inject
 	public var navigatorModel:INavigatorModel;

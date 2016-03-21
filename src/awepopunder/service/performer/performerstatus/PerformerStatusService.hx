@@ -7,6 +7,7 @@ import haxe.Json;
 import haxe.Timer;
 import hex.core.IAnnotationParsable;
 import hex.data.IParser;
+import hex.di.ISpeedInjectorContainer;
 import hex.service.ServiceResultVO;
 import hex.service.stateful.StatefulService;
 import hex.service.stateless.http.HTTPService;
@@ -21,8 +22,7 @@ import hex.service.stateless.http.IHTTPServiceListener;
  * because the checking was not stopped, so something is wrong.
  * @author dukr
  */
-@:rtti
-class PerformerStatusService extends StatefulService<PerformerStatusServiceConfiguration> implements IPerformerStatusService implements IHTTPServiceListener<HTTPServiceConfiguration> implements IAnnotationParsable
+class PerformerStatusService extends StatefulService<PerformerStatusServiceConfiguration> implements IPerformerStatusService implements IHTTPServiceListener<HTTPServiceConfiguration> implements IAnnotationParsable implements ISpeedInjectorContainer
 {
 	@Url("modelStatus")
 	public var serviceUrl:String;
@@ -39,7 +39,7 @@ class PerformerStatusService extends StatefulService<PerformerStatusServiceConfi
 		super();
 	}
 	
-	@postConstruct
+	@PostConstruct
 	override public function createConfiguration():Void 
 	{
 		

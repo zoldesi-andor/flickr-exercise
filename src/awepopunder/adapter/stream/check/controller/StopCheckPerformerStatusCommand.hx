@@ -4,18 +4,18 @@ import awepopunder.module.performerprovider.IPerformerProviderModule;
 import awepopunder.service.performer.performerstatus.IPerformerStatusService;
 import hex.control.command.BasicCommand;
 import hex.control.Request;
+import hex.di.ISpeedInjectorContainer;
 
 /**
  * ...
  * @author 
  */
-@:rtti
-class StopCheckPerformerStatusCommand extends BasicCommand
+class StopCheckPerformerStatusCommand extends BasicCommand implements ISpeedInjectorContainer
 {
-	@Inject("name=performerStatusService")
+	@Inject("performerStatusService")
 	public var performerStatusService:IPerformerStatusService;
 	
-	@Inject("name=performerProviderModule")
+	@Inject("performerProviderModule")
 	public var performerProviderModule:IPerformerProviderModule;
 
 	override public function execute(?request:Request):Void 

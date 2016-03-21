@@ -5,16 +5,16 @@ import com.service.net.chatwebsocket.IChatWebSocketService;
 import com.service.net.chatwebsocket.message.ChatWebSocketServiceMessage;
 import hex.control.async.AsyncCommand;
 import hex.control.Request;
+import hex.di.ISpeedInjectorContainer;
 
 /**
  * ...
  * @author duke
  */
-@:rtti
-class UnsubscribeChatRoomCommand extends AsyncCommand
+class UnsubscribeChatRoomCommand extends AsyncCommand implements ISpeedInjectorContainer
 {
 
-	@Inject("name=chatWebSocketService")
+	@Inject("chatWebSocketService")
 	public var webSocketService:IChatWebSocketService;
 	
 	@Inject

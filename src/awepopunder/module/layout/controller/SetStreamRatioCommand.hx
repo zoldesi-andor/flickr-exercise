@@ -4,13 +4,13 @@ import awepopunder.module.layout.model.ILayoutModel;
 import awepopunder.module.layout.request.SetStreamRatioRequest;
 import hex.control.command.BasicCommand;
 import hex.control.Request;
+import hex.di.ISpeedInjectorContainer;
 
 /**
  * ...
  * @author 
  */
-@:rtti
-class SetStreamRatioCommand extends BasicCommand
+class SetStreamRatioCommand extends BasicCommand implements ISpeedInjectorContainer
 {
 	@Inject
 	public var layoutModel:ILayoutModel;

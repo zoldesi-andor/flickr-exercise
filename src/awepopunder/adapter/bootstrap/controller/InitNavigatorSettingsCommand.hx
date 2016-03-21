@@ -4,19 +4,19 @@ import awepopunder.module.navigator.vo.NavigatorSettingsVO;
 import awepopunder.vo.settings.application.InitialApplicationSettingsVO;
 import hex.control.command.BasicCommand;
 import hex.control.Request;
+import hex.di.ISpeedInjectorContainer;
 
 /**
  * ...
  * @author Chris
  */
-@:rtti
-class InitNavigatorSettingsCommand extends BasicCommand
+class InitNavigatorSettingsCommand extends BasicCommand implements ISpeedInjectorContainer
 {
 
-	@Inject("name=navigatorModule")
+	@Inject("navigatorModule")
 	public var navigatorModule:INavigatorModule;
 	
-	@Inject("name=initialApplicationSettings")
+	@Inject("initialApplicationSettings")
 	public var initialApplicationSettings:InitialApplicationSettingsVO;
 
 	override public function execute(?request:Request):Void 

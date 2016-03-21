@@ -4,13 +4,13 @@ import awepopunder.module.navigator.model.INavigatorModel;
 import awepopunder.module.navigator.request.SetCurrentPerformerRequest;
 import hex.control.Request;
 import hex.control.command.BasicCommand;
+import hex.di.ISpeedInjectorContainer;
 
 /**
  * ...
  * @author Chris
  */
-@:rtti
-class SetCurrentPerformerCommand extends BasicCommand
+class SetCurrentPerformerCommand extends BasicCommand implements ISpeedInjectorContainer
 {
 	@Inject
 	public var navigatorModel:INavigatorModel;

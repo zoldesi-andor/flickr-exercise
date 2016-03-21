@@ -4,6 +4,7 @@ import awepopunder.service.performer.performerdata.IPerformerDataService;
 import awepopunder.service.performer.performerdata.PerformerDataParser;
 import awepopunder.vo.performer.PerformerDataVO;
 import hex.core.IAnnotationParsable;
+import hex.di.ISpeedInjectorContainer;
 import hex.service.ServiceResultVO;
 import hex.service.stateless.http.HTTPService;
 import hex.service.stateless.http.HTTPServiceConfiguration;
@@ -12,8 +13,7 @@ import hex.service.stateless.http.HTTPServiceConfiguration;
  * ...
  * @author duke
  */
-@:rtti
-class PerformerDataService extends HTTPService<HTTPServiceConfiguration> implements IPerformerDataService implements IAnnotationParsable
+class PerformerDataService extends HTTPService<HTTPServiceConfiguration> implements IPerformerDataService implements IAnnotationParsable implements ISpeedInjectorContainer
 {
 	
 	@Url("performerData")
@@ -24,7 +24,7 @@ class PerformerDataService extends HTTPService<HTTPServiceConfiguration> impleme
 		super();
 	}
 	
-	@postConstruct
+	@PostConstruct
 	override public function createConfiguration() : Void
 	{
 		this.setConfiguration( new HTTPServiceConfiguration(this.serviceUrl) );

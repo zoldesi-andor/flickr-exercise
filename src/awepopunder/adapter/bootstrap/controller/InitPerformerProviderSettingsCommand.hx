@@ -4,18 +4,18 @@ import awepopunder.module.performerprovider.IPerformerProviderModule;
 import awepopunder.vo.settings.application.InitialApplicationSettingsVO;
 import hex.control.command.BasicCommand;
 import hex.control.Request;
+import hex.di.ISpeedInjectorContainer;
 
 /**
  * ...
  * @author 
  */
-@:rtti
-class InitPerformerProviderSettingsCommand extends BasicCommand
+class InitPerformerProviderSettingsCommand extends BasicCommand implements ISpeedInjectorContainer
 {
-	@Inject("name=performerProviderModule")
+	@Inject("performerProviderModule")
 	public var performerProviderModule:IPerformerProviderModule;
 	
-	@Inject("name=initialApplicationSettings")
+	@Inject("initialApplicationSettings")
 	public var initialApplicationSettings:InitialApplicationSettingsVO;
 
 	override public function execute(?request:Request):Void 

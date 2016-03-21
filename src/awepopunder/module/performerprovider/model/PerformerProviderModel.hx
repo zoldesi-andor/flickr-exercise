@@ -6,7 +6,6 @@ import awepopunder.vo.settings.application.FilterSettingsVO;
  * ...
  * @author 
  */
-@:rtti
 class PerformerProviderModel implements IPerformerProviderModel
 {
 	var _performerData:PerformerDataVO;

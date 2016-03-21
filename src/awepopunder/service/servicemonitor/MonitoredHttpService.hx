@@ -1,5 +1,6 @@
 package awepopunder.service.servicemonitor;
 
+import hex.di.ISpeedInjectorContainer;
 import hex.service.monitor.IServiceMonitor;
 import hex.service.monitor.IServiceMonitorStrategy;
 import hex.service.stateless.http.HTTPService;
@@ -9,11 +10,10 @@ import hex.service.stateless.http.HTTPServiceConfiguration;
  * ...
  * @author duke
  */
-@:rtti
-class MonitoredHttpService<ServiceConfigurationType:HTTPServiceConfiguration> extends HTTPService<ServiceConfigurationType>
+class MonitoredHttpService<ServiceConfigurationType:HTTPServiceConfiguration> extends HTTPService<ServiceConfigurationType> implements ISpeedInjectorContainer
 {
 	
-	@Inject("name=httpServiceMonitor")
+	@Inject("httpServiceMonitor")
 	public var serviceMonitor:IServiceMonitor;
 
 	public function new() 

@@ -3,13 +3,13 @@ package awepopunder.module.layout.controller;
 import awepopunder.module.layout.model.ILayoutModel;
 import hex.control.command.BasicCommand;
 import hex.control.Request;
+import hex.di.ISpeedInjectorContainer;
 
 /**
  * ...
  * @author duke
  */
-@:rtti
-class SetOfflineStateCommand extends BasicCommand
+class SetOfflineStateCommand extends BasicCommand implements ISpeedInjectorContainer
 {
 	@Inject
 	public var model:ILayoutModel;

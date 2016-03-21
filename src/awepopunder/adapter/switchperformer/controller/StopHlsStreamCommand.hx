@@ -3,15 +3,15 @@ package awepopunder.adapter.switchperformer.controller;
 import com.module.stream.player.hlsplayer.IHlsPlayerModule;
 import hex.control.command.BasicCommand;
 import hex.control.Request;
+import hex.di.ISpeedInjectorContainer;
 
 /**
  * ...
  * @author duke
  */
-@:rtti
-class StopHlsStreamCommand extends BasicCommand
+class StopHlsStreamCommand extends BasicCommand implements ISpeedInjectorContainer
 {
-	@Inject("name=hlsPlayerModule")
+	@Inject("hlsPlayerModule")
 	public var hlsPlayer:IHlsPlayerModule;
 
 	override public function execute(?request:Request):Void 

@@ -4,18 +4,18 @@ import awepopunder.vo.settings.application.InternalApplicationSettingsVO;
 import com.module.asset.urlprovider.IUrlProviderModule;
 import hex.control.command.BasicCommand;
 import hex.control.Request;
+import hex.di.ISpeedInjectorContainer;
 
 /**
  * ...
  * @author duke
  */
-@:rtti
-class InitUrlProviderCommand extends BasicCommand
+class InitUrlProviderCommand extends BasicCommand implements ISpeedInjectorContainer
 {
-	@Inject("name=urlProviderModule")
+	@Inject("urlProviderModule")
 	public var urlProviderModule:IUrlProviderModule;
 	
-	@Inject("name=internalApplicationSettings")
+	@Inject("internalApplicationSettings")
 	public var internalApplicationSettings:InternalApplicationSettingsVO;
 
 	override public function execute(?request:Request):Void 

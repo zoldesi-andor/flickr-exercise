@@ -2,15 +2,15 @@ package awepopunder.adapter.switchperformer.controller;
 
 import com.service.net.chatwebsocket.IChatWebSocketService;
 import hex.control.guard.IGuard;
+import hex.di.ISpeedInjectorContainer;
 
 /**
  * ...
  * @author duke
  */
-@:rtti
-class ConnectedToChatGuard implements IGuard
+class ConnectedToChatGuard implements IGuard implements ISpeedInjectorContainer
 {
-	@Inject("name=chatWebSocketService")
+	@Inject("chatWebSocketService")
 	public var webSocketService:IChatWebSocketService;
 
 	public function new() 

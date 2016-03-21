@@ -4,13 +4,13 @@ import awepopunder.module.performerprovider.model.IPerformerProviderModel;
 import awepopunder.module.performerprovider.request.SetFilterSettingsRequest;
 import hex.control.Request;
 import hex.control.command.BasicCommand;
+import hex.di.ISpeedInjectorContainer;
 
 /**
  * ...
  * @author 
  */
-@:rtti
-class SetFilterSettingsCommand extends BasicCommand
+class SetFilterSettingsCommand extends BasicCommand implements ISpeedInjectorContainer
 {
 	@Inject
 	public var performerProviderModel:IPerformerProviderModel;

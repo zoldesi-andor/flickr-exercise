@@ -17,22 +17,22 @@ import com.service.net.chatwebsocket.IChatWebSocketService;
 import hex.control.async.AsyncCommand;
 import hex.control.async.AsyncHandler;
 import hex.control.payload.ExecutionPayload;
+import hex.di.ISpeedInjectorContainer;
 import hex.event.MacroAdapterStrategy;
 
 /**
  * ...
  * @author duke
  */
-@:rtti
 class SwitchPerformerMacro extends MacroAdapterStrategy
 {
-	@Inject("name=performerProviderModule")
+	@Inject("performerProviderModule")
 	public var performerProviderModule:IPerformerProviderModule;
 
-	@Inject("name=chatWebSocketService")
+	@Inject("chatWebSocketService")
 	public var webSocketService:IChatWebSocketService;
 	
-	@Inject("name=initialApplicationSettings")
+	@Inject("initialApplicationSettings")
 	public var initialApplicationSettings:InitialApplicationSettingsVO;
 
 	

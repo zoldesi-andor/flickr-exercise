@@ -7,19 +7,19 @@ import com.service.net.chatwebsocket.IChatWebSocketService;
 import com.service.net.websocket.message.WebSocketServiceMessage;
 import hex.control.Request;
 import hex.control.command.BasicCommand;
+import hex.di.ISpeedInjectorContainer;
 import hex.event.BasicEvent;
 
 /**
  * ...
  * @author 
  */
-@:rtti
-class ConnectChatWebSocketCommand extends BasicCommand
+class ConnectChatWebSocketCommand extends BasicCommand implements ISpeedInjectorContainer
 {
-	@Inject("name=chatWebSocketService")
+	@Inject("chatWebSocketService")
 	public var chatWebSocketService:IChatWebSocketService;
 	
-	@Inject("name=internalApplicationSettings")
+	@Inject("internalApplicationSettings")
 	public var internalApplicationSettings:InternalApplicationSettingsVO;
 	
 	@Inject

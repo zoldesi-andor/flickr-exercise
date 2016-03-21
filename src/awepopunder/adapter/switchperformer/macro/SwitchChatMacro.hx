@@ -17,7 +17,7 @@ class SwitchChatMacro extends Macro
 	@Inject
 	public var performerData:PerformerDataVO;
 	
-	@Inject("name=previous")
+	@Inject("previous")
 	public var previousPerformerData:PerformerDataVO;
 
 	override function _prepare():Void 

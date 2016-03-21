@@ -7,6 +7,7 @@ import awepopunder.service.performer.performerdata.PerformerDataServiceParameter
 import awepopunder.vo.performer.PerformerDataVO;
 import hex.control.Request;
 import hex.control.async.AsyncCommand;
+import hex.di.ISpeedInjectorContainer;
 import hex.service.ServiceResultVO;
 import hex.service.stateless.http.HTTPServiceConfiguration;
 import hex.service.stateless.http.IHTTPService;
@@ -16,8 +17,7 @@ import hex.service.stateless.http.IHTTPServiceListener;
  * ...
  * @author 
  */
-@:rtti
-class LoadNextPerformerCommand extends AsyncCommand implements IHTTPServiceListener<HTTPServiceConfiguration>
+class LoadNextPerformerCommand extends AsyncCommand implements IHTTPServiceListener<HTTPServiceConfiguration> implements ISpeedInjectorContainer
 {
 	@Inject
 	public var performerDataService:IPerformerDataService;
@@ -35,6 +35,7 @@ class LoadNextPerformerCommand extends AsyncCommand implements IHTTPServiceListe
 		this.performerProviderModel.increaseAutoPerformerSwitchCount( );
 		
 		var config:HTTPServiceConfiguration = this.performerDataService.getConfiguration();
+		trace(performerDataService);
 		config.parameters = new PerformerDataServiceParameters( this.performerProviderModel.getFilterSettings().category, this.performerProviderModel.getSite(), "", this.performerProviderModel.getFilterSettings().preferredPerformerList, this.performerProviderModel.getFilterSettings().templateId);
 		
 		this.performerDataService.setConfiguration( config );

@@ -18,7 +18,6 @@ import hex.control.payload.ExecutionPayload;
  * ...
  * @author 
  */
-@:rtti
 class BootstrapMacro extends Macro
 {
 	

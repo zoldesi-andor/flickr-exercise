@@ -6,15 +6,15 @@ import com.vo.chat.ChatMessageVO;
 import hex.control.Request;
 import hex.control.command.BasicCommand;
 import hex.core.IAnnotationParsable;
+import hex.di.ISpeedInjectorContainer;
 
 /**
  * ...
  * @author duke
  */
-@:rtti
-class ShowChatWelcomeMessageCommand extends BasicCommand implements IAnnotationParsable
+class ShowChatWelcomeMessageCommand extends BasicCommand implements IAnnotationParsable implements ISpeedInjectorContainer
 {
-	@Inject("name=chatBoxModule")
+	@Inject("chatBoxModule")
 	public var chatBoxModule:IChatBoxModule;
 	
 	@Inject
@@ -32,6 +32,8 @@ class ShowChatWelcomeMessageCommand extends BasicCommand implements IAnnotationP
 		var chatMessage = new ChatMessageVO();
 		
 		var r = ~/{\$performerid}/g;
+		trace(r);
+		trace(_welcomeMessage);
 		chatMessage.message = r.replace(this._welcomeMessage, this.performerData.performerId);
 
 		this.chatBoxModule.addNewLine( chatMessage );

@@ -4,15 +4,15 @@ import awepopunder.module.performerprovider.IPerformerProviderModule;
 import awepopunder.vo.settings.application.ApplicationSettingsVO;
 import hex.control.command.BasicCommand;
 import hex.control.Request;
+import hex.di.ISpeedInjectorContainer;
 
 /**
  * ...
  * @author duke
  */
-@:rtti
-class SetPerformerProviderSettingsCommand extends BasicCommand
+class SetPerformerProviderSettingsCommand extends BasicCommand implements ISpeedInjectorContainer
 {
-	@Inject("name=performerProviderModule")
+	@Inject("performerProviderModule")
 	public var performerProviderModule:IPerformerProviderModule;
 	
 	@Inject

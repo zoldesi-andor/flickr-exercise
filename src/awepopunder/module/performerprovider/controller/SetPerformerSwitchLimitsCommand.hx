@@ -3,13 +3,13 @@ import awepopunder.module.performerprovider.model.IPerformerProviderModel;
 import awepopunder.module.performerprovider.request.SetPerformerSwitchLimitsRequest;
 import hex.control.command.BasicCommand;
 import hex.control.Request;
+import hex.di.ISpeedInjectorContainer;
 
 /**
  * ...
  * @author duke
  */
-@:rtti
-class SetPerformerSwitchLimitsCommand extends BasicCommand
+class SetPerformerSwitchLimitsCommand extends BasicCommand implements ISpeedInjectorContainer
 {
 	@Inject
 	public var performerProviderModel:IPerformerProviderModel;

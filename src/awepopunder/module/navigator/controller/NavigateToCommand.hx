@@ -8,13 +8,13 @@ import awepopunder.module.navigator.vo.JumpSiteParametersVO;
 import hex.control.Request;
 import hex.control.command.BasicCommand;
 import hex.core.IAnnotationParsable;
+import hex.di.ISpeedInjectorContainer;
 
 /**
  * ...
  * @author Chris
  */
-@:rtti
-class NavigateToCommand  extends BasicCommand implements IAnnotationParsable
+class NavigateToCommand  extends BasicCommand implements IAnnotationParsable implements ISpeedInjectorContainer
 {
 	@Inject
 	public var navigatorModel:INavigatorModel;

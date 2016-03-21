@@ -7,7 +7,6 @@ import awepopunder.module.layout.constant.OnlineState;
  * ...
  * @author duke
  */
-@:rtti
 class LayoutModel implements ILayoutModel
 {
 	var _onlineState:OnlineState = OnlineState.Loading;

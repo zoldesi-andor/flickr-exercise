@@ -20,7 +20,11 @@
     <class path=".haxelib\hexcore\git\src" />
     <class path=".haxelib\hexcore\git\test" />
     <class path=".haxelib\hexinject\git\src" />
-    <class path=".haxelib\hexinject\git\test" />
+    <class path=".haxelib\hexinject\git\test" /> 
+	<class path=".haxelib\hexannotation\git\src" />
+    <class path=".haxelib\hexannotation\git\test" /> 
+	<class path=".haxelib\hexspeedinject\git\src" />
+    <class path=".haxelib\hexspeedinject\git\test" /> 
     <class path=".haxelib\hexioc\git\src" />
     <class path=".haxelib\hexioc\git\test" />
     <class path=".haxelib\hexmvc\git\src" />

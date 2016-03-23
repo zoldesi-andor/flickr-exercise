@@ -14,10 +14,7 @@
 -lib hlsjs-haxe-extern
 -lib mockatoo
  
-
--resource src/awepopunder/configuration/Translation.xml@translation 
--resource src/awepopunder/configuration/InitialConfiguration.xml@initialConfig 
--resource src/awepopunder/configuration/ModuleConfiguration.xml@moduleConfig 
--resource src/awepopunder/configuration/ServiceConfiguration.xml@serviceConfig 
--resource src/awepopunder/configuration/ViewConfigurationJS.xml@viewConfigJS 
--resource src/awepopunder/configuration/OrderConfiguration.xml@orderConfig
+-resource src/example/configuration/ModuleConfiguration.xml@moduleConfig 
+-resource src/example/configuration/ServiceConfiguration.xml@serviceConfig 
+-resource src/example/configuration/ViewConfigurationJS.xml@viewConfigJS 
+-resource src/example/configuration/OrderConfiguration.xml@orderConfig

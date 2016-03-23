@@ -1,2 +1,2 @@
 ./build/haxe/build.hxml
--main awepopunder.AwePopunder
+-main example.FlickerExample

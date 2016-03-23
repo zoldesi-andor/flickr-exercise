@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root name="flicker">
+	<include file="example/configuration/ModuleConfiguration.xml"/>
+	<include file="example/configuration/ServiceConfiguration.xml"/>
+</root>

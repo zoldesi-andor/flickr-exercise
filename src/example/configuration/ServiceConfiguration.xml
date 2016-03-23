@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<service id="flickrGetPhotos" type="example.service.flickr.FlickrGetPhotos"></service>
+</root>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<!-- MODULES -->
+	<module id="gallery" type="example.module.gallery.GalleryModule">
+	</module>
+	
+</root>

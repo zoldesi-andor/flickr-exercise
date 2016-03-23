@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <root>
-	<service id="flickrGetPhotos" type="example.service.flickr.FlickrGetPhotos"></service>
+	<serviceLocator id="flickerServiceLocator" type="hex.config.stateful.ServiceLocator" >
+		<item> 
+			<key type="Class" value="example.module.gallery.IGetPhotosService"/>
+			<value type="Class" value="example.service.flickr.FlickrGetPhotos"/>
+		</item>
+	</serviceLocator>
 </root>

@@ -2,6 +2,7 @@
 <root>
 	<!-- MODULES -->
 	<module id="gallery" type="example.module.gallery.GalleryModule">
+		<argument ref="flickerServiceLocator"/>
 	</module>
 	
 </root>

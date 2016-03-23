@@ -7,6 +7,7 @@ import hex.ioc.assembler.ApplicationAssembler;
 import hex.ioc.parser.xml.ApplicationXMLParser;
 import hex.ioc.parser.xml.XMLFileReader;
 import hex.ioc.parser.xml.XMLParserUtil;
+import hex.log.layout.JavaScriptConsoleLayout;
 import hex.log.layout.LogLayoutHTMLView;
 import hex.log.layout.LogProxyLayout;
 import hex.log.layout.SimpleBrowserLayout;
@@ -37,6 +38,7 @@ class FlickerExample
 		var controller = new LogLayoutHTMLView( proxy );
 		proxy.addListener( new SimpleBrowserLayout( controller.consoleWrapperTaget ) );
 		proxy.addListener( new TraceLayout() );
+		proxy.addListener( new JavaScriptConsoleLayout() );
 		
 		//todo zubi why is in debug? - ANSWER: to let the js instantiate when it is on it's correct place
 		self = new FlickerExample(); 

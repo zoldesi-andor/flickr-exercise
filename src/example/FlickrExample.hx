@@ -33,7 +33,6 @@ class FlickrExample
 		var proxy : LogProxyLayout = new LogProxyLayout();
 		var controller = new LogLayoutHTMLView( proxy );
 		proxy.addListener( new SimpleBrowserLayout( controller.consoleWrapperTaget ) );
-		proxy.addListener( new TraceLayout() );
 		proxy.addListener( new JavaScriptConsoleLayout() );
 		
 		//todo zubi why is in debug? - ANSWER: to let the js instantiate when it is on it's correct place

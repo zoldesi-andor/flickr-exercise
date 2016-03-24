@@ -3,6 +3,7 @@
 	<!-- MODULES -->
 	<module id="gallery" type="example.module.gallery.GalleryModule">
 		<argument ref="flickerServiceLocator"/>
+		<argument ref="galleryView"/>
 	</module>
 	
 </root>

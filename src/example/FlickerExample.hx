@@ -4,6 +4,7 @@ import com.module.stream.player.hlsplayer.IHlsPlayerModule;
 import hex.di.IBasicInjector;
 import hex.ioc.assembler.AbstractApplicationContext;
 import hex.ioc.assembler.ApplicationAssembler;
+import hex.ioc.core.CoreFactory;
 import hex.ioc.parser.xml.ApplicationXMLParser;
 import hex.ioc.parser.xml.XMLFileReader;
 import hex.ioc.parser.xml.XMLParserUtil;
@@ -67,13 +68,15 @@ class FlickerExample
 
 		return Xml.parse( source );*/
 		
-		source = XMLParserUtil.getConcatenatedConfig( [viewConfigName, "moduleConfig", "serviceConfig", "orderConfig"], "awePopunder" );
+		source = XMLParserUtil.getConcatenatedConfig( [viewConfigName, "moduleConfig", "serviceConfig", "orderConfig"], "flicker" );
 		
 		return Xml.parse( source );
 	}
 	
 	function _init():Void
 	{
+		CoreFactory.setFastEvalMethod(com.util.ObjectUtil.fastEvalFromTarget);
+		
 		this._applicationAssembler 	= new ApplicationAssembler();
 		this._applicationContext = this._applicationAssembler.getApplicationContext("flicker");
 		this._injector = this._applicationContext.getBasicInjector();

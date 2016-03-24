@@ -2,11 +2,13 @@ package example.module.gallery;
 
 import example.module.gallery.controller.LoadPhotosCommand;
 import example.module.gallery.message.GalleryModuleMessage;
+import example.module.gallery.view.IGalleryView;
 import hex.config.stateful.IStatefulConfig;
 import hex.config.stateless.StatelessCommandConfig;
 import hex.module.dependency.IRuntimeDependencies;
 import hex.module.dependency.RuntimeDependencies;
 import hex.module.Module;
+import example.module.gallery.view.GalleryViewHelper;
 
 /**
  * ...
@@ -15,7 +17,7 @@ import hex.module.Module;
 class GalleryModule extends Module implements IGalleryModule
 {
 
-	public function new( serviceConfig : IStatefulConfig ) 
+	public function new( serviceConfig : IStatefulConfig, galleryView : IGalleryView ) 
 	{
 		super();
 		getLogger().debug("Hello");
@@ -24,6 +26,8 @@ class GalleryModule extends Module implements IGalleryModule
 		
 		this._addStatelessConfigClasses([GalleryCommandConfig]);
 		
+		this.buildView(galleryView);
+		
 		this._dispatchPrivateMessage( GalleryModuleMessage.LOAD_PHOTOS ); 
 	}
 	
@@ -31,6 +35,11 @@ class GalleryModule extends Module implements IGalleryModule
 	{
 		var rd = new RuntimeDependencies();
 		return rd;
+	}
+	
+	function buildView( galleryView : IGalleryView ):Void
+	{
+		this.buildViewHelper( GalleryViewHelper, galleryView );
 	}
 }
 

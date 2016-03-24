@@ -13,6 +13,7 @@
 -lib protohx
 -lib hlsjs-haxe-extern
 -lib mockatoo
+-lib riot.hx
  
 -resource src/example/configuration/ModuleConfiguration.xml@moduleConfig 
 -resource src/example/configuration/ServiceConfiguration.xml@serviceConfig 

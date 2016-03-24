@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <root>
-	
+
+		<test id="galleryView" type="example.module.gallery.view.GalleryViewJS">
+			<argument ref="dom.embed"/>
+		</test>
 </root>

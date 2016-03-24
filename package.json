@@ -1,8 +1,7 @@
 {
-  "name": "awepopunder",
+  "name": "flickr-hexmachina-example",
   "version": "1.0.0",
-  "description": "AwePopunder",
-  "main": "index.js",
+  "description": "Flickr hexMachina example",
   "private": true, 
   "directories": {
     "test": "test"
@@ -12,18 +11,16 @@
 	"install.haxelibs": "haxelib newrepo && haxelib install --always",
     "build.dev": "npm run build.haxe.js.dev && npm run generate.static",
 	"build.prod": "npm run build.haxe.js.prod && npm run generate.static",
-	"build.haxe.js.prod": "npm run generate.imports && haxe ./build/haxe/build-src.hxml -js bin/Main.js",
-	"build.haxe.js.dev": "npm run generate.imports && haxe ./build/haxe/build-src.hxml -js bin/Main.js -debug",
-	"build.haxe.js.test": "haxe ./build/haxe/build-test.hxml -js bin/Main.js -debug",
-	"generate.imports": "neko ./tools/hex3rdPartyTools/utilities/xml/GenerateImports/bin/GenerateImports.n  -dir ./src/awepopunder/configuration -output ./src/Imports.hx",
-    "generate.static": "gulp --gulpfile ./build/gulpfile.js",
+	"build.haxe.js.prod": "haxe ./build/haxe/build-src.hxml -js bin/Main.js",
+	"build.haxe.js.dev": "haxe ./build/haxe/build-src.hxml -js bin/Main.js -debug",
+	"generate.static": "gulp --gulpfile ./build/gulpfile.js",
 	"checkout.tools": "node ./batch/checkout_tools.js",
-	"update.projectfiles": "node -e \"var fs = require('fs'); fs.createReadStream('./resource/flashdevelop/AwePopunder.hxproj').pipe(fs.createWriteStream('./AwePopunder.hxproj'));\"",
+	"update.projectfiles": "node -e \"var fs = require('fs'); fs.createReadStream('./resource/flashdevelop/FlickrExample.hxproj').pipe(fs.createWriteStream('./FlickrExample.hxproj'));\"",
 	"update.all": "haxelib update"
   },
   "repository": {
     "type": "git",
-    "url": "https://stash.doclerholding.com/scm/haxe/awe-popunder.git"
+    "url": "https://stash.doclerholding.com/scm/prac/flickrhaxe.git"
   },
   "author": "duke",
   "license": "ISC",
@@ -34,6 +31,5 @@
     "gulp-concat": "^2.6.0"
   },
   "dependencies": {
-	"hls.js": "^0.5.8"
   } 
 }

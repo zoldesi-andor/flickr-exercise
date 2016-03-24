@@ -1,2 +1,2 @@
 ./build/haxe/build.hxml
--main example.FlickerExample
+-main example.FlickrExample

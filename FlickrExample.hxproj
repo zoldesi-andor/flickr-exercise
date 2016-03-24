@@ -20,11 +20,11 @@
     <class path=".haxelib\hexcore\git\src" />
     <class path=".haxelib\hexcore\git\test" />
     <class path=".haxelib\hexinject\git\src" />
-    <class path=".haxelib\hexinject\git\test" /> 
-	<class path=".haxelib\hexannotation\git\src" />
-    <class path=".haxelib\hexannotation\git\test" /> 
-	<class path=".haxelib\hexspeedinject\git\src" />
-    <class path=".haxelib\hexspeedinject\git\test" /> 
+    <class path=".haxelib\hexinject\git\test" />
+    <class path=".haxelib\hexannotation\git\src" />
+    <class path=".haxelib\hexannotation\git\test" />
+    <class path=".haxelib\hexspeedinject\git\src" />
+    <class path=".haxelib\hexspeedinject\git\test" />
     <class path=".haxelib\hexioc\git\src" />
     <class path=".haxelib\hexioc\git\test" />
     <class path=".haxelib\hexmvc\git\src" />
@@ -45,7 +45,7 @@
     <option directives="" />
     <option flashStrict="False" />
     <option noInlineOnDebug="False" />
-    <option mainClass="awepopunder.AwePopunder" />
+    <option mainClass="example.FlickrExample" />
     <option enabledebug="False" />
     <option additional="" />
   </build>
@@ -62,8 +62,7 @@
     <hidden path="obj" />
   </hiddenPaths>
   <!-- Executed before build -->
-  <preBuildCommand>neko ./tools/hex3rdPartyTools/utilities/xml/GenerateImports/bin/GenerateImports.n  -dir ./src/awepopunder/configuration -output ./src/Imports.hx
-cmd /c IF $(BuildConfig)==debug (haxe ./build/haxe/build-src.hxml -js bin/Main.js -debug) ELSE (haxe ./build/haxe/build-src.hxml -js bin/Main.js)</preBuildCommand>
+  <preBuildCommand>cmd /c IF $(BuildConfig)==debug (haxe ./build/haxe/build-src.hxml -js bin/Main.js -debug) ELSE (haxe ./build/haxe/build-src.hxml -js bin/Main.js)</preBuildCommand>
   <!-- Executed after build -->
   <postBuildCommand alwaysRun="False" />
   <!-- Other project options -->

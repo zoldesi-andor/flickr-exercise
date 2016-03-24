@@ -18,14 +18,14 @@ import hex.log.layout.TraceLayout;
  * ...
  * @author duke
  */
-@:expose("FlickerExample")
-class FlickerExample
+@:expose("FlickrExample")
+class FlickrExample
 {
 	#if js
 	static var imports:Imports;
 	#end
 	
-	static var self:FlickerExample;
+	static var self:FlickrExample;
 	
 	var _applicationAssembler:ApplicationAssembler;
 	var _applicationContext:AbstractApplicationContext;
@@ -42,7 +42,7 @@ class FlickerExample
 		proxy.addListener( new JavaScriptConsoleLayout() );
 		
 		//todo zubi why is in debug? - ANSWER: to let the js instantiate when it is on it's correct place
-		self = new FlickerExample(); 
+		self = new FlickrExample(); 
 		#end
 	}
 	

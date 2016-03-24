@@ -5,10 +5,13 @@ import example.module.gallery.message.GalleryModuleMessage;
 import example.module.gallery.view.IGalleryView;
 import hex.config.stateful.IStatefulConfig;
 import hex.config.stateless.StatelessCommandConfig;
+import hex.config.stateless.StatelessModelConfig;
 import hex.module.dependency.IRuntimeDependencies;
 import hex.module.dependency.RuntimeDependencies;
 import hex.module.Module;
 import example.module.gallery.view.GalleryViewHelper;
+import example.module.gallery.model.IGalleryModel;
+import example.module.gallery.model.GalleryModel;
 
 /**
  * ...
@@ -24,7 +27,7 @@ class GalleryModule extends Module implements IGalleryModule
 
 		this._addStatefulConfigs([serviceConfig]);
 		
-		this._addStatelessConfigClasses([GalleryCommandConfig]);
+		this._addStatelessConfigClasses([GalleryCommandConfig, GalleryModelConfig]);
 		
 		this.buildView(galleryView);
 		
@@ -48,5 +51,13 @@ private class GalleryCommandConfig extends StatelessCommandConfig
 	override public function configure():Void
 	{
 		this.map( GalleryModuleMessage.LOAD_PHOTOS, LoadPhotosCommand );
+	}
+}
+
+private class GalleryModelConfig extends StatelessModelConfig
+{
+	override public function configure() : Void
+	{
+		this.mapModel( IGalleryModel, GalleryModel);
 	}
 }

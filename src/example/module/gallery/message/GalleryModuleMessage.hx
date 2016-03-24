@@ -8,6 +8,6 @@ import hex.event.MessageType;
  */
 class GalleryModuleMessage
 {
-	static public var LOAD_PHOTOS = new MessageType("loadPhotos");
+	static public var LOAD_PHOTOS 	= new MessageType("loadPhotos");
 	
 }

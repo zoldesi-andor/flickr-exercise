@@ -1,5 +1,6 @@
 package example.module.gallery.controller;
 
+import example.module.gallery.model.IGalleryModel;
 import example.module.gallery.service.IGetPhotosService;
 import example.module.gallery.view.GalleryViewHelper;
 import hex.control.command.BasicCommand;
@@ -21,7 +22,8 @@ class LoadPhotosCommand extends BasicCommand implements IHTTPServiceListener<HTT
 	public var photosService:IGetPhotosService;
 	
 	@Inject
-	public var galleryViewHelper:GalleryViewHelper;
+	public var galleryModel:IGalleryModel;
+	// public var galleryViewHelper:GalleryViewHelper;
 	
 	function new()
 	{
@@ -37,7 +39,9 @@ class LoadPhotosCommand extends BasicCommand implements IHTTPServiceListener<HTT
 	
 	public function onServiceComplete( service : IHTTPService<HTTPServiceConfiguration> ) : Void
 	{
-		galleryViewHelper.setPhotos(cast (service, IGetPhotosService).getPhotos());
+		// galleryViewHelper.setPhotos(cast (service, IGetPhotosService).getPhotos());
+		Logger.DEBUG(galleryModel);
+		galleryModel.setPhotos(cast (service, IGetPhotosService).getPhotos());
 	}
 	
 	public function onServiceFail( service : IHTTPService<HTTPServiceConfiguration> ) : Void

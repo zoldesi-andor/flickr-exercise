@@ -6,8 +6,3 @@
 
 -lib hexmachina
 -lib riot.hx
- 
--resource src/example/configuration/ModuleConfiguration.xml@moduleConfig 
--resource src/example/configuration/ServiceConfiguration.xml@serviceConfig 
--resource src/example/configuration/ViewConfigurationJS.xml@viewConfigJS 
--resource src/example/configuration/OrderConfiguration.xml@orderConfig

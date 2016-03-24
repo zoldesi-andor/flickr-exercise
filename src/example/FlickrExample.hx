@@ -1,6 +1,5 @@
 package example;
 
-import com.module.stream.player.hlsplayer.IHlsPlayerModule;
 import hex.di.IBasicInjector;
 import hex.ioc.assembler.AbstractApplicationContext;
 import hex.ioc.assembler.ApplicationAssembler;
@@ -21,10 +20,6 @@ import hex.log.layout.TraceLayout;
 @:expose("FlickrExample")
 class FlickrExample
 {
-	#if js
-	static var imports:Imports;
-	#end
-	
 	static var self:FlickrExample;
 	
 	var _applicationAssembler:ApplicationAssembler;
@@ -68,8 +63,9 @@ class FlickrExample
 
 		return Xml.parse( source );*/
 		
-		source = XMLParserUtil.getConcatenatedConfig( [viewConfigName, "moduleConfig", "serviceConfig", "orderConfig"], "flicker" );
-		
+		// source = XMLParserUtil.getConcatenatedConfig( [viewConfigName, "moduleConfig", "serviceConfig", "orderConfig"], "flickr" );
+		// source = haxe.Resource.getString("context"); 
+		source = XMLFileReader.readXmlFile( "example/configuration/context.xml" );
 		return Xml.parse( source );
 	}
 	
@@ -78,7 +74,7 @@ class FlickrExample
 		CoreFactory.setFastEvalMethod(com.util.ObjectUtil.fastEvalFromTarget);
 		
 		this._applicationAssembler 	= new ApplicationAssembler();
-		this._applicationContext = this._applicationAssembler.getApplicationContext("flicker");
+		this._applicationContext = this._applicationAssembler.getApplicationContext("flickr");
 		this._injector = this._applicationContext.getBasicInjector();
 	}
 	

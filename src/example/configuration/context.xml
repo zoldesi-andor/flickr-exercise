@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<root name="flicker">
+<root name="flickr">
 	<include file="example/configuration/ModuleConfiguration.xml"/>
 	<include file="example/configuration/ServiceConfiguration.xml"/>
+	<include file="example/configuration/ViewConfigurationJS.xml"/>
 </root>

@@ -12,6 +12,8 @@ import hex.log.layout.LogLayoutHTMLView;
 import hex.log.layout.LogProxyLayout;
 import hex.log.layout.SimpleBrowserLayout;
 import hex.log.layout.TraceLayout;
+import example.view.photo.PhotoView;
+import hex.log.Logger;
 
 /**
  * ...
@@ -81,7 +83,10 @@ class FlickrExample
 	function _registerView():Void
 	{
 		#if js
-		this._applicationAssembler.getBuilderFactory( this._applicationContext ).getCoreFactory().register( "dom", js.Browser.document.getElementById("app") );
+		this._applicationAssembler.getBuilderFactory( this._applicationContext ).getCoreFactory().register( "appRoot", js.Browser.document.getElementById("app") );
+		var result:Array<Dynamic> = riot.Riot.mount("#app", "photo");
+		Logger.DEBUG(result);
+		this._applicationAssembler.getBuilderFactory( this._applicationContext ).getCoreFactory().register( "riotRoot", {layout: result[0]} );
 		#end
 	}
 	

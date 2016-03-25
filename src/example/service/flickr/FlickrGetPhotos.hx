@@ -30,7 +30,7 @@ class FlickrGetPhotos extends HTTPService<HTTPServiceConfiguration> implements I
 	override public function createConfiguration() : Void
 	{
 		Logger.DEBUG("FlickrGetPhotos createConfiguration");
-		this.setConfiguration( new HTTPServiceConfiguration("https://api.flickr.com/services/rest/?method=flickr.people.getPublicPhotos&api_key=bea408401b4a7db42ec4f8a2728736a1&user_id=134406781%40N06&format=json") );
+		this.setConfiguration( new HTTPServiceConfiguration("https://api.flickr.com/services/rest/?method=flickr.people.getPublicPhotos&api_key=bdeda660a5fcdf79170c711c07156f12&user_id=134406781%40N06&format=json") );
 		this.setParser( new FlickrPhotosParser() );
 	}
 	

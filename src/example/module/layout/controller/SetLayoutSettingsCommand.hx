@@ -1,17 +1,17 @@
 package example.module.layout.controller;
 
+import awepopunder.vo.settings.application.LayoutSettingsVO;
 import example.module.layout.model.ILayoutModel;
 import example.module.layout.request.SetLayoutSettingsRequest;
-import awepopunder.vo.settings.application.LayoutSettingsVO;
-import hex.control.Request;
 import hex.control.command.BasicCommand;
-import hex.di.ISpeedInjectorContainer;
+import hex.control.Request;
+import hex.di.IInjectorContainer;
 
 /**
  * ...
  * @author duke
  */
-class SetLayoutSettingsCommand extends BasicCommand implements ISpeedInjectorContainer
+class SetLayoutSettingsCommand extends BasicCommand implements IInjectorContainer
 {
 	@Inject
 	public var layoutModel:ILayoutModel;

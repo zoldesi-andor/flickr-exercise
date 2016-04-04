@@ -2,20 +2,19 @@ package example.module.gallery.controller;
 
 import example.module.gallery.model.IGalleryModel;
 import example.module.gallery.service.IGetPhotosService;
-import example.module.gallery.view.GalleryViewHelper;
 import hex.control.command.BasicCommand;
 import hex.control.Request;
-import hex.di.ISpeedInjectorContainer;
+import hex.di.IInjectorContainer;
 import hex.log.Logger;
+import hex.service.stateless.http.HTTPServiceConfiguration;
 import hex.service.stateless.http.IHTTPService;
 import hex.service.stateless.http.IHTTPServiceListener;
-import hex.service.stateless.http.HTTPServiceConfiguration;
 
 /**
  * ...
  * @author Andrei Bunulu
  */
-class LoadPhotosCommand extends BasicCommand implements IHTTPServiceListener<HTTPServiceConfiguration> implements ISpeedInjectorContainer
+class LoadPhotosCommand extends BasicCommand implements IHTTPServiceListener<HTTPServiceConfiguration> implements IInjectorContainer
 {
 
 	@Inject

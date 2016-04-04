@@ -2,10 +2,9 @@ package example.module.gallery.view;
 
 import example.module.gallery.model.IGalleryModelListener;
 import example.module.gallery.model.IGalleryModelRO;
-import hex.di.ISpeedInjectorContainer;
+import example.module.gallery.vo.PhotoVO;
 import hex.log.Logger;
 import hex.view.viewhelper.ViewHelper;
-import example.module.gallery.vo.PhotoVO;
 
 /**
  * ...

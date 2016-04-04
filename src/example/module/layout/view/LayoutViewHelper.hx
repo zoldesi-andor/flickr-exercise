@@ -5,14 +5,14 @@ import example.module.layout.constant.LayoutMode;
 import example.module.layout.constant.OnlineState;
 import example.module.layout.model.ILayoutModelListener;
 import example.module.layout.model.ILayoutModelRO;
-import hex.di.ISpeedInjectorContainer;
+import hex.di.IInjectorContainer;
 import hex.view.viewhelper.ViewHelper;
 
 /**
  * ...
  * @author duke
  */
-class LayoutViewHelper extends ViewHelper implements ILayoutModelListener implements ISpeedInjectorContainer
+class LayoutViewHelper extends ViewHelper implements ILayoutModelListener implements IInjectorContainer
 {
 	var _layoutView:ILayoutView;
 	

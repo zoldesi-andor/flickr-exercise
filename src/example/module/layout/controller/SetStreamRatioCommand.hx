@@ -4,13 +4,12 @@ import example.module.layout.model.ILayoutModel;
 import example.module.layout.request.SetStreamRatioRequest;
 import hex.control.command.BasicCommand;
 import hex.control.Request;
-import hex.di.ISpeedInjectorContainer;
 
 /**
  * ...
  * @author 
  */
-class SetStreamRatioCommand extends BasicCommand implements ISpeedInjectorContainer
+class SetStreamRatioCommand extends BasicCommand implements IInjectorContainer
 {
 	@Inject
 	public var layoutModel:ILayoutModel;

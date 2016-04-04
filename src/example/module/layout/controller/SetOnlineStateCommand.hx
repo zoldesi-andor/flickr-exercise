@@ -3,13 +3,13 @@ package example.module.layout.controller;
 import example.module.layout.model.ILayoutModel;
 import hex.control.command.BasicCommand;
 import hex.control.Request;
-import hex.di.ISpeedInjectorContainer;
+import hex.di.IInjectorContainer;
 
 /**
  * ...
  * @author duke
  */
-class SetOnlineStateCommand extends BasicCommand implements ISpeedInjectorContainer
+class SetOnlineStateCommand extends BasicCommand implements IInjectorContainer
 {
 	@Inject
 	public var model:ILayoutModel;

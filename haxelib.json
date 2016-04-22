@@ -2,7 +2,6 @@
   "name": "flickr-hexmachina-example",
   "version": "1.0.0",
   "dependencies": {
-    "hexmachina": "git:https://github.com/DoclerLabs/hexMachina.git",
-	"riot.hx": "git:https://github.com/grosmar/riot.hx.git"
+    "hexmachina": "git:https://github.com/DoclerLabs/hexMachina.git"
   }
 }

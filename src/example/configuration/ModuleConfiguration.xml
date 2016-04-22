@@ -3,7 +3,6 @@
 	<!-- MODULES -->
 	<module id="gallery" type="example.module.gallery.GalleryModule">
 		<argument ref="flickerServiceLocator"/>
-		<argument ref="riotRoot.layout"/>
 	</module>
 	
 </root>

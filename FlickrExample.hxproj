@@ -35,10 +35,6 @@
     <class path=".haxelib\hexstate\git\test" />
     <class path="src" />
     <class path="test" />
-    <class path=".haxelib\hlsjs-haxe-extern\git\src" />
-    <class path=".haxelib\protohx\0.4.6" />
-    <class path=".haxelib\mockatoo\3.2.1" />
-    <class path=".haxelib\hamcrest\2.0.1" />
   </classpaths>
   <!-- Build options -->
   <build>

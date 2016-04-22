@@ -29,7 +29,7 @@ class LoadPhotosCommand extends BasicCommand implements IHTTPServiceListener<HTT
 		super();
 	}
 	
-	override public function execute(?request:Request):Void 
+	public function execute(?request:Request):Void 
 	{
 		Logger.DEBUG("LoadPhotosCommand execute");
 		photosService.addHTTPServiceListener(this);

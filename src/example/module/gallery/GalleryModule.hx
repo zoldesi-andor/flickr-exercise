@@ -2,16 +2,16 @@ package example.module.gallery;
 
 import example.module.gallery.controller.LoadPhotosCommand;
 import example.module.gallery.message.GalleryModuleMessage;
-import example.module.gallery.view.IGalleryView;
+import example.module.gallery.model.GalleryModel;
+import example.module.gallery.model.IGalleryModel;
+import example.module.gallery.view.GalleryViewHelper;
+import example.module.gallery.view.GalleryViewJS;
 import hex.config.stateful.IStatefulConfig;
 import hex.config.stateless.StatelessCommandConfig;
 import hex.config.stateless.StatelessModelConfig;
 import hex.module.dependency.IRuntimeDependencies;
 import hex.module.dependency.RuntimeDependencies;
 import hex.module.Module;
-import example.module.gallery.view.GalleryViewHelper;
-import example.module.gallery.model.IGalleryModel;
-import example.module.gallery.model.GalleryModel;
 
 /**
  * ...
@@ -20,7 +20,7 @@ import example.module.gallery.model.GalleryModel;
 class GalleryModule extends Module implements IGalleryModule
 {
 
-	public function new( serviceConfig : IStatefulConfig, galleryView : IGalleryView ) 
+	public function new( serviceConfig : IStatefulConfig ) 
 	{
 		super();
 		getLogger().debug("Hello");
@@ -29,7 +29,7 @@ class GalleryModule extends Module implements IGalleryModule
 		
 		this._addStatelessConfigClasses([GalleryCommandConfig, GalleryModelConfig]);
 		
-		this.buildView(galleryView);
+		this.buildView();
 		
 		this._dispatchPrivateMessage( GalleryModuleMessage.LOAD_PHOTOS ); 
 	}
@@ -40,9 +40,15 @@ class GalleryModule extends Module implements IGalleryModule
 		return rd;
 	}
 	
-	function buildView( galleryView : IGalleryView ):Void
+	function buildView( ):Void
 	{
-		this.buildViewHelper( GalleryViewHelper, galleryView );
+		#if flash
+			//this.buildViewHelper( GalleryViewHelper, galleryView );
+		#elseif js
+			this.buildViewHelper( GalleryViewHelper, new GalleryViewJS(js.Browser.document.querySelector(".gallery")) );
+		#else 
+			#error  // will display an error "Not implemented on this platform"
+		#end
 	}
 }
 

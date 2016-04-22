@@ -1,7 +1,7 @@
 package example.module.gallery.view;
 
 import hex.log.Logger;
-import js.html.DivElement;
+import js.html.DOMElement;
 import example.module.gallery.vo.PhotoVO;
 import js.html.Image;
 import js.html.ImageElement;
@@ -14,9 +14,9 @@ import js.html.ImageElement;
 class GalleryViewJS implements IGalleryView
 {
 	
-	var _layout:DivElement;
+	var _layout:DOMElement;
 	
-	public function new( layout:DivElement ) 
+	public function new( layout:DOMElement ) 
 	{
 		this._layout = layout;
 	}

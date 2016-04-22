@@ -1,4 +1,5 @@
 package example.module.gallery.view;
+
 import hex.view.IView;
 
 /**

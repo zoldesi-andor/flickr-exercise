@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project version="2">
+  <!-- Output SWF options -->
+  <output>
+    <movie outputType="Application" />
+    <movie input="" />
+    <movie path="bin\index.swf" />
+    <movie fps="30" />
+    <movie width="1280" />
+    <movie height="720" />
+    <movie version="11" />
+    <movie minorVersion="9" />
+    <movie platform="Flash Player" />
+    <movie background="#900000" />
+  </output>
+  <!-- Other classes to be compiled into your SWF -->
+  <classpaths>
+    <class path=".haxelib\hexmachina\git\src" />
+    <class path=".haxelib\hexmachina\git\test" />
+    <class path=".haxelib\hexcore\git\src" />
+    <class path=".haxelib\hexcore\git\test" />
+    <class path=".haxelib\hexinject\git\src" />
+    <class path=".haxelib\hexinject\git\test" />
+    <class path=".haxelib\hexannotation\git\src" />
+    <class path=".haxelib\hexannotation\git\test" />
+    <class path=".haxelib\hexspeedinject\git\src" />
+    <class path=".haxelib\hexspeedinject\git\test" />
+    <class path=".haxelib\hexioc\git\src" />
+    <class path=".haxelib\hexioc\git\test" />
+    <class path=".haxelib\hexmvc\git\src" />
+    <class path=".haxelib\hexmvc\git\test" />
+    <class path=".haxelib\hexservice\git\src" />
+    <class path=".haxelib\hexservice\git\test" />
+    <class path=".haxelib\hexstate\git\src" />
+    <class path=".haxelib\hexstate\git\test" />
+    <class path="src" />
+    <class path="test" />
+  </classpaths>
+  <!-- Build options -->
+  <build>
+    <option directives="" />
+    <option flashStrict="False" />
+    <option noInlineOnDebug="False" />
+    <option mainClass="example.FlickrExample" />
+    <option enabledebug="False" />
+    <option additional="" />
+  </build>
+  <!-- haxelib libraries -->
+  <haxelib>
+    <!-- example: <library name="..." /> -->
+  </haxelib>
+  <!-- Class files to compile (other referenced classes will automatically be included) -->
+  <compileTargets>
+    <!-- example: <compile path="..." /> -->
+  </compileTargets>
+  <!-- Assets to embed into the output SWF -->
+  <library>
+    <!-- example: <asset path="..." id="..." update="..." glyphs="..." mode="..." place="..." sharepoint="..." /> -->
+  </library>
+  <!-- Paths to exclude from the Project Explorer tree -->
+  <hiddenPaths>
+    <hidden path="obj" />
+  </hiddenPaths>
+  <!-- Executed before build -->
+  <preBuildCommand>cmd /c IF $(BuildConfig)==debug (haxe ./build/haxe/build-src.hxml -swf bin/index.swf -debug) ELSE (haxe ./build/haxe/build-src.hxml -swf bin/index.swf)</preBuildCommand>
+  <!-- Executed after build -->
+  <postBuildCommand alwaysRun="False" />
+  <!-- Other project options -->
+  <options>
+    <option showHiddenPaths="True" />
+    <option testMovie="Default" />
+    <option testMovieCommand="bin/index.swf" />
+  </options>
+  <!-- Plugin storage -->
+  <storage />
+</project>

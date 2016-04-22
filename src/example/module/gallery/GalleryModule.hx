@@ -42,7 +42,9 @@ class GalleryModule extends Module implements IGalleryModule
 	function buildView( ):Void
 	{
 		#if flash
-			//this.buildViewHelper( GalleryViewHelper, galleryView );
+			var container : flash.display.Sprite = new flash.display.Sprite();
+			flash.Lib.current.addChild(container);
+			this.buildViewHelper( GalleryViewHelper, new example.module.gallery.view.GalleryViewFlash(container) );
 		#elseif js
 			this.buildViewHelper( GalleryViewHelper, new example.module.gallery.view.GalleryViewJS(js.Browser.document.querySelector(".gallery")) );
 		#else 

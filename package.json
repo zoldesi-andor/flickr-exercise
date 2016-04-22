@@ -15,7 +15,7 @@
 	"build.haxe.js.dev": "haxe ./build/haxe/build-src.hxml -js bin/Main.js -debug",
 	"generate.static": "gulp --gulpfile ./build/gulpfile.js",
 	"checkout.tools": "node ./batch/checkout_tools.js",
-	"update.projectfiles": "node -e \"var fs = require('fs'); fs.createReadStream('./resource/flashdevelop/FlickrExample.hxproj').pipe(fs.createWriteStream('./FlickrExample.hxproj'));\"",
+	"update.projectfiles": "node -e \"var fs = require('fs'); ['FlickrExampleJS.hxproj', 'FlickrExampleFlash.hxproj'].forEach(function(filename){ fs.createReadStream('./resource/flashdevelop/'+filename).pipe(fs.createWriteStream('./'+filename)) });\"",
 	"update.all": "haxelib update"
   },
   "repository": {

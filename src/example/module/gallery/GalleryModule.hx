@@ -5,7 +5,6 @@ import example.module.gallery.message.GalleryModuleMessage;
 import example.module.gallery.model.GalleryModel;
 import example.module.gallery.model.IGalleryModel;
 import example.module.gallery.view.GalleryViewHelper;
-import example.module.gallery.view.GalleryViewJS;
 import hex.config.stateful.IStatefulConfig;
 import hex.config.stateless.StatelessCommandConfig;
 import hex.config.stateless.StatelessModelConfig;
@@ -45,7 +44,7 @@ class GalleryModule extends Module implements IGalleryModule
 		#if flash
 			//this.buildViewHelper( GalleryViewHelper, galleryView );
 		#elseif js
-			this.buildViewHelper( GalleryViewHelper, new GalleryViewJS(js.Browser.document.querySelector(".gallery")) );
+			this.buildViewHelper( GalleryViewHelper, new example.module.gallery.view.GalleryViewJS(js.Browser.document.querySelector(".gallery")) );
 		#else 
 			#error  // will display an error "Not implemented on this platform"
 		#end

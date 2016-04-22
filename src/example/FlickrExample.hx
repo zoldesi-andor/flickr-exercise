@@ -3,10 +3,7 @@ package example;
 import hex.ioc.assembler.ApplicationAssembler;
 import hex.ioc.parser.xml.ApplicationXMLParser;
 import hex.ioc.parser.xml.XMLFileReader;
-import hex.log.layout.JavaScriptConsoleLayout;
-import hex.log.layout.LogLayoutHTMLView;
 import hex.log.layout.LogProxyLayout;
-import hex.log.layout.SimpleBrowserLayout;
 
 /**
  * ...
@@ -21,9 +18,13 @@ class FlickrExample
 	{
 		#if debug
 		var proxy : LogProxyLayout = new LogProxyLayout();
-		var controller = new LogLayoutHTMLView( proxy );
-		proxy.addListener( new SimpleBrowserLayout( controller.consoleWrapperTaget ) );
-		proxy.addListener( new JavaScriptConsoleLayout() );
+		#if js
+		var controller = new hex.log.layout.LogLayoutHTMLView( proxy );
+		proxy.addListener( new hex.log.layout.SimpleBrowserLayout( controller.consoleWrapperTaget ) );
+		proxy.addListener( new hex.log.layout.JavaScriptConsoleLayout() );
+		#elseif flash
+		proxy.addListener( new hex.log.layout.TraceLayout() );
+		#end
 		
 		//todo zubi why is in debug? - ANSWER: to let the js instantiate when it is on it's correct place
 		self = new FlickrExample(); 

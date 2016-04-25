@@ -2,5 +2,5 @@
 <root name="flickr">
 	<include file="example/configuration/ModuleConfiguration.xml"/>
 	<include file="example/configuration/ServiceConfiguration.xml"/>
-	<include file="example/configuration/ViewConfigurationJS.xml"/>
+	<include file="example/configuration/ViewConfiguration.xml"/>
 </root>

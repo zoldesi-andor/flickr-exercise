@@ -8,11 +8,10 @@ import example.module.hello.view.HelloViewHelper;
 import example.module.hello.view.IHelloView;
 import hex.config.stateless.StatelessCommandConfig;
 import hex.config.stateless.StatelessModelConfig;
+import hex.control.request.StringRequest;
 import hex.module.dependency.IRuntimeDependencies;
 import hex.module.dependency.RuntimeDependencies;
 import hex.module.Module;
-
-
 
 /**
  * ...
@@ -28,11 +27,14 @@ class HelloModule extends Module implements IHelloModule
 		this._addStatelessConfigClasses([CommandConfig, ModelConfig]);
 		
 		this.buildViewHelper( HelloViewHelper, view );
-		
-		// call command
-		this._dispatchPrivateMessage( HelloModuleMessage.SET_MESSAGE); 
 	}
 	
+	public function setMessage( message : String ) : Void
+	{
+		this._dispatchPrivateMessage( HelloModuleMessage.SET_MESSAGE, [new StringRequest(message)] ); 
+	}
+	
+	// Don't ask why, it is mandatory!
 	override function _getRuntimeDependencies() : IRuntimeDependencies
 	{
 		var rd = new RuntimeDependencies();

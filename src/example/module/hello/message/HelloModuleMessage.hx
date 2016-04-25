@@ -7,6 +7,5 @@ import hex.event.MessageType;
  */
 class HelloModuleMessage
 {
-
 	static public var SET_MESSAGE = new MessageType( "setMessage" );
 }

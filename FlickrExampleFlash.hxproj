@@ -41,8 +41,8 @@
     <option directives="" />
     <option flashStrict="False" />
     <option noInlineOnDebug="False" />
-    <option mainClass="example.FlickrExample" />
-    <option enabledebug="False" />
+    <option mainClass="example.HelloWorldExample" />
+    <option enabledebug="True" />
     <option additional="" />
   </build>
   <!-- haxelib libraries -->

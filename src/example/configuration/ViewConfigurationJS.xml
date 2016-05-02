@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <root>
 	<view id="helloView" type="example.module.hello.view.HelloViewJS" />
+	<view id="flickrView" type="example.module.flickr.view.FlickrViewJS" />
 </root>

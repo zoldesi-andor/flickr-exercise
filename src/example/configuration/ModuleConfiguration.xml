@@ -8,6 +8,11 @@
         </method-call>
 	</module>
 	
+	<module id="flickrModule" type="example.module.flickr.FlickrModule">
+		<argument ref="flickrView" />
+		<method-call name="changeImage" />
+	</module>
+	
 	<message id="message" value="Hola Mundo - Click me!" />
 	
 </root>

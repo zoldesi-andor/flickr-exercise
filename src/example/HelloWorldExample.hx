@@ -5,15 +5,15 @@ import hex.ioc.parser.xml.XmlReader;
  * @author duke
  */
 @:expose("FlickrExample")
-class FlickrExample extends BasicMain
+class HelloWorldExample extends BasicMain
 {
-	static var self:FlickrExample;
+	static var self:HelloWorldExample;
 
 	static public function main() : Void
 	{
 		#if debug
 		//todo zubi why is in debug? - ANSWER: to let the js instantiate when it is on it's correct place
-		self = new FlickrExample(); 
+		self = new HelloWorldExample(); 
 		#end
 	}
 	
@@ -21,8 +21,14 @@ class FlickrExample extends BasicMain
 	{
 		super();
 		
-		var source:String = XmlReader.readXmlFile( "example/configuration/context.xml" );
-		trace(source);
+		#if js
+		var source:String = XmlReader.readXmlFile( "example/configuration/contextJS.xml" );
+		#elseif flash
+		var source:String = XmlReader.readXmlFile( "example/configuration/contextFlash.xml" );
+		#else
+		#error
+		#end
+		
 		this._build( source );
 	}
 }

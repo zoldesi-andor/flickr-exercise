@@ -8,6 +8,6 @@
         </method-call>
 	</module>
 	
-	<message id="message" value="Hola Mundo" />
+	<message id="message" value="Hola Mundo - Click me!" />
 	
 </root>

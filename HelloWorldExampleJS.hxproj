@@ -2,9 +2,9 @@
 <project version="2">
   <!-- Output SWF options -->
   <output>
-    <movie outputType="CustomBuild" />
+    <movie outputType="Application" />
     <movie input="" />
-    <movie path="" />
+    <movie path="bin\Main.js" />
     <movie fps="30" />
     <movie width="1280" />
     <movie height="720" />
@@ -41,8 +41,8 @@
     <option directives="" />
     <option flashStrict="False" />
     <option noInlineOnDebug="False" />
-    <option mainClass="example.FlickrExample" />
-    <option enabledebug="True" />
+    <option mainClass="example.HelloWorldExample" />
+    <option enabledebug="False" />
     <option additional="" />
   </build>
   <!-- haxelib libraries -->
@@ -51,14 +51,14 @@
   </haxelib>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>
-    <!-- example: <compile path="..." /> -->
+    <compile path="src\example\HelloWorldExample.hx" />
   </compileTargets>
   <!-- Paths to exclude from the Project Explorer tree -->
   <hiddenPaths>
     <hidden path="obj" />
   </hiddenPaths>
   <!-- Executed before build -->
-  <preBuildCommand>cmd /c IF $(BuildConfig)==debug (haxe ./build/haxe/build-src.hxml -js bin/Main.js -debug) ELSE (haxe ./build/haxe/build-src.hxml -js bin/Main.js)</preBuildCommand>
+  <preBuildCommand />
   <!-- Executed after build -->
   <postBuildCommand alwaysRun="False" />
   <!-- Other project options -->

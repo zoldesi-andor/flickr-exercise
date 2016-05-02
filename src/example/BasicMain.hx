@@ -25,7 +25,7 @@ class BasicMain
 		proxy.addListener( new hex.log.layout.SimpleBrowserLayout( controller.consoleWrapperTaget ) );
 		proxy.addListener( new hex.log.layout.JavaScriptConsoleLayout() );
 		#elseif flash
-		proxy.addListener( new hex.log.layout.TraceLayout() );
+		//proxy.addListener( new hex.log.layout.TraceLayout() );
 		#end
 	}
 	

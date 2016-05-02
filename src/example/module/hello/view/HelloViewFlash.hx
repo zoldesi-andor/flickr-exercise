@@ -1,42 +1,40 @@
 package example.module.hello.view;
 import example.module.hello.view.IHelloView;
 import example.module.hello.view.message.HelloViewMessage;
+import flash.Lib;
+import flash.events.MouseEvent;
+import flash.text.TextField;
+import flash.text.TextFieldAutoSize;
 import hex.event.Dispatcher;
 import hex.event.MessageType;
-import js.Browser;
-import js.html.Element;
-import js.html.Event;
 
 /**
  * ...
  * @author ali_o_kan - Laurent Deketelaere
  */
-class HelloViewJS implements IHelloView
+class HelloViewFlash implements IHelloView
 {
-	var view:Element;
+	var text:TextField;
 	
 	var dispatcher:Dispatcher<IHelloViewListener>;
 
 	public function new() 
 	{
-		this.dispatcher = new Dispatcher();
-		this.view = Browser.document.getElementById("content");
+		this.text = new TextField();
+		this.text.background = true;
+		this.text.border = true;
+		this.text.autoSize = TextFieldAutoSize.CENTER;
+		Lib.current.addChild( this.text );
 		
-		this.view.addEventListener( "click", this._onClick );
+		this.text.addEventListener( MouseEvent.CLICK, this._onClick );
+		
+		this.dispatcher = new Dispatcher();
 	}
 	
-	private function _onClick(e:Event):Void 
+	private function _onClick(e:MouseEvent):Void 
 	{
 		this.dispatcher.dispatch( HelloViewMessage.CLICK );
 	}
-	
-	
-	public function showMessage( message : String ) : Void
-	{
-		
-		this.view.innerText = message; 
-	}
-	
 	
 	public function addHandler( messageType : MessageType, scope : Dynamic, callback : Dynamic ) : Bool
 	{
@@ -46,6 +44,15 @@ class HelloViewJS implements IHelloView
 	public function removeHandler( messageType : MessageType, scope : Dynamic, callback : Dynamic ) : Bool
 	{
 		return this.dispatcher.removeHandler( messageType, scope, callback );
+	}
+	
+	public function showMessage( message : String ) : Void
+	{
+		
+		this.text.text = message;
+		
+		this.text.x = (Lib.current.stage.stageWidth - this.text.width ) / 2;
+		this.text.y = (Lib.current.stage.stageHeight - this.text.height ) / 2;
 	}
 	
 	@:isVar public var visible(get, set):Bool;

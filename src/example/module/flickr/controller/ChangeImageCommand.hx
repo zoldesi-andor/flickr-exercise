@@ -3,10 +3,10 @@ package example.module.flickr.controller;
 import example.module.flickr.model.IImageModel;
 import example.module.flickr.service.flickr.fullsize.FullSizeImageServiceParams;
 import example.module.flickr.service.flickr.fullsize.IFullSizeImageService;
-import example.module.hello.model.IMessageModel;
 import example.module.flickr.service.flickr.random.IRandomImageService;
 import example.module.flickr.service.flickr.random.RandomImageServiceParams;
 import example.module.flickr.vo.FlickrPhotoVO;
+import example.module.flickr.service.HttpServiceListenerAdapter;
 
 import hex.control.async.AsyncCommand;
 import hex.service.stateless.http.IHTTPServiceListener;
@@ -19,9 +19,6 @@ import hex.service.stateless.http.IHTTPServiceListener;
 import hex.control.command.BasicCommand;
 import hex.control.request.StringRequest;
 import hex.di.IInjectorContainer;
-
-import haxe.Http;
-import haxe.Json;
 
 /**
  * ...
@@ -74,10 +71,10 @@ class ChangeImageCommand extends AsyncCommand implements IInjectorContainer
 	}
 	
 	private function createHttpListener(
-				success: IHTTPService<HTTPServiceConfiguration> -> Void, 
-				?fail: IHTTPService<HTTPServiceConfiguration> -> Void = null, 
-				?cancel: IHTTPService<HTTPServiceConfiguration> -> Void = null, 
-				?timeout: IHTTPService<HTTPServiceConfiguration> -> Void = null): IHTTPServiceListener<HTTPServiceConfiguration>
+		success: IHTTPService<HTTPServiceConfiguration> -> Void, 
+		?fail: IHTTPService<HTTPServiceConfiguration> -> Void = null, 
+		?cancel: IHTTPService<HTTPServiceConfiguration> -> Void = null, 
+		?timeout: IHTTPService<HTTPServiceConfiguration> -> Void = null): IHTTPServiceListener<HTTPServiceConfiguration>
 	{
 		var onComplete = function (e: IHTTPService<HTTPServiceConfiguration>): Void
 		{
@@ -129,56 +126,5 @@ class ChangeImageCommand extends AsyncCommand implements IInjectorContainer
 			onFail, 
 			onCancel, 
 			onTimeout);
-	}
-}
-
-class HttpServiceListenerAdapter<T:ServiceConfiguration> implements IHTTPServiceListener<T>
-{
-	var complete: IHTTPService<T> -> Void;
-	var fail: IHTTPService<T> -> Void;
-	var cancel: IHTTPService<T> -> Void;
-	var timeout: IHTTPService<T> -> Void;
-	
-	public function new(?complete: IHTTPService<T> -> Void = null, 
-				 ?fail: IHTTPService<T> -> Void = null, 
-				 ?cancel: IHTTPService<T> -> Void = null, 
-				 ?timeout: IHTTPService<T> -> Void = null)
-	{
-		this.complete = complete;
-		this.fail = fail;
-		this.cancel = cancel;
-		this.timeout = timeout;
-	}
-	
-	public function onServiceComplete(e:IHTTPService<T>):Void 
-	{
-		if (complete != null)
-		{
-			complete(e);
-		}
-	}
-	
-	public function onServiceFail(e:IHTTPService<T>):Void 
-	{
-		if (fail != null)
-		{
-			fail(e);
-		}
-	}
-	
-	public function onServiceCancel(e:IHTTPService<T>):Void 
-	{
-		if (cancel != null)
-		{
-			cancel(e);
-		}
-	}
-
-	public function onServiceTimeout(e:IHTTPService<T>):Void 
-	{
-		if (timeout != null)
-		{
-			timeout(e);
-		}
 	}
 }

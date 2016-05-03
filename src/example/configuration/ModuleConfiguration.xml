@@ -10,6 +10,7 @@
 	
 	<module id="flickrModule" type="example.module.flickr.FlickrModule">
 		<argument ref="flickrView" />
+		<argument ref="flickrServiceLocator" />
 		<method-call name="changeImage" />
 	</module>
 	

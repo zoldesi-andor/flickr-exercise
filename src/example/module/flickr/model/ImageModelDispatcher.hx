@@ -7,8 +7,13 @@ import hex.model.ModelDispatcher;
  */
 class ImageModelDispatcher extends ModelDispatcher<IImageModelListener>
 {
-	public function onImageChange( title: String, url: String): Void 
+	public function onTitleChange(): Void 
 	{
-		// I hope it will work
+		// Auto Generated
+	}
+	
+	public function onUrlChange(): Void
+	{
+		// Auto Generated
 	}
 }

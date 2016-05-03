@@ -1,8 +1,21 @@
 package example.module.flickr.controller;
 
 import example.module.flickr.model.IImageModel;
+import example.module.flickr.service.flickr.fullsize.FullSizeImageServiceParams;
+import example.module.flickr.service.flickr.fullsize.IFullSizeImageService;
 import example.module.hello.model.IMessageModel;
+import example.module.flickr.service.flickr.random.IRandomImageService;
+import example.module.flickr.service.flickr.random.RandomImageServiceParams;
+import example.module.flickr.vo.FlickrPhotoVO;
 
+import hex.control.async.AsyncCommand;
+import hex.service.stateless.http.IHTTPServiceListener;
+import hex.service.stateless.http.HTTPServiceConfiguration;
+import hex.service.ServiceConfiguration;
+import hex.service.ServiceResultVO;
+import hex.service.stateless.http.HTTPServiceConfiguration;
+import hex.service.stateless.http.IHTTPService;
+import hex.service.stateless.http.IHTTPServiceListener;
 import hex.control.command.BasicCommand;
 import hex.control.request.StringRequest;
 import hex.di.IInjectorContainer;
@@ -14,54 +27,158 @@ import haxe.Json;
  * ...
  * @author azoldesi
  */
-class ChangeImageCommand extends BasicCommand implements IInjectorContainer
+class ChangeImageCommand extends AsyncCommand implements IInjectorContainer
 {
+	private var userId: String = "36587311@N08";
+	private var apiKey: String = "80882b00609df75b919104b460459462"; 
+	private var flickrEndpoingUrl: String = "https://api.flickr.com/services/rest/";
+	
+	private var title: String;
+	
 	@Inject
 	public var imageModel: IImageModel;
 	
+	@Inject
+	public var randomImageService: IRandomImageService;
+	
+	@Inject
+	public var fullSizeImageService: IFullSizeImageService;
+	
 	public function execute( ?requestList: StringRequest ) : Void 
-	{
-		var userId: String = "36587311@N08";
-		var apiKey: String = "80882b00609df75b919104b460459462";
-		var flickrEndpoingUrl: String = "https://api.flickr.com/services/rest/";
-		
+	{		
 		this.getLogger().debug("ChangeImageCommand executed");
 		
-		var requestList = new Http(flickrEndpoingUrl);
+		this.randomImageService.getConfiguration().parameters = new RandomImageServiceParams(apiKey, userId);
+		this.randomImageService.addHTTPServiceListener(this.createHttpListener(this.onPhotoListLoaded));
+		this.randomImageService.call();
+	}
 		
-		requestList.addParameter("method", "flickr.people.getPublicPhotos");
-		requestList.addParameter("api_key", apiKey);
-		requestList.addParameter("user_id", userId);
-		requestList.addParameter("format", "json");
-		requestList.addParameter("nojsoncallback", "1");
-		requestList.addParameter("per_page", "100");
+	public function onPhotoListLoaded(e:IHTTPService<HTTPServiceConfiguration>):Void 
+	{
+		var result:ServiceResultVO<FlickrPhotoVO> = this.randomImageService.getRandomImage();
+
+		this.title = result.data.title;
 		
-		requestList.onData = function(listData: String)
+		this.fullSizeImageService.getConfiguration().parameters = new FullSizeImageServiceParams(apiKey, userId, result.data.id);
+		this.fullSizeImageService.addHTTPServiceListener(this.createHttpListener(this.onFullSizeLoaded));
+		this.fullSizeImageService.call();
+	}
+	
+	public function onFullSizeLoaded(e:IHTTPService<HTTPServiceConfiguration>):Void 
+	{
+		var result = this.fullSizeImageService.getFullSizeImage();
+		this.imageModel.setUrl(result.data.source);
+		this.imageModel.setTitle(this.title);
+		
+		this._handleComplete();
+	}
+	
+	private function createHttpListener(
+				success: IHTTPService<HTTPServiceConfiguration> -> Void, 
+				?fail: IHTTPService<HTTPServiceConfiguration> -> Void = null, 
+				?cancel: IHTTPService<HTTPServiceConfiguration> -> Void = null, 
+				?timeout: IHTTPService<HTTPServiceConfiguration> -> Void = null): IHTTPServiceListener<HTTPServiceConfiguration>
+	{
+		var onComplete = function (e: IHTTPService<HTTPServiceConfiguration>): Void
 		{
-			var photoList: Array<Dynamic> = Json.parse(listData).photos.photo;
-			var randomIndex = Math.floor(Math.random() * photoList.length);
-			var photo = photoList[randomIndex];
+			var result = e.getResult();
 			
-			var requestPhoto = new Http(flickrEndpoingUrl);
-			requestPhoto.addParameter("method", "flickr.photos.getSizes");
-			requestPhoto.addParameter("api_key", apiKey);
-			requestPhoto.addParameter("photo_id", photo.id);
-			requestPhoto.addParameter("format", "json");
-			requestPhoto.addParameter("nojsoncallback", "1");
-			
-			requestPhoto.onData = function(photoData: String)
+			if ( result.success )
 			{
-				var photoResponse = Json.parse(photoData);
-				
-				this.imageModel.setUrl(photoResponse.sizes.size[5].source);
+				success(e);
 			}
-			
-			requestPhoto.request();
+			else
+			{
+				this._handleFail();
+			}
 		};
 		
-		requestList.request();
+		var onFail = function (e: IHTTPService<HTTPServiceConfiguration>): Void
+		{
+			if (fail != null)
+			{
+				fail(e);
+			}
+			
+			this._handleFail();
+		};
 		
-		//this.imageModel.setTitle("Here comes the title");
-		//this.imageModel.setUrl("http://pad2.whstatic.com/images/thumb/9/93/Get-Your-Photos-Explored-on-Flickr-Step-2.jpg/aid965851-728px-Get-Your-Photos-Explored-on-Flickr-Step-2.jpg");
+		var onCancel = function (e: IHTTPService<HTTPServiceConfiguration>): Void
+		{
+		
+			if (cancel != null)
+			{
+				cancel(e);
+			}
+			
+			this._handleCancel();
+		};
+		
+		var onTimeout = function (e: IHTTPService<HTTPServiceConfiguration>): Void
+		{
+			if (timeout != null)
+			{
+				timeout(e);
+			}
+			
+			this._handleFail();
+		};
+		
+		return new HttpServiceListenerAdapter<HTTPServiceConfiguration>(
+			onComplete, 
+			onFail, 
+			onCancel, 
+			onTimeout);
+	}
+}
+
+class HttpServiceListenerAdapter<T:ServiceConfiguration> implements IHTTPServiceListener<T>
+{
+	var complete: IHTTPService<T> -> Void;
+	var fail: IHTTPService<T> -> Void;
+	var cancel: IHTTPService<T> -> Void;
+	var timeout: IHTTPService<T> -> Void;
+	
+	public function new(?complete: IHTTPService<T> -> Void = null, 
+				 ?fail: IHTTPService<T> -> Void = null, 
+				 ?cancel: IHTTPService<T> -> Void = null, 
+				 ?timeout: IHTTPService<T> -> Void = null)
+	{
+		this.complete = complete;
+		this.fail = fail;
+		this.cancel = cancel;
+		this.timeout = timeout;
+	}
+	
+	public function onServiceComplete(e:IHTTPService<T>):Void 
+	{
+		if (complete != null)
+		{
+			complete(e);
+		}
+	}
+	
+	public function onServiceFail(e:IHTTPService<T>):Void 
+	{
+		if (fail != null)
+		{
+			fail(e);
+		}
+	}
+	
+	public function onServiceCancel(e:IHTTPService<T>):Void 
+	{
+		if (cancel != null)
+		{
+			cancel(e);
+		}
+	}
+
+	public function onServiceTimeout(e:IHTTPService<T>):Void 
+	{
+		if (timeout != null)
+		{
+			timeout(e);
+		}
 	}
 }

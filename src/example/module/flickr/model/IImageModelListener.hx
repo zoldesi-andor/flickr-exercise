@@ -6,5 +6,7 @@ import hex.model.IModelListener;
  */
 interface IImageModelListener extends IModelListener
 {
-	function onImageChange(title: String, url: String): Void;
+	function onUrlChange(): Void;
+	
+	function onTitleChange(): Void;
 }

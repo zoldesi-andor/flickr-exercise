@@ -24,7 +24,7 @@ class ImageModel implements IImageModel
 	public function setTitle(title: String): Void 
 	{
 		this._title = title;
-		this._dispatcher.onImageChange(this._title, this._url);
+		this._dispatcher.onTitleChange();
 	}
 	
 	public function getUrl(): String
@@ -35,7 +35,7 @@ class ImageModel implements IImageModel
 	public function setUrl(url: String): Void 
 	{
 		this._url = url;
-		this._dispatcher.onImageChange(this._title, this._url);
+		this._dispatcher.onUrlChange();
 	}
 	
 	public function addListener( listener:IImageModelListener ) : Void 

@@ -37,11 +37,13 @@ class FlickrViewJS implements IFlickrView
 		this.dispatcher.dispatch( FlickrViewMessage.CLICK );
 	}
 	
-	public function showImage( title: String, url: String ) : Void
+	public function setTitle( title: String): Void
 	{
-		Browser.console.log(title + " " + url);
-		
-		this.title.innerHTML = title;
+		Browser.document.title = title;
+	}
+	
+	public function setUrl( url: String): Void
+	{
 		this.image.src = url;
 	}
 	

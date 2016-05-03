@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<root>
-
+<root>	
+	<serviceLocator id="flickrServiceLocator" type="hex.config.stateful.ServiceLocator" >
+		<item> 
+			<key type="Class" value="example.module.flickr.service.flickr.fullsize.IFullSizeImageService"/>
+			<value type="Class" value="example.module.flickr.service.flickr.fullsize.FullSizeImageService"/>
+		</item>
+		<item> 
+			<key type="Class" value="example.module.flickr.service.flickr.random.IRandomImageService"/>
+			<value type="Class" value="example.module.flickr.service.flickr.random.RandomImageService"/>
+		</item>
+	</serviceLocator>
 </root>

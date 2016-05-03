@@ -39,8 +39,13 @@ class FlickrViewHelper extends ViewHelper implements IImageModelListener impleme
 		this.dispatcher.dispatch( FlickrModuleMessage.CHANGE_IMAGE, [] );
 	}
 	
-	public function onImageChange(title: String, url: String): Void 
+	public function onTitleChange(): Void
 	{
-		this._flickrView.showImage(this._model.getTitle(), this._model.getUrl());
+		this._flickrView.setTitle(this._model.getTitle());
+	}
+	
+	public function onUrlChange(): Void
+	{
+		this._flickrView.setUrl(this._model.getUrl());
 	}
 }

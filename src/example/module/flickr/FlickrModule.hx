@@ -6,7 +6,10 @@ import hex.control.request.StringRequest;
 import hex.module.dependency.IRuntimeDependencies;
 import hex.module.dependency.RuntimeDependencies;
 import hex.module.Module;
+import hex.config.stateful.IStatefulConfig;
 
+import example.module.flickr.service.flickr.random.IRandomImageService;
+import example.module.flickr.service.flickr.fullsize.IFullSizeImageService;
 import example.module.flickr.model.*;
 import example.module.flickr.view.*;
 import example.module.flickr.view.message.FlickrViewMessage;
@@ -20,11 +23,12 @@ import example.module.flickr.controller.ChangeImageCommand;
 class FlickrModule extends Module implements IFlickrModule
 {
 
-	public function new( view : IFlickrView ) 
+	public function new( view : IFlickrView, serviceConfig:IStatefulConfig ) 
 	{
 		super();
 		
 		this._addStatelessConfigClasses([CommandConfig, ModelConfig]);
+		this._addStatefulConfigs([serviceConfig]);
 		
 		this.buildViewHelper( FlickrViewHelper, view );
 	}
@@ -38,6 +42,7 @@ class FlickrModule extends Module implements IFlickrModule
 	override function _getRuntimeDependencies() : IRuntimeDependencies
 	{
 		var rd = new RuntimeDependencies();
+		rd.addServiceDependencies([IRandomImageService, IFullSizeImageService]);
 		return rd;
 	}	
 }

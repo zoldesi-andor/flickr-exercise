@@ -13,5 +13,4 @@ class FlickrPhotoListRequestVO
 	{
 		
 	}
-import example.vo.flickr.list.FlickrPhotoListVO;
 }

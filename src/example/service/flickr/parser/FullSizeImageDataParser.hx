@@ -1,4 +1,4 @@
-package example.service.flickr.fullsize;
+package example.service.flickr.parser;
 
 import example.vo.flickr.size.FlickrPhotoSizeVO;
 import example.vo.flickr.list.FlickrPhotoVO;
@@ -20,7 +20,7 @@ class FullSizeImageDataParser implements IParser
 		
 	}
 	
-	public function parse( serializedContent : Dynamic, target : Dynamic = null) : Dynamic 
+	public function parse( serializedContent : Dynamic, target : Dynamic = null) : FlickrPhotoSizeVO 
 	{
 		var sizeData = Json.parse(serializedContent).sizes.size[5];
 		
@@ -29,11 +29,6 @@ class FullSizeImageDataParser implements IParser
 		data.height = sizeData.height;
 		data.source = sizeData.source;
 		
-		var result = new ServiceResultVO<FlickrPhotoSizeVO>();
-		
-		result.data = data;
-		result.success = true;
-		
-		return result;
+		return data;
 	}
 }

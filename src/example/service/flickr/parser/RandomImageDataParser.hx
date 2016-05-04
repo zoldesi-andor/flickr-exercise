@@ -1,4 +1,4 @@
-package example.service.flickr.random;
+package example.service.flickr.parser;
 
 import example.vo.flickr.list.FlickrPhotoVO;
 import hex.service.ServiceResultVO;
@@ -19,7 +19,7 @@ class RandomImageDataParser implements IParser
 		
 	}
 	
-	public function parse( serializedContent : Dynamic, target : Dynamic = null) : Dynamic 
+	public function parse( serializedContent : Dynamic, target : Dynamic = null) : FlickrPhotoVO 
 	{
 		var photoList: Array<Dynamic> = Json.parse(serializedContent).photos.photo;
 		var randomIndex = Math.floor(Math.random() * photoList.length);
@@ -30,11 +30,6 @@ class RandomImageDataParser implements IParser
 		data.id = photo.id;
 		data.title = photo.title;
 		
-		var result = new ServiceResultVO<FlickrPhotoVO>();
-		
-		result.data = data;
-		result.success = true;
-		
-		return result;
+		return data;
 	}
 }

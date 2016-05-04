@@ -2,16 +2,8 @@
 <root>	
 	<serviceLocator id="flickrServiceLocator" type="hex.config.stateful.ServiceLocator" >
 		<item> 
-			<key type="Class" value="example.service.flickr.fullsize.IFullSizeImageService"/>
-			<value type="Class" value="example.service.flickr.fullsize.FullSizeImageService"/>
-		</item>
-		<item> 
-			<key type="Class" value="example.service.flickr.random.IRandomImageService"/>
-			<value type="Class" value="example.service.flickr.random.RandomImageService"/>
-		</item>
-		<item> 
-			<key type="Class" value="example.service.flickr.IImageDataSource"/>
-			<value type="Class" value="example.service.flickr.FlickrImageDataSource"/>
+			<key type="Class" value="example.service.flickr.IImageDataService"/>
+			<value type="Class" value="example.service.flickr.FlickrImageDataService"/>
 		</item>
 	</serviceLocator>
 </root>

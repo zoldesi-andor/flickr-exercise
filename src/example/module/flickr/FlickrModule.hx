@@ -1,20 +1,18 @@
 package example.module.flickr;
 
-import hex.config.stateless.StatelessCommandConfig;
-import hex.config.stateless.StatelessModelConfig;
-import hex.control.request.StringRequest;
-import hex.module.dependency.IRuntimeDependencies;
-import hex.module.dependency.RuntimeDependencies;
-import hex.module.Module;
-import hex.config.stateful.IStatefulConfig;
-
-import example.service.flickr.random.IRandomImageService;
-import example.service.flickr.fullsize.IFullSizeImageService;
+import example.module.flickr.controller.*;
+import example.module.flickr.message.FlickrModuleMessage;
 import example.module.flickr.model.*;
 import example.module.flickr.view.*;
-import example.module.flickr.view.message.FlickrViewMessage;
-import example.module.flickr.message.FlickrModuleMessage;
-import example.module.flickr.controller.*;
+import example.service.flickr.IImageDataService;
+import hex.config.stateful.IStatefulConfig;
+import hex.config.stateless.StatelessCommandConfig;
+import hex.config.stateless.StatelessModelConfig;
+import hex.module.Module;
+import hex.module.dependency.IRuntimeDependencies;
+import hex.module.dependency.RuntimeDependencies;
+
+
 
 /**
  * ...
@@ -42,7 +40,7 @@ class FlickrModule extends Module implements IFlickrModule
 	override function _getRuntimeDependencies() : IRuntimeDependencies
 	{
 		var rd = new RuntimeDependencies();
-		rd.addServiceDependencies([IRandomImageService, IFullSizeImageService]);
+		rd.addServiceDependencies([IImageDataService]);
 		return rd;
 	}	
 }
@@ -51,7 +49,7 @@ private class CommandConfig extends StatelessCommandConfig
 {
 	override public function configure():Void
 	{
-		this.map( FlickrModuleMessage.CHANGE_IMAGE, GetRandomImageCommand );
+		this.map( FlickrModuleMessage.CHANGE_IMAGE, ChangeImageCommand );
 	}
 }
 

@@ -10,6 +10,7 @@ import example.module.flickr.service.HttpServiceListenerAdapter;
 
 import hex.control.async.AsyncCommand;
 import hex.service.stateless.http.IHTTPServiceListener;
+import hex.service.stateless.http.HTTPService;
 import hex.service.stateless.http.HTTPServiceConfiguration;
 import hex.service.ServiceConfiguration;
 import hex.service.ServiceResultVO;
@@ -42,7 +43,8 @@ class ChangeImageCommand extends AsyncCommand implements IInjectorContainer
 	public var fullSizeImageService: IFullSizeImageService;
 	
 	public function execute( ?requestList: StringRequest ) : Void 
-	{		
+	{			
+		
 		this.getLogger().debug("ChangeImageCommand executed");
 		
 		this.randomImageService.getConfiguration().parameters = new RandomImageServiceParams(apiKey, userId);
@@ -51,7 +53,7 @@ class ChangeImageCommand extends AsyncCommand implements IInjectorContainer
 	}
 		
 	public function onPhotoListLoaded(e:IHTTPService<HTTPServiceConfiguration>):Void 
-	{
+	{		
 		var result:ServiceResultVO<FlickrPhotoVO> = this.randomImageService.getRandomImage();
 
 		this.title = result.data.title;

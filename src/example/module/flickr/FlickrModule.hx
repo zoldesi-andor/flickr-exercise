@@ -14,7 +14,7 @@ import example.module.flickr.model.*;
 import example.module.flickr.view.*;
 import example.module.flickr.view.message.FlickrViewMessage;
 import example.module.flickr.message.FlickrModuleMessage;
-import example.module.flickr.controller.ChangeImageCommand;
+import example.module.flickr.controller.*;
 
 /**
  * ...
@@ -51,7 +51,7 @@ private class CommandConfig extends StatelessCommandConfig
 {
 	override public function configure():Void
 	{
-		this.map( FlickrModuleMessage.CHANGE_IMAGE, ChangeImageCommand );
+		this.map( FlickrModuleMessage.CHANGE_IMAGE, GetRandomImageCommand );
 	}
 }
 

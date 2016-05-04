@@ -1,6 +1,7 @@
-package example.module.flickr.service.flickr.random;
+package example.service.flickr.fullsize;
 
 import example.module.flickr.vo.*;
+import example.vo.flickr.size.FlickrPhotoSizeVO;
 
 import hex.core.IAnnotationParsable;
 import hex.service.Service;
@@ -12,7 +13,7 @@ import hex.service.ServiceResultVO;
  * ...
  * @author azoldesi
  */
-class RandomImageService extends HTTPService<HTTPServiceConfiguration> implements IRandomImageService implements IAnnotationParsable
+class  FullSizeImageService extends HTTPService<HTTPServiceConfiguration> implements IFullSizeImageService implements IAnnotationParsable
 {
 	public function new() 
 	{
@@ -23,12 +24,7 @@ class RandomImageService extends HTTPService<HTTPServiceConfiguration> implement
 	override public function createConfiguration() : Void
 	{
 		this.setConfiguration( new HTTPServiceConfiguration("https://api.flickr.com/services/rest/") );
-		this.setParser( new RandomImageDataParser() );
-	}
-	
-	public function getRandomImage():  ServiceResultVO<FlickrPhotoVO>
-	{
-		return this._result;
+		this.setParser( new FullSizeImageDataParser() );
 	}
 	
 	public function getFullSizeImage(): ServiceResultVO<FlickrPhotoSizeVO>

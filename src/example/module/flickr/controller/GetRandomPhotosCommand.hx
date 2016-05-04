@@ -1,12 +1,12 @@
 package example.module.flickr.controller;
 
 import example.module.flickr.model.IImageModel;
-import example.module.flickr.service.flickr.fullsize.FullSizeImageServiceParams;
-import example.module.flickr.service.flickr.fullsize.IFullSizeImageService;
-import example.module.flickr.service.flickr.random.IRandomImageService;
-import example.module.flickr.service.flickr.random.RandomImageServiceParams;
-import example.module.flickr.vo.FlickrPhotoVO;
-import example.module.flickr.service.HttpServiceListenerAdapter;
+import example.service.flickr.fullsize.FullSizeImageServiceParams;
+import example.service.flickr.fullsize.IFullSizeImageService;
+import example.service.flickr.random.IRandomImageService;
+import example.service.flickr.random.RandomImageServiceParams;
+import example.vo.flickr.list.FlickrPhotoVO;
+import example.service.HttpServiceListenerAdapter;
 import hex.control.payload.ExecutionPayload;
 
 import hex.control.async.AsyncCommand;

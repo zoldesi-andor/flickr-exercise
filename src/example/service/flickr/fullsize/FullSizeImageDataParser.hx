@@ -1,7 +1,7 @@
-package example.module.flickr.service.flickr.fullsize;
+package example.service.flickr.fullsize;
 
-import example.module.flickr.vo.FlickrPhotoSizeVO;
-import example.module.flickr.vo.FlickrPhotoVO;
+import example.vo.flickr.size.FlickrPhotoSizeVO;
+import example.vo.flickr.list.FlickrPhotoVO;
 import hex.service.ServiceResultVO;
 
 import haxe.Json;

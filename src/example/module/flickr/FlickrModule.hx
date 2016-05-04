@@ -8,8 +8,8 @@ import hex.module.dependency.RuntimeDependencies;
 import hex.module.Module;
 import hex.config.stateful.IStatefulConfig;
 
-import example.module.flickr.service.flickr.random.IRandomImageService;
-import example.module.flickr.service.flickr.fullsize.IFullSizeImageService;
+import example.service.flickr.random.IRandomImageService;
+import example.service.flickr.fullsize.IFullSizeImageService;
 import example.module.flickr.model.*;
 import example.module.flickr.view.*;
 import example.module.flickr.view.message.FlickrViewMessage;

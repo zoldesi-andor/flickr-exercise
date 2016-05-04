@@ -1,4 +1,4 @@
-package example.module.flickr.service.flickr.random;
+package example.service.flickr.random;
 
 import hex.service.stateless.http.HTTPServiceParameters;
 

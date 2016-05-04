@@ -1,4 +1,4 @@
-package example.module.flickr.service;
+package example.service;
 
 import hex.service.*;
 import hex.service.stateless.http.*;

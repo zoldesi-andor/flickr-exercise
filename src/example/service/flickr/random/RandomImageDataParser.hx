@@ -1,6 +1,6 @@
-package example.module.flickr.service.flickr.random;
+package example.service.flickr.random;
 
-import example.module.flickr.vo.FlickrPhotoVO;
+import example.vo.flickr.list.FlickrPhotoVO;
 import hex.service.ServiceResultVO;
 
 import haxe.Json;

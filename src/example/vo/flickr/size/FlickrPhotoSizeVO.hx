@@ -1,4 +1,4 @@
-package example.module.flickr.vo;
+package example.vo.flickr.size;
 
 /**
  * ...
@@ -8,6 +8,7 @@ class FlickrPhotoSizeVO
 {	
 	public var height: String;
 	public var width: String;
+	public var label: String;
 	public var source: String;
 	
 	public function new()

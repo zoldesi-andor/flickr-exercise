@@ -1,4 +1,4 @@
-package example.module.flickr.service.flickr.fullsize;
+package example.service.flickr.fullsize;
 
 import hex.service.stateless.http.HTTPServiceParameters;
 

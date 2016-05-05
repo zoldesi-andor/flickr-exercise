@@ -1,4 +1,4 @@
-package example.module.flickr.controller;
+package example.module.mainimage.controller;
 
 import example.service.flickr.IImageDataService;
 import example.vo.flickr.list.FlickrPhotoVO;

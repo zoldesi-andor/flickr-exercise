@@ -1,9 +1,14 @@
-package example.module.flickr;
+package example.module.mainimage;
 
 import example.module.flickr.controller.*;
-import example.module.flickr.message.FlickrModuleMessage;
+import example.module.mainimage.controller.ChangeImageCommand;
+import example.module.mainimage.message.MainImageModuleMessage;
 import example.module.flickr.model.*;
 import example.module.flickr.view.*;
+import example.module.mainimage.model.IImageModel;
+import example.module.mainimage.model.ImageModel;
+import example.module.mainimage.view.MainImageViewHelper;
+import example.module.mainimage.view.IMainImageView;
 import example.service.flickr.IImageDataService;
 import hex.config.stateful.IStatefulConfig;
 import hex.config.stateless.StatelessCommandConfig;
@@ -19,27 +24,27 @@ import hex.module.dependency.RuntimeDependencies;
  * ...
  * @author azoldesi
  */
-class FlickrModule extends Module implements IFlickrModule
+class MainImageModule extends Module implements IMainImageModule
 {
 
-	public function new( view : IFlickrView, serviceConfig:IStatefulConfig ) 
+	public function new( view : IMainImageView, serviceConfig:IStatefulConfig ) 
 	{
 		super();
 		
 		this._addStatelessConfigClasses([CommandConfig, ModelConfig]);
 		this._addStatefulConfigs([serviceConfig]);
 		
-		this.buildViewHelper( FlickrViewHelper, view );
+		this.buildViewHelper( MainImageViewHelper, view );
 	}
 	
 	public function changeImage() : Void
 	{
-		this._dispatchPrivateMessage( FlickrModuleMessage.CHANGE_IMAGE, [] ); 
+		this._dispatchPrivateMessage( MainImageModuleMessage.CHANGE_IMAGE, [] ); 
 	}
 	
 	public function loadImage(?request: StringRequest): Void
 	{
-		this._dispatchPrivateMessage( FlickrModuleMessage.CHANGE_IMAGE, [request] );
+		this._dispatchPrivateMessage( MainImageModuleMessage.CHANGE_IMAGE, [request] );
 	}
 	
 	// Don't ask why, it is mandatory!
@@ -55,7 +60,7 @@ private class CommandConfig extends StatelessCommandConfig
 {
 	override public function configure():Void
 	{
-		this.map( FlickrModuleMessage.CHANGE_IMAGE, ChangeImageCommand );
+		this.map( MainImageModuleMessage.CHANGE_IMAGE, ChangeImageCommand );
 	}
 }
 

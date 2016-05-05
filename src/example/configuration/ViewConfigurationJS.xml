@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <root>
 	<view id="helloView" type="example.module.hello.view.HelloViewJS" />
-	<view id="flickrView" type="example.module.flickr.view.FlickrViewJS" />
+	<view id="mainImageView" type="example.module.mainimage.view.MainImageViewJS" />
 	<view id="thumbnailsView" type="example.module.thumbnails.view.ThumbnailsViewJS" />
 </root>

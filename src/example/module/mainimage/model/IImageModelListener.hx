@@ -1,4 +1,4 @@
-package example.module.flickr.model;
+package example.module.mainimage.model;
 import hex.model.IModelListener;
 
 /**

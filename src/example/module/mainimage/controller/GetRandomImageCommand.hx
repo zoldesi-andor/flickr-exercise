@@ -1,7 +1,7 @@
-package example.module.flickr.controller;
+package example.module.mainimage.controller;
 
 import hex.control.macro.Macro;
-import example.module.flickr.controller.GetRandomPhotosCommand;
+import example.module.mainimage.controller.GetRandomPhotosCommand;
 
 /**
  * ...

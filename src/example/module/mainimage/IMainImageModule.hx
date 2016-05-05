@@ -1,11 +1,11 @@
-package example.module.flickr;
+package example.module.mainimage;
 
 import hex.control.request.StringRequest;
 
 /**
  * @author azoldesi
  */
-interface IFlickrModule 
+interface IMainImageModule 
 {
 	function loadImage(?request: StringRequest): Void;
 }

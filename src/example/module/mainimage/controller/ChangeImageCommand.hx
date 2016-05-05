@@ -1,6 +1,6 @@
-package example.module.flickr.controller;
+package example.module.mainimage.controller;
 
-import example.module.flickr.model.IImageModel;
+import example.module.mainimage.model.IImageModel;
 import example.service.flickr.IImageDataService;
 import example.vo.flickr.list.FlickrPhotoVO;
 import example.vo.flickr.size.FlickrPhotoSizeVO;

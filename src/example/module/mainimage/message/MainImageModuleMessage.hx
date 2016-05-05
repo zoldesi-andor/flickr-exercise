@@ -1,4 +1,4 @@
-package example.module.flickr.message;
+package example.module.mainimage.message;
 
 import hex.event.MessageType;
 
@@ -6,7 +6,7 @@ import hex.event.MessageType;
  * ...
  * @author azoldesi
  */
-class FlickrModuleMessage
+class MainImageModuleMessage
 {
 	static public var CHANGE_IMAGE = new MessageType( "change-image" );
 }

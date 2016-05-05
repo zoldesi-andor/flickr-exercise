@@ -1,6 +1,6 @@
 package example.module.thumbnails.controller;
 
-import example.module.flickr.model.IImageModel;
+import example.module.mainimage.model.IImageModel;
 import example.module.thumbnails.model.IThumbnailListModel;
 import example.service.flickr.IImageDataService;
 import hex.control.async.AsyncCommand;

@@ -1,6 +1,6 @@
 package example.module.thumbnails.view;
 
-import example.module.flickr.view.IFlickrView;
+import example.module.mainimage.view.IMainImageView;
 import example.module.thumbnails.view.message.ThumbnailViewMessage;
 import example.module.thumbnails.model.IThumbnailModelRO;
 import hex.control.request.StringRequest;

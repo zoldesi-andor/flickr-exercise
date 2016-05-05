@@ -8,8 +8,8 @@
         </method-call>
 	</module>
 	
-	<module id="flickrModule" type="example.module.flickr.FlickrModule">
-		<argument ref="flickrView" />
+	<module id="mainImageModule" type="example.module.mainimage.MainImageModule">
+		<argument ref="mainImageView" />
 		<argument ref="flickrServiceLocator" />
 		<method-call name="changeImage" />
 		

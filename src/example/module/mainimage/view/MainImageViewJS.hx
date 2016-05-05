@@ -1,7 +1,7 @@
-package example.module.flickr.view;
+package example.module.mainimage.view;
 
-import example.module.flickr.view.IFlickrView;
-import example.module.flickr.view.message.FlickrViewMessage;
+import example.module.mainimage.view.IMainImageView;
+import example.module.mainimage.view.message.MainImageViewMessage;
 import hex.event.Dispatcher;
 import hex.event.MessageType;
 import js.Browser;
@@ -13,13 +13,13 @@ import js.html.Image;
  * ...
  * @author azoldesi
  */
-class FlickrViewJS implements IFlickrView
+class MainImageViewJS implements IMainImageView
 {
 	var container: Element;
 	var title: Element;
 	var image: Image;
 	
-	var dispatcher: Dispatcher<IFlickrViewListener>;
+	var dispatcher: Dispatcher<IMainImageViewListener>;
 	
 	public function new() 
 	{
@@ -34,7 +34,7 @@ class FlickrViewJS implements IFlickrView
 	
 	private function _onClick(e: Event): Void 
 	{
-		this.dispatcher.dispatch( FlickrViewMessage.CLICK );
+		this.dispatcher.dispatch( MainImageViewMessage.CLICK );
 	}
 	
 	public function setTitle( title: String): Void

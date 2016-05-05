@@ -1,4 +1,4 @@
-package example.module.flickr.view;
+package example.module.mainimage.view;
 
 import hex.event.MessageType;
 import hex.view.IView;
@@ -6,7 +6,7 @@ import hex.view.IView;
 /**
  * @author azoldesi
  */
-interface IFlickrView extends IView
+interface IMainImageView extends IView
 {	
 	function setTitle( title: String): Void;
 	

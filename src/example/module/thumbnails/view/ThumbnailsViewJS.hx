@@ -30,13 +30,13 @@ class ThumbnailsViewJS implements IThumbnailsView
 	
 	private function thumbnailClicked(thumbnail: IThumbnailModelRO): Void 
 	{
-		this.dispatcher.dispatch( ThumbnailViewMessage.THUMBNAIL_CLICKED, [new StringRequest(thumbnail.getImageId())] );
+		this.dispatcher.dispatch( ThumbnailViewMessage.THUMBNAIL_CLICKED, [new StringRequest(thumbnail.getMediumSizeUrl())] );
 	}
 	
 	public function createThumbnail(thumbnail: IThumbnailModelRO): Void
 	{
 		var image = Browser.document.createImageElement();
-		image.src = thumbnail.getImageUrl();
+		image.src = thumbnail.getThumbnailUrl();
 		image.setAttribute("height", "100%");
 		image.addEventListener("click", function(e: Event) { this.thumbnailClicked(thumbnail); });
 		

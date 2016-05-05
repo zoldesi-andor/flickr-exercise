@@ -37,11 +37,11 @@ class ThumbnailsViewHelper extends ViewHelper implements IThumbnailListModelList
 		this.model.addListener(this);
 	}
 	
-	public function onThumbnailClicked(imageId: StringRequest): Void
+	public function onThumbnailClicked(request: StringRequest): Void
 	{
 		this.getOwner().getLogger().debug("thumbnail clicked");
 		
-		this.getOwner().dispatchPublicMessage( ThumbnailsModulePublicMessage.THUMBNAIL_SELECTED, [imageId] );
+		this.getOwner().dispatchPublicMessage( ThumbnailsModulePublicMessage.THUMBNAIL_SELECTED, [request] );
 	}
 	
 	public function onThumbnailListChanged(thumbnail: IThumbnailModelRO): Void

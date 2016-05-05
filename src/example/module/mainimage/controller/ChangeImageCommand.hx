@@ -25,13 +25,13 @@ class ChangeImageCommand extends AsyncCommand implements IInjectorContainer
 	@Inject
 	public var imageDataSource: IImageDataService;
 	
-	public function execute( ?requestList: StringRequest ) : Void 
+	public function execute( ?request: StringRequest ) : Void 
 	{			
 		this.getLogger().debug("ChangeImageCommand executed");
 		
-		if (requestList != null)
+		if (request != null)
 		{
-			this.loadImageWithId(requestList.value);
+			this.loadImageWithId(request.value);
 		}
 		else
 		{
@@ -39,20 +39,10 @@ class ChangeImageCommand extends AsyncCommand implements IInjectorContainer
 		}
 	}
 	
-	private function loadImageWithId(imageId: String): Void
+	private function loadImageWithId(url: String): Void
 	{
-		this.imageDataSource.getFullSizeImage(imageId)
-		
-		.then(function(size: FlickrPhotoSizeVO) 
-		{ 
-			this.imageModel.setUrl(size.source);
-			this._handleComplete();
-		})
-		
-		.catchError(function(e) 
-		{
-			this._handleFail();
-		});
+		this.imageModel.setUrl(url);
+		this._handleComplete();
 	}
 	
 	private function loadRandomImage(): Void

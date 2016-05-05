@@ -2,6 +2,7 @@
   "name": "flickr-hexmachina-example",
   "version": "1.0.0",
   "dependencies": {
-    "hexmachina": "git:https://github.com/DoclerLabs/hexMachina.git"
+    "hexmachina": "git:https://github.com/DoclerLabs/hexMachina.git",
+	"promhx": "1.0.21"
   }
 }

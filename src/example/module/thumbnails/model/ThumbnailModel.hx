@@ -28,4 +28,9 @@ class ThumbnailModel implements IThumbnailModel
 	{
 		return this.image.id;
 	}
+	
+	public function getImage(): ImageVO
+	{
+		return this.image;
+	}
 }

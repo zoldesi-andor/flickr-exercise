@@ -5,6 +5,7 @@ import example.service.image.IImageDataService;
 import example.vo.flickr.list.FlickrPhotoVO;
 import example.vo.flickr.size.FlickrPhotoSizeVO;
 import example.vo.image.ImageVO;
+import hex.control.request.ValueRequest;
 import promhx.Promise;
 
 import hex.control.async.AsyncCommand;
@@ -25,13 +26,13 @@ class ChangeImageCommand extends AsyncCommand implements IInjectorContainer
 	@Inject
 	public var imageDataSource: IImageDataService;
 	
-	public function execute( ?request: StringRequest ) : Void 
+	public function execute( ?request: ValueRequest<ImageVO> ) : Void 
 	{			
 		this.getLogger().debug("ChangeImageCommand executed");
 		
 		if (request != null)
 		{
-			this.loadImageWithId(request.value);
+			this.loadImage(request.value);
 		}
 		else
 		{
@@ -39,9 +40,9 @@ class ChangeImageCommand extends AsyncCommand implements IInjectorContainer
 		}
 	}
 	
-	private function loadImageWithId(url: String): Void
+	private function loadImage(image: ImageVO): Void
 	{
-		this.imageModel.setUrl(url);
+		this.imageModel.setUrl(image.getMediumUrl());
 		this._handleComplete();
 	}
 	

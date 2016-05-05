@@ -4,6 +4,7 @@ import example.module.mainimage.view.IMainImageView;
 import example.module.thumbnails.view.message.ThumbnailViewMessage;
 import example.module.thumbnails.model.IThumbnailModelRO;
 import hex.control.request.StringRequest;
+import hex.control.request.ValueRequest;
 import hex.event.Dispatcher;
 import hex.event.MessageType;
 import js.Browser;
@@ -30,7 +31,7 @@ class ThumbnailsViewJS implements IThumbnailsView
 	
 	private function thumbnailClicked(thumbnail: IThumbnailModelRO): Void 
 	{
-		this.dispatcher.dispatch( ThumbnailViewMessage.THUMBNAIL_CLICKED, [new StringRequest(thumbnail.getMediumSizeUrl())] );
+		this.dispatcher.dispatch( ThumbnailViewMessage.THUMBNAIL_CLICKED, [new ValueRequest(thumbnail.getImage())] );
 	}
 	
 	public function createThumbnail(thumbnail: IThumbnailModelRO): Void

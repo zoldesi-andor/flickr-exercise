@@ -14,9 +14,14 @@ class ThumbnailModel implements IThumbnailModel
 		this.image = image;
 	}
 	
-	public function getImageUrl(): String
+	public function getMediumSizeUrl(): String
 	{
-		return this.image.url;
+		return this.image.getThumbnailUrl();
+	}
+	
+	public function getThumbnailUrl(): String
+	{
+		return this.image.getMediumUrl();
 	}
 	
 	public function getImageId(): String

@@ -24,9 +24,14 @@ class LoadThumbnails extends AsyncCommand implements IInjectorContainer
 	{			
 		this.getLogger().debug("LoadThumbnails executed");
 		
-		this.imageDataSource.getThumbnailImages(5).then(function(image)
+		var stream = this.imageDataSource.getThumbnailImages(5);
+		
+		stream.then(function(image)
 		{
 			this.model.createThumbnail(image);
 		});
+		
+		stream.endThen(function(image) { this._handleComplete(); });
+		stream.catchError(function(e) { this._handleFail(); });
 	}
 }

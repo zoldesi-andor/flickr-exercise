@@ -5,7 +5,9 @@ package example.module.thumbnails.model;
  */
 interface IThumbnailModelRO 
 {
-	function getImageUrl(): String;
+	function getMediumSizeUrl(): String;
+	
+	function getThumbnailUrl(): String;
 	
 	function getImageId(): String;
 }

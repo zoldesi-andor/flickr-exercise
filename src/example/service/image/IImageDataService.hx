@@ -13,7 +13,7 @@ import hex.service.ServiceConfiguration;
  */
 interface IImageDataService extends IAsyncStatelessService<ServiceConfiguration>
 {
-	function getRandomImage(): Promise<FlickrPhotoVO>;
+	function getRandomImage(): Promise<ImageVO>;
 	
 	function getFullSizeImage(imageId: String): Promise<FlickrPhotoSizeVO>;
 	

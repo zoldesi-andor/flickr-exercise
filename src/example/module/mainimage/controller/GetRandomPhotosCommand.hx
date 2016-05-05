@@ -1,6 +1,6 @@
 package example.module.mainimage.controller;
 
-import example.service.flickr.IImageDataService;
+import example.service.image.IImageDataService;
 import example.vo.flickr.list.FlickrPhotoVO;
 import hex.control.async.AsyncCommand;
 import hex.control.payload.ExecutionPayload;

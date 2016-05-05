@@ -2,8 +2,8 @@
 <root>	
 	<serviceLocator id="flickrServiceLocator" type="hex.config.stateful.ServiceLocator" >
 		<item> 
-			<key type="Class" value="example.service.flickr.IImageDataService"/>
-			<value type="Class" value="example.service.flickr.FlickrImageDataService"/>
+			<key type="Class" value="example.service.image.IImageDataService"/>
+			<value type="Class" value="example.service.image.flickr.FlickrImageDataService"/>
 		</item>
 	</serviceLocator>
 </root>

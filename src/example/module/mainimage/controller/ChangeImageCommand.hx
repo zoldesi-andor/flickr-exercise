@@ -1,7 +1,7 @@
 package example.module.mainimage.controller;
 
 import example.module.mainimage.model.IImageModel;
-import example.service.flickr.IImageDataService;
+import example.service.image.IImageDataService;
 import example.vo.flickr.list.FlickrPhotoVO;
 import example.vo.flickr.size.FlickrPhotoSizeVO;
 import promhx.Promise;

@@ -5,7 +5,7 @@ import example.module.thumbnails.message.*;
 import example.module.thumbnails.model.*;
 import example.module.thumbnails.view.*;
 
-import example.service.flickr.IImageDataService;
+import example.service.image.IImageDataService;
 
 import hex.config.stateful.IStatefulConfig;
 import hex.config.stateless.StatelessCommandConfig;

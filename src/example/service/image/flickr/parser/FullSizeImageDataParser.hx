@@ -1,4 +1,4 @@
-package example.service.flickr.parser;
+package example.service.image.flickr.parser;
 
 import example.vo.flickr.size.FlickrPhotoSizeVO;
 import example.vo.flickr.list.FlickrPhotoVO;

@@ -2,7 +2,7 @@ package example.module.thumbnails.controller;
 
 import example.module.mainimage.model.IImageModel;
 import example.module.thumbnails.model.IThumbnailListModel;
-import example.service.flickr.IImageDataService;
+import example.service.image.IImageDataService;
 import hex.control.async.AsyncCommand;
 import hex.control.request.StringRequest;
 import hex.di.IInjectorContainer;

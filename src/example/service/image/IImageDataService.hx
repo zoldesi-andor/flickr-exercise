@@ -1,4 +1,4 @@
-package example.service.flickr;
+package example.service.image;
 
 import promhx.Promise;
 import promhx.Stream;

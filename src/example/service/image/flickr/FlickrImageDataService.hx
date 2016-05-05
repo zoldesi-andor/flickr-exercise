@@ -1,8 +1,8 @@
-package example.service.flickr;
+package example.service.image.flickr;
 
 import example.module.flickr.vo.*;
-import example.service.flickr.parser.FullSizeImageDataParser;
-import example.service.flickr.parser.RandomImagesDataParser;
+import example.service.image.flickr.parser.FullSizeImageDataParser;
+import example.service.image.flickr.parser.RandomImagesDataParser;
 import example.vo.flickr.list.*;
 import example.vo.flickr.size.*;
 import example.vo.image.ImageVO;

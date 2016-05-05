@@ -9,7 +9,7 @@ import example.module.mainimage.model.IImageModel;
 import example.module.mainimage.model.ImageModel;
 import example.module.mainimage.view.MainImageViewHelper;
 import example.module.mainimage.view.IMainImageView;
-import example.service.flickr.IImageDataService;
+import example.service.image.IImageDataService;
 import hex.config.stateful.IStatefulConfig;
 import hex.config.stateless.StatelessCommandConfig;
 import hex.config.stateless.StatelessModelConfig;

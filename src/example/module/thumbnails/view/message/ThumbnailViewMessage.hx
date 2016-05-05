@@ -9,4 +9,5 @@ import hex.event.MessageType;
 class ThumbnailViewMessage
 {
 	static public var THUMBNAIL_CLICKED = new MessageType( "thumbnail-click" );
+	static public var LOAD_THUMBNAILS = new MessageType("view-load-thumbnails");
 }

@@ -1,6 +1,7 @@
 package example.module.thumbnails.view;
 
 import example.module.mainimage.view.IMainImageView;
+import example.module.thumbnails.message.ThumbnailsModuleMessage;
 import example.module.thumbnails.view.message.ThumbnailViewMessage;
 import example.module.thumbnails.model.IThumbnailModelRO;
 import hex.control.request.StringRequest;
@@ -11,6 +12,8 @@ import js.Browser;
 import js.html.Element;
 import js.html.Event;
 import js.html.Image;
+import promhx.Deferred;
+import promhx.Stream;
 
 /**
  * ...
@@ -19,14 +22,20 @@ import js.html.Image;
 class ThumbnailsViewJS implements IThumbnailsView
 {
 	var container: Element;
-	
 	var dispatcher: Dispatcher<IThumbnailsViewListener>;
 	
 	public function new() 
-	{
-		this.dispatcher = new Dispatcher();
-			
+	{			
+		this.dispatcher = new Dispatcher();	
 		this.container = Browser.document.getElementById("thumbnails");
+	}
+	
+	public function getMaxThumbnailCount(): Int
+	{
+		var h = this.container.clientHeight;
+		var w = this.container.clientWidth;
+		
+		return Math.floor(w / h);
 	}
 	
 	private function thumbnailClicked(thumbnail: IThumbnailModelRO): Void 

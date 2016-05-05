@@ -11,6 +11,8 @@ import hex.config.stateful.IStatefulConfig;
 import hex.config.stateless.StatelessCommandConfig;
 import hex.config.stateless.StatelessModelConfig;
 
+import hex.control.request.ValueRequest;
+
 import hex.module.Module;
 import hex.module.dependency.IRuntimeDependencies;
 import hex.module.dependency.RuntimeDependencies;
@@ -21,7 +23,8 @@ import hex.module.dependency.RuntimeDependencies;
  */
 class ThumbnailsModule extends Module
 {
-
+	var view: IThumbnailsView;
+	
 	public function new( view : IThumbnailsView, serviceConfig:IStatefulConfig ) 
 	{
 		super();
@@ -30,11 +33,14 @@ class ThumbnailsModule extends Module
 		this._addStatefulConfigs([serviceConfig]);
 		
 		this.buildViewHelper( ThumbnailsViewHelper, view );
+		
+		this.view = view;
 	}
 	
-	public function loadThumbnails() : Void
+	public function loadThumbnails(): Void
 	{
-		this._dispatchPrivateMessage( ThumbnailsModuleMessage.LOAD_THUMBNAILS, [] ); 
+		var thumbnailCount = this.view.getMaxThumbnailCount();
+		this._dispatchPrivateMessage( ThumbnailsModuleMessage.LOAD_THUMBNAILS, [new ValueRequest(thumbnailCount)]);
 	}
 	
 	// Don't ask why, it is mandatory!

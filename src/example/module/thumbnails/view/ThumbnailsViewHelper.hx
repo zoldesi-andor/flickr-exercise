@@ -1,6 +1,6 @@
 package example.module.thumbnails.view;
 
-import example.module.thumbnails.message.ThumbnailsModulePublicMessage;
+import example.module.thumbnails.message.*;
 import example.vo.image.ImageVO;
 import hex.control.request.StringRequest;
 import hex.control.request.ValueRequest;
@@ -34,15 +34,14 @@ class ThumbnailsViewHelper extends ViewHelper implements IThumbnailListModelList
 		
 		this.thumbnailsView = cast this._view;
 		
-		this.thumbnailsView.addHandler( ThumbnailViewMessage.THUMBNAIL_CLICKED, this, this.onThumbnailClicked );	
+		
+		this.thumbnailsView.addHandler( ThumbnailViewMessage.THUMBNAIL_CLICKED, this, this.onThumbnailClicked );
 		
 		this.model.addListener(this);
 	}
 	
 	public function onThumbnailClicked(request: ValueRequest<ImageVO>): Void
 	{
-		this.getOwner().getLogger().debug("thumbnail clicked");
-		
 		this.getOwner().dispatchPublicMessage( ThumbnailsModulePublicMessage.THUMBNAIL_SELECTED, [request] );
 	}
 	

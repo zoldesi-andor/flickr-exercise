@@ -5,6 +5,7 @@ import example.module.thumbnails.model.IThumbnailListModel;
 import example.service.image.IImageDataService;
 import hex.control.async.AsyncCommand;
 import hex.control.request.StringRequest;
+import hex.control.request.ValueRequest;
 import hex.di.IInjectorContainer;
 
 
@@ -20,11 +21,13 @@ class LoadThumbnails extends AsyncCommand implements IInjectorContainer
 	@Inject
 	public var imageDataSource: IImageDataService;
 	
-	public function execute( ?requestList: StringRequest ) : Void 
+	public function execute( ?request: ValueRequest<Int> ) : Void 
 	{			
 		this.getLogger().debug("LoadThumbnails executed");
 		
-		var stream = this.imageDataSource.getThumbnailImages(5);
+		var thumbnailCount = request != null ? request.value : 5;
+		
+		var stream = this.imageDataSource.getThumbnailImages(thumbnailCount);
 		
 		stream.then(function(image)
 		{

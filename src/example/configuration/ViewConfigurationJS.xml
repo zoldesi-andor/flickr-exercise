@@ -2,4 +2,5 @@
 <root>
 	<view id="helloView" type="example.module.hello.view.HelloViewJS" />
 	<view id="flickrView" type="example.module.flickr.view.FlickrViewJS" />
+	<view id="thumbnailsView" type="example.module.thumbnails.view.ThumbnailsViewJS" />
 </root>

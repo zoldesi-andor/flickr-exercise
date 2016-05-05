@@ -1,6 +1,7 @@
 package example.service.flickr;
 
 import promhx.Promise;
+import promhx.Stream;
 import example.vo.image.ImageVO;
 import example.vo.flickr.list.FlickrPhotoVO;
 import example.vo.flickr.size.*;
@@ -16,5 +17,5 @@ interface IImageDataService extends IAsyncStatelessService<ServiceConfiguration>
 	
 	function getFullSizeImage(imageId: String): Promise<FlickrPhotoSizeVO>;
 	
-	function getThumbnailImages(count: Int): Promise<Array<ImageVO>>;
+	function getThumbnailImages(count: Int): Stream<ImageVO>;
 }

@@ -2,7 +2,7 @@ package example.service.flickr;
 
 import example.module.flickr.vo.*;
 import example.service.flickr.parser.FullSizeImageDataParser;
-import example.service.flickr.parser.RandomImageDataParser;
+import example.service.flickr.parser.RandomImagesDataParser;
 import example.vo.flickr.list.*;
 import example.vo.flickr.size.*;
 import example.vo.image.ImageVO;
@@ -35,7 +35,7 @@ class FlickrImageDataService extends AsyncStatelessService<ServiceConfiguration>
 			
 		httpRequest.request();
 			
-		return httpRequest.then(function(data: String) { return new RandomImageDataParser().parse(data); });
+		return httpRequest.then(function(data: String) { return new RandomImagesDataParser(1).parse(data)[0]; });
 	}
 	
 	public function getFullSizeImage(imageId: String): Promise<FlickrPhotoSizeVO>
@@ -49,11 +49,37 @@ class FlickrImageDataService extends AsyncStatelessService<ServiceConfiguration>
 		return httpRequest.then(function(data) { return new FullSizeImageDataParser().parse(data); });
 	}
 	
-	public function getThumbnailImages(count: Int): Promise<Array<ImageVO>>
+	public function getThumbnailImages(count: Int): Stream<ImageVO>
 	{
-		var result = new Deferred<Array<ImageVO>>();
+		var deferred = new Deferred<ImageVO>();
 		
-		return new Promise(result);
+		var httpRequest = this.createRequest()
+			.setParameter("method", "flickr.people.getPublicPhotos")
+			.setParameter("per_page", "100");
+			
+		httpRequest.request();
+			
+		httpRequest
+			.then(function(data: String) { return new RandomImagesDataParser(count).parse(data); })
+			.then(function(photos)
+			{
+				for (photo in photos)
+				{
+					this.getFullSizeImage(photo.id).then(function(size)
+					{
+						var image = new ImageVO();
+						image.id = photo.id;
+						image.title = photo.title;
+						image.url = size.source;
+						image.width = size.width;
+						image.height = size.height;
+						
+						deferred.resolve(image);
+					});
+				}
+			});
+		
+		return deferred.stream();
 	}
 	
 	private function createRequest(): Http

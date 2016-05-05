@@ -12,6 +12,17 @@
 		<argument ref="flickrView" />
 		<argument ref="flickrServiceLocator" />
 		<method-call name="changeImage" />
+		
+		<listen ref="thumbnailsModule">
+			<event static-ref="example.module.thumbnails.message.ThumbnailsModulePublicMessage.THUMBNAIL_SELECTED" 
+				   method="loadImage" />
+		</listen>
+	</module>
+	
+	<module id="thumbnailsModule" type="example.module.thumbnails.ThumbnailsModule">
+		<argument ref="thumbnailsView" />
+		<argument ref="flickrServiceLocator" />
+		<method-call name="loadThumbnails" />
 	</module>
 	
 	<message id="message" value="Hola Mundo - Click me!" />

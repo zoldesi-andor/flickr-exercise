@@ -4,6 +4,7 @@ import example.module.flickr.model.IImageModel;
 import example.service.flickr.IImageDataService;
 import example.vo.flickr.list.FlickrPhotoVO;
 import example.vo.flickr.size.FlickrPhotoSizeVO;
+import promhx.Promise;
 
 import hex.control.async.AsyncCommand;
 import hex.control.request.StringRequest;
@@ -27,6 +28,34 @@ class ChangeImageCommand extends AsyncCommand implements IInjectorContainer
 	{			
 		this.getLogger().debug("ChangeImageCommand executed");
 		
+		if (requestList != null)
+		{
+			this.loadImageWithId(requestList.value);
+		}
+		else
+		{
+			this.loadRandomImage();
+		}
+	}
+	
+	private function loadImageWithId(imageId: String): Void
+	{
+		this.imageDataSource.getFullSizeImage(imageId)
+		
+		.then(function(size: FlickrPhotoSizeVO) 
+		{ 
+			this.imageModel.setUrl(size.source);
+			this._handleComplete();
+		})
+		
+		.catchError(function(e) 
+		{
+			this._handleFail();
+		});
+	}
+	
+	private function loadRandomImage(): Void
+	{
 		this.imageDataSource.getRandomImage()
 		
 		.pipe(function(image: FlickrPhotoVO) 

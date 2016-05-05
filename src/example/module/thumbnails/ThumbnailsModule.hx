@@ -1,45 +1,40 @@
-package example.module.flickr;
+package example.module.thumbnails;
 
-import example.module.flickr.controller.*;
-import example.module.flickr.message.FlickrModuleMessage;
-import example.module.flickr.model.*;
-import example.module.flickr.view.*;
+import example.module.thumbnails.controller.*;
+import example.module.thumbnails.message.*;
+import example.module.thumbnails.model.*;
+import example.module.thumbnails.view.*;
+
 import example.service.flickr.IImageDataService;
+
 import hex.config.stateful.IStatefulConfig;
 import hex.config.stateless.StatelessCommandConfig;
 import hex.config.stateless.StatelessModelConfig;
-import hex.control.request.StringRequest;
+
 import hex.module.Module;
 import hex.module.dependency.IRuntimeDependencies;
 import hex.module.dependency.RuntimeDependencies;
-
-
 
 /**
  * ...
  * @author azoldesi
  */
-class FlickrModule extends Module implements IFlickrModule
+class ThumbnailsModule extends Module
 {
 
-	public function new( view : IFlickrView, serviceConfig:IStatefulConfig ) 
+	public function new( view : IThumbnailsView, serviceConfig:IStatefulConfig ) 
 	{
 		super();
 		
 		this._addStatelessConfigClasses([CommandConfig, ModelConfig]);
 		this._addStatefulConfigs([serviceConfig]);
 		
-		this.buildViewHelper( FlickrViewHelper, view );
+		this.buildViewHelper( ThumbnailsViewHelper, view );
 	}
 	
-	public function changeImage() : Void
+	public function loadThumbnails() : Void
 	{
-		this._dispatchPrivateMessage( FlickrModuleMessage.CHANGE_IMAGE, [] ); 
-	}
-	
-	public function loadImage(?request: StringRequest): Void
-	{
-		this._dispatchPrivateMessage( FlickrModuleMessage.CHANGE_IMAGE, [request] );
+		this._dispatchPrivateMessage( ThumbnailsModuleMessage.LOAD_THUMBNAILS, [] ); 
 	}
 	
 	// Don't ask why, it is mandatory!
@@ -55,7 +50,7 @@ private class CommandConfig extends StatelessCommandConfig
 {
 	override public function configure():Void
 	{
-		this.map( FlickrModuleMessage.CHANGE_IMAGE, ChangeImageCommand );
+		this.map( ThumbnailsModuleMessage.LOAD_THUMBNAILS, LoadThumbnails );
 	}
 }
 
@@ -63,6 +58,6 @@ private class ModelConfig extends StatelessModelConfig
 {
 	override public function configure() : Void
 	{
-		this.mapModel( IImageModel, ImageModel);
+		this.mapModel( IThumbnailListModel, ThumbnailListModel);
 	}
 }

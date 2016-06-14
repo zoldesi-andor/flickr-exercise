@@ -1,22 +1,20 @@
 package example.module.thumbnails.view;
 
 import example.module.thumbnails.message.*;
-import example.vo.image.ImageVO;
-import hex.control.request.StringRequest;
-import hex.control.request.ValueRequest;
-
 import example.module.thumbnails.model.IThumbnailListModelListener;
 import example.module.thumbnails.model.IThumbnailListModelRO;
 import example.module.thumbnails.model.IThumbnailModelRO;
-import example.module.thumbnails.view.message.ThumbnailViewMessage;
-
+import example.vo.image.ImageVO;
+import hex.control.request.ValueRequest;
 import hex.view.viewhelper.ViewHelper;
+
+
 
 /**
  * ...
  * @author azoldesi
  */
-class ThumbnailsViewHelper extends ViewHelper implements IThumbnailListModelListener implements IThumbnailsViewListener
+class ThumbnailsViewHelper extends ViewHelper implements IThumbnailListModelListener
 {
 	var thumbnailsView: IThumbnailsView;
 	
@@ -34,15 +32,14 @@ class ThumbnailsViewHelper extends ViewHelper implements IThumbnailListModelList
 		
 		this.thumbnailsView = cast this._view;
 		
-		
-		this.thumbnailsView.addHandler( ThumbnailViewMessage.THUMBNAIL_CLICKED, this, this.onThumbnailClicked );
+		this.thumbnailsView.thumbnailClickStream.then(this.onThumbnailClicked);
 		
 		this.model.addListener(this);
 	}
 	
-	public function onThumbnailClicked(request: ValueRequest<ImageVO>): Void
+	public function onThumbnailClicked(image: ImageVO): Void
 	{
-		this.getOwner().dispatchPublicMessage( ThumbnailsModulePublicMessage.THUMBNAIL_SELECTED, [request] );
+		this.getOwner().dispatchPublicMessage( ThumbnailsModulePublicMessage.THUMBNAIL_SELECTED, [new ValueRequest(image)] );
 	}
 	
 	public function onThumbnailListChanged(thumbnail: IThumbnailModelRO): Void

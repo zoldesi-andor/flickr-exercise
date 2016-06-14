@@ -15,9 +15,5 @@ interface IThumbnailsView extends IView
 	
 	function createThumbnail(thumbnail: IThumbnailModelRO): Void;
 	
-	function addHandler(messageType:MessageType, scope:Dynamic, callback:Dynamic):Bool;
-	
-	function removeHandler(messageType:MessageType, scope:Dynamic, callback:Dynamic):Bool;
-	
-	// var thumbnailClickStream(default, null): Stream<ImageVO>;
+	var thumbnailClickStream(default, null): Stream<ImageVO>;
 }

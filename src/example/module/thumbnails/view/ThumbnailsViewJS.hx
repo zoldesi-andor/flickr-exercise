@@ -1,17 +1,10 @@
 package example.module.thumbnails.view;
 
-import example.module.mainimage.view.IMainImageView;
-import example.module.thumbnails.message.ThumbnailsModuleMessage;
-import example.module.thumbnails.view.message.ThumbnailViewMessage;
 import example.module.thumbnails.model.IThumbnailModelRO;
-import hex.control.request.StringRequest;
-import hex.control.request.ValueRequest;
-import hex.event.Dispatcher;
-import hex.event.MessageType;
+import example.vo.image.ImageVO;
 import js.Browser;
 import js.html.Element;
 import js.html.Event;
-import js.html.Image;
 import promhx.Deferred;
 import promhx.Stream;
 
@@ -22,13 +15,17 @@ import promhx.Stream;
 class ThumbnailsViewJS implements IThumbnailsView
 {
 	var container: Element;
-	var dispatcher: Dispatcher<IThumbnailsViewListener>;
+	
+	var thumbnailClickDeferred = new Deferred<ImageVO>();
 	
 	public function new() 
 	{			
-		this.dispatcher = new Dispatcher();	
+		this.thumbnailClickStream = this.thumbnailClickDeferred.stream();
+		
 		this.container = Browser.document.getElementById("thumbnails");
 	}
+	
+	public var thumbnailClickStream(default, null): Stream<ImageVO>;
 	
 	public function getMaxThumbnailCount(): Int
 	{
@@ -40,7 +37,7 @@ class ThumbnailsViewJS implements IThumbnailsView
 	
 	private function thumbnailClicked(thumbnail: IThumbnailModelRO): Void 
 	{
-		this.dispatcher.dispatch( ThumbnailViewMessage.THUMBNAIL_CLICKED, [new ValueRequest(thumbnail.getImage())] );
+		this.thumbnailClickDeferred.resolve(thumbnail.getImage());
 	}
 	
 	public function createThumbnail(thumbnail: IThumbnailModelRO): Void
@@ -51,16 +48,6 @@ class ThumbnailsViewJS implements IThumbnailsView
 		image.addEventListener("click", function(e: Event) { this.thumbnailClicked(thumbnail); });
 		
 		this.container.appendChild(image);
-	}
-	
-	public function addHandler( messageType : MessageType, scope : Dynamic, callback : Dynamic ) : Bool
-	{
-		return this.dispatcher.addHandler( messageType, scope, callback );
-	}
-	
-	public function removeHandler( messageType : MessageType, scope : Dynamic, callback : Dynamic ) : Bool
-	{
-		return this.dispatcher.removeHandler( messageType, scope, callback );
 	}
 	
 	@:isVar public var visible(get, set):Bool;
